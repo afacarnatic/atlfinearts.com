@@ -325,23 +325,60 @@
             </div>
           </div>
 
-          <div class="about__img-wrap">
-            <picture>
-              <source type="image/webp" srcset="assets/images/afa-prashanth.webp" />
-              <img
-                class="about__img"
-                src="assets/images/afa-prashanth.webp"
-                alt="AFA members performing on stage — musicians and Bharatanatyam dancers at a community event"
-                width="640" height="800"
-                loading="lazy"
-                decoding="async" />
-            </picture>
+          <div class="about__img-wrap" style="position:relative;overflow:hidden;">
+            <!-- Carousel -->
+            <div id="about-carousel" style="position:relative;width:100%;height:100%;">
+              <img class="about__img about-slide" src="assets/images/2026-Aaradhanai_group_picture.webp"
+                   alt="Thyagaraja Aradhana group performance" loading="lazy" decoding="async"
+                   style="width:100%;height:100%;object-fit:cover;display:block;transition:opacity 0.7s ease;" />
+              <img class="about__img about-slide" src="assets/images/2024-chithirai-kalotsavam-group-performance-dance-2.webp"
+                   alt="Chithirai Kalotsavam dance performance" loading="lazy" decoding="async"
+                   style="width:100%;height:100%;object-fit:cover;display:none;transition:opacity 0.7s ease;" />
+              <img class="about__img about-slide" src="assets/images/chamber-concert-series-pranavi-on-violin.webp"
+                   alt="AFA Chamber Concert Series — violin performance" loading="lazy" decoding="async"
+                   style="width:100%;height:100%;object-fit:cover;display:none;transition:opacity 0.7s ease;" />
+              <img class="about__img about-slide" src="assets/images/2024-chithirai-kalotsavam-group-performance-dance-4.webp"
+                   alt="Chithirai Kalotsavam group dance" loading="lazy" decoding="async"
+                   style="width:100%;height:100%;object-fit:cover;display:none;transition:opacity 0.7s ease;" />
+              <img class="about__img about-slide" src="assets/images/chamber-concert-series-shriram-salem.webp"
+                   alt="AFA Chamber Concert performance" loading="lazy" decoding="async"
+                   style="width:100%;height:100%;object-fit:cover;display:none;transition:opacity 0.7s ease;" />
+              <!-- Dot indicators -->
+              <div style="position:absolute;bottom:12px;left:50%;transform:translateX(-50%);display:flex;gap:7px;z-index:10;">
+                <button class="about-dot" onclick="goSlide(0)" aria-label="Slide 1"
+                  style="width:8px;height:8px;border-radius:50%;border:none;background:rgba(255,255,255,0.9);cursor:pointer;padding:0;"></button>
+                <button class="about-dot" onclick="goSlide(1)" aria-label="Slide 2"
+                  style="width:8px;height:8px;border-radius:50%;border:none;background:rgba(255,255,255,0.4);cursor:pointer;padding:0;"></button>
+                <button class="about-dot" onclick="goSlide(2)" aria-label="Slide 3"
+                  style="width:8px;height:8px;border-radius:50%;border:none;background:rgba(255,255,255,0.4);cursor:pointer;padding:0;"></button>
+                <button class="about-dot" onclick="goSlide(3)" aria-label="Slide 4"
+                  style="width:8px;height:8px;border-radius:50%;border:none;background:rgba(255,255,255,0.4);cursor:pointer;padding:0;"></button>
+                <button class="about-dot" onclick="goSlide(4)" aria-label="Slide 5"
+                  style="width:8px;height:8px;border-radius:50%;border:none;background:rgba(255,255,255,0.4);cursor:pointer;padding:0;"></button>
+              </div>
+            </div>
             <div class="about__img-frame" aria-hidden="true"></div>
             <div class="about__founded" aria-label="Organization founded in 2022">
               <span>2022</span>
               <span>Founded</span>
             </div>
           </div>
+          <script>
+            (function() {
+              var slides = document.querySelectorAll('.about-slide');
+              var dots   = document.querySelectorAll('.about-dot');
+              var cur    = 0;
+              function goSlide(n) {
+                slides[cur].style.display = 'none';
+                dots[cur].style.background = 'rgba(255,255,255,0.4)';
+                cur = n;
+                slides[cur].style.display = 'block';
+                dots[cur].style.background = 'rgba(255,255,255,0.9)';
+              }
+              window.goSlide = goSlide;
+              setInterval(function() { goSlide((cur + 1) % slides.length); }, 3500);
+            })();
+          </script>
 
         </div>
       </div>
@@ -398,8 +435,8 @@
           <article class="event-card" data-year="2025">
             <div class="event-card__img">
               <picture>
-                <source type="image/webp" srcset="assets/images/raman-thiruppavai.webp" />
-                <img src="assets/images/raman-thiruppavai.webp"
+                <source type="image/webp" srcset="assets/images/chamber-concert-series-anand-krishnan.webp" />
+                <img src="assets/images/chamber-concert-series-anand-krishnan.webp"
                      alt="AFA Chamber Concert Series — Margazhi Special 2025"
                      width="800" height="600" loading="lazy" decoding="async" />
               </picture>
@@ -441,8 +478,8 @@
           <article class="event-card" data-year="2025">
             <div class="event-card__img">
               <picture>
-                <source type="image/webp" srcset="assets/images/shashank-anjana-afa-chamber-concert.webp" />
-                <img src="assets/images/shashank-anjana-afa-chamber-concert.webp"
+                <source type="image/webp" srcset="assets/images/chamber-concert-series-shashank-kaushik.webp" />
+                <img src="assets/images/chamber-concert-series-shashank-kaushik.webp"
                      alt="AFA Carnatic Chamber Concerts — April 2025"
                      width="800" height="600" loading="lazy" decoding="async" />
               </picture>
@@ -487,8 +524,8 @@
               <picture>
                 <source type="image/avif" srcset="assets/images/event-chamber-nov-2024.avif" />
               <picture>
-                <source type="image/webp" srcset="assets/images/chinmay-chamber-concert.webp" />
-                <img src="assets/images/chinmay-chamber-concert.webp"
+                <source type="image/webp" srcset="assets/images/chamber-concert-series-prabhav.webp" />
+                <img src="assets/images/chamber-concert-series-prabhav.webp"
                      alt="AFA Chamber Concert Series — November 2024"
                      width="800" height="600" loading="lazy" decoding="async" />
               </picture>
@@ -529,9 +566,9 @@
           <article class="event-card" data-year="2024">
             <div class="event-card__img">
               <picture>
-                <source type="image/webp" srcset="assets/images/2024-thyagaraja-aaradhanai-dance-performance.webp" />
-                <img src="assets/images/2024-thyagaraja-aaradhanai-dance-performance.webp"
-                     alt="Thyagaraja Aradhana 2024 — dance performance"
+                <source type="image/webp" srcset="assets/images/2026-Aaradhanai_group_picture.webp" />
+                <img src="assets/images/2026-Aaradhanai_group_picture.webp"
+                     alt="Thyagaraja Aradhana 2024 — group performance"
                      width="800" height="600" loading="lazy" decoding="async" />
               </picture>
               <span class="event-card__year-badge" aria-hidden="true">2024</span>
@@ -614,8 +651,8 @@
           <article class="event-card" data-year="2023">
             <div class="event-card__img">
               <picture>
-                <source type="image/webp" srcset="assets/images/2024-chithirai-kalotsavam-group-performance-dance-5.webp" />
-                <img src="assets/images/2024-chithirai-kalotsavam-group-performance-dance-5.webp"
+                <source type="image/webp" srcset="assets/images/2024-thyagaraja-aaradhanai-dance-performance.webp" />
+                <img src="assets/images/2024-thyagaraja-aaradhanai-dance-performance.webp"
                      alt="Thyagaraja Aradhanai 2023 — inaugural AFA event"
                      width="800" height="600" loading="lazy" decoding="async" />
               </picture>
