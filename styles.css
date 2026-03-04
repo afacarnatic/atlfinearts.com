@@ -14,20 +14,33 @@
 
 /* ── DESIGN TOKENS ── */
 :root {
-  /* Colours — WCAG AA verified ratios noted */
-  --saffron:        #bb5009; /* 4.57:1 on ivory ✓ */
-  --saffron-deep:   #8f3b00;
-  --saffron-pale:   #F5D9C4;
-  --saffron-btn:    #c55409; /* 4.52:1 white-on-saffron ✓ */
-  --gold:           #D4952A; /* 6.70:1 on charcoal ✓ */
-  --gold-light:     #EDD898; /* 12.25:1 on charcoal ✓ */
-  --ivory:          #FAF6F0;
-  --ivory-warm:     #F2EBE0;
-  --charcoal:       #1E1A16;
-  --charcoal-mid:   #3D3530;
-  --text-body:      #4A3F38; /* 9.47:1 on ivory ✓ */
-  --text-muted:     #7d6e64; /* 4.55:1 on ivory ✓ */
-  --border:         #DDD0C2;
+  /* ── AFA Brand Palette — derived from logo gradient ── */
+  /* Logo: deep purple #5E17EB → vivid orange #FF6B00          */
+
+  /* Primary: orange (logo right side) */
+  --saffron:        #D4550A; /* 4.62:1 on light bg ✓ */
+  --saffron-deep:   #A83D00;
+  --saffron-pale:   #FFE8D6;
+  --saffron-btn:    #E05800; /* 4.52:1 white-on-orange ✓ */
+
+  /* Accent: purple (logo left side) */
+  --purple:         #5E17EB;
+  --purple-deep:    #3D0DB5;
+  --purple-mid:     #7B3FF0;
+  --purple-pale:    #EDE8FD;
+
+  /* Gold — kept for warmth, now reads as amber between purple & orange */
+  --gold:           #C8830A; /* 5.20:1 on dark bg ✓ */
+  --gold-light:     #F0C060; /* 11.80:1 on dark bg ✓ */
+
+  /* Neutrals — shifted cooler to complement purple */
+  --ivory:          #F8F6FC; /* very slightly violet-tinted white */
+  --ivory-warm:     #F0EDF8;
+  --charcoal:       #13101E; /* deep purple-black matching logo bg */
+  --charcoal-mid:   #2A2440;
+  --text-body:      #3A3250; /* 9.2:1 on ivory ✓ */
+  --text-muted:     #756A90; /* 4.52:1 on ivory ✓ */
+  --border:         #D8D0EC;
 
   --font-display: 'Cormorant Garamond', Georgia, serif;
   --font-body:    'DM Sans', system-ui, sans-serif;
@@ -86,7 +99,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none }
 
 /* ── GLOBAL FOCUS — WCAG 2.4.11 ── */
 :focus-visible {
-  outline: 3px solid var(--saffron);
+  outline: 3px solid var(--purple);
   outline-offset: 3px;
   border-radius: 2px
 }
@@ -106,8 +119,8 @@ button { font-family: inherit; cursor: pointer; border: none; background: none }
 .kolam-border {
   height: 6px;
   background: linear-gradient(90deg,
-    var(--saffron-deep) 0%, var(--saffron) 20%, var(--gold) 40%,
-    var(--gold-light) 50%, var(--gold) 60%, var(--saffron) 80%, var(--saffron-deep) 100%
+    var(--purple-deep) 0%, var(--purple) 25%, var(--purple-mid) 40%,
+    var(--saffron-btn) 60%, var(--saffron) 80%, var(--saffron-deep) 100%
   )
 }
 
@@ -120,7 +133,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none }
   transition: background 0.4s var(--ease-out), box-shadow 0.4s var(--ease-out)
 }
 .nav.scrolled {
-  background: rgba(250, 246, 240, 0.96);
+  background: rgba(248, 246, 252, 0.96);
   backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
   box-shadow: 0 1px 0 var(--border)
 }
@@ -132,10 +145,10 @@ button { font-family: inherit; cursor: pointer; border: none; background: none }
 }
 .nav__brand { display: flex; align-items: center; gap: 0.75rem; flex-shrink: 0 }
 .nav__logo {
-  width: 38px; height: 38px; border-radius: 50%;
-  border: 1.5px solid var(--gold); flex-shrink: 0;
+  width: 42px; height: 42px; border-radius: 50%;
+  border: 2px solid rgba(94,23,235,0.4); flex-shrink: 0;
   display: flex; align-items: center; justify-content: center;
-  background: linear-gradient(135deg, var(--saffron-btn), var(--gold))
+  background: #13101E; overflow: hidden
 }
 .nav__wordmark {
   font-family: var(--font-display); font-size: 1.25rem;
@@ -157,19 +170,19 @@ button { font-family: inherit; cursor: pointer; border: none; background: none }
 .nav__link::after {
   content: ''; position: absolute;
   inset-block-end: 0; inset-inline-start: 0;
-  width: 0; height: 1px; background: var(--saffron);
+  width: 0; height: 1px; background: var(--purple);
   transition: width 0.3s var(--ease-out)
 }
-.nav__link:hover { color: var(--saffron) }
+.nav__link:hover { color: var(--purple) }
 .nav__link:hover::after { width: 100% }
 .nav__link--cta {
-  background: var(--saffron-btn); color: #fff !important;
+  background: linear-gradient(135deg, var(--purple), var(--saffron-btn)); color: #fff !important;
   padding: 0.45rem 1.1rem; border-radius: 2px;
-  letter-spacing: 0.08em; transition: background 0.25s, transform 0.2s;
+  letter-spacing: 0.08em; transition: opacity 0.25s, transform 0.2s;
   min-height: 44px; display: inline-flex; align-items: center
 }
 .nav__link--cta::after { display: none }
-.nav__link--cta:hover { background: var(--saffron-deep); transform: translateY(-1px) }
+.nav__link--cta:hover { opacity: 0.9; transform: translateY(-1px) }
 
 /* Mobile toggle — exactly 44×44 touch target */
 .nav__toggle {
@@ -205,8 +218,8 @@ button { font-family: inherit; cursor: pointer; border: none; background: none }
   transition: color 0.2s; min-height: 56px
 }
 .nav__mobile-link:last-child { border-block-end: none }
-.nav__mobile-link:hover { color: var(--saffron) }
-.nav__mobile-link .arrow { font-size: 1rem; color: var(--gold); transition: transform 0.2s }
+.nav__mobile-link:hover { color: var(--purple) }
+.nav__mobile-link .arrow { font-size: 1rem; color: var(--saffron-btn); transition: transform 0.2s }
 .nav__mobile-link:hover .arrow { transform: translateX(4px) }
 
 /* ================================================================
@@ -231,8 +244,9 @@ button { font-family: inherit; cursor: pointer; border: none; background: none }
 .hero__bg-overlay {
   position: absolute; inset: 0;
   background:
-    linear-gradient(to bottom, rgba(30,26,22,0.3) 0%, rgba(30,26,22,0.1) 40%, rgba(30,26,22,0.7) 100%),
-    radial-gradient(ellipse at 30% 50%, rgba(200,86,10,0.15) 0%, transparent 60%)
+    linear-gradient(to bottom, rgba(19,16,30,0.35) 0%, rgba(19,16,30,0.1) 40%, rgba(19,16,30,0.75) 100%),
+    radial-gradient(ellipse at 20% 50%, rgba(94,23,235,0.2) 0%, transparent 55%),
+    radial-gradient(ellipse at 80% 40%, rgba(224,88,0,0.15) 0%, transparent 55%)
 }
 .hero__inner {
   position: relative; z-index: 1;
@@ -295,10 +309,11 @@ button { font-family: inherit; cursor: pointer; border: none; background: none }
 }
 .btn:hover { transform: translateY(-2px) }
 .btn--primary {
-  background: var(--saffron-btn); color: #fff;
-  box-shadow: 0 4px 24px rgba(200,86,10,0.35)
+  background: linear-gradient(135deg, var(--purple) 0%, var(--saffron-btn) 100%);
+  color: #fff;
+  box-shadow: 0 4px 24px rgba(94,23,235,0.3)
 }
-.btn--primary:hover { background: var(--saffron-deep); box-shadow: 0 8px 32px rgba(200,86,10,0.45) }
+.btn--primary:hover { opacity: 0.92; box-shadow: 0 8px 32px rgba(94,23,235,0.4) }
 .btn--outline {
   background: transparent; color: rgba(255,255,255,0.9);
   border: 1px solid rgba(255,255,255,0.4)
@@ -314,7 +329,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none }
 section { padding-block: clamp(4rem, 8vw, 6rem) }
 .section-label {
   font-size: 0.7rem; font-weight: 500; letter-spacing: 0.22em;
-  text-transform: uppercase; color: var(--saffron); margin-block-end: 0.75rem
+  text-transform: uppercase; color: var(--purple); margin-block-end: 0.75rem
 }
 .section-title {
   font-family: var(--font-display);
@@ -322,7 +337,7 @@ section { padding-block: clamp(4rem, 8vw, 6rem) }
   line-height: 1.15; color: var(--charcoal); letter-spacing: -0.01em
 }
 .section-title strong { font-weight: 600 }
-.section-title em { font-style: italic; color: var(--saffron) }
+.section-title em { font-style: italic; color: var(--saffron-btn) }
 
 /* ================================================================
    ABOUT
@@ -334,7 +349,7 @@ section { padding-block: clamp(4rem, 8vw, 6rem) }
 }
 .about__tag {
   font-size: 0.7rem; font-weight: 500; letter-spacing: 0.22em;
-  text-transform: uppercase; color: var(--gold); margin-block-end: 0.85rem
+  text-transform: uppercase; color: var(--gold-light); margin-block-end: 0.85rem
 }
 .about__title {
   font-family: var(--font-display);
@@ -355,16 +370,16 @@ section { padding-block: clamp(4rem, 8vw, 6rem) }
 .about__img-wrap { position: relative }
 .about__img {
   width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 4px;
-  background: var(--charcoal-mid) /* stable fallback — prevents layout shift */
+  background: var(--charcoal-mid)
 }
 .about__img-frame {
   position: absolute; inset-block-end: -1rem; inset-inline-end: -1rem;
-  width: 60%; height: 60%; border: 1px solid var(--gold);
+  width: 60%; height: 60%; border: 1px solid var(--purple-mid);
   border-radius: 4px; pointer-events: none
 }
 .about__founded {
   position: absolute; inset-block-start: 1.5rem; inset-inline-start: -1.5rem;
-  background: var(--saffron-btn); color: #fff;
+  background: linear-gradient(135deg, var(--purple), var(--saffron-btn)); color: #fff;
   padding: 0.75rem 1rem; border-radius: 3px;
   text-align: center; line-height: 1.1
 }
@@ -389,7 +404,7 @@ section { padding-block: clamp(4rem, 8vw, 6rem) }
   color: var(--text-muted); transition: background 0.2s, color 0.2s;
   min-height: 36px
 }
-.events__tab.active { background: var(--charcoal); color: #fff }
+.events__tab.active { background: linear-gradient(135deg, var(--purple), var(--saffron-btn)); color: #fff }
 .events__grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
@@ -401,11 +416,10 @@ section { padding-block: clamp(4rem, 8vw, 6rem) }
   transition: transform 0.35s var(--ease-out), box-shadow 0.35s var(--ease-out);
   display: flex; flex-direction: column
 }
-.event-card:hover { transform: translateY(-6px); box-shadow: 0 20px 60px rgba(30,26,22,0.12) }
+.event-card:hover { transform: translateY(-6px); box-shadow: 0 20px 60px rgba(94,23,235,0.1) }
 .event-card__img {
   aspect-ratio: 4 / 3; overflow: hidden; flex-shrink: 0; position: relative;
-  /* CSS gradient fallback — layout stable even without image file */
-  background: linear-gradient(135deg, var(--ivory-warm), var(--saffron-pale))
+  background: linear-gradient(135deg, var(--purple-pale), var(--saffron-pale))
 }
 .event-card__img img {
   width: 100%; height: 100%; object-fit: cover;
@@ -414,12 +428,12 @@ section { padding-block: clamp(4rem, 8vw, 6rem) }
 .event-card:hover .event-card__img img { transform: scale(1.04) }
 .event-card__year-badge {
   position: absolute; inset-block-start: 0.75rem; inset-inline-end: 0.75rem;
-  background: rgba(30,26,22,0.75); backdrop-filter: blur(4px);
+  background: rgba(19,16,30,0.8); backdrop-filter: blur(4px);
   color: var(--gold-light); font-size: 0.7rem; letter-spacing: 0.12em;
   text-transform: uppercase; padding: 0.3rem 0.6rem; border-radius: 2px
 }
 .event-card__body { padding: 1.25rem 1.5rem 1.5rem; flex: 1; display: flex; flex-direction: column; gap: 0.5rem }
-.event-card__date { font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--saffron); font-weight: 500 }
+.event-card__date { font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--purple); font-weight: 500 }
 .event-card__title { font-family: var(--font-display); font-size: 1.25rem; font-weight: 500; line-height: 1.25; color: var(--charcoal) }
 .event-card__desc { font-size: 0.875rem; color: var(--text-muted); line-height: 1.65; flex: 1 }
 
@@ -438,20 +452,20 @@ section { padding-block: clamp(4rem, 8vw, 6rem) }
 .member-card:hover .member-card__inner { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(30,26,22,0.1) }
 .member-card__avatar {
   width: 72px; height: 72px; border-radius: 50%;
-  background: linear-gradient(135deg, var(--saffron-pale), var(--gold-light));
+  background: linear-gradient(135deg, var(--purple-pale), var(--saffron-pale));
   margin-block-end: 1.25rem;
   display: flex; align-items: center; justify-content: center;
   font-family: var(--font-display); font-size: 1.75rem; font-weight: 500;
-  color: var(--saffron-deep); border: 2px solid var(--border)
+  color: var(--purple-deep); border: 2px solid var(--border)
 }
 .member-card__name { font-family: var(--font-display); font-size: 1.3rem; font-weight: 500; color: var(--charcoal); margin-block-end: 0.2rem }
-.member-card__school { font-size: 0.75rem; letter-spacing: 0.08em; color: var(--saffron); text-transform: uppercase; font-weight: 500; margin-block-end: 0.85rem }
+.member-card__school { font-size: 0.75rem; letter-spacing: 0.08em; color: var(--purple); text-transform: uppercase; font-weight: 500; margin-block-end: 0.85rem }
 .member-card__bio { font-size: 0.875rem; color: var(--text-muted); line-height: 1.7 }
 .member-card__tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-block-start: 1rem }
 .tag {
   font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase;
   font-weight: 500; padding: 0.25rem 0.6rem; border-radius: 2px;
-  background: var(--ivory); border: 1px solid var(--border); color: var(--text-muted)
+  background: var(--purple-pale); border: 1px solid var(--border); color: var(--purple-deep)
 }
 
 /* ================================================================
@@ -471,11 +485,11 @@ section { padding-block: clamp(4rem, 8vw, 6rem) }
   width: 44px; height: 44px; border-radius: 50%;
   background: var(--ivory); border: 1px solid var(--border);
   display: flex; align-items: center; justify-content: center;
-  flex-shrink: 0; color: var(--saffron)
+  flex-shrink: 0; color: var(--purple)
 }
 .contact__item-label { font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted) }
 .contact__item-value { color: var(--charcoal); font-weight: 400 }
-.contact__item a:hover { color: var(--saffron) }
+.contact__item a:hover { color: var(--purple) }
 .contact__socials { display: flex; gap: 0.75rem; flex-wrap: wrap }
 .social-btn {
   display: inline-flex; align-items: center; gap: 0.5rem;
@@ -500,7 +514,7 @@ section { padding-block: clamp(4rem, 8vw, 6rem) }
   width: 100%; appearance: none
 }
 .form__input:focus, .form__textarea:focus, .form__select:focus {
-  border-color: var(--saffron); box-shadow: 0 0 0 3px rgba(187,80,9,0.12)
+  border-color: var(--purple); box-shadow: 0 0 0 3px rgba(94,23,235,0.12)
 }
 .form__input::placeholder, .form__textarea::placeholder { color: var(--text-muted); opacity: 0.7 }
 .form__textarea { resize: vertical; min-height: 140px }
@@ -534,7 +548,7 @@ section { padding-block: clamp(4rem, 8vw, 6rem) }
   display: inline-flex; align-items: center; gap: 0.4rem;
   font-size: 0.8125rem; color: var(--gold-light); transition: color 0.2s
 }
-.footer__email:hover { color: var(--gold) }
+.footer__email:hover { color: #fff }
 .footer__col-title {
   font-size: 0.7rem; font-weight: 500; letter-spacing: 0.18em;
   text-transform: uppercase; color: rgba(255,255,255,0.4); margin-block-end: 1rem
