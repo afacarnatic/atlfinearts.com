@@ -62,18 +62,14 @@
   <link rel="stylesheet" href="styles.css" />
 
   <!-- ═══════════════════════════════════════════════
-       PATCH — nav contrast + reveal fix
+       PATCH — nav contrast + fix
   ════════════════════════════════════════════════ -->
   <style>
-    /* Force nav brand text white at all times for legibility */
+    /* Nav brand always white/legible at all scroll positions */
     .nav__wordmark { color: #fff !important; }
     .nav__wordmark span { color: rgba(255,255,255,0.7) !important; }
     .nav__link { color: rgba(255,255,255,0.85) !important; }
     .nav:not(.scrolled) { background: linear-gradient(to bottom, rgba(0,0,0,0.55) 0%, transparent 100%) !important; }
-
-    /* Ensure reveal elements are visible when already in viewport on load/hash-jump */
-    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
-    .reveal.visible { opacity: 1 !important; transform: none !important; }
   </style>
 
   <!-- ═══════════════════════════════════════════════
@@ -283,12 +279,12 @@
         <div class="about__inner">
 
           <div>
-            <p class="about__tag reveal">Who We Are</p>
-            <h2 class="about__title reveal reveal--delay-1" id="about-heading">
+            <p class="about__tag">Who We Are</p>
+            <h2 class="about__title" id="about-heading">
               <em>Student-founded.</em><br>
               Community-rooted.
             </h2>
-            <p class="about__body reveal reveal--delay-2">
+            <p class="about__body">
               Founded in 2022 by a group of young Carnatic musicians in the Atlanta
               area, Atlanta Fine Arts (AFA) is a non-profit organization with a
               single purpose: to give Indian classical arts the platform they deserve
@@ -301,7 +297,7 @@
               volunteers who believe in the power of this art form to bring people together.
             </p>
 
-            <div class="about__stats reveal reveal--delay-2">
+            <div class="about__stats">
               <div>
                 <div class="stat__number">2022</div>
                 <div class="stat__label">Year Founded</div>
@@ -316,7 +312,7 @@
               </div>
             </div>
 
-            <div class="reveal reveal--delay-3">
+            <div class="">
               <a href="#contact" class="btn btn--primary">
                 Get Involved
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -329,7 +325,7 @@
             </div>
           </div>
 
-          <div class="about__img-wrap reveal reveal--delay-2">
+          <div class="about__img-wrap">
             <picture>
               <source type="image/webp" srcset="assets/images/afa-prashanth.webp" />
               <img
@@ -359,13 +355,13 @@
 
         <div class="events__head">
           <div>
-            <p class="section-label reveal">Past &amp; Upcoming</p>
-            <h2 class="section-title reveal reveal--delay-1" id="events-heading">
+            <p class="section-label">Past &amp; Upcoming</p>
+            <h2 class="section-title" id="events-heading">
               Our <em>Events</em>
             </h2>
           </div>
           <!-- role=tablist so screen readers announce tab pattern -->
-          <div class="events__tabs reveal" role="tablist" aria-label="Filter events by year">
+          <div class="events__tabs" role="tablist" aria-label="Filter events by year">
             <button class="events__tab active" data-tab="all"  role="tab" aria-selected="true"  id="tab-all"  aria-controls="events-grid">All</button>
             <button class="events__tab"        data-tab="2025" role="tab" aria-selected="false" id="tab-2025" aria-controls="events-grid">2025</button>
             <button class="events__tab"        data-tab="2024" role="tab" aria-selected="false" id="tab-2024" aria-controls="events-grid">2024</button>
@@ -377,7 +373,7 @@
         <div class="events__grid" id="events-grid" aria-live="polite" aria-label="Events list">
 
           <!-- 2025 ─────────────────────────────── -->
-          <article class="event-card reveal" data-year="2025">
+          <article class="event-card" data-year="2025">
             <div class="event-card__img">
               <picture>
                 <source type="image/webp" srcset="assets/images/2026-Aaradhanai_group_picture.webp" />
@@ -399,7 +395,7 @@
             </div>
           </article>
 
-          <article class="event-card reveal reveal--delay-1" data-year="2025">
+          <article class="event-card" data-year="2025">
             <div class="event-card__img">
               <picture>
                 <source type="image/webp" srcset="assets/images/raman-thiruppavai.webp" />
@@ -420,7 +416,7 @@
             </div>
           </article>
 
-          <article class="event-card reveal reveal--delay-2" data-year="2025">
+          <article class="event-card" data-year="2025">
             <div class="event-card__img">
               <picture>
                 <source type="image/webp" srcset="assets/images/chamber-concert-series-pranavi-on-violin.webp" />
@@ -442,7 +438,7 @@
             </div>
           </article>
 
-          <article class="event-card reveal" data-year="2025">
+          <article class="event-card" data-year="2025">
             <div class="event-card__img">
               <picture>
                 <source type="image/webp" srcset="assets/images/shashank-anjana-afa-chamber-concert.webp" />
@@ -465,7 +461,7 @@
           </article>
 
           <!-- 2024 ─────────────────────────────── -->
-          <article class="event-card reveal reveal--delay-1" data-year="2024">
+          <article class="event-card" data-year="2024">
             <div class="event-card__img">
               <picture>
                 <source type="image/webp" srcset="assets/images/chamber-concert-series-shriram-salem.webp" />
@@ -486,7 +482,7 @@
             </div>
           </article>
 
-          <article class="event-card reveal reveal--delay-2" data-year="2024">
+          <article class="event-card" data-year="2024">
             <div class="event-card__img">
               <picture>
                 <source type="image/avif" srcset="assets/images/event-chamber-nov-2024.avif" />
@@ -509,7 +505,7 @@
             </div>
           </article>
 
-          <article class="event-card reveal" data-year="2024">
+          <article class="event-card" data-year="2024">
             <div class="event-card__img">
               <picture>
                 <source type="image/webp" srcset="assets/images/2024-chithirai-kalotsavam-group-performance-dance-2.webp" />
@@ -530,7 +526,7 @@
             </div>
           </article>
 
-          <article class="event-card reveal reveal--delay-1" data-year="2024">
+          <article class="event-card" data-year="2024">
             <div class="event-card__img">
               <picture>
                 <source type="image/webp" srcset="assets/images/2024-thyagaraja-aaradhanai-dance-performance.webp" />
@@ -552,7 +548,7 @@
           </article>
 
           <!-- 2023 ─────────────────────────────── -->
-          <article class="event-card reveal reveal--delay-2" data-year="2023">
+          <article class="event-card" data-year="2023">
             <div class="event-card__img">
               <picture>
                 <source type="image/webp" srcset="assets/images/2024-chithirai-kalotsavam-group-performance-dance-4.webp" />
@@ -573,7 +569,7 @@
             </div>
           </article>
 
-          <article class="event-card reveal" data-year="2023">
+          <article class="event-card" data-year="2023">
             <div class="event-card__img">
               <picture>
                 <source type="image/webp" srcset="assets/images/chamber-concert-series-tejas-varada.webp" />
@@ -594,7 +590,7 @@
             </div>
           </article>
 
-          <article class="event-card reveal reveal--delay-1" data-year="2023">
+          <article class="event-card" data-year="2023">
             <div class="event-card__img">
               <picture>
                 <source type="image/webp" srcset="assets/images/2024-chithirai-kalotsavam-group-performance-dance-3.webp" />
@@ -615,7 +611,7 @@
             </div>
           </article>
 
-          <article class="event-card reveal reveal--delay-2" data-year="2023">
+          <article class="event-card" data-year="2023">
             <div class="event-card__img">
               <picture>
                 <source type="image/webp" srcset="assets/images/2024-chithirai-kalotsavam-group-performance-dance-5.webp" />
@@ -646,16 +642,16 @@
     <section class="team" id="members" aria-labelledby="members-heading">
       <div class="container">
         <div class="team__head">
-          <p class="section-label reveal">The Founders</p>
-          <h2 class="section-title reveal reveal--delay-1" id="members-heading">
+          <p class="section-label">The Founders</p>
+          <h2 class="section-title" id="members-heading">
             Meet Our <em>Members</em>
           </h2>
-          <div class="ornament reveal reveal--delay-2" aria-hidden="true">♩</div>
+          <div class="ornament" aria-hidden="true">♩</div>
         </div>
 
         <div class="team__grid">
 
-          <div class="member-card reveal">
+          <div class="member-card">
             <div class="member-card__inner">
               <div class="member-card__avatar" aria-hidden="true">CP</div>
               <h3 class="member-card__name">Chinmay Prashanth</h3>
@@ -675,7 +671,7 @@
             </div>
           </div>
 
-          <div class="member-card reveal reveal--delay-1">
+          <div class="member-card">
             <div class="member-card__inner">
               <div class="member-card__avatar" aria-hidden="true">SS</div>
               <h3 class="member-card__name">Sahithya Shriram</h3>
@@ -695,7 +691,7 @@
             </div>
           </div>
 
-          <div class="member-card reveal reveal--delay-2">
+          <div class="member-card">
             <div class="member-card__inner">
               <div class="member-card__avatar" aria-hidden="true">SK</div>
               <h3 class="member-card__name">Shashank Kaushik</h3>
@@ -727,16 +723,16 @@
         <div class="contact__inner">
 
           <aside class="contact__aside" aria-label="Contact information">
-            <p class="section-label reveal">Reach Out</p>
-            <h2 class="section-title reveal reveal--delay-1" id="contact-heading">
+            <p class="section-label">Reach Out</p>
+            <h2 class="section-title" id="contact-heading">
               Let's <em>Connect</em>
             </h2>
-            <p class="contact__body reveal reveal--delay-2">
+            <p class="contact__body">
               Have questions about events, want to perform, or want to be
               part of the community? We'd love to hear from you.
             </p>
 
-            <ul class="contact__list reveal reveal--delay-2" aria-label="Contact details">
+            <ul class="contact__list" aria-label="Contact details">
               <li class="contact__item">
                 <div class="contact__item-icon" aria-hidden="true">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -781,7 +777,7 @@
               </li>
             </ul>
 
-            <div class="contact__socials reveal reveal--delay-3">
+            <div class="contact__socials">
               <a href="https://www.instagram.com/atlanta.finearts"
                  class="social-btn" target="_blank" rel="noopener noreferrer"
                  aria-label="Follow Atlanta Fine Arts on Instagram (opens in new tab)">
@@ -819,7 +815,7 @@
           </aside>
 
           <!-- Contact form — accessible, no-dependency -->
-          <div class="reveal reveal--delay-1">
+          <div class="">
             <form class="form" id="contact-form" novalidate
                   aria-label="Send a message to Atlanta Fine Arts">
 
@@ -1056,7 +1052,7 @@
       if (e.key === 'Escape' && isOpen) closeMenu();
     });
 
-    /* ── Intersection Observer — scroll reveal ── */
+    /* ── Intersection Observer — scroll ── */
     var revealEls = document.querySelectorAll('.reveal');
 
     function revealInViewport() {
@@ -1082,7 +1078,7 @@
       revealEls.forEach(function (el) { el.classList.add('visible'); });
     }
 
-    /* Immediately reveal anything already in viewport (handles hash-jump) */
+    /* Immediately anything already in viewport (handles hash-jump) */
     revealInViewport();
     window.addEventListener('hashchange', function () {
       setTimeout(revealInViewport, 50);
