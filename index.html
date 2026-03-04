@@ -431,11 +431,299 @@
           </div>
         </div>
 
+        <!-- EVENT MODAL -->
+        <div id="event-modal" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.75);overflow-y:auto;padding:40px 16px;" onclick="if(event.target===this)closeModal()">
+          <div style="background:#1a1625;max-width:720px;margin:0 auto;border-radius:16px;overflow:hidden;position:relative;box-shadow:0 24px 80px rgba(0,0,0,0.6);">
+            <button onclick="closeModal()" aria-label="Close" style="position:absolute;top:14px;right:16px;background:rgba(255,255,255,0.1);border:none;color:#fff;width:36px;height:36px;border-radius:50%;font-size:18px;cursor:pointer;z-index:10;line-height:1;">✕</button>
+            <img id="modal-img" src="" alt="" style="width:100%;max-height:360px;object-fit:cover;display:block;" />
+            <div style="padding:28px 32px 36px;">
+              <p id="modal-date" style="color:#c9a84c;font-size:0.78rem;letter-spacing:0.12em;text-transform:uppercase;margin:0 0 8px;"></p>
+              <h2 id="modal-title" style="color:#fff;font-family:'Cormorant Garamond',serif;font-size:1.9rem;font-weight:300;margin:0 0 6px;"></h2>
+              <p id="modal-location" style="color:rgba(255,255,255,0.5);font-size:0.82rem;margin:0 0 20px;"></p>
+              <p id="modal-desc" style="color:rgba(255,255,255,0.8);line-height:1.7;margin:0 0 24px;"></p>
+              <div id="modal-performers" style="border-top:1px solid rgba(255,255,255,0.1);padding-top:20px;"></div>
+            </div>
+          </div>
+        </div>
+        <style>
+          .event-card { cursor:pointer; transition:transform 0.2s ease, box-shadow 0.2s ease; }
+          .event-card:hover { transform:translateY(-4px); box-shadow:0 12px 40px rgba(0,0,0,0.3); }
+          .event-card:hover .event-card__title { color:#c9a84c; }
+          .performer-set { margin-bottom:16px; }
+          .performer-set h4 { color:#c9a84c; font-size:0.75rem; letter-spacing:0.1em; text-transform:uppercase; margin:0 0 10px; }
+          .performer-row { display:flex; align-items:center; gap:10px; margin-bottom:8px; }
+          .performer-instrument { background:rgba(201,168,76,0.15); color:#c9a84c; font-size:0.7rem; letter-spacing:0.08em; text-transform:uppercase; padding:2px 8px; border-radius:20px; white-space:nowrap; }
+          .performer-name { color:#fff; font-size:0.9rem; }
+          .modal-stat { display:inline-flex; align-items:center; gap:6px; background:rgba(255,255,255,0.06); padding:6px 14px; border-radius:20px; font-size:0.8rem; color:rgba(255,255,255,0.7); margin:0 6px 8px 0; }
+        </style>
+        <script>
+          var eventsData = {
+            'aradhana-2026': {
+              img: 'assets/images/afa-2026-aaradhanai.webp',
+              date: 'Saturday, February 28, 2026 · 4 pm – 6 pm',
+              title: 'Thyagaraja Aradhana 2026',
+              location: 'Chinmaya Gurukul, 4980 Pittman Road, Cumming GA 30040',
+              desc: 'AFA\'s annual Thyagaraja Aradhana — a community-wide Ghoshti Gaanam of the Pancharathna Keertanas honoring the great composer-saint Sri Thyagaraja. The event draws 360+ participants from across Atlanta. Boxed dinner catered by Mylapore Express. Performing artists please arrive by 3:30 pm for seating and mic check. Free entry, donations welcome.',
+              stats: ['Free Entry','360+ Attendees','Donations Welcome'],
+              sets: []
+            },
+            'margazhi-2026': {
+              img: 'assets/images/raman-thiruppavai.webp',
+              date: 'Saturday, January 10, 2026 · 3 pm – 5 pm',
+              title: 'Chamber Concert — Margazhi Special',
+              location: 'Private Residence, Atlanta GA',
+              desc: 'An intimate Margazhi season concert celebrating the sacred month with devotional Carnatic music including a recitation of Thiruppavai. Tea and snacks served. Kindly park on the same side of home. ~70 attendees.',
+              stats: ['~70 Attendees','Private Residence','Tea & Snacks Served'],
+              sets: [
+                { time: '', performers: [
+                  { name: 'Sri Raman Poyapakkam', instrument: 'Thiruppavai' },
+                  { name: 'Sai Kishore', instrument: 'Flute' },
+                  { name: 'Pranavi Srinivasa', instrument: 'Violin' },
+                  { name: 'Sri Santosh Chandru', instrument: 'Mridangam' }
+                ]}
+              ]
+            },
+            'aradhana-2025': {
+              img: 'assets/images/2026-Aaradhanai_group_picture.webp',
+              date: 'Saturday, February 1, 2025',
+              title: 'Thyagaraja Aradhana 2025',
+              location: 'Chinmaya Gurukul, Cumming GA',
+              desc: 'Atlanta\'s most beloved Carnatic music gathering returned for its third year, drawing over 360 attendees to honor Saint Thyagaraja through the collective Ghoshti Gaanam of the Pancharatna Kritis. Free entry, donations welcome.',
+              stats: ['Free Entry','360+ Attendees','Chinmaya Gurukul'],
+              sets: []
+            },
+            'chamber-oct-2025': {
+              img: 'assets/images/chamber-concert.webp',
+              date: 'Saturday, October 11, 2025 · 3 pm – 6 pm',
+              title: 'Chamber Concert Series',
+              location: 'Private Residence, Atlanta GA',
+              desc: 'Two back-to-back chamber performances at a private residence, drawing around 70 guests. The afternoon opened with a vocal concert by Hamsini Chandrasekar, followed by a mesmerizing flute concert by Sri Sai Kishore. Tea and snacks were served.',
+              stats: ['~70 Attendees','2 Performances','Private Residence'],
+              sets: [
+                { time: '3:00 pm – 3:50 pm', performers: [
+                  { name: 'Hamsini Chandrasekar', instrument: 'Vocal' },
+                  { name: 'Anand Krishnan', instrument: 'Violin' },
+                  { name: 'Anirudhah Narayanan', instrument: 'Mridangam' }
+                ]},
+                { time: '4:00 pm – 6:00 pm', performers: [
+                  { name: 'Sri Sai Kishore', instrument: 'Flute' },
+                  { name: 'Sudharshan Prasanna', instrument: 'Violin' },
+                  { name: 'Sri Santosh Chandru', instrument: 'Mridangam' }
+                ]}
+              ]
+            },
+            'chamber-nov-2025': {
+              img: 'assets/images/afa-prashanth.webp',
+              date: 'Saturday, November 15, 2025 · 3 pm – 5 pm',
+              title: 'Chamber Concert Series',
+              location: 'Private Residence, Atlanta GA',
+              desc: 'An intimate chamber concert at a private residence featuring some of Atlanta\'s finest Carnatic musicians. Around 70 guests enjoyed an evening of refined classical music.',
+              stats: ['~70 Attendees','Private Residence'],
+              sets: [
+                { time: '', performers: [
+                  { name: 'Sri Prashanth Krishnamoorthy', instrument: 'Vocal' },
+                  { name: 'Sudharshan Prasanna', instrument: 'Violin' },
+                  { name: 'Ashwath Karunakaram', instrument: 'Mridangam' }
+                ]}
+              ]
+            },
+            'chamber-apr-2025': {
+              img: 'assets/images/shashank-anjana-afa-chamber-concert.webp',
+              date: 'Saturday, April 19, 2025 · 3 pm – 5:30 pm',
+              title: 'Carnatic Chamber Concerts',
+              location: 'Private Residence, Atlanta GA',
+              desc: 'Two sequential Carnatic vocal concerts at a private residence, drawing around 70 attendees. An afternoon of soulful music featuring Atlanta\'s rising young artists. Tea and snacks were served.',
+              stats: ['~70 Attendees','2 Performances','Private Residence'],
+              sets: [
+                { time: '3:00 pm – 3:50 pm', performers: [
+                  { name: 'Shashank Kaushik', instrument: 'Vocal' },
+                  { name: 'Anand Krishnan', instrument: 'Violin' },
+                  { name: 'Prabhav N', instrument: 'Mridangam' }
+                ]},
+                { time: '4:00 pm – 5:30 pm', performers: [
+                  { name: 'Anjana Nagaraja', instrument: 'Vocal' },
+                  { name: 'Anand Krishnan', instrument: 'Violin' },
+                  { name: 'Prabhav N', instrument: 'Mridangam' }
+                ]}
+              ]
+            },
+            'chamber-feb-2025': {
+              img: 'assets/images/chinmay-chamber-concert.webp',
+              date: 'Sunday, February 23, 2025 · 3 pm – 5 pm',
+              title: 'Home Chamber Concert Series',
+              location: 'Private Residence, Atlanta GA',
+              desc: 'Two back-to-back chamber performances at a private home, showcasing AFA\'s young artists to around 70 guests. A hallmark of AFA\'s commitment to creating intimate performance opportunities.',
+              stats: ['~70 Attendees','2 Performances','Private Residence'],
+              sets: [
+                { time: '3:00 pm – 3:50 pm', performers: [
+                  { name: 'Amita', instrument: 'Vocal' },
+                  { name: 'Prajna', instrument: 'Violin' },
+                  { name: 'Akshay', instrument: 'Mridangam' }
+                ]},
+                { time: '4:00 pm – 5:00 pm', performers: [
+                  { name: 'Chinmay Prashanth', instrument: 'Vocal' },
+                  { name: 'Pranavi Srinivasa', instrument: 'Violin' },
+                  { name: 'Akshay', instrument: 'Mridangam' }
+                ]}
+              ]
+            },
+            'summer-2025': {
+              img: 'assets/images/2025-summer-camp.webp',
+              date: 'Summer 2025',
+              title: 'Carnatic Music Summer Series',
+              location: 'Atlanta, GA',
+              desc: 'AFA\'s 2025 Summer Series offered three tiers of programming for students at all levels — a week-long summer camp, informal jam sessions, and workshops for advanced students.',
+              stats: ['3 Programs','June – July 2025','Open to All Levels'],
+              sets: [
+                { time: 'Summer Camp · June 23–27 · 5–7 PM · $25', performers: [
+                  { name: 'Learn compositions of Sri Muthuswami Dikshitar from senior students and perform', instrument: 'Beginner Students' }
+                ]},
+                { time: 'Jam Sessions · June 20 & July 11 · 5–7 PM · Free', performers: [
+                  { name: 'Fun informal sessions for musicians to explore manodharmam and learn from each other', instrument: 'All Musicians' }
+                ]},
+                { time: 'Workshops · July 13 & July 20 · 5–7 PM · $25', performers: [
+                  { name: 'Sri Salem Shriram', instrument: 'Faculty' },
+                  { name: 'Sri Prashanth Krishnamoorthy', instrument: 'Faculty' },
+                  { name: 'Sarvalaghu kalpana swarams & Navarathri kritis', instrument: 'Advanced Students' }
+                ]}
+              ]
+            },
+            'chamber-oct-2024': {
+              img: 'assets/images/chamber-concert-series-shriram-salem.webp',
+              date: 'Saturday, October 11, 2024 · 3 pm – 6 pm',
+              title: 'Chamber Concert Series',
+              location: 'Private Residence, Atlanta GA',
+              desc: 'Two back-to-back chamber concerts drawing around 70 attendees. An afternoon of refined Carnatic music featuring vocal and flute artists from the Atlanta community.',
+              stats: ['~70 Attendees','2 Performances','Private Residence'],
+              sets: [
+                { time: '3:00 pm – 3:50 pm', performers: [
+                  { name: 'Hamsini Chandrasekar', instrument: 'Vocal' },
+                  { name: 'Anand Krishnan', instrument: 'Violin' },
+                  { name: 'Anirudhah Narayanan', instrument: 'Mridangam' }
+                ]},
+                { time: '4:00 pm – 6:00 pm', performers: [
+                  { name: 'Sri Sai Kishore', instrument: 'Flute' },
+                  { name: 'Sudharshan Prasanna', instrument: 'Violin' },
+                  { name: 'Sri Santosh Chandru', instrument: 'Mridangam' }
+                ]}
+              ]
+            },
+            'chamber-nov-2024': {
+              img: 'assets/images/chamber-concert-series-prabhav.webp',
+              date: 'Saturday, November 15, 2024 · 3 pm – 5 pm',
+              title: 'Chamber Concert Series',
+              location: 'Private Residence, Atlanta GA',
+              desc: 'A refined Carnatic music evening at a private residence featuring some of Atlanta\'s finest artists. Around 70 guests attended this intimate chamber concert.',
+              stats: ['~70 Attendees','Private Residence'],
+              sets: [
+                { time: '', performers: [
+                  { name: 'Sri Prashanth Krishnamoorthy', instrument: 'Vocal' },
+                  { name: 'Sudharshan Prasanna', instrument: 'Violin' },
+                  { name: 'Ashwath Karunakaram', instrument: 'Mridangam' }
+                ]}
+              ]
+            },
+            'chithirai-2024': {
+              img: 'assets/images/2024-chithirai-kalotsavam-group-performance-dance-2.webp',
+              date: 'Sunday, April 28, 2024',
+              title: 'Chithirai Kalotsavam 2024',
+              location: 'Atlanta, GA',
+              desc: 'A vibrant Tamil New Year celebration featuring solo vocal and Bharatanatyam dance recitals, two full choirs performing together for the first time in Atlanta, and a special tribute to Tamil Carnatic composers.',
+              stats: ['Dance & Music','Two Choirs','Tamil New Year Celebration'],
+              sets: []
+            },
+            'aradhana-2024': {
+              img: 'assets/images/2026-Aaradhanai_group_picture.webp',
+              date: 'Sunday, February 4, 2024',
+              title: 'Thyagaraja Aradhana 2024',
+              location: 'Atlanta, GA',
+              desc: 'The second annual Aradhana — a community-wide gathering to honor Saint Thyagaraja through the collective singing of the Pancharatna Kritis, alongside special youth recitals and performances by leading Atlanta artists.',
+              stats: ['Free Entry','Annual Tradition','Youth Recitals'],
+              sets: []
+            },
+            'navaratri-2023': {
+              img: 'assets/images/2024-chithirai-kalotsavam-group-performance-dance-4.webp',
+              date: 'Sunday, October 8, 2023',
+              title: 'Navaratri Kalotsavam',
+              location: 'Atlanta, GA',
+              desc: 'A spectacular showcase of teacher-led vocal and dance group performances celebrating the Navaratri season, bringing together artists and audiences from across the greater Atlanta community.',
+              stats: ['Dance & Music','Navaratri Season','Community Event'],
+              sets: []
+            },
+            'summercamp-2023': {
+              img: 'assets/images/chamber-concert-series-tejas-varada.webp',
+              date: 'July 24–29, 2023',
+              title: 'Carnatic Music Summer Camp',
+              location: 'Atlanta, GA',
+              desc: 'A week-long immersive camp for children to explore Carnatic vocal music, taught by talented young artists from the Atlanta community and culminating in a group showcase performance.',
+              stats: ['Week-Long Camp','Children\'s Program','Showcase Performance'],
+              sets: []
+            },
+            'chithirai-2023': {
+              img: 'assets/images/2024-chithirai-kalotsavam-group-performance-dance-3.webp',
+              date: 'Sunday, April 16, 2023',
+              title: 'Chithirai Utsavam',
+              location: 'Atlanta, GA',
+              desc: 'AFA\'s first large-scale event — a music celebration honoring Tamil and Malayalam Carnatic composers, with lively audience trivia between performances that made the evening as joyful as it was musical.',
+              stats: ['AFA\'s First Event','Audience Trivia','Tamil & Malayalam Music'],
+              sets: []
+            },
+            'aradhana-2023': {
+              img: 'assets/images/2024-thyagaraja-aaradhanai-dance-performance.webp',
+              date: 'Saturday, January 21, 2023',
+              title: 'Thyagaraja Aradhanai 2023',
+              location: 'Atlanta, GA',
+              desc: 'Where it all began. AFA\'s inaugural event — a heartfelt tribute to Saint Thyagaraja through the Pancharatna Kritis, launching what has since become Atlanta\'s most cherished annual Carnatic tradition.',
+              stats: ['AFA\'s Inaugural Event','Free Entry','Annual Tradition Begins'],
+              sets: []
+            }
+          };
+
+          function openModal(id) {
+            var d = eventsData[id];
+            if (!d) return;
+            document.getElementById('modal-img').src = d.img;
+            document.getElementById('modal-img').alt = d.title;
+            document.getElementById('modal-date').textContent = d.date;
+            document.getElementById('modal-title').textContent = d.title;
+            document.getElementById('modal-location').textContent = '📍 ' + d.location;
+            document.getElementById('modal-desc').textContent = d.desc;
+
+            var statsHtml = d.stats.map(function(s){ return '<span class="modal-stat">'+s+'</span>'; }).join('');
+
+            var setsHtml = '';
+            if (d.sets.length > 0) {
+              setsHtml = '<h4 style="color:#c9a84c;font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;margin:0 0 16px;">Performers</h4>';
+              d.sets.forEach(function(set) {
+                if (set.time) setsHtml += '<p style="color:rgba(255,255,255,0.5);font-size:0.78rem;letter-spacing:0.06em;text-transform:uppercase;margin:0 0 10px;border-bottom:1px solid rgba(255,255,255,0.08);padding-bottom:6px;">'+set.time+'</p>';
+                set.performers.forEach(function(p) {
+                  setsHtml += '<div class="performer-row"><span class="performer-instrument">'+p.instrument+'</span><span class="performer-name">'+p.name+'</span></div>';
+                });
+                setsHtml += '<div style="height:14px;"></div>';
+              });
+            }
+
+            document.getElementById('modal-performers').innerHTML = statsHtml + (setsHtml ? '<div style="height:16px;"></div>' + setsHtml : '');
+            var modal = document.getElementById('event-modal');
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+          }
+
+          function closeModal() {
+            document.getElementById('event-modal').style.display = 'none';
+            document.body.style.overflow = '';
+          }
+
+          document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeModal();
+          });
+        </script>
+
         <!-- role=list + role=listitem gives semantics even though <article> is used -->
         <div class="events__grid" id="events-grid" aria-live="polite" aria-label="Events list">
 
           <!-- 2026 ─────────────────────────────── -->
-          <article class="event-card" data-year="2026">
+          <article class="event-card" data-year="2026" onclick="openModal('aradhana-2026')" tabindex="0" onkeydown="if(event.key==='Enter')openModal('aradhana-2026')" style="cursor:pointer;">
             <div class="event-card__img">
               <picture>
                 <source type="image/webp" srcset="assets/images/afa-2026-aaradhanai.webp" />
@@ -458,7 +746,7 @@
           </article>
 
           <!-- 2025 ─────────────────────────────── -->
-          <article class="event-card" data-year="2026">
+          <article class="event-card" data-year="2026" onclick="openModal('margazhi-2026')" tabindex="0" onkeydown="if(event.key==='Enter')openModal('margazhi-2026')">
             <div class="event-card__img">
               <picture>
                 <source type="image/webp" srcset="assets/images/raman-thiruppavai.webp" />
@@ -479,7 +767,7 @@
           </article>
 
           <!-- 2025 ─────────────────────────────── -->
-          <article class="event-card" data-year="2025">
+          <article class="event-card" data-year="2025" onclick="openModal('aradhana-2025')" tabindex="0" onkeydown="if(event.key==='Enter')openModal('aradhana-2025')">
             <div class="event-card__img">
               <picture>
                 <source type="image/webp" srcset="assets/images/2026-Aaradhanai_group_picture.webp" />
@@ -501,7 +789,7 @@
             </div>
           </article>
 
-          <article class="event-card" data-year="2025">
+          <article class="event-card" data-year="2025" onclick="openModal('chamber-oct-2025')" tabindex="0" onkeydown="if(event.key==='Enter')openModal('chamber-oct-2025')">
             <div class="event-card__img">
               <picture>
                 <source type="image/webp" srcset="assets/images/chamber-concert.webp" />
@@ -522,7 +810,7 @@
             </div>
           </article>
 
-          <article class="event-card" data-year="2025">
+          <article class="event-card" data-year="2025" onclick="openModal('chamber-nov-2025')" tabindex="0" onkeydown="if(event.key==='Enter')openModal('chamber-nov-2025')">
             <div class="event-card__img">
               <picture>
                 <source type="image/webp" srcset="assets/images/afa-prashanth.webp" />
@@ -543,7 +831,7 @@
             </div>
           </article>
 
-          <article class="event-card" data-year="2025">
+          <article class="event-card" data-year="2025" onclick="openModal('chamber-apr-2025')" tabindex="0" onkeydown="if(event.key==='Enter')openModal('chamber-apr-2025')">
             <div class="event-card__img">
               <picture>
                 <source type="image/webp" srcset="assets/images/chamber-concert-series-shashank-kaushik.webp" />
@@ -565,7 +853,7 @@
             </div>
           </article>
 
-          <article class="event-card" data-year="2025">
+          <article class="event-card" data-year="2025" onclick="openModal('chamber-feb-2025')" tabindex="0" onkeydown="if(event.key==='Enter')openModal('chamber-feb-2025')">
             <div class="event-card__img">
               <picture>
                 <source type="image/webp" srcset="assets/images/chinmay-chamber-concert.webp" />
@@ -587,7 +875,7 @@
             </div>
           </article>
 
-          <article class="event-card" data-year="2025">
+          <article class="event-card" data-year="2025" onclick="openModal('summer-2025')" tabindex="0" onkeydown="if(event.key==='Enter')openModal('summer-2025')">
             <div class="event-card__img">
               <picture>
                 <source type="image/webp" srcset="assets/images/2025-summer-camp.webp" />
@@ -609,7 +897,7 @@
           </article>
 
           <!-- 2024 ─────────────────────────────── -->
-          <article class="event-card" data-year="2024">
+          <article class="event-card" data-year="2024" onclick="openModal('chamber-oct-2024')" tabindex="0" onkeydown="if(event.key==='Enter')openModal('chamber-oct-2024')">
             <div class="event-card__img">
               <picture>
                 <source type="image/webp" srcset="assets/images/chamber-concert-series-shriram-salem.webp" />
@@ -630,7 +918,7 @@
             </div>
           </article>
 
-          <article class="event-card" data-year="2024">
+          <article class="event-card" data-year="2024" onclick="openModal('chamber-nov-2024')" tabindex="0" onkeydown="if(event.key==='Enter')openModal('chamber-nov-2024')">
             <div class="event-card__img">
               <picture>
                 <source type="image/avif" srcset="assets/images/event-chamber-nov-2024.avif" />
@@ -653,7 +941,7 @@
             </div>
           </article>
 
-          <article class="event-card" data-year="2024">
+          <article class="event-card" data-year="2024" onclick="openModal('chithirai-2024')" tabindex="0" onkeydown="if(event.key==='Enter')openModal('chithirai-2024')">
             <div class="event-card__img">
               <picture>
                 <source type="image/webp" srcset="assets/images/2024-chithirai-kalotsavam-group-performance-dance-2.webp" />
@@ -674,7 +962,7 @@
             </div>
           </article>
 
-          <article class="event-card" data-year="2024">
+          <article class="event-card" data-year="2024" onclick="openModal('aradhana-2024')" tabindex="0" onkeydown="if(event.key==='Enter')openModal('aradhana-2024')">
             <div class="event-card__img">
               <picture>
                 <source type="image/webp" srcset="assets/images/2026-Aaradhanai_group_picture.webp" />
@@ -696,7 +984,7 @@
           </article>
 
           <!-- 2023 ─────────────────────────────── -->
-          <article class="event-card" data-year="2023">
+          <article class="event-card" data-year="2023" onclick="openModal('navaratri-2023')" tabindex="0" onkeydown="if(event.key==='Enter')openModal('navaratri-2023')">
             <div class="event-card__img">
               <picture>
                 <source type="image/webp" srcset="assets/images/2024-chithirai-kalotsavam-group-performance-dance-4.webp" />
@@ -717,7 +1005,7 @@
             </div>
           </article>
 
-          <article class="event-card" data-year="2023">
+          <article class="event-card" data-year="2023" onclick="openModal('summercamp-2023')" tabindex="0" onkeydown="if(event.key==='Enter')openModal('summercamp-2023')">
             <div class="event-card__img">
               <picture>
                 <source type="image/webp" srcset="assets/images/chamber-concert-series-tejas-varada.webp" />
@@ -738,7 +1026,7 @@
             </div>
           </article>
 
-          <article class="event-card" data-year="2023">
+          <article class="event-card" data-year="2023" onclick="openModal('chithirai-2023')" tabindex="0" onkeydown="if(event.key==='Enter')openModal('chithirai-2023')">
             <div class="event-card__img">
               <picture>
                 <source type="image/webp" srcset="assets/images/2024-chithirai-kalotsavam-group-performance-dance-3.webp" />
@@ -759,7 +1047,7 @@
             </div>
           </article>
 
-          <article class="event-card" data-year="2023">
+          <article class="event-card" data-year="2023" onclick="openModal('aradhana-2023')" tabindex="0" onkeydown="if(event.key==='Enter')openModal('aradhana-2023')">
             <div class="event-card__img">
               <picture>
                 <source type="image/webp" srcset="assets/images/2024-thyagaraja-aaradhanai-dance-performance.webp" />
