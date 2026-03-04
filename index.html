@@ -41,7 +41,7 @@
   <!-- Preload LCP image (hero image) -->
   <link rel="preload"
         as="image"
-        href="assets/images/afa-2026-aaradhanai.webp"
+        href="assets/images/2026-Aaradhanai_group_picture.webp"
         type="image/webp"
         fetchpriority="high" />
 
@@ -163,10 +163,10 @@
     <section class="hero" id="home" aria-label="Welcome to Atlanta Fine Arts">
       <div class="hero__bg" aria-hidden="true">
         <picture>
-          <source type="image/webp" srcset="assets/images/afa-2026-aaradhanai.webp" />
+          <source type="image/webp" srcset="assets/images/2026-Aaradhanai_group_picture.webp" />
           <img
             class="hero__bg-img"
-            src="assets/images/afa-2026-aaradhanai.webp"
+            src="assets/images/2026-Aaradhanai_group_picture.webp"
             alt=""
             width="1920" height="1080"
             loading="eager"
@@ -297,6 +297,7 @@
           </div>
           <div class="events__tabs reveal" role="tablist" aria-label="Filter events by year">
             <button class="events__tab active" data-tab="all"  role="tab" aria-selected="true"  id="tab-all"  aria-controls="events-grid">All</button>
+            <button class="events__tab"        data-tab="2026" role="tab" aria-selected="false" id="tab-2026" aria-controls="events-grid">2026</button>
             <button class="events__tab"        data-tab="2025" role="tab" aria-selected="false" id="tab-2025" aria-controls="events-grid">2025</button>
             <button class="events__tab"        data-tab="2024" role="tab" aria-selected="false" id="tab-2024" aria-controls="events-grid">2024</button>
             <button class="events__tab"        data-tab="2023" role="tab" aria-selected="false" id="tab-2023" aria-controls="events-grid">2023</button>
@@ -305,12 +306,34 @@
 
         <div class="events__grid" id="events-grid" aria-live="polite" aria-label="Events list">
 
-          <!-- 2025 -->
-          <article class="event-card reveal" data-year="2025">
+          <!-- 2026 -->
+          <article class="event-card reveal" data-year="2026">
             <div class="event-card__img">
               <picture>
                 <source type="image/webp" srcset="assets/images/afa-2026-aaradhanai.webp" />
                 <img src="assets/images/afa-2026-aaradhanai.webp"
+                     alt="Thyagaraja Aradhana 2026 — official event poster"
+                     width="800" height="600" loading="lazy" decoding="async" />
+              </picture>
+              <span class="event-card__year-badge" aria-hidden="true">Upcoming 2026</span>
+            </div>
+            <div class="event-card__body">
+              <p class="event-card__date"><time datetime="2026-01-31">Saturday, January 31, 2026 · 4 pm – 6 pm</time></p>
+              <h3 class="event-card__title">Thyagaraja Aradhana 2026</h3>
+              <p class="event-card__desc">
+                Join us for the Ghoshti Gaanam of the Pancharathna Keerthanas — Atlanta's beloved
+                annual tribute to Saint Thyagaraja. Free entry, donations welcome (Zelle: 586-604-…).
+                Seating and mic check for performing artists begins at 3 pm.
+              </p>
+            </div>
+          </article>
+
+          <!-- 2025 -->
+          <article class="event-card reveal reveal--delay-1" data-year="2025">
+            <div class="event-card__img">
+              <picture>
+                <source type="image/webp" srcset="assets/images/2026-Aaradhanai_group_picture.webp" />
+                <img src="assets/images/2026-Aaradhanai_group_picture.webp"
                      alt="Thyagaraja Aradhana — Atlanta Fine Arts annual celebration"
                      width="800" height="600" loading="lazy" decoding="async" />
               </picture>
@@ -328,12 +351,12 @@
             </div>
           </article>
 
-          <article class="event-card reveal reveal--delay-1" data-year="2025">
+          <article class="event-card reveal reveal--delay-2" data-year="2025">
             <div class="event-card__img">
               <picture>
-                <source type="image/webp" srcset="assets/images/chamber-concert.webp" />
-                <img src="assets/images/chamber-concert.webp"
-                     alt="AFA Chamber Concert Series"
+                <source type="image/webp" srcset="assets/images/chamber-concert-series-shashank-kaushik.webp" />
+                <img src="assets/images/chamber-concert-series-shashank-kaushik.webp"
+                     alt="AFA Chamber Concert Series — Margazhi Special"
                      width="800" height="600" loading="lazy" decoding="async" />
               </picture>
               <span class="event-card__year-badge" aria-hidden="true">2025</span>
@@ -372,8 +395,8 @@
           <article class="event-card reveal reveal--delay-1" data-year="2024">
             <div class="event-card__img">
               <picture>
-                <source type="image/webp" srcset="assets/images/chinmay-chamber-concert.webp" />
-                <img src="assets/images/chinmay-chamber-concert.webp"
+                <source type="image/webp" srcset="assets/images/chamber-concert-series-anand-krishnan.webp" />
+                <img src="assets/images/chamber-concert-series-anand-krishnan.webp"
                      alt="AFA Chamber Concert Series performance"
                      width="800" height="600" loading="lazy" decoding="async" />
               </picture>
@@ -404,6 +427,44 @@
               <h3 class="event-card__title">Chithirai Kalotsavam 2024</h3>
               <p class="event-card__desc">
                 A vibrant celebration of Carnatic music and community — featuring solo and group performances.
+              </p>
+            </div>
+          </article>
+
+          <article class="event-card reveal reveal--delay-1" data-year="2024">
+            <div class="event-card__img">
+              <picture>
+                <source type="image/webp" srcset="assets/images/raman-thiruppavai.webp" />
+                <img src="assets/images/raman-thiruppavai.webp"
+                     alt="Raman Thiruppavai recital — AFA 2024"
+                     width="800" height="600" loading="lazy" decoding="async" />
+              </picture>
+              <span class="event-card__year-badge" aria-hidden="true">2024</span>
+            </div>
+            <div class="event-card__body">
+              <p class="event-card__date"><time datetime="2024-12-20">December 2024</time></p>
+              <h3 class="event-card__title">Thiruppavai Recital</h3>
+              <p class="event-card__desc">
+                A devotional recital of Andal's Thiruppavai — celebrating the Margazhi season with classical music and reverence.
+              </p>
+            </div>
+          </article>
+
+          <article class="event-card reveal reveal--delay-2" data-year="2024">
+            <div class="event-card__img">
+              <picture>
+                <source type="image/webp" srcset="assets/images/2024-thyagaraja-aaradhanai-dance-performance.webp" />
+                <img src="assets/images/2024-thyagaraja-aaradhanai-dance-performance.webp"
+                     alt="Thyagaraja Aradhana 2024 dance performance"
+                     width="800" height="600" loading="lazy" decoding="async" />
+              </picture>
+              <span class="event-card__year-badge" aria-hidden="true">2024</span>
+            </div>
+            <div class="event-card__body">
+              <p class="event-card__date"><time datetime="2024-02-03">February 3, 2024</time></p>
+              <h3 class="event-card__title">Thyagaraja Aradhana 2024</h3>
+              <p class="event-card__desc">
+                The second annual Aradhana — a deeply moving Pancharatna kritis gathering that grew in scale and spirit, with Bharatanatyam and vocal performances honoring Saint Thyagaraja.
               </p>
             </div>
           </article>
