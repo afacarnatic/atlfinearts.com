@@ -17,7 +17,7 @@
   <meta property="og:url"         content="https://atlfinearts.com/" />
   <meta property="og:title"       content="Atlanta Fine Arts | Carnatic Music &amp; Bharatanatyam in Atlanta" />
   <meta property="og:description" content="Student-founded, volunteer-run non-profit bringing Carnatic music and Bharatanatyam to Atlanta. Annual Thyagaraja Aradhana, Chamber Concert Series, and summer camps since 2022." />
-  <meta property="og:image"       content="https://atlfinearts.com/assets/images/og-image.jpg" />
+  <meta property="og:image"       content="https://atlfinearts.com/assets/images/afa-2026-aaradhanai.webp" />
   <meta property="og:image:width"  content="1200" />
   <meta property="og:image:height" content="630" />
   <meta property="og:locale"      content="en_US" />
@@ -27,7 +27,7 @@
   <meta name="twitter:card"        content="summary_large_image" />
   <meta name="twitter:title"       content="Atlanta Fine Arts | Carnatic Music &amp; Bharatanatyam in Atlanta" />
   <meta name="twitter:description" content="Student-founded non-profit bringing Carnatic music and Bharatanatyam to Atlanta. Annual Aradhana, Chamber Concerts, and summer camps since 2022." />
-  <meta name="twitter:image"       content="https://atlfinearts.com/assets/images/og-image.jpg" />
+  <meta name="twitter:image"       content="https://atlfinearts.com/assets/images/afa-2026-aaradhanai.webp" />
 
   <!-- Theme colour -->
   <meta name="theme-color" content="#1E1A16" />
@@ -35,25 +35,20 @@
   <!-- ═══════════════════════════════════════════════
        PERFORMANCE — RESOURCE HINTS
   ════════════════════════════════════════════════ -->
-  <!-- Preconnect to font origins before stylesheet parses -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-  <!-- Preload LCP image — hero background is the LCP element -->
+  <!-- Preload LCP image (hero image) -->
   <link rel="preload"
         as="image"
-        href="assets/images/hero-bg.webp"
+        href="assets/images/afa-2026-aaradhanai.webp"
         type="image/webp"
-        imagesrcset="assets/images/hero-bg-480.webp 480w, assets/images/hero-bg-960.webp 960w, assets/images/hero-bg.webp 1920w"
-        imagesizes="100vw"
         fetchpriority="high" />
 
-  <!-- Preload stylesheet — blocks render but eliminates extra RTT -->
   <link rel="preload" href="styles.css" as="style" />
 
   <!-- ═══════════════════════════════════════════════
-       FONTS — display=swap eliminates invisible-text period
-       Only load the exact weights used (reduces payload ~30%)
+       FONTS
   ════════════════════════════════════════════════ -->
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,500;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" />
@@ -65,7 +60,6 @@
 
   <!-- ═══════════════════════════════════════════════
        STRUCTURED DATA — JSON-LD
-       Organization + WebSite + Events (rich results)
   ════════════════════════════════════════════════ -->
   <script type="application/ld+json">
   {
@@ -77,7 +71,7 @@
         "name": "Atlanta Fine Arts",
         "alternateName": "AFA",
         "url": "https://atlfinearts.com",
-        "logo": "https://atlfinearts.com/assets/images/og-image.jpg",
+        "logo": "https://atlfinearts.com/assets/images/afa-logo.webp",
         "foundingDate": "2022",
         "description": "A student-founded, volunteer-run non-profit dedicated to nurturing Carnatic music and Bharatanatyam in the Atlanta community through the annual Thyagaraja Aradhana, Chamber Concert Series, summer camps, and more.",
         "email": "afacarnatic@gmail.com",
@@ -109,22 +103,6 @@
         "organizer": { "@id": "https://atlfinearts.com/#org" },
         "description": "Annual celebration honoring Saint Thyagaraja with the singing of the Pancharatna kritis. Free entry, donations welcome. Over 360 attendees.",
         "isAccessibleForFree": true
-      },
-      {
-        "@type": "Event",
-        "name": "Chithirai Kalotsavam 2024",
-        "startDate": "2024-04-28",
-        "location": { "@type": "Place", "address": { "@type": "PostalAddress", "addressLocality": "Atlanta", "addressRegion": "GA" } },
-        "organizer": { "@id": "https://atlfinearts.com/#org" },
-        "description": "A celebration of Carnatic music featuring vocal and dance recitals, two epic choirs, and a tribute to Tamil Carnatic composers."
-      },
-      {
-        "@type": "Event",
-        "name": "Thyagaraja Aradhana 2024",
-        "startDate": "2024-02-04",
-        "location": { "@type": "Place", "address": { "@type": "PostalAddress", "addressLocality": "Atlanta", "addressRegion": "GA" } },
-        "organizer": { "@id": "https://atlfinearts.com/#org" },
-        "description": "Annual celebration honoring Saint Thyagaraja with group Pancharatnam performance and youth recitals."
       }
     ]
   }
@@ -133,25 +111,16 @@
 
 <body>
 
-  <!-- ═══════════════════════════════════════════════
-       SKIP LINK — first focusable element (WCAG 2.4.1)
-  ════════════════════════════════════════════════ -->
   <a class="skip-link" href="#main-content">Skip to main content</a>
 
-  <!-- ═══════════════════════════════════════════════
-       DECORATIVE TOP BORDER
-  ════════════════════════════════════════════════ -->
   <div class="kolam-border" aria-hidden="true"></div>
 
-  <!-- ═══════════════════════════════════════════════
-       NAVIGATION
-  ════════════════════════════════════════════════ -->
   <nav class="nav" id="nav" aria-label="Main navigation">
     <div class="nav__inner">
 
       <a href="#home" class="nav__brand" aria-label="Atlanta Fine Arts — home">
         <div class="nav__logo" aria-hidden="true">
-          <img src="assets/images/afa_logo.webp"
+          <img src="assets/images/afa-logo.webp"
                alt="" width="36" height="36"
                style="border-radius:50%;object-fit:cover;" />
         </div>
@@ -161,7 +130,6 @@
         </div>
       </a>
 
-      <!-- Desktop links -->
       <ul class="nav__links" role="list">
         <li><a href="#about"   class="nav__link">About</a></li>
         <li><a href="#events"  class="nav__link">Events</a></li>
@@ -169,7 +137,6 @@
         <li><a href="#contact" class="nav__link nav__link--cta">Contact Us</a></li>
       </ul>
 
-      <!-- Mobile hamburger — aria-expanded + aria-controls wired in JS -->
       <button class="nav__toggle"
               id="nav-toggle"
               aria-label="Open navigation menu"
@@ -181,7 +148,6 @@
       </button>
     </div>
 
-    <!-- Mobile menu panel -->
     <div class="nav__mobile" id="mobile-menu" aria-hidden="true" role="region" aria-label="Mobile navigation">
       <ul class="nav__mobile-links" role="list">
         <li><a href="#about"   class="nav__mobile-link" data-mobile-link>About <span class="arrow" aria-hidden="true">→</span></a></li>
@@ -192,41 +158,15 @@
     </div>
   </nav>
 
-  <!-- ─────────────────────────────────────────── -->
   <main id="main-content">
-  <!-- ─────────────────────────────────────────── -->
 
-    <!-- ═══════════════════════════════════════════════
-         HERO
-    ════════════════════════════════════════════════ -->
     <section class="hero" id="home" aria-label="Welcome to Atlanta Fine Arts">
       <div class="hero__bg" aria-hidden="true">
-        <!--
-          <picture> with AVIF → WebP → JPEG fallback + responsive srcset
-          fetchpriority=high  → browser prioritises this as LCP candidate
-          loading=eager       → never lazy-load the LCP image
-          No width/height on <picture> itself; aspect ratio handled by CSS
-        -->
         <picture>
-          <source
-            type="image/avif"
-            srcset="assets/images/hero-bg-480.avif 480w,
-                    assets/images/hero-bg-960.avif 960w,
-                    assets/images/hero-bg.avif     1920w"
-            sizes="100vw" />
-          <source
-            type="image/webp"
-            srcset="assets/images/hero-bg-480.webp 480w,
-                    assets/images/hero-bg-960.webp 960w,
-                    assets/images/hero-bg.webp     1920w"
-            sizes="100vw" />
+          <source type="image/webp" srcset="assets/images/afa-2026-aaradhanai.webp" />
           <img
             class="hero__bg-img"
-            src="assets/images/hero-bg.jpg"
-            srcset="assets/images/hero-bg-480.jpg 480w,
-                    assets/images/hero-bg-960.jpg 960w,
-                    assets/images/hero-bg.jpg     1920w"
-            sizes="100vw"
+            src="assets/images/afa-2026-aaradhanai.webp"
             alt=""
             width="1920" height="1080"
             loading="eager"
@@ -252,7 +192,6 @@
 
         <div class="hero__actions">
           <a href="#events" class="btn btn--primary">
-            <!-- Inline SVG icon — no extra HTTP request -->
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                  stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                  aria-hidden="true" focusable="false">
@@ -273,9 +212,6 @@
       </p>
     </section>
 
-    <!-- ═══════════════════════════════════════════════
-         ABOUT
-    ════════════════════════════════════════════════ -->
     <section class="about" id="about" aria-labelledby="about-heading">
       <div class="container">
         <div class="about__inner">
@@ -329,12 +265,11 @@
 
           <div class="about__img-wrap reveal reveal--delay-2">
             <picture>
-              <source type="image/avif" srcset="assets/images/about-performance.avif" />
-              <source type="image/webp" srcset="assets/images/about-performance.webp" />
+              <source type="image/webp" srcset="assets/images/chinmay-chamber-concert.webp" />
               <img
                 class="about__img"
-                src="assets/images/about-performance.jpg"
-                alt="AFA members performing on stage — musicians and Bharatanatyam dancers at a community event"
+                src="assets/images/chinmay-chamber-concert.webp"
+                alt="AFA chamber concert performance"
                 width="640" height="800"
                 loading="lazy"
                 decoding="async" />
@@ -350,9 +285,6 @@
       </div>
     </section>
 
-    <!-- ═══════════════════════════════════════════════
-         EVENTS
-    ════════════════════════════════════════════════ -->
     <section class="events" id="events" aria-labelledby="events-heading">
       <div class="container">
 
@@ -363,7 +295,6 @@
               Our <em>Events</em>
             </h2>
           </div>
-          <!-- role=tablist so screen readers announce tab pattern -->
           <div class="events__tabs reveal" role="tablist" aria-label="Filter events by year">
             <button class="events__tab active" data-tab="all"  role="tab" aria-selected="true"  id="tab-all"  aria-controls="events-grid">All</button>
             <button class="events__tab"        data-tab="2025" role="tab" aria-selected="false" id="tab-2025" aria-controls="events-grid">2025</button>
@@ -372,17 +303,15 @@
           </div>
         </div>
 
-        <!-- role=list + role=listitem gives semantics even though <article> is used -->
         <div class="events__grid" id="events-grid" aria-live="polite" aria-label="Events list">
 
-          <!-- 2025 ─────────────────────────────── -->
+          <!-- 2025 -->
           <article class="event-card reveal" data-year="2025">
             <div class="event-card__img">
               <picture>
-                <source type="image/avif" srcset="assets/images/event-aradhana-2025.avif" />
-                <source type="image/webp" srcset="assets/images/event-aradhana-2025.webp" />
-                <img src="assets/images/event-aradhana-2025.jpg"
-                     alt="Thyagaraja Aradhana 2025 — Atlanta Fine Arts annual celebration"
+                <source type="image/webp" srcset="assets/images/afa-2026-aaradhanai.webp" />
+                <img src="assets/images/afa-2026-aaradhanai.webp"
+                     alt="Thyagaraja Aradhana — Atlanta Fine Arts annual celebration"
                      width="800" height="600" loading="lazy" decoding="async" />
               </picture>
               <span class="event-card__year-badge" aria-hidden="true">2025</span>
@@ -402,10 +331,9 @@
           <article class="event-card reveal reveal--delay-1" data-year="2025">
             <div class="event-card__img">
               <picture>
-                <source type="image/avif" srcset="assets/images/event-chamber-margazhi-2025.avif" />
-                <source type="image/webp" srcset="assets/images/event-chamber-margazhi-2025.webp" />
-                <img src="assets/images/raman-thiruppavai.webp"
-                     alt="AFA Chamber Concert Series — Margazhi Special 2025"
+                <source type="image/webp" srcset="assets/images/chamber-concert.webp" />
+                <img src="assets/images/chamber-concert.webp"
+                     alt="AFA Chamber Concert Series"
                      width="800" height="600" loading="lazy" decoding="async" />
               </picture>
               <span class="event-card__year-badge" aria-hidden="true">2025</span>
@@ -414,9 +342,8 @@
               <p class="event-card__date"><time datetime="2025-01-10">January 10, 2025</time></p>
               <h3 class="event-card__title">Chamber Concert — Margazhi Special</h3>
               <p class="event-card__desc">
-                An intimate Margazhi season concert featuring a recitation of Thiruppavai,
-                flute by Sai Kishore, violin by Pranavi Srinivasa, and mridangam by
-                Sri Santosh Chandru — a cherished evening of devotional music.
+                An intimate Margazhi season concert featuring devotional music and
+                curated performances — a cherished evening of community and classicism.
               </p>
             </div>
           </article>
@@ -424,33 +351,9 @@
           <article class="event-card reveal reveal--delay-2" data-year="2025">
             <div class="event-card__img">
               <picture>
-                <source type="image/avif" srcset="assets/images/event-chamber-feb-2025.avif" />
-                <source type="image/webp" srcset="assets/images/event-chamber-feb-2025.webp" />
-                <img src="assets/images/event-chamber-feb-2025.jpg"
-                     alt="AFA Home Chamber Concert Series — February 2025"
-                     width="800" height="600" loading="lazy" decoding="async" />
-              </picture>
-              <span class="event-card__year-badge" aria-hidden="true">2025</span>
-            </div>
-            <div class="event-card__body">
-              <p class="event-card__date"><time datetime="2025-02-23">February 23, 2025</time></p>
-              <h3 class="event-card__title">Chamber Concert Series</h3>
-              <p class="event-card__desc">
-                Two back-to-back chamber performances showcasing AFA's young artists
-                in an intimate home setting — a format that has become a hallmark of
-                AFA's commitment to nurturing budding performers and building
-                community one living room at a time.
-              </p>
-            </div>
-          </article>
-
-          <article class="event-card reveal" data-year="2025">
-            <div class="event-card__img">
-              <picture>
-                <source type="image/avif" srcset="assets/images/event-chamber-apr-2025.avif" />
-                <source type="image/webp" srcset="assets/images/event-chamber-apr-2025.webp" />
-                <img src="assets/images/event-chamber-apr-2025.jpg"
-                     alt="AFA Carnatic Chamber Concerts — April 2025"
+                <source type="image/webp" srcset="assets/images/shashank-anjana-afa-chamber-concert.webp" />
+                <img src="assets/images/shashank-anjana-afa-chamber-concert.webp"
+                     alt="AFA chamber concert performance"
                      width="800" height="600" loading="lazy" decoding="async" />
               </picture>
               <span class="event-card__year-badge" aria-hidden="true">2025</span>
@@ -459,44 +362,19 @@
               <p class="event-card__date"><time datetime="2025-04-19">April 19, 2025</time></p>
               <h3 class="event-card__title">Carnatic Chamber Concerts</h3>
               <p class="event-card__desc">
-                Two sequential concert performances featuring vocal by Shashank Kaushik
-                and Anjana Nagaraja, with violin by Anand Krishnan and mridangam by
-                Prabhav N — part of AFA's ongoing series creating performance
-                opportunities for Atlanta's rising Carnatic artists.
+                A continuing series creating performance opportunities for Atlanta's rising
+                Carnatic artists — intimate, warm, and community-centered.
               </p>
             </div>
           </article>
 
-          <!-- 2024 ─────────────────────────────── -->
+          <!-- 2024 -->
           <article class="event-card reveal reveal--delay-1" data-year="2024">
             <div class="event-card__img">
               <picture>
-                <source type="image/avif" srcset="assets/images/event-chamber-oct-2024.avif" />
-                <source type="image/webp" srcset="assets/images/event-chamber-oct-2024.webp" />
-                <img src="assets/images/event-chamber-oct-2024.jpg"
-                     alt="AFA Chamber Concert Series — October 2024"
-                     width="800" height="600" loading="lazy" decoding="async" />
-              </picture>
-              <span class="event-card__year-badge" aria-hidden="true">2024</span>
-            </div>
-            <div class="event-card__body">
-              <p class="event-card__date"><time datetime="2024-10-11">October 11, 2024</time></p>
-              <h3 class="event-card__title">Chamber Concert Series</h3>
-              <p class="event-card__desc">
-                An afternoon of two concerts: vocal by Hamsini Chandrasekar with violin
-                and mridangam accompaniment, followed by a flute recital by Sri Sai Kishore
-                with Sudharshan Prasanna on violin and Sri Santosh Chandru on mridangam.
-              </p>
-            </div>
-          </article>
-
-          <article class="event-card reveal reveal--delay-2" data-year="2024">
-            <div class="event-card__img">
-              <picture>
-                <source type="image/avif" srcset="assets/images/event-chamber-nov-2024.avif" />
-                <source type="image/webp" srcset="assets/images/event-chamber-nov-2024.webp" />
-                <img src="assets/images/event-chamber-nov-2024.jpg"
-                     alt="AFA Chamber Concert Series — November 2024"
+                <source type="image/webp" srcset="assets/images/chinmay-chamber-concert.webp" />
+                <img src="assets/images/chinmay-chamber-concert.webp"
+                     alt="AFA chamber concert series"
                      width="800" height="600" loading="lazy" decoding="async" />
               </picture>
               <span class="event-card__year-badge" aria-hidden="true">2024</span>
@@ -505,9 +383,8 @@
               <p class="event-card__date"><time datetime="2024-11-15">November 15, 2024</time></p>
               <h3 class="event-card__title">Chamber Concert Series</h3>
               <p class="event-card__desc">
-                A classical trio concert featuring Sri Prashanth Krishnamoorthy on vocal,
-                Sudharshan Prasanna on violin, and Ashwath Karunakaram on mridangam —
-                an evening of refined Carnatic music in an intimate setting.
+                A refined Carnatic music evening in an intimate setting — celebrating artists,
+                accompaniment, and shared listening.
               </p>
             </div>
           </article>
@@ -515,10 +392,9 @@
           <article class="event-card reveal" data-year="2024">
             <div class="event-card__img">
               <picture>
-                <source type="image/avif" srcset="assets/images/event-chithirai-2024.avif" />
-                <source type="image/webp" srcset="assets/images/event-chithirai-2024.webp" />
-                <img src="assets/images/event-chithirai-2024.jpg"
-                     alt="Chithirai Kalotsavam 2024 event poster"
+                <source type="image/webp" srcset="assets/images/raman-thiruppavai.webp" />
+                <img src="assets/images/raman-thiruppavai.webp"
+                     alt="Thiruppavai recital poster"
                      width="800" height="600" loading="lazy" decoding="async" />
               </picture>
               <span class="event-card__year-badge" aria-hidden="true">2024</span>
@@ -527,43 +403,18 @@
               <p class="event-card__date"><time datetime="2024-04-28">April 28, 2024</time></p>
               <h3 class="event-card__title">Chithirai Kalotsavam 2024</h3>
               <p class="event-card__desc">
-                A vibrant Tamil New Year celebration of Carnatic music — featuring solo
-                vocal and dance recitals, two full choirs performing together for the
-                first time in Atlanta, and a special tribute to Tamil Carnatic composers.
+                A vibrant celebration of Carnatic music and community — featuring solo and group performances.
               </p>
             </div>
           </article>
 
-          <article class="event-card reveal reveal--delay-1" data-year="2024">
-            <div class="event-card__img">
-              <picture>
-                <source type="image/avif" srcset="assets/images/event-aradhana-2024.avif" />
-                <source type="image/webp" srcset="assets/images/event-aradhana-2024.webp" />
-                <img src="assets/images/event-aradhana-2024.jpg"
-                     alt="Thyagaraja Aradhana 2024 event poster"
-                     width="800" height="600" loading="lazy" decoding="async" />
-              </picture>
-              <span class="event-card__year-badge" aria-hidden="true">2024</span>
-            </div>
-            <div class="event-card__body">
-              <p class="event-card__date"><time datetime="2024-02-04">February 4, 2024</time></p>
-              <h3 class="event-card__title">Thyagaraja Aradhana 2024</h3>
-              <p class="event-card__desc">
-                The second annual Aradhana — a community-wide gathering to honor Saint
-                Thyagaraja through the collective singing of the Pancharatna kritis,
-                alongside special youth recitals and performances by leading Atlanta artists.
-              </p>
-            </div>
-          </article>
-
-          <!-- 2023 ─────────────────────────────── -->
+          <!-- 2023 -->
           <article class="event-card reveal reveal--delay-2" data-year="2023">
             <div class="event-card__img">
               <picture>
-                <source type="image/avif" srcset="assets/images/event-navaratri-2023.avif" />
-                <source type="image/webp" srcset="assets/images/event-navaratri-2023.webp" />
-                <img src="assets/images/event-navaratri-2023.jpg"
-                     alt="Navaratri Kalotsavam 2023 — group of performers on stage"
+                <source type="image/webp" srcset="assets/images/chamber-concert.webp" />
+                <img src="assets/images/chamber-concert.webp"
+                     alt="Navaratri Kalotsavam — AFA event"
                      width="800" height="600" loading="lazy" decoding="async" />
               </picture>
               <span class="event-card__year-badge" aria-hidden="true">2023</span>
@@ -572,9 +423,7 @@
               <p class="event-card__date"><time datetime="2023-10-08">October 8, 2023</time></p>
               <h3 class="event-card__title">Navaratri Kalotsavam</h3>
               <p class="event-card__desc">
-                A spectacular showcase of teacher-led vocal and dance group performances
-                celebrating the Navaratri season — bringing together artists and
-                audiences from across the greater Atlanta community.
+                A showcase of vocal and dance performances celebrating the Navaratri season.
               </p>
             </div>
           </article>
@@ -582,54 +431,9 @@
           <article class="event-card reveal" data-year="2023">
             <div class="event-card__img">
               <picture>
-                <source type="image/avif" srcset="assets/images/event-summercamp-2023.avif" />
-                <source type="image/webp" srcset="assets/images/event-summercamp-2023.webp" />
-                <img src="assets/images/event-summercamp-2023.jpg"
-                     alt="Carnatic Music Summer Camp 2023 flyer"
-                     width="800" height="600" loading="lazy" decoding="async" />
-              </picture>
-              <span class="event-card__year-badge" aria-hidden="true">2023</span>
-            </div>
-            <div class="event-card__body">
-              <p class="event-card__date"><time datetime="2023-07-24">July 24–29, 2023</time></p>
-              <h3 class="event-card__title">Carnatic Music Summer Camp</h3>
-              <p class="event-card__desc">
-                A week-long immersive camp for children to explore Carnatic vocal music,
-                taught by talented young artists from the Atlanta community and
-                culminating in a group showcase performance.
-              </p>
-            </div>
-          </article>
-
-          <article class="event-card reveal reveal--delay-1" data-year="2023">
-            <div class="event-card__img">
-              <picture>
-                <source type="image/avif" srcset="assets/images/event-chithirai-2023.avif" />
-                <source type="image/webp" srcset="assets/images/event-chithirai-2023.webp" />
-                <img src="assets/images/event-chithirai-2023.jpg"
-                     alt="Chithirai Utsavam 2023 event poster"
-                     width="800" height="600" loading="lazy" decoding="async" />
-              </picture>
-              <span class="event-card__year-badge" aria-hidden="true">2023</span>
-            </div>
-            <div class="event-card__body">
-              <p class="event-card__date"><time datetime="2023-04-16">April 16, 2023</time></p>
-              <h3 class="event-card__title">Chithirai Utsavam</h3>
-              <p class="event-card__desc">
-                AFA's first large-scale event — a music celebration honoring Tamil and
-                Malayalam Carnatic composers, with lively audience trivia between
-                performances that made the evening as joyful as it was musical.
-              </p>
-            </div>
-          </article>
-
-          <article class="event-card reveal reveal--delay-2" data-year="2023">
-            <div class="event-card__img">
-              <picture>
-                <source type="image/avif" srcset="assets/images/event-aradhana-2023.avif" />
-                <source type="image/webp" srcset="assets/images/event-aradhana-2023.webp" />
-                <img src="assets/images/event-aradhana-2023.jpg"
-                     alt="Thyagaraja Aradhanai 2023 poster — inaugural AFA event"
+                <source type="image/webp" srcset="assets/images/afa-2026-aaradhanai.webp" />
+                <img src="assets/images/afa-2026-aaradhanai.webp"
+                     alt="Thyagaraja Aradhana — inaugural AFA event"
                      width="800" height="600" loading="lazy" decoding="async" />
               </picture>
               <span class="event-card__year-badge" aria-hidden="true">2023</span>
@@ -638,20 +442,15 @@
               <p class="event-card__date"><time datetime="2023-01-21">January 21, 2023</time></p>
               <h3 class="event-card__title">Thyagaraja Aradhanai 2023</h3>
               <p class="event-card__desc">
-                Where it all began. AFA's inaugural event — a heartfelt tribute to
-                Saint Thyagaraja through the Pancharatna kritis, launching what has
-                since become Atlanta's most cherished annual Carnatic tradition.
+                Where it all began — a heartfelt tribute to Saint Thyagaraja through the Pancharatna kritis.
               </p>
             </div>
           </article>
 
-        </div><!-- /events__grid -->
+        </div>
       </div>
     </section>
 
-    <!-- ═══════════════════════════════════════════════
-         MEMBERS
-    ════════════════════════════════════════════════ -->
     <section class="team" id="members" aria-labelledby="members-heading">
       <div class="container">
         <div class="team__head">
@@ -663,7 +462,6 @@
         </div>
 
         <div class="team__grid">
-
           <div class="member-card reveal">
             <div class="member-card__inner">
               <div class="member-card__avatar" aria-hidden="true">CP</div>
@@ -690,11 +488,8 @@
               <h3 class="member-card__name">Sahithya Shriram</h3>
               <p class="member-card__school">Lambert High School</p>
               <p class="member-card__bio">
-                Sahithya began her training in Carnatic vocal at age 3 under Vidushi
-                Sriranjani Santhanagopalan and in Bharatanatyam at age 4 — bringing
-                a rare dual grounding in both Indian classical music and dance.
-                A passionate public speaker and debater, she brings that same
-                articulate energy to everything AFA does.
+                Sahithya began her training in Carnatic vocal at age 3 and in Bharatanatyam at age 4.
+                A passionate public speaker and debater, she brings that same articulate energy to everything AFA does.
               </p>
               <ul class="member-card__tags" aria-label="Artistic disciplines">
                 <li class="tag">Carnatic Vocal</li>
@@ -710,11 +505,8 @@
               <h3 class="member-card__name">Shashank Kaushik</h3>
               <p class="member-card__school">South Forsyth High School</p>
               <p class="member-card__bio">
-                Shashank has been a Carnatic vocal student under Vidwan Ajay Namboodiri
-                since age 7, and has performed at multiple AFA Chamber Concerts and
-                large-scale events. He also sings in his school's Chamber Choir and
-                plays flute in the Symphonic Band — reflecting the broad musical
-                commitment he brings to AFA's mission.
+                Shashank has been a Carnatic vocal student since age 7 and has performed at multiple AFA chamber concerts
+                and large-scale events. He also sings in his school's chamber choir and plays flute in the symphonic band.
               </p>
               <ul class="member-card__tags" aria-label="Artistic disciplines">
                 <li class="tag">Carnatic Vocal</li>
@@ -723,14 +515,10 @@
               </ul>
             </div>
           </div>
-
         </div>
       </div>
     </section>
 
-    <!-- ═══════════════════════════════════════════════
-         CONTACT
-    ════════════════════════════════════════════════ -->
     <section class="contact" id="contact" aria-labelledby="contact-heading">
       <div class="container">
         <div class="contact__inner">
@@ -827,7 +615,6 @@
             </div>
           </aside>
 
-          <!-- Contact form — accessible, no-dependency -->
           <div class="reveal reveal--delay-1">
             <form class="form" id="contact-form" novalidate
                   aria-label="Send a message to Atlanta Fine Arts">
@@ -920,11 +707,8 @@
       </div>
     </section>
 
-  </main><!-- /main-content -->
+  </main>
 
-  <!-- ═══════════════════════════════════════════════
-       FOOTER
-  ════════════════════════════════════════════════ -->
   <div class="kolam-border" aria-hidden="true"></div>
 
   <footer class="footer" aria-label="Site footer">
@@ -1014,15 +798,10 @@
     </div>
   </footer>
 
-  <!-- ═══════════════════════════════════════════════
-       JAVASCRIPT — vanilla, no dependencies, deferred
-       Placed at end of body = non-blocking
-  ════════════════════════════════════════════════ -->
   <script>
   (function () {
     'use strict';
 
-    /* ── Nav scroll state ── */
     var nav = document.getElementById('nav');
     function updateNav() {
       nav.classList.toggle('scrolled', window.scrollY > 40);
@@ -1030,7 +809,6 @@
     window.addEventListener('scroll', updateNav, { passive: true });
     updateNav();
 
-    /* ── Mobile nav toggle ── */
     var toggle      = document.getElementById('nav-toggle');
     var mobileMenu  = document.getElementById('mobile-menu');
     var isOpen      = false;
@@ -1056,17 +834,14 @@
       isOpen ? closeMenu() : openMenu();
     });
 
-    /* Close on mobile link click */
     document.querySelectorAll('[data-mobile-link]').forEach(function (link) {
       link.addEventListener('click', closeMenu);
     });
 
-    /* Close on Escape key */
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape' && isOpen) closeMenu();
     });
 
-    /* ── Intersection Observer — scroll reveal ── */
     var revealEls = document.querySelectorAll('.reveal');
     if ('IntersectionObserver' in window) {
       var io = new IntersectionObserver(function (entries) {
@@ -1079,11 +854,9 @@
       }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
       revealEls.forEach(function (el) { io.observe(el); });
     } else {
-      /* Fallback for old browsers — show everything */
       revealEls.forEach(function (el) { el.classList.add('visible'); });
     }
 
-    /* ── Events year filter tabs ── */
     var tabs  = document.querySelectorAll('.events__tab');
     var cards = document.querySelectorAll('.event-card');
 
@@ -1099,13 +872,11 @@
         var year = tab.dataset.tab;
         cards.forEach(function (card) {
           var show = (year === 'all' || card.dataset.year === year);
-          /* Use hidden attribute for better accessibility than display:none */
           card.hidden = !show;
         });
       });
     });
 
-    /* ── Contact form — accessible validation ── */
     var form       = document.getElementById('contact-form');
     var successMsg = document.getElementById('form-success');
 
@@ -1127,7 +898,6 @@
       }
     }
 
-    /* Clear errors on input */
     form.querySelectorAll('input, textarea').forEach(function (field) {
       field.addEventListener('input', function () {
         clearFieldError(field, field.id + '-err');
@@ -1159,13 +929,11 @@
       });
 
       if (!valid) {
-        /* Move focus to first invalid field */
         var firstErr = form.querySelector('[aria-invalid="true"]');
         if (firstErr) firstErr.focus();
         return;
       }
 
-      /* Simulate submission — wire to Formspree / Netlify Forms in production */
       var submitBtn = form.querySelector('[type="submit"]');
       submitBtn.disabled = true;
       submitBtn.textContent = 'Sending…';
@@ -1174,7 +942,7 @@
         form.reset();
         submitBtn.style.display = 'none';
         successMsg.style.display = 'flex';
-        successMsg.focus(); /* move focus to confirmation for screen readers */
+        successMsg.focus();
       }, 800);
     });
 
