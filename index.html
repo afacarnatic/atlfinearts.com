@@ -90,7 +90,6 @@
         "foundingDate": "2022",
         "description": "A student-founded, volunteer-run non-profit dedicated to nurturing Carnatic music and Bharatanatyam in the Atlanta community through the annual Thyagaraja Aradhana, Chamber Concert Series, summer camps, and more.",
         "email": "afacarnatic@gmail.com",
-        "telephone": "+17326688117",
         "address": {
           "@type": "PostalAddress",
           "addressLocality": "Atlanta",
@@ -113,7 +112,16 @@
       {
         "@type": "Event",
         "name": "Thyagaraja Aradhana 2026",
-        "startDate": "2026-02-01",
+        "startDate": "2026-02-28",
+        "location": { "@type": "Place", "name": "Chinmaya Gurukul", "address": { "@type": "PostalAddress", "addressLocality": "Cumming", "addressRegion": "GA" } },
+        "organizer": { "@id": "https://atlfinearts.com/#org" },
+        "description": "Annual celebration honoring Saint Thyagaraja with the singing of the Pancharatna kritis. Free entry, donations welcome.",
+        "isAccessibleForFree": true
+      },
+      {
+        "@type": "Event",
+        "name": "Thyagaraja Aradhana 2025",
+        "startDate": "2025-02-01",
         "location": { "@type": "Place", "name": "Chinmaya Gurukul", "address": { "@type": "PostalAddress", "addressLocality": "Cumming", "addressRegion": "GA" } },
         "organizer": { "@id": "https://atlfinearts.com/#org" },
         "description": "Annual celebration honoring Saint Thyagaraja with the singing of the Pancharatna kritis. Free entry, donations welcome. Over 360 attendees.",
@@ -400,8 +408,8 @@
           </div>
           <!-- role=tablist so screen readers announce tab pattern -->
           <div class="events__tabs" role="tablist" aria-label="Filter events by year">
-            <button class="events__tab active" data-tab="all"  role="tab" aria-selected="true"  id="tab-all"  aria-controls="events-grid">All
-             <button class="events__tab"        data-tab="2026" role="tab" aria-selected="false" id="tab-2026" aria-controls="events-grid">2026</button>
+            <button class="events__tab active" data-tab="all"  role="tab" aria-selected="true"  id="tab-all"  aria-controls="events-grid">All</button>
+            <button class="events__tab"        data-tab="2026" role="tab" aria-selected="false" id="tab-2026" aria-controls="events-grid">2026</button>
             <button class="events__tab"        data-tab="2025" role="tab" aria-selected="false" id="tab-2025" aria-controls="events-grid">2025</button>
             <button class="events__tab"        data-tab="2024" role="tab" aria-selected="false" id="tab-2024" aria-controls="events-grid">2024</button>
             <button class="events__tab"        data-tab="2023" role="tab" aria-selected="false" id="tab-2023" aria-controls="events-grid">2023</button>
@@ -411,22 +419,66 @@
         <!-- role=list + role=listitem gives semantics even though <article> is used -->
         <div class="events__grid" id="events-grid" aria-live="polite" aria-label="Events list">
 
-          <!-- 2025 ─────────────────────────────── -->
+          <!-- 2026 ─────────────────────────────── -->
           <article class="event-card" data-year="2026">
             <div class="event-card__img">
               <picture>
-                <source type="image/webp" srcset="assets/images/2026-Aaradhanai_group_picture.webp" />
-                <img src="assets/images/2026-Aaradhanai_group_picture.webp"
+                <source type="image/webp" srcset="assets/images/afa-2026-aaradhanai.webp" />
+                <img src="assets/images/afa-2026-aaradhanai.webp"
                      alt="Thyagaraja Aradhana 2026 — Atlanta Fine Arts annual celebration"
                      width="800" height="600" loading="lazy" decoding="async" />
               </picture>
               <span class="event-card__year-badge" aria-hidden="true">2026</span>
             </div>
             <div class="event-card__body">
-              <p class="event-card__date"><time datetime="2026-02-01">February 1, 2026</time></p>
+              <p class="event-card__date"><time datetime="2026-02-28">February 28, 2026</time></p>
               <h3 class="event-card__title">Thyagaraja Aradhana 2026</h3>
               <p class="event-card__desc">
                 Atlanta's most beloved Carnatic music gathering returned for its seventh year,
+                drawing over 360 attendees to honor Saint Thyagaraja through the
+                Pancharatna kritis. Held at Chinmaya Gurukul, Cumming — free entry,
+                donations welcome.
+              </p>
+            </div>
+          </article>
+
+          <!-- 2025 ─────────────────────────────── -->
+          <article class="event-card" data-year="2026">
+            <div class="event-card__img">
+              <picture>
+                <source type="image/webp" srcset="assets/images/raman-thiruppavai.webp" />
+                <img src="assets/images/raman-thiruppavai.webp"
+                     alt="Chamber Concert — Margazhi Special 2026"
+                     width="800" height="600" loading="lazy" decoding="async" />
+              </picture>
+              <span class="event-card__year-badge" aria-hidden="true">2026</span>
+            </div>
+            <div class="event-card__body">
+              <p class="event-card__date"><time datetime="2026-01-10">January 10, 2026</time></p>
+              <h3 class="event-card__title">Chamber Concert — Margazhi Special</h3>
+              <p class="event-card__desc">
+                An intimate Margazhi season concert celebrating the sacred month of
+                Margazhi with devotional Carnatic music — free entry, all are welcome.
+              </p>
+            </div>
+          </article>
+
+          <!-- 2025 ─────────────────────────────── -->
+          <article class="event-card" data-year="2025">
+            <div class="event-card__img">
+              <picture>
+                <source type="image/webp" srcset="assets/images/2026-Aaradhanai_group_picture.webp" />
+                <img src="assets/images/2026-Aaradhanai_group_picture.webp"
+                     alt="Thyagaraja Aradhana 2025 — Atlanta Fine Arts annual celebration"
+                     width="800" height="600" loading="lazy" decoding="async" />
+              </picture>
+              <span class="event-card__year-badge" aria-hidden="true">2025</span>
+            </div>
+            <div class="event-card__body">
+              <p class="event-card__date"><time datetime="2025-02-01">February 1, 2025</time></p>
+              <h3 class="event-card__title">Thyagaraja Aradhana 2025</h3>
+              <p class="event-card__desc">
+                Atlanta's most beloved Carnatic music gathering returned for its third year,
                 drawing over 360 attendees to honor Saint Thyagaraja through the
                 Pancharatna kritis. Held at Chinmaya Gurukul, Cumming — free entry,
                 donations welcome.
@@ -480,8 +532,29 @@
           <article class="event-card" data-year="2025">
             <div class="event-card__img">
               <picture>
-                <source type="image/webp" srcset="assets/images/chamber-concert-series-shashank-kaushik.webp" />
-                <img src="assets/images/chamber-concert-series-shashank-kaushik.webp"
+                <source type="image/webp" srcset="assets/images/chamber-concert.webp" />
+                <img src="assets/images/chamber-concert.webp"
+                     alt="Sai Kishore Flute Concert — October 2025"
+                     width="800" height="600" loading="lazy" decoding="async" />
+              </picture>
+              <span class="event-card__year-badge" aria-hidden="true">2025</span>
+            </div>
+            <div class="event-card__body">
+              <p class="event-card__date"><time datetime="2025-10-11">October 11, 2025</time></p>
+              <h3 class="event-card__title">Chamber Concert — Sai Kishore, Flute</h3>
+              <p class="event-card__desc">
+                An evening of Carnatic flute by Sri Sai Kishore — part of AFA's ongoing
+                Chamber Concert Series bringing intimate, community-centered performances
+                to Atlanta.
+              </p>
+            </div>
+          </article>
+
+          <article class="event-card" data-year="2025">
+            <div class="event-card__img">
+              <picture>
+                <source type="image/webp" srcset="assets/images/shashank-anjana-afa-chamber-concert.webp" />
+                <img src="assets/images/shashank-anjana-afa-chamber-concert.webp"
                      alt="AFA Carnatic Chamber Concerts — April 2025"
                      width="800" height="600" loading="lazy" decoding="async" />
               </picture>
@@ -784,20 +857,6 @@
                   <div class="contact__item-label">Email</div>
                   <div class="contact__item-value">
                     <a href="/cdn-cgi/l/email-protection#a5c4c3c4c6c4d7cbc4d1ccc6e5c2c8c4ccc98bc6cac8"><span class="__cf_email__" data-cfemail="076661666466756966736e6447606a666e6b2964686a">[email&#160;protected]</span></a>
-                  </div>
-                </div>
-              </li>
-              <li class="contact__item">
-                <div class="contact__item-icon" aria-hidden="true">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                       stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" focusable="false">
-                    <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81a19.79 19.79 0 01-3.07-8.63A2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.08 6.08l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
-                  </svg>
-                </div>
-                <div>
-                  <div class="contact__item-label">Phone</div>
-                  <div class="contact__item-value">
-                    <a href="tel:+17326688117">+1 (732) 668-8117</a>
                   </div>
                 </div>
               </li>
