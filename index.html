@@ -7,16 +7,20 @@
   <!-- ═══════════════════════════════════════════════
        SEO META
   ════════════════════════════════════════════════ -->
-  <title>Atlanta Fine Arts | Carnatic Music &amp; Bharatanatyam in Atlanta, Georgia</title>
-  <meta name="description" content="Atlanta Fine Arts (AFA) is a student-founded, volunteer-run non-profit bringing Carnatic music and Bharatanatyam to the Atlanta community. Featuring the annual Thyagaraja Aradhana, Chamber Concert Series, summer camps, and more since 2022." />
+  <title>Atlanta Fine Arts | #1 Carnatic Music Events in Atlanta, GA — Thyagaraja Aradhana &amp; Chamber Concerts</title>
+  <meta name="description" content="Atlanta Fine Arts (AFA) — Atlanta's premier Carnatic music organization. Home of the annual Thyagaraja Aradhana at Chinmaya Gurukul, Cumming GA. Free concerts, Chamber Concert Series, Bharatanatyam, and summer camps since 2022. Student-founded, volunteer-run." />
+  <meta name="keywords" content="Atlanta Carnatic music, Carnatic music Atlanta GA, Thyagaraja Aradhana Atlanta, Indian classical music Atlanta, Bharatanatyam Atlanta, Carnatic concerts Cumming Georgia, AFA Atlanta Fine Arts, Pancharatna Kritis Atlanta, Indian classical arts Atlanta, Forsyth County Carnatic music" />
+  <meta name="geo.region" content="US-GA" />
+  <meta name="geo.placename" content="Atlanta, Georgia" />
+  <meta name="author" content="Atlanta Fine Arts" />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://atlfinearts.com/" />
 
   <!-- Open Graph -->
   <meta property="og:type"        content="website" />
   <meta property="og:url"         content="https://atlfinearts.com/" />
-  <meta property="og:title"       content="Atlanta Fine Arts | Carnatic Music &amp; Bharatanatyam in Atlanta" />
-  <meta property="og:description" content="Student-founded, volunteer-run non-profit bringing Carnatic music and Bharatanatyam to Atlanta. Annual Thyagaraja Aradhana, Chamber Concert Series, and summer camps since 2022." />
+  <meta property="og:title"       content="Atlanta Fine Arts | Carnatic Music &amp; Bharatanatyam Events in Atlanta, GA" />
+  <meta property="og:description" content="Atlanta's home for Carnatic music — annual Thyagaraja Aradhana (360+ attendees), Chamber Concert Series, Bharatanatyam, and summer camps. Free entry. Chinmaya Gurukul, Cumming GA." />
   <meta property="og:image"       content="https://atlfinearts.com/assets/images/og-image.jpg" />
   <meta property="og:image:width"  content="1200" />
   <meta property="og:image:height" content="630" />
@@ -70,6 +74,66 @@
     .nav__wordmark span { color: rgba(255,255,255,0.7) !important; }
     .nav__link { color: rgba(255,255,255,0.85) !important; }
     .nav:not(.scrolled) { background: linear-gradient(to bottom, rgba(0,0,0,0.55) 0%, transparent 100%) !important; }
+
+    /* ── MOBILE NAV FIX ── */
+    @media (max-width: 768px) {
+      .nav__mobile {
+        display: none;
+        position: fixed;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: rgba(18,14,24,0.98);
+        z-index: 9998;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 80px 32px 40px;
+      }
+      .nav__mobile.open {
+        display: flex !important;
+      }
+      .nav__mobile-links {
+        list-style: none;
+        padding: 0; margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        width: 100%;
+        text-align: center;
+      }
+      .nav__mobile-link {
+        display: block;
+        color: #fff !important;
+        font-size: 1.8rem;
+        font-family: 'Cormorant Garamond', serif;
+        font-weight: 300;
+        text-decoration: none;
+        padding: 16px 0;
+        border-bottom: 1px solid rgba(255,255,255,0.08);
+        transition: color 0.2s;
+      }
+      .nav__mobile-link:hover { color: #c9a84c !important; }
+      .nav__mobile-link .arrow { opacity: 0.4; margin-left: 8px; font-size: 1.2rem; }
+      /* Hamburger button always visible on mobile */
+      #nav-toggle {
+        display: flex !important;
+        position: relative;
+        z-index: 9999;
+      }
+    }
+
+    /* ── MODAL FIX: make modal scrollable and X accessible ── */
+    #event-modal > div {
+      max-height: 90vh;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    #event-modal > div > button {
+      position: sticky !important;
+      top: 0;
+      float: right;
+      margin: 12px 12px 0 0;
+      z-index: 100;
+    }
   </style>
 
   <!-- ═══════════════════════════════════════════════
@@ -144,6 +208,51 @@
         "description": "Annual celebration honoring Saint Thyagaraja with group Pancharatnam performance and youth recitals."
       }
     ]
+  }
+  </script>
+
+  <!-- FAQ + LocalBusiness schema for Google rich results -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is Atlanta Fine Arts (AFA)?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Atlanta Fine Arts (AFA) is a student-founded, volunteer-run non-profit organization dedicated to promoting Carnatic music and Bharatanatyam in the Atlanta, Georgia community. Founded in 2022, AFA hosts the annual Thyagaraja Aradhana, Chamber Concert Series, summer camps, and cultural celebrations." }
+      },
+      {
+        "@type": "Question",
+        "name": "Where is the Thyagaraja Aradhana held in Atlanta?",
+        "acceptedAnswer": { "@type": "Answer", "text": "The AFA Thyagaraja Aradhana is held at Chinmaya Gurukul, 4980 Pittman Road, Cumming, GA 30040. It is a free event open to all, with donations welcome." }
+      },
+      {
+        "@type": "Question",
+        "name": "How can I attend a Carnatic music concert in Atlanta?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Atlanta Fine Arts hosts free Carnatic music events throughout the year including the Thyagaraja Aradhana (360+ attendees), intimate Chamber Concert Series, and seasonal celebrations. Follow AFA on Instagram @atlanta.finearts or Facebook @afacarnatic for event announcements." }
+      },
+      {
+        "@type": "Question",
+        "name": "Is Atlanta Fine Arts free to attend?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes! Most AFA events including the Thyagaraja Aradhana are free to attend, with donations welcome. Summer camp programs have a small fee." }
+      }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MusicGroup",
+    "name": "Atlanta Fine Arts",
+    "alternateName": "AFA",
+    "url": "https://atlfinearts.com",
+    "genre": "Carnatic Music",
+    "foundingDate": "2022",
+    "foundingLocation": { "@type": "Place", "name": "Atlanta, Georgia, USA" },
+    "description": "Atlanta's premier student-founded, volunteer-run Carnatic music and Bharatanatyam organization. Home of the annual Thyagaraja Aradhana and Chamber Concert Series.",
+    "address": { "@type": "PostalAddress", "addressLocality": "Cumming", "addressRegion": "GA", "addressCountry": "US" },
+    "sameAs": ["https://www.instagram.com/atlanta.finearts", "https://www.facebook.com/afacarnatic", "https://www.youtube.com/@atlfinearts"]
   }
   </script>
 </head>
@@ -433,9 +542,9 @@
 
         <!-- EVENT MODAL -->
         <div id="event-modal" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.75);overflow-y:auto;padding:40px 16px;" onclick="if(event.target===this)closeModal()">
-          <div style="background:#1a1625;max-width:720px;margin:0 auto;border-radius:16px;overflow:hidden;position:relative;box-shadow:0 24px 80px rgba(0,0,0,0.6);">
-            <button onclick="closeModal()" aria-label="Close" style="position:absolute;top:14px;right:16px;background:rgba(255,255,255,0.1);border:none;color:#fff;width:36px;height:36px;border-radius:50%;font-size:18px;cursor:pointer;z-index:10;line-height:1;">✕</button>
-            <img id="modal-img" src="" alt="" style="width:100%;max-height:360px;object-fit:cover;display:block;" />
+          <div style="background:#1a1625;max-width:640px;margin:0 auto;border-radius:16px;overflow:hidden;position:relative;box-shadow:0 24px 80px rgba(0,0,0,0.6);" onclick="event.stopPropagation()">
+            <div style="display:flex;justify-content:flex-end;background:#1a1625;padding:12px 14px 0;"><button onclick="closeModal()" aria-label="Close" style="background:rgba(255,255,255,0.12);border:none;color:#fff;width:44px;height:44px;border-radius:50%;font-size:20px;cursor:pointer;z-index:10;line-height:1;flex-shrink:0;display:flex;align-items:center;justify-content:center;">✕</button></div>
+            <img id="modal-img" src="" alt="" style="width:100%;max-height:320px;object-fit:cover;display:block;" />
             <div style="padding:28px 32px 36px;">
               <p id="modal-date" style="color:#c9a84c;font-size:0.78rem;letter-spacing:0.12em;text-transform:uppercase;margin:0 0 8px;"></p>
               <h2 id="modal-title" style="color:#fff;font-family:'Cormorant Garamond',serif;font-size:1.9rem;font-weight:300;margin:0 0 6px;"></h2>
@@ -463,7 +572,7 @@
               date: 'Saturday, February 28, 2026 · 4 pm – 6 pm',
               title: 'Thyagaraja Aradhana 2026',
               location: 'Chinmaya Gurukul, 4980 Pittman Road, Cumming GA 30040',
-              desc: 'AFA\'s annual Thyagaraja Aradhana — a community-wide Ghoshti Gaanam of the Pancharathna Keertanas honoring the great composer-saint Sri Thyagaraja. The event draws 360+ participants from across Atlanta. Boxed dinner catered by Mylapore Express. Performing artists please arrive by 3:30 pm for seating and mic check. Free entry, donations welcome.',
+              desc: 'AFA\'s annual Thyagaraja Aradhana — a community-wide Ghoshti Gaanam of the Pancharathna Keertanas honoring the great composer-saint Sri Thyagaraja. The event draws 360+ participants from across Atlanta. Performing artists please arrive by 3:30 pm for seating and mic check. Free entry, donations welcome.',
               stats: ['Free Entry','360+ Attendees','Donations Welcome'],
               sets: []
             },
@@ -472,7 +581,7 @@
               date: 'Saturday, January 10, 2026 · 3 pm – 5 pm',
               title: 'Chamber Concert — Margazhi Special',
               location: 'Private Residence, Atlanta GA',
-              desc: 'An intimate Margazhi season concert celebrating the sacred month with devotional Carnatic music including a recitation of Thiruppavai. Tea and snacks served. Kindly park on the same side of home. ~70 attendees.',
+              desc: 'An intimate Margazhi season concert celebrating the sacred month with devotional Carnatic music including a recitation of Thiruppavai. ~70 attendees.',
               stats: ['~70 Attendees','Private Residence','Tea & Snacks Served'],
               sets: [
                 { time: '', performers: [
@@ -497,7 +606,7 @@
               date: 'Saturday, October 11, 2025 · 3 pm – 6 pm',
               title: 'Chamber Concert Series',
               location: 'Private Residence, Atlanta GA',
-              desc: 'Two back-to-back chamber performances at a private residence, drawing around 70 guests. The afternoon opened with a vocal concert by Hamsini Chandrasekar, followed by a mesmerizing flute concert by Sri Sai Kishore. Tea and snacks were served.',
+              desc: 'Two back-to-back chamber performances at a private residence, drawing around 70 guests. The afternoon opened with a vocal concert by Hamsini Chandrasekar, followed by a mesmerizing flute concert by Sri Sai Kishore.',
               stats: ['~70 Attendees','2 Performances','Private Residence'],
               sets: [
                 { time: '3:00 pm – 3:50 pm', performers: [
@@ -532,7 +641,7 @@
               date: 'Saturday, April 19, 2025 · 3 pm – 5:30 pm',
               title: 'Carnatic Chamber Concerts',
               location: 'Private Residence, Atlanta GA',
-              desc: 'Two sequential Carnatic vocal concerts at a private residence, drawing around 70 attendees. An afternoon of soulful music featuring Atlanta\'s rising young artists. Tea and snacks were served.',
+              desc: 'Two sequential Carnatic vocal concerts at a private residence, drawing around 70 attendees. An afternoon of soulful music featuring Atlanta\'s rising young artists.',
               stats: ['~70 Attendees','2 Performances','Private Residence'],
               sets: [
                 { time: '3:00 pm – 3:50 pm', performers: [
