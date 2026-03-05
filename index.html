@@ -74,6 +74,28 @@
     .nav__wordmark span { color: rgba(255,255,255,0.7) !important; }
     .nav__link { color: rgba(255,255,255,0.85) !important; }
     .nav:not(.scrolled) { background: linear-gradient(to bottom, rgba(0,0,0,0.55) 0%, transparent 100%) !important; }
+    /* Member photo avatars */
+    .member-card__avatar--photo {
+      width: 90px !important;
+      height: 90px !important;
+      border-radius: 50% !important;
+      overflow: hidden !important;
+      font-size: 0 !important;
+      background: none !important;
+      padding: 0 !important;
+      margin: 0 auto 16px !important;
+      border: 2px solid rgba(201,168,76,0.4) !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+    }
+    .member-card__avatar--photo img {
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: cover !important;
+      object-position: top center !important;
+      display: block !important;
+    }
 
     /* ── MOBILE NAV FIX ── */
     @media (max-width: 768px) {
@@ -571,7 +593,7 @@
         <script>
           var eventsData = {
             'aradhana-2026': {
-              imgs: ['assets/images/afa-2026-aaradhanai.webp','assets/images/2026-Aaradhanai_group_picture.webp'],
+              imgs: ['assets/images/2026-thyagaraja-aaradhanai-img1.webp','assets/images/2026-thyagaraja-aaradhanai-img2.webp','assets/images/2026-thyagaraja-aaradhanai-img3.webp','assets/images/2026-Aaradhanai_group_picture.webp','assets/images/afa-2026-aaradhanai.webp'],
               date: 'Saturday, February 28, 2026 · 4 pm – 6 pm',
               title: 'Thyagaraja Aradhana 2026',
               location: 'Chinmaya Gurukul, 4980 Pittman Road, Cumming GA 30040',
@@ -735,7 +757,7 @@
               ]
             },
             'chithirai-2024': {
-              imgs: ['assets/images/2024-chithirai-kalotsavam-group-performance-dance-2.webp','assets/images/2024-chithirai-kalotsavam-group-performance-dance-3.webp','assets/images/2024-chithirai-kalotsavam-group-performance-dance-4.webp','assets/images/sahithya-shriram.webp'],
+              imgs: ['assets/images/2024-chithirai-kalotsavam-group-performance.webp','assets/images/2024-chithirai-kalotsavam-group-performance-dance-2.webp','assets/images/2024-chithirai-kalotsavam-group-performance-dance-3.webp','assets/images/2024-chithirai-kalotsavam-group-performance-dance-4.webp','assets/images/2024-chithirai-kalotsavam-group-performance-dance-5.webp'],
               date: 'Sunday, April 28, 2024',
               title: 'Chithirai Kalotsavam 2024',
               location: 'Atlanta, GA',
@@ -877,8 +899,8 @@
           <article class="event-card" data-year="2026" onclick="openModal('aradhana-2026')" tabindex="0" onkeydown="if(event.key==='Enter')openModal('aradhana-2026')" style="cursor:pointer;">
             <div class="event-card__img">
               <picture>
-                <source type="image/webp" srcset="assets/images/afa-2026-aaradhanai.webp" />
-                <img src="assets/images/afa-2026-aaradhanai.webp"
+                <source type="image/webp" srcset="assets/images/2026-thyagaraja-aaradhanai-img1.webp" />
+                <img src="assets/images/2026-thyagaraja-aaradhanai-img1.webp"
                      alt="Thyagaraja Aradhana 2026 — Atlanta Fine Arts annual celebration"
                      width="800" height="600" loading="lazy" decoding="async" />
               </picture>
@@ -1095,8 +1117,8 @@
           <article class="event-card" data-year="2024" onclick="openModal('chithirai-2024')" tabindex="0" onkeydown="if(event.key==='Enter')openModal('chithirai-2024')">
             <div class="event-card__img">
               <picture>
-                <source type="image/webp" srcset="assets/images/2024-chithirai-kalotsavam-group-performance-dance-2.webp" />
-                <img src="assets/images/2024-chithirai-kalotsavam-group-performance-dance-2.webp"
+                <source type="image/webp" srcset="assets/images/2024-chithirai-kalotsavam-group-performance.webp" />
+                <img src="assets/images/2024-chithirai-kalotsavam-group-performance.webp"
                      alt="Chithirai Kalotsavam 2024 — group dance performance"
                      width="800" height="600" loading="lazy" decoding="async" />
               </picture>
@@ -1240,7 +1262,7 @@
 
           <div class="member-card">
             <div class="member-card__inner">
-              <div class="member-card__avatar" aria-hidden="true">CP</div>
+              <div class="member-card__avatar member-card__avatar--photo" aria-hidden="true"><img src="assets/images/chinmay-prashanth.webp" alt="Chinmay Prashanth" /></div>
               <h3 class="member-card__name">Chinmay Prashanth</h3>
               <p class="member-card__school">Lambert High School</p>
               <p class="member-card__bio">
@@ -1260,7 +1282,7 @@
 
           <div class="member-card">
             <div class="member-card__inner">
-              <div class="member-card__avatar" aria-hidden="true">SS</div>
+              <div class="member-card__avatar member-card__avatar--photo" aria-hidden="true"><img src="assets/images/sahithya-shriram.webp" alt="Sahithya Shriram" /></div>
               <h3 class="member-card__name">Sahithya Shriram</h3>
               <p class="member-card__school">Lambert High School</p>
               <p class="member-card__bio">
