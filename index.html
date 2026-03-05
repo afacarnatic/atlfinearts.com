@@ -544,12 +544,15 @@
         <div id="event-modal" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.75);overflow-y:auto;padding:40px 16px;" onclick="if(event.target===this)closeModal()">
           <div style="background:#1a1625;max-width:640px;margin:0 auto;border-radius:16px;overflow:hidden;position:relative;box-shadow:0 24px 80px rgba(0,0,0,0.6);" onclick="event.stopPropagation()">
             <div style="display:flex;justify-content:flex-end;background:#1a1625;padding:12px 14px 0;"><button onclick="closeModal()" aria-label="Close" style="background:rgba(255,255,255,0.12);border:none;color:#fff;width:44px;height:44px;border-radius:50%;font-size:20px;cursor:pointer;z-index:10;line-height:1;flex-shrink:0;display:flex;align-items:center;justify-content:center;">✕</button></div>
-            <img id="modal-img" src="" alt="" style="width:100%;max-height:320px;object-fit:cover;display:block;" />
-            <div style="padding:28px 32px 36px;">
+            <div style="position:relative;">
+              <img id="modal-img" src="" alt="" style="width:100%;max-height:320px;object-fit:cover;display:block;" />
+              <div id="modal-img-dots" style="position:absolute;bottom:10px;left:50%;transform:translateX(-50%);display:none;gap:6px;align-items:center;"></div>
+            </div>
+            <div style="padding:24px 28px 32px;">
               <p id="modal-date" style="color:#c9a84c;font-size:0.78rem;letter-spacing:0.12em;text-transform:uppercase;margin:0 0 8px;"></p>
-              <h2 id="modal-title" style="color:#fff;font-family:'Cormorant Garamond',serif;font-size:1.9rem;font-weight:300;margin:0 0 6px;"></h2>
-              <p id="modal-location" style="color:rgba(255,255,255,0.5);font-size:0.82rem;margin:0 0 20px;"></p>
-              <p id="modal-desc" style="color:rgba(255,255,255,0.8);line-height:1.7;margin:0 0 24px;"></p>
+              <h2 id="modal-title" style="color:#fff;font-family:'Cormorant Garamond',serif;font-size:1.75rem;font-weight:300;margin:0 0 6px;"></h2>
+              <p id="modal-location" style="color:rgba(255,255,255,0.45);font-size:0.8rem;margin:0 0 20px;"></p>
+              <div id="modal-blog" style="margin:0 0 20px;"></div>
               <div id="modal-performers" style="border-top:1px solid rgba(255,255,255,0.1);padding-top:20px;"></div>
             </div>
           </div>
@@ -568,21 +571,21 @@
         <script>
           var eventsData = {
             'aradhana-2026': {
-              img: 'assets/images/afa-2026-aaradhanai.webp',
+              imgs: ['assets/images/afa-2026-aaradhanai.webp','assets/images/2026-Aaradhanai_group_picture.webp'],
               date: 'Saturday, February 28, 2026 · 4 pm – 6 pm',
               title: 'Thyagaraja Aradhana 2026',
               location: 'Chinmaya Gurukul, 4980 Pittman Road, Cumming GA 30040',
-              desc: 'AFA\'s annual Thyagaraja Aradhana — a community-wide Ghoshti Gaanam of the Pancharathna Keertanas honoring the great composer-saint Sri Thyagaraja. The event draws 360+ participants from across Atlanta. Performing artists please arrive by 3:30 pm for seating and mic check. Free entry, donations welcome.',
-              stats: ['Free Entry','360+ Attendees','Donations Welcome'],
+              blog: 'Every February, the Atlanta Carnatic community gathers to do one thing: sing together. The AFA Thyagaraja Aradhana is not a ticketed concert — it is a Ghoshti Gaanam, a collective offering, where students, teachers, seasoned vidwans, and first-time rasikas all find their place in the same circle of sound.\n\nThe 2026 Aradhana marks AFA\'s fifth consecutive year hosting this beloved tradition. Over 360 voices filled Chinmaya Gurukul on February 28th to collectively render the Pancharathna Keertanas — the five great compositions of Saint Thyagaraja that are sung simultaneously by musicians across the world on his Aradhana day.\n\nWhat began as a small gathering of young musicians in 2022 has grown into one of the most anticipated events in the Atlanta Carnatic calendar. Free entry, open to all.',
+              stats: ['Free Entry','360+ Attendees','Pancharathna Keertanas'],
               sets: []
             },
             'margazhi-2026': {
-              img: 'assets/images/raman-thiruppavai.webp',
+              imgs: ['assets/images/raman-thiruppavai.webp','assets/images/chamber-concert-series-pranavi-on-violin.webp'],
               date: 'Saturday, January 10, 2026 · 3 pm – 5 pm',
               title: 'Chamber Concert — Margazhi Special',
               location: 'Private Residence, Atlanta GA',
-              desc: 'An intimate Margazhi season concert celebrating the sacred month with devotional Carnatic music including a recitation of Thiruppavai. ~70 attendees.',
-              stats: ['~70 Attendees','Private Residence','Tea & Snacks Served'],
+              blog: 'Margazhi — the Tamil month of devotion — found a beautiful expression in Atlanta this January. AFA\'s Margazhi Special brought together about 70 rasikas at a private residence for an afternoon steeped in the devotional spirit of the season.\n\nThe concert opened with a heartfelt recitation of Thiruppavai by Sri Raman Poyapakkam, the 30 verses of Andal\'s divine composition filling the room with quiet reverence. Sai Kishore then took the stage with his flute, his phrases weaving between the sacred and the lyrical, accompanied by Pranavi Srinivasa on violin and Sri Santosh Chandru holding the rhythmic pulse on mridangam.\n\nFor many in the audience, this is exactly what AFA\'s chamber series was built for — not a large hall or a ticketed stage, but a living room, a close circle, and music that feels like a personal conversation with the divine.',
+              stats: ['~70 Attendees','Margazhi Season','Private Residence'],
               sets: [
                 { time: '', performers: [
                   { name: 'Sri Raman Poyapakkam', instrument: 'Thiruppavai' },
@@ -593,21 +596,21 @@
               ]
             },
             'aradhana-2025': {
-              img: 'assets/images/2026-Aaradhanai_group_picture.webp',
+              imgs: ['assets/images/2026-Aaradhanai_group_picture.webp','assets/images/2024-thyagaraja-aaradhanai-dance-performance.webp'],
               date: 'Saturday, February 1, 2025',
               title: 'Thyagaraja Aradhana 2025',
               location: 'Chinmaya Gurukul, Cumming GA',
-              desc: 'Atlanta\'s most beloved Carnatic music gathering returned for its third year, drawing over 360 attendees to honor Saint Thyagaraja through the collective Ghoshti Gaanam of the Pancharatna Kritis. Free entry, donations welcome.',
-              stats: ['Free Entry','360+ Attendees','Chinmaya Gurukul'],
+              blog: 'The third annual AFA Thyagaraja Aradhana was a milestone moment for the Atlanta Carnatic community. What started in 2023 as an ambitious first attempt by a group of young student volunteers had, by 2025, become a firmly established Atlanta tradition — and the numbers reflected it. Over 360 attendees gathered at Chinmaya Gurukul on February 1st, filling every seat and spilling into the aisles.\n\nThe Ghoshti Gaanam of the Pancharathna Keertanas was led by a community that has grown remarkably in three years: teachers and gurus, their students, and generations of rasikas who found in this event something rare — a space where Carnatic music is not performed for an audience, but practiced together as a community. The collective rendition, voices rising and falling in unison, is something that has to be experienced to be understood.\n\nAFA organizes this event entirely through volunteers, and attendance is always free.',
+              stats: ['Free Entry','360+ Attendees','3rd Annual Aradhana'],
               sets: []
             },
             'chamber-oct-2025': {
-              img: 'assets/images/chamber-concert.webp',
+              imgs: ['assets/images/chamber-concert.webp','assets/images/chamber-concert-series-shriram-salem.webp','assets/images/chamber-concert-series-anand-krishnan.webp'],
               date: 'Saturday, October 11, 2025 · 3 pm – 6 pm',
-              title: 'Chamber Concert Series',
+              title: 'Chamber Concert Series — October 2025',
               location: 'Private Residence, Atlanta GA',
-              desc: 'Two back-to-back chamber performances at a private residence, drawing around 70 guests. The afternoon opened with a vocal concert by Hamsini Chandrasekar, followed by a mesmerizing flute concert by Sri Sai Kishore.',
-              stats: ['~70 Attendees','2 Performances','Private Residence'],
+              blog: 'October\'s chamber concert brought two distinct musical personalities together under one roof, giving ~70 guests an afternoon of contrasting yet complementary Carnatic experiences.\n\nThe first set featured Hamsini Chandrasekar on vocal — a performer known for her clear voice and expressive phrasing — with Anand Krishnan on violin and Anirudhah Narayanan on mridangam. Hamsini\'s concert was praised for its depth of raga exploration and the ease with which she navigated complex compositions.\n\nThe second set handed the stage to Sri Sai Kishore on flute. A consummate chamber performer, Sai Kishore brought an entirely different texture to the evening — the flute\'s breathy, lyrical quality lending every phrase a meditative quality. Sudharshan Prasanna anchored the violin with his characteristic precision, while Sri Santosh Chandru\'s mridangam playing was both supportive and inventive.',
+              stats: ['~70 Attendees','2 Performances','October 2025'],
               sets: [
                 { time: '3:00 pm – 3:50 pm', performers: [
                   { name: 'Hamsini Chandrasekar', instrument: 'Vocal' },
@@ -622,12 +625,12 @@
               ]
             },
             'chamber-nov-2025': {
-              img: 'assets/images/afa-prashanth.webp',
+              imgs: ['assets/images/afa-prashanth.webp','assets/images/chamber-concert-series-prabhav.webp'],
               date: 'Saturday, November 15, 2025 · 3 pm – 5 pm',
-              title: 'Chamber Concert Series',
+              title: 'Chamber Concert Series — November 2025',
               location: 'Private Residence, Atlanta GA',
-              desc: 'An intimate chamber concert at a private residence featuring some of Atlanta\'s finest Carnatic musicians. Around 70 guests enjoyed an evening of refined classical music.',
-              stats: ['~70 Attendees','Private Residence'],
+              blog: 'November\'s chamber concert was anchored by one of Atlanta\'s most respected Carnatic vocal artists. Sri Prashanth Krishnamoorthy brought an evening of deeply felt Carnatic music to a private residence, drawing around 70 rasikas who filled the room with attentive silence and enthusiastic appreciation.\n\nSri Prashanth\'s vocal range and his command of raga bhava made for a concert that felt unhurried and immersive. Sudharshan Prasanna on violin responded to every phrase with sensitivity and musicianship, building a conversation that elevated both artists. Ashwath Karunakaram\'s mridangam playing provided a rhythmic foundation that was both dynamic and respectful of the melodic space.\n\nThis concert exemplified exactly what AFA\'s Chamber Series is designed to do: bring serious, accomplished Carnatic music into intimate spaces where every note reaches the listener directly.',
+              stats: ['~70 Attendees','Private Residence','November 2025'],
               sets: [
                 { time: '', performers: [
                   { name: 'Sri Prashanth Krishnamoorthy', instrument: 'Vocal' },
@@ -637,12 +640,12 @@
               ]
             },
             'chamber-apr-2025': {
-              img: 'assets/images/shashank-anjana-afa-chamber-concert.webp',
+              imgs: ['assets/images/shashank-anjana-afa-chamber-concert.webp','assets/images/chamber-concert-series-shashank-kaushik.webp','assets/images/sahithya-shriram.webp'],
               date: 'Saturday, April 19, 2025 · 3 pm – 5:30 pm',
-              title: 'Carnatic Chamber Concerts',
+              title: 'Carnatic Chamber Concerts — April 2025',
               location: 'Private Residence, Atlanta GA',
-              desc: 'Two sequential Carnatic vocal concerts at a private residence, drawing around 70 attendees. An afternoon of soulful music featuring Atlanta\'s rising young artists.',
-              stats: ['~70 Attendees','2 Performances','Private Residence'],
+              blog: 'The spring chamber concert was one of AFA\'s most energetic afternoons of the year — two young vocal artists, back to back, both making the most of an intimate stage and an audience that showed up ready to listen.\n\nShashank Kaushik opened the afternoon. A student of Vidwan Ajay Namboodiri, Shashank has a musical presence well beyond his years — his voice is grounded and his raga delineation shows both training and genuine musical instinct. With Anand Krishnan on violin and Prabhav N on mridangam, the trio played with a natural synchrony that made the first set feel effortless.\n\nAnjana Nagaraja followed for the second set. Her concert had a different quality — more exploratory, more conversational — and she used the space and the audience\'s attentiveness to take her time in the ragas she chose. The same accompanists, Anand and Prabhav, matched her energy with ease. About 70 attendees filled the private residence for both sets.',
+              stats: ['~70 Attendees','2 Performances','Rising Young Artists'],
               sets: [
                 { time: '3:00 pm – 3:50 pm', performers: [
                   { name: 'Shashank Kaushik', instrument: 'Vocal' },
@@ -657,12 +660,12 @@
               ]
             },
             'chamber-feb-2025': {
-              img: 'assets/images/chinmay-chamber-concert.webp',
+              imgs: ['assets/images/chinmay-chamber-concert.webp','assets/images/chinmay-prashanth.webp'],
               date: 'Sunday, February 23, 2025 · 3 pm – 5 pm',
-              title: 'Home Chamber Concert Series',
+              title: 'Home Chamber Concert Series — February 2025',
               location: 'Private Residence, Atlanta GA',
-              desc: 'Two back-to-back chamber performances at a private home, showcasing AFA\'s young artists to around 70 guests. A hallmark of AFA\'s commitment to creating intimate performance opportunities.',
-              stats: ['~70 Attendees','2 Performances','Private Residence'],
+              blog: 'February\'s Home Chamber Concert Series was a celebration of young talent in its most natural setting — a home, a warm audience, and music allowed to breathe.\n\nThe first set featured Amita on vocal, accompanied by Prajna on violin and Akshay on mridangam. The trio brought a freshness and eagerness to the stage that the audience responded to warmly, with Amita\'s voice showing both technical grounding and expressive potential.\n\nThe second set brought Chinmay Prashanth to the fore. A co-founder of AFA and a student of Sri Ramakrishnan Murthy, Chinmay has been performing Carnatic vocal since the age of seven. His concert was notable for its maturity and calm — a quality that belies his age. Pranavi Srinivasa on violin and Akshay on mridangam completed the ensemble with grace. Around 70 guests attended both sets.',
+              stats: ['~70 Attendees','2 Performances','Youth Artists'],
               sets: [
                 { time: '3:00 pm – 3:50 pm', performers: [
                   { name: 'Amita', instrument: 'Vocal' },
@@ -677,33 +680,32 @@
               ]
             },
             'summer-2025': {
-              img: 'assets/images/2025-summer-camp.webp',
-              date: 'Summer 2025',
-              title: 'Carnatic Music Summer Series',
+              imgs: ['assets/images/2025-summer-camp.webp'],
+              date: 'June – July 2025',
+              title: 'Carnatic Music Summer Series 2025',
               location: 'Atlanta, GA',
-              desc: 'AFA\'s 2025 Summer Series offered three tiers of programming for students at all levels — a week-long summer camp, informal jam sessions, and workshops for advanced students.',
-              stats: ['3 Programs','June – July 2025','Open to All Levels'],
+              blog: 'AFA\'s 2025 Summer Series was the most ambitious youth programming the organization had attempted — three distinct tiers designed to meet students wherever they are in their Carnatic journey.\n\nThe Summer Camp (June 23–27, 5–7 PM, $25) was designed for beginner and intermediate students to learn compositions of Sri Muthuswami Dikshitar under the guidance of AFA\'s senior student volunteers. The week culminated in a student showcase performance.\n\nThe Jam Sessions (June 20 and July 11, 5–7 PM, free) were informal, high-energy gatherings for any musician to come, play, listen, and learn. These sessions focused on manodharmam — improvisation — and gave students a rare chance to develop creative instincts in a low-pressure, collaborative environment.\n\nThe Workshops (July 13 and July 20, 5–7 PM, $25) were led by Sri Salem Shriram and Sri Prashanth Krishnamoorthy for more advanced students. The curriculum covered sarvalaghu kalpana swarams and selected Navarathri kritis — a serious and practical deep dive for students looking to level up their concert readiness.',
+              stats: ['3 Programs','June – July 2025','All Skill Levels'],
               sets: [
                 { time: 'Summer Camp · June 23–27 · 5–7 PM · $25', performers: [
-                  { name: 'Learn compositions of Sri Muthuswami Dikshitar from senior students and perform', instrument: 'Beginner Students' }
+                  { name: 'Beginner & intermediate students', instrument: 'Dikshitar compositions' }
                 ]},
                 { time: 'Jam Sessions · June 20 & July 11 · 5–7 PM · Free', performers: [
-                  { name: 'Fun informal sessions for musicians to explore manodharmam and learn from each other', instrument: 'All Musicians' }
+                  { name: 'Open to all musicians', instrument: 'Manodharmam / Improvisation' }
                 ]},
                 { time: 'Workshops · July 13 & July 20 · 5–7 PM · $25', performers: [
                   { name: 'Sri Salem Shriram', instrument: 'Faculty' },
-                  { name: 'Sri Prashanth Krishnamoorthy', instrument: 'Faculty' },
-                  { name: 'Sarvalaghu kalpana swarams & Navarathri kritis', instrument: 'Advanced Students' }
+                  { name: 'Sri Prashanth Krishnamoorthy', instrument: 'Faculty' }
                 ]}
               ]
             },
             'chamber-oct-2024': {
-              img: 'assets/images/chamber-concert-series-shriram-salem.webp',
+              imgs: ['assets/images/chamber-concert-series-shriram-salem.webp','assets/images/chamber-concert-series-anand-krishnan.webp','assets/images/chamber-concert-series-prabhav.webp'],
               date: 'Saturday, October 11, 2024 · 3 pm – 6 pm',
-              title: 'Chamber Concert Series',
+              title: 'Chamber Concert Series — October 2024',
               location: 'Private Residence, Atlanta GA',
-              desc: 'Two back-to-back chamber concerts drawing around 70 attendees. An afternoon of refined Carnatic music featuring vocal and flute artists from the Atlanta community.',
-              stats: ['~70 Attendees','2 Performances','Private Residence'],
+              blog: 'October 2024 marked another milestone in AFA\'s chamber concert journey — two polished, memorable performances for an audience of about 70 rasikas gathered in the warmth of a private home.\n\nThe afternoon opened with Hamsini Chandrasekar on vocal. Her voice carries a natural clarity that translates beautifully in intimate settings, and she made full use of the close quarters — turning what might have been a formal concert into a deeply personal musical sharing. Anand Krishnan on violin was precise and expressive, and Anirudhah Narayanan\'s mridangam playing showed a maturity well suited to the vocal style.\n\nSri Sai Kishore closed the evening on flute. An artist who has performed extensively across Atlanta, Sai Kishore\'s playing has a quality of stillness that is rare — each phrase arrives without haste, and the audience naturally leans in. Sudharshan Prasanna (violin) and Sri Santosh Chandru (mridangam) accompanied him with the ease of long musical acquaintance.',
+              stats: ['~70 Attendees','2 Performances','October 2024'],
               sets: [
                 { time: '3:00 pm – 3:50 pm', performers: [
                   { name: 'Hamsini Chandrasekar', instrument: 'Vocal' },
@@ -718,12 +720,12 @@
               ]
             },
             'chamber-nov-2024': {
-              img: 'assets/images/chamber-concert-series-prabhav.webp',
+              imgs: ['assets/images/chamber-concert-series-prabhav.webp','assets/images/afa-prashanth.webp'],
               date: 'Saturday, November 15, 2024 · 3 pm – 5 pm',
-              title: 'Chamber Concert Series',
+              title: 'Chamber Concert Series — November 2024',
               location: 'Private Residence, Atlanta GA',
-              desc: 'A refined Carnatic music evening at a private residence featuring some of Atlanta\'s finest artists. Around 70 guests attended this intimate chamber concert.',
-              stats: ['~70 Attendees','Private Residence'],
+              blog: 'There is something particular about a November evening in Atlanta — the air cools just enough that a gathering indoors feels especially warm. The AFA Chamber Concert of November 2024 had exactly that quality.\n\nSri Prashanth Krishnamoorthy delivered a vocal concert that drew on the full depth of the Carnatic repertoire. A teacher, performer, and one of the community\'s most trusted artistic voices, Sri Prashanth brought an authority and richness to the room that settled everyone into attentive stillness from the first phrase. His ability to sustain raga bhava through long improvisations, while maintaining clarity in every kriti, is a quality his students and audience have come to count on.\n\nSudharshan Prasanna on violin was a constant musical partner — responsive, precise, and deeply listening. Ashwath Karunakaram on mridangam provided rhythmic grounding with intelligence and restraint. About 70 guests attended.',
+              stats: ['~70 Attendees','Private Residence','November 2024'],
               sets: [
                 { time: '', performers: [
                   { name: 'Sri Prashanth Krishnamoorthy', instrument: 'Vocal' },
@@ -733,57 +735,57 @@
               ]
             },
             'chithirai-2024': {
-              img: 'assets/images/2024-chithirai-kalotsavam-group-performance-dance-2.webp',
+              imgs: ['assets/images/2024-chithirai-kalotsavam-group-performance-dance-2.webp','assets/images/2024-chithirai-kalotsavam-group-performance-dance-3.webp','assets/images/2024-chithirai-kalotsavam-group-performance-dance-4.webp','assets/images/sahithya-shriram.webp'],
               date: 'Sunday, April 28, 2024',
               title: 'Chithirai Kalotsavam 2024',
               location: 'Atlanta, GA',
-              desc: 'A vibrant Tamil New Year celebration featuring solo vocal and Bharatanatyam dance recitals, two full choirs performing together for the first time in Atlanta, and a special tribute to Tamil Carnatic composers.',
-              stats: ['Dance & Music','Two Choirs','Tamil New Year Celebration'],
+              blog: 'Chithirai Kalotsavam — AFA\'s Tamil New Year celebration — returned in 2024 with its biggest and most ambitious program yet. The event brought together solo vocal recitals, Bharatanatyam performances, and a landmark first: two full Carnatic choirs performing together on the same Atlanta stage.\n\nThe dance performances were a highlight. Young Bharatanatyam artists from across the Atlanta community brought the classical tradition to life with performances that ranged from technical precision to genuine expressive depth. The group numbers, in particular, were stunning — coordinated movement and rhythm creating something that transcended individual performance.\n\nThe dual choir segment was something Atlanta had not seen before. Two separate vocal ensembles — each with their own teachers and repertoires — came together to share the stage, each performing their pieces before joining for a combined finale. The sense of community in that moment was unmistakable. AFA also presented a tribute to Tamil Carnatic composers, underscoring the Tamil New Year theme with musical memory and pride.',
+              stats: ['Dance & Music','Two Choirs','Tamil New Year'],
               sets: []
             },
             'aradhana-2024': {
-              img: 'assets/images/2026-Aaradhanai_group_picture.webp',
+              imgs: ['assets/images/2026-Aaradhanai_group_picture.webp','assets/images/2024-thyagaraja-aaradhanai-dance-performance.webp'],
               date: 'Sunday, February 4, 2024',
               title: 'Thyagaraja Aradhana 2024',
               location: 'Atlanta, GA',
-              desc: 'The second annual Aradhana — a community-wide gathering to honor Saint Thyagaraja through the collective singing of the Pancharatna Kritis, alongside special youth recitals and performances by leading Atlanta artists.',
-              stats: ['Free Entry','Annual Tradition','Youth Recitals'],
+              blog: 'The second annual AFA Thyagaraja Aradhana confirmed what the 2023 inaugural event had suggested: this was becoming something real. The 2024 Aradhana saw a significant growth in attendance and participation, with students, teachers, and community members arriving from across the Atlanta metro area.\n\nThe program included the collective Ghoshti Gaanam of the Pancharathna Keertanas — the centerpiece that gives the Aradhana its name — alongside special youth recitals and performances by some of Atlanta\'s leading Carnatic artists. The youth recitals were a particularly meaningful addition, giving young performers their first experience of sharing a stage with established vidwans at a community-scale event.\n\nThe 2024 event deepened AFA\'s conviction that this format — free, community-hosted, and participatory — was exactly what Atlanta\'s Carnatic scene needed.',
+              stats: ['Free Entry','2nd Annual','Youth Recitals'],
               sets: []
             },
             'navaratri-2023': {
-              img: 'assets/images/2024-chithirai-kalotsavam-group-performance-dance-4.webp',
+              imgs: ['assets/images/2024-chithirai-kalotsavam-group-performance-dance-4.webp','assets/images/2024-chithirai-kalotsavam-group-performance-dance-5.webp'],
               date: 'Sunday, October 8, 2023',
               title: 'Navaratri Kalotsavam',
               location: 'Atlanta, GA',
-              desc: 'A spectacular showcase of teacher-led vocal and dance group performances celebrating the Navaratri season, bringing together artists and audiences from across the greater Atlanta community.',
-              stats: ['Dance & Music','Navaratri Season','Community Event'],
+              blog: 'Navaratri — nine nights of Devi worship, music, and dance — found a dedicated celebration in Atlanta through AFA\'s 2023 Kalotsavam. The event brought together teacher-led group performances spanning both vocal and dance, creating a festive, devotional atmosphere that the audience responded to with genuine enthusiasm.\n\nThe Navaratri Kalotsavam was conceived as a community showcase: a stage where gurus and their students could present their work together, not in competition but in celebration. Groups from across the greater Atlanta area participated, making the audience themselves a cross-section of the Carnatic and classical dance communities.\n\nThe performances ranged from group kritis to Bharatanatyam items themed around the nine forms of Devi — each presented with care and devotion. For many young performers in the audience, it was their first exposure to the full breadth of what Atlanta\'s classical arts community can produce when it comes together.',
+              stats: ['Dance & Music','Navaratri Season','Community Showcase'],
               sets: []
             },
             'summercamp-2023': {
-              img: 'assets/images/chamber-concert-series-tejas-varada.webp',
+              imgs: ['assets/images/chamber-concert-series-tejas-varada.webp'],
               date: 'July 24–29, 2023',
-              title: 'Carnatic Music Summer Camp',
+              title: 'Carnatic Music Summer Camp 2023',
               location: 'Atlanta, GA',
-              desc: 'A week-long immersive camp for children to explore Carnatic vocal music, taught by talented young artists from the Atlanta community and culminating in a group showcase performance.',
-              stats: ['Week-Long Camp','Children\'s Program','Showcase Performance'],
+              blog: 'AFA\'s first Summer Camp was a week-long experiment in what peer-to-peer Carnatic learning could look like. The camp ran for five days in late July, with sessions each day led by AFA\'s senior student volunteers — themselves young artists who had recently learned the same repertoire and understood the specific challenges of being a student musician in Atlanta.\n\nThe format was deliberately informal. Small groups of children gathered daily to learn vocal compositions, practice together, ask questions, and develop the kind of musical confidence that only comes from actually singing — not just practicing alone at home. The week culminated in a group showcase performance where participants presented what they had learned to an audience of parents and community members.\n\nThe camp established a template that AFA would build on in 2025, expanding into a full Summer Series.',
+              stats: ['Week-Long Camp','Youth Program','Inaugural Camp'],
               sets: []
             },
             'chithirai-2023': {
-              img: 'assets/images/2024-chithirai-kalotsavam-group-performance-dance-3.webp',
+              imgs: ['assets/images/2024-chithirai-kalotsavam-group-performance-dance-3.webp','assets/images/chinmay-prashanth.webp','assets/images/sahithya-shriram.webp'],
               date: 'Sunday, April 16, 2023',
-              title: 'Chithirai Utsavam',
+              title: 'Chithirai Utsavam 2023',
               location: 'Atlanta, GA',
-              desc: 'AFA\'s first large-scale event — a music celebration honoring Tamil and Malayalam Carnatic composers, with lively audience trivia between performances that made the evening as joyful as it was musical.',
-              stats: ['AFA\'s First Event','Audience Trivia','Tamil & Malayalam Music'],
+              blog: 'Chithirai Utsavam was AFA\'s first large-scale public event, and it set the tone for everything that followed. Organized to coincide with Tamil New Year, the concert celebrated the composers and ragas of the Tamil and Malayalam Carnatic traditions — a programmatic focus that distinguished it from more generic Carnatic events and gave it a clear cultural identity.\n\nThe musical program featured a rotating lineup of performances by AFA\'s young artists, interspersed with audience trivia about the composers and compositions being performed. The trivia segments were a deliberate choice — a way to make the evening accessible and engaging for audience members who might be encountering this repertoire for the first time, while rewarding those with deeper knowledge.\n\nThe event drew a larger crowd than AFA had anticipated for a first attempt, and the energy in the room — curious, warm, and genuinely delighted — confirmed that Atlanta had an appetite for this kind of event.',
+              stats: ['AFA\'s First Major Event','Tamil & Malayalam Music','Audience Trivia'],
               sets: []
             },
             'aradhana-2023': {
-              img: 'assets/images/2024-thyagaraja-aaradhanai-dance-performance.webp',
+              imgs: ['assets/images/2024-thyagaraja-aaradhanai-dance-performance.webp'],
               date: 'Saturday, January 21, 2023',
               title: 'Thyagaraja Aradhanai 2023',
               location: 'Atlanta, GA',
-              desc: 'Where it all began. AFA\'s inaugural event — a heartfelt tribute to Saint Thyagaraja through the Pancharatna Kritis, launching what has since become Atlanta\'s most cherished annual Carnatic tradition.',
-              stats: ['AFA\'s Inaugural Event','Free Entry','Annual Tradition Begins'],
+              blog: 'Where it all began.\n\nIn January 2023, a small group of student musicians from Atlanta gathered to do something deceptively simple: honor Saint Thyagaraja together. There was no precedent, no established audience, and no blueprint. What there was: a group of young people who loved Carnatic music and believed Atlanta deserved a Thyagaraja Aradhana of its own.\n\nThe 2023 Aradhana was AFA\'s inaugural event. The Ghoshti Gaanam of the Pancharathna Keertanas was performed collectively — every person in the room a participant, not just a spectator. The response from the community was immediate and clear: this was something that was needed, and something that needed to continue.\n\nThree years later, that first gathering has grown into an annual event drawing 360+ attendees from across Atlanta. But the spirit of the 2023 Aradhana — modest, earnest, and full of belief — remains at the heart of everything AFA does.',
+              stats: ['AFA\'s First Event','January 2023','A Tradition Begins'],
               sets: []
             }
           };
@@ -791,34 +793,74 @@
           function openModal(id) {
             var d = eventsData[id];
             if (!d) return;
-            document.getElementById('modal-img').src = d.img;
-            document.getElementById('modal-img').alt = d.title;
+
+            // ── Image carousel ──
+            var imgs = d.imgs || (d.img ? [d.img] : []);
+            var modalImgEl = document.getElementById('modal-img');
+            var dotsCont   = document.getElementById('modal-img-dots');
+            modalImgEl.src = imgs[0] || '';
+            modalImgEl.alt = d.title;
+            var curImg = 0;
+
+            if (imgs.length > 1) {
+              dotsCont.innerHTML = imgs.map(function(src,i){
+                return '<button onclick="modalGoImg('+i+')" aria-label="Image '+(i+1)+'" style="width:7px;height:7px;border-radius:50%;border:none;cursor:pointer;padding:0;background:'+(i===0?'rgba(255,255,255,0.9)':'rgba(255,255,255,0.35)')+';"></button>';
+              }).join('');
+              dotsCont.style.display = 'flex';
+            } else {
+              dotsCont.innerHTML = '';
+              dotsCont.style.display = 'none';
+            }
+            window._modalImgs = imgs;
+            window.modalGoImg = function(n) {
+              curImg = n;
+              modalImgEl.src = imgs[n];
+              dotsCont.querySelectorAll('button').forEach(function(b,i){
+                b.style.background = i===n ? 'rgba(255,255,255,0.9)' : 'rgba(255,255,255,0.35)';
+              });
+            };
+            // Auto-advance carousel every 4s
+            clearInterval(window._modalTimer);
+            if (imgs.length > 1) {
+              window._modalTimer = setInterval(function(){
+                window.modalGoImg((curImg+1) % imgs.length);
+              }, 4000);
+            }
+
+            // ── Text ──
             document.getElementById('modal-date').textContent = d.date;
             document.getElementById('modal-title').textContent = d.title;
             document.getElementById('modal-location').textContent = '📍 ' + d.location;
-            document.getElementById('modal-desc').textContent = d.desc;
 
+            // Blog paragraphs
+            var blogEl = document.getElementById('modal-blog');
+            var blogText = d.blog || d.desc || '';
+            blogEl.innerHTML = blogText.split('\n\n').map(function(p){
+              return '<p style="color:rgba(255,255,255,0.82);line-height:1.8;margin:0 0 14px;font-size:0.93rem;">'+p+'</p>';
+            }).join('');
+
+            // Stats + performers
             var statsHtml = d.stats.map(function(s){ return '<span class="modal-stat">'+s+'</span>'; }).join('');
-
             var setsHtml = '';
-            if (d.sets.length > 0) {
+            if (d.sets && d.sets.length > 0) {
               setsHtml = '<h4 style="color:#c9a84c;font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;margin:0 0 16px;">Performers</h4>';
               d.sets.forEach(function(set) {
-                if (set.time) setsHtml += '<p style="color:rgba(255,255,255,0.5);font-size:0.78rem;letter-spacing:0.06em;text-transform:uppercase;margin:0 0 10px;border-bottom:1px solid rgba(255,255,255,0.08);padding-bottom:6px;">'+set.time+'</p>';
+                if (set.time) setsHtml += '<p style="color:rgba(255,255,255,0.45);font-size:0.75rem;letter-spacing:0.06em;text-transform:uppercase;margin:0 0 10px;border-bottom:1px solid rgba(255,255,255,0.08);padding-bottom:6px;">'+set.time+'</p>';
                 set.performers.forEach(function(p) {
                   setsHtml += '<div class="performer-row"><span class="performer-instrument">'+p.instrument+'</span><span class="performer-name">'+p.name+'</span></div>';
                 });
-                setsHtml += '<div style="height:14px;"></div>';
+                setsHtml += '<div style="height:12px;"></div>';
               });
             }
-
             document.getElementById('modal-performers').innerHTML = statsHtml + (setsHtml ? '<div style="height:16px;"></div>' + setsHtml : '');
+
             var modal = document.getElementById('event-modal');
             modal.style.display = 'block';
             document.body.style.overflow = 'hidden';
           }
 
           function closeModal() {
+            clearInterval(window._modalTimer);
             document.getElementById('event-modal').style.display = 'none';
             document.body.style.overflow = '';
           }
