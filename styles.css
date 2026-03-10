@@ -188,7 +188,8 @@ button { font-family: inherit; cursor: pointer; border: none; background: none }
 .nav__toggle {
   display: none; flex-direction: column; gap: 5px;
   width: 44px; height: 44px; padding: 10px 8px;
-  align-items: center; justify-content: center
+  align-items: center; justify-content: center;
+  flex-shrink: 0
 }
 .nav__toggle span {
   display: block; width: 24px; height: 1.5px;
@@ -204,12 +205,21 @@ button { font-family: inherit; cursor: pointer; border: none; background: none }
 .nav__mobile {
   display: none; position: fixed;
   inset-block-start: var(--nav-h); inset-inline: 0;
-  background: var(--ivory); border-block-end: 1px solid var(--border);
+  background: var(--ivory);
+  border-block-end: 1px solid var(--border);
   padding: 1.5rem clamp(1.25rem, 5vw, 2.5rem) 2rem;
-  z-index: 99; transform: translateY(-100%); opacity: 0;
-  transition: transform 0.4s var(--ease-out), opacity 0.35s
+  z-index: 99; transform: translateY(-8px); opacity: 0;
+  transition: transform 0.35s var(--ease-out), opacity 0.3s;
+  max-height: calc(100dvh - var(--nav-h));
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  box-shadow: 0 8px 32px rgba(19,16,30,0.15);
+  pointer-events: none;
 }
-.nav__mobile.open { transform: translateY(0); opacity: 1 }
+.nav__mobile.open {
+  transform: translateY(0); opacity: 1;
+  pointer-events: auto;
+}
 .nav__mobile-link {
   font-size: 1.5rem; font-family: var(--font-display); font-weight: 400;
   color: var(--charcoal); padding-block: 0.75rem;
@@ -621,6 +631,14 @@ section { padding-block: clamp(4rem, 8vw, 6rem) }
   .footer__bottom { flex-direction: column; align-items: flex-start }
   .hero__actions { flex-direction: column }
   .hero__actions .btn { align-self: flex-start }
+}
+/* ── Extra-small screens (≤ 420px) ── */
+@media (max-width: 420px) {
+  .nav__inner { gap: 0 }
+  .nav__wordmark { font-size: 1.05rem }
+  .nav__wordmark span { display: none } /* hide subtitle on tiny screens */
+  .nav__logo { width: 36px; height: 36px }
+  .nav__logo img { width: 28px; height: 28px }
 }
 
 /* ================================================================
