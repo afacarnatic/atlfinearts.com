@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chamber Concert Series | Atlanta Fine Arts — Intimate Indian Classical Music</title>
+  <meta name="description" content="Reserve your seat at AFA's intimate Chamber Concert Series — small-venue Indian classical music performances in Atlanta. Max 50–70 seats, advance reservation required." />
+  <meta name="keywords" content="Chamber Concert Atlanta, Indian classical music Atlanta, Carnatic music concert, intimate concert Atlanta, AFA chamber series" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://atlfinearts.com/chamber-concerts.html" />
+  <meta name="theme-color" content="#13101E" />
+
+  <!-- Open Graph -->
+  <meta property="og:type"         content="website" />
+  <meta property="og:url"          content="https://atlfinearts.com/chamber-concerts.html" />
+  <meta property="og:title"        content="Chamber Concert Series | Atlanta Fine Arts" />
+  <meta property="og:description"  content="Intimate Indian classical music in Atlanta. Reserve your seat for the AFA Chamber Concert Series — max 50–70 seats, advance reservation required." />
+  <meta property="og:image"        content="https://atlfinearts.com/assets/images/og-image.jpg" />
+  <meta property="og:image:width"  content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale"       content="en_US" />
+  <meta property="og:site_name"    content="Atlanta Fine Arts" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card"        content="summary_large_image" />
+  <meta name="twitter:title"       content="Chamber Concert Series | Atlanta Fine Arts" />
+  <meta name="twitter:description" content="Intimate Indian classical music in Atlanta — reserve your seat before they're gone." />
+  <meta name="twitter:image"       content="https://atlfinearts.com/assets/images/og-image.jpg" />
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "EventSeries",
+    "name": "AFA Chamber Concert Series",
+    "description": "Intimate Indian classical music performances hosted by Atlanta Fine Arts, limited to 50–70 seats per event.",
+    "organizer": {
+      "@type": "Organization",
+      "name": "Atlanta Fine Arts",
+      "url": "https://atlfinearts.com"
+    },
+    "location": {
+      "@type": "Place",
+      "name": "Atlanta Fine Arts Venue",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Cumming",
+        "addressRegion": "GA",
+        "addressCountry": "US"
+      }
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,500;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="pages.css" />
+
+  <style>
+    /* ── Nav overrides (dark hero) ── */
+    .nav__wordmark { color: #fff !important; }
+    .nav__wordmark span { color: rgba(255,255,255,0.7) !important; }
+    .nav__link { color: rgba(255,255,255,0.85) !important; }
+    .nav:not(.scrolled) { background: linear-gradient(to bottom, rgba(0,0,0,0.55) 0%, transparent 100%) !important; }
+
+    /* ════════════════════════════════════════
+       WHAT TO EXPECT — 3-column feature strip
+    ════════════════════════════════════════ */
+    .chamber-about { background: var(--charcoal); color: #fff; }
+    .chamber-features {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: clamp(1.5rem, 3vw, 2.5rem);
+      margin-block-start: 3rem;
+    }
+    .chamber-feature {
+      border-left: 1px solid rgba(255,255,255,0.12);
+      padding-inline-start: 1.5rem;
+    }
+    .chamber-feature__icon {
+      font-size: 1.75rem; margin-block-end: 1rem;
+    }
+    .chamber-feature__title {
+      font-family: var(--font-display);
+      font-size: 1.2rem; font-weight: 500;
+      color: #fff; margin-block-end: 0.5rem;
+    }
+    .chamber-feature__desc {
+      font-size: 0.875rem; color: rgba(255,255,255,0.6);
+      line-height: 1.75;
+    }
+
+    /* ════════════════════════════════════════
+       PAST CONCERTS STRIP
+    ════════════════════════════════════════ */
+    .past-section { background: var(--ivory); }
+    .past-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(min(100%, 220px), 1fr));
+      gap: 1rem;
+      margin-block-start: 2.5rem;
+    }
+    .past-card {
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1.25rem 1.5rem;
+      background: var(--ivory-warm);
+    }
+    .past-card__date {
+      font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--purple); font-weight: 500; margin-block-end: 0.4rem;
+    }
+    .past-card__name {
+      font-family: var(--font-display);
+      font-size: 1.1rem; font-weight: 500; color: var(--charcoal);
+      line-height: 1.25; margin-block-end: 0.3rem;
+    }
+    .past-card__genre {
+      font-size: 0.8rem; color: var(--text-muted);
+    }
+
+    /* ════════════════════════════════════════
+       SIGNUP SECTION
+    ════════════════════════════════════════ */
+    .signup-section { background: var(--ivory-warm); }
+    .signup-inner {
+      display: grid;
+      grid-template-columns: 5fr 7fr;
+      gap: clamp(2.5rem, 6vw, 6rem);
+      align-items: start;
+    }
+    .signup-aside { position: sticky; top: calc(var(--nav-h) + 2rem); }
+    .signup-aside .section-title { margin-block: 0.5rem 1rem; }
+    .signup-aside__body {
+      font-size: 0.9375rem; color: var(--text-muted);
+      line-height: 1.8; margin-block-end: 1.75rem;
+    }
+
+    /* How it works steps */
+    .signup-steps {
+      display: flex; flex-direction: column; gap: 1.1rem;
+      margin-block-end: 2rem;
+    }
+    .signup-step {
+      display: flex; align-items: flex-start; gap: 1rem;
+    }
+    .signup-step__num {
+      width: 32px; height: 32px; border-radius: 50%; flex-shrink: 0;
+      background: linear-gradient(135deg, var(--purple), var(--saffron-btn));
+      color: #fff; font-size: 0.75rem; font-weight: 500;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .signup-step__text { font-size: 0.9rem; color: var(--text-body); line-height: 1.6; }
+    .signup-step__text strong { color: var(--charcoal); display: block; margin-block-end: 0.1rem; }
+
+    /* Capacity indicator */
+    .capacity-badge {
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      background: var(--ivory); border: 1px solid var(--border);
+      border-radius: 3px; padding: 0.75rem 1rem;
+      font-size: 0.8rem; color: var(--text-body);
+    }
+    .capacity-badge__dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: #16a34a; flex-shrink: 0;
+      box-shadow: 0 0 0 3px rgba(22,163,74,0.2);
+    }
+
+    /* ── Signup form card ── */
+    .signup-card {
+      background: var(--ivory);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: clamp(1.75rem, 4vw, 2.5rem);
+    }
+    .signup-card__title {
+      font-family: var(--font-display);
+      font-size: 1.5rem; font-weight: 500;
+      color: var(--charcoal); margin-block-end: 0.4rem;
+    }
+    .signup-card__subtitle {
+      font-size: 0.875rem; color: var(--text-muted);
+      margin-block-end: 1.75rem; line-height: 1.6;
+    }
+
+    /* Seat picker */
+    .seat-picker {
+      display: flex; gap: 0.5rem; flex-wrap: wrap;
+    }
+    .seat-btn {
+      width: 48px; height: 48px; border-radius: 3px;
+      border: 1px solid var(--border);
+      background: var(--ivory-warm);
+      font-family: var(--font-display); font-size: 1.1rem; font-weight: 500;
+      color: var(--charcoal); cursor: pointer;
+      transition: all 0.2s; display: flex; align-items: center; justify-content: center;
+    }
+    .seat-btn:hover { border-color: var(--purple); color: var(--purple); }
+    .seat-btn.active {
+      background: linear-gradient(135deg, var(--purple), var(--saffron-btn));
+      color: #fff; border-color: transparent;
+      box-shadow: 0 4px 16px rgba(94,23,235,0.25);
+    }
+
+    /* Genre checkboxes */
+    .genre-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 0.5rem;
+    }
+    .genre-check {
+      display: flex; align-items: center; gap: 0.6rem;
+      font-size: 0.875rem; color: var(--text-body);
+      cursor: pointer; padding: 0.6rem 0.75rem;
+      border: 1px solid var(--border); border-radius: 3px;
+      background: var(--ivory-warm);
+      transition: border-color 0.2s, background 0.2s;
+      user-select: none;
+    }
+    .genre-check:has(input:checked) {
+      border-color: var(--purple);
+      background: var(--purple-pale);
+    }
+    .genre-check input[type="checkbox"] {
+      width: 16px; height: 16px; accent-color: var(--purple);
+      flex-shrink: 0; cursor: pointer;
+    }
+
+    /* Mailchimp status messages */
+    .mc-status {
+      display: none; align-items: flex-start; gap: 0.75rem;
+      padding: 1rem 1.25rem; border-radius: 3px;
+      font-size: 0.9rem; line-height: 1.5;
+      margin-block-start: 1rem;
+    }
+    .mc-status--success {
+      background: #F0FDF4; border: 1px solid #BBF7D0; color: #166534;
+    }
+    .mc-status--error {
+      background: #FEF2F2; border: 1px solid #FECACA; color: #991B1B;
+    }
+    .mc-status.visible { display: flex; }
+    .mc-status__icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 1px; }
+
+    /* ════════════════════════════════════════
+       RESPONSIVE
+    ════════════════════════════════════════ */
+    @media (max-width: 900px) {
+      .signup-inner { grid-template-columns: 1fr; }
+      .signup-aside { position: static; }
+      .chamber-features { grid-template-columns: 1fr; gap: 1.5rem; }
+      .chamber-feature { border-left: none; border-top: 1px solid rgba(255,255,255,0.12); padding-inline-start: 0; padding-block-start: 1.5rem; }
+      .chamber-feature:first-child { border-top: none; padding-block-start: 0; }
+    }
+    @media (max-width: 600px) {
+      .genre-grid { grid-template-columns: 1fr; }
+      .signup-card { padding: 1.5rem; }
+      .past-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 420px) {
+      .past-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div class="kolam-border" aria-hidden="true"></div>
+
+  <!-- ── NAVIGATION ── -->
+  <nav class="nav" id="nav" aria-label="Main navigation">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__brand" aria-label="Atlanta Fine Arts — home">
+        <div class="nav__logo" aria-hidden="true">
+          <img src="assets/images/afa-logo.webp" alt="" width="36" height="36"
+               style="border-radius:50%;object-fit:cover;" />
+        </div>
+        <div class="nav__wordmark">
+          Atlanta Fine Arts
+          <span>Indian Classical Arts</span>
+        </div>
+      </a>
+      <ul class="nav__links" role="list">
+        <li><a href="index.html#about" class="nav__link">About</a></li>
+        <li><a href="index.html#events" class="nav__link">Events</a></li>
+        <li><a href="volunteers.html" class="nav__link">Volunteers</a></li>
+        <li><a href="teachers.html" class="nav__link">Find a Teacher</a></li>
+        <li><a href="chamber-concerts.html" class="nav__link">Chamber Concerts</a></li>
+        <li><a href="gallery.html" class="nav__link">Gallery</a></li>
+        <li><a href="donate.html" class="nav__link">Donate</a></li>
+        <li><a href="contact.html" class="nav__link nav__link--cta">Contact Us</a></li>
+      </ul>
+      <button class="nav__toggle" id="nav-toggle" aria-label="Open navigation menu"
+              aria-expanded="false" aria-controls="mobile-menu">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </button>
+    </div>
+    <div class="nav__mobile" id="mobile-menu" aria-hidden="true"
+         role="region" aria-label="Mobile navigation">
+      <ul class="nav__mobile-links" role="list">
+        <li><a href="index.html"            class="nav__mobile-link" data-mobile-link>Home <span class="arrow" aria-hidden="true">→</span></a></li>
+        <li><a href="index.html#events"     class="nav__mobile-link" data-mobile-link>Events <span class="arrow" aria-hidden="true">→</span></a></li>
+        <li><a href="volunteers.html"       class="nav__mobile-link" data-mobile-link>Volunteers <span class="arrow" aria-hidden="true">→</span></a></li>
+        <li><a href="teachers.html"         class="nav__mobile-link" data-mobile-link>Find a Teacher <span class="arrow" aria-hidden="true">→</span></a></li>
+        <li><a href="chamber-concerts.html" class="nav__mobile-link" data-mobile-link>Chamber Concerts <span class="arrow" aria-hidden="true">→</span></a></li>
+        <li><a href="gallery.html"          class="nav__mobile-link" data-mobile-link>Gallery <span class="arrow" aria-hidden="true">→</span></a></li>
+        <li><a href="donate.html"           class="nav__mobile-link" data-mobile-link>Donate <span class="arrow" aria-hidden="true">→</span></a></li>
+        <li><a href="contact.html"          class="nav__mobile-link" data-mobile-link>Contact Us <span class="arrow" aria-hidden="true">→</span></a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main id="main-content">
+
+    <!-- ── PAGE HERO ── -->
+    <section class="page-hero" aria-label="Page introduction">
+      <div class="container">
+        <p class="page-hero__eyebrow">Intimate Performances</p>
+        <h1 class="page-hero__title">Chamber <em>Concert</em> Series</h1>
+        <p class="page-hero__desc">
+          Small-venue Indian classical music — up close with the artist.
+          Max 50–70 seats per concert. Join our list and we'll notify you
+          the moment tickets open for the next event.
+        </p>
+      </div>
+    </section>
+
+    <!-- ── WHAT TO EXPECT ── -->
+    <section class="chamber-about" aria-labelledby="about-heading">
+      <div class="container">
+        <div>
+          <p class="section-label" style="color:var(--gold-light);">The Experience</p>
+          <h2 class="section-title" id="about-heading" style="color:#fff;">
+            Music the Way It Was <em style="color:var(--gold-light);">Meant to Be Heard</em>
+          </h2>
+          <p style="color:rgba(255,255,255,0.7);max-width:60ch;line-height:1.8;margin-block-start:1rem;font-weight:300;">
+            Our Chamber Concert Series brings you within feet of the artist —
+            no large auditorium, no distance. Just a living room atmosphere with
+            world-class Carnatic and Hindustani musicians.
+          </p>
+        </div>
+        <div class="chamber-features">
+          <div class="chamber-feature reveal">
+            <div class="chamber-feature__icon" aria-hidden="true">🎵</div>
+            <h3 class="chamber-feature__title">Intimate Venue</h3>
+            <p class="chamber-feature__desc">
+              50–70 seats maximum, depending on the artist. Every seat
+              is close. Every note is personal.
+            </p>
+          </div>
+          <div class="chamber-feature reveal reveal--delay-1">
+            <div class="chamber-feature__icon" aria-hidden="true">📋</div>
+            <h3 class="chamber-feature__title">Advance Reservation</h3>
+            <p class="chamber-feature__desc">
+              Seats are reserved — walk-ins are not possible. Sign up below
+              to be notified when the next concert is announced.
+            </p>
+          </div>
+          <div class="chamber-feature reveal reveal--delay-2">
+            <div class="chamber-feature__icon" aria-hidden="true">🎟️</div>
+            <h3 class="chamber-feature__title">Free Entry</h3>
+            <p class="chamber-feature__desc">
+              All AFA events are free to attend. We believe great music
+              should be accessible to everyone in our community.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── PAST CONCERTS ── -->
+    <section class="past-section" aria-labelledby="past-heading">
+      <div class="container">
+        <p class="section-label">Previous Events</p>
+        <h2 class="section-title" id="past-heading">Past <em>Concerts</em></h2>
+        <div class="past-grid">
+          <div class="past-card reveal">
+            <p class="past-card__date">2024</p>
+            <p class="past-card__name">Shriram Salem</p>
+            <p class="past-card__genre">Carnatic Vocal</p>
+          </div>
+          <div class="past-card reveal reveal--delay-1">
+            <p class="past-card__date">2024</p>
+            <p class="past-card__name">Pranavi</p>
+            <p class="past-card__genre">Carnatic Violin</p>
+          </div>
+          <div class="past-card reveal reveal--delay-2">
+            <p class="past-card__date">2024</p>
+            <p class="past-card__name">Anand Krishnan</p>
+            <p class="past-card__genre">Carnatic Violin</p>
+          </div>
+          <div class="past-card reveal reveal--delay-3">
+            <p class="past-card__date">2023</p>
+            <p class="past-card__name">Chamber Series Vol. 1</p>
+            <p class="past-card__genre">Carnatic Vocal & Percussion</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════
+         SIGNUP SECTION
+    ══════════════════════════════════════════ -->
+    <section class="signup-section" id="signup" aria-labelledby="signup-heading">
+      <div class="container">
+        <div class="signup-inner">
+
+          <!-- Left — context -->
+          <aside class="signup-aside reveal">
+            <p class="section-label">Reserve Your Seat</p>
+            <h2 class="section-title" id="signup-heading">
+              Join the <em>List</em>
+            </h2>
+            <p class="signup-aside__body">
+              We notify this list first — before any public announcement —
+              when a new Chamber Concert is scheduled. You'll receive one
+              email with the date, artist, and a reservation link. No spam, ever.
+            </p>
+
+            <ol class="signup-steps" aria-label="How it works">
+              <li class="signup-step">
+                <div class="signup-step__num" aria-hidden="true">1</div>
+                <div class="signup-step__text">
+                  <strong>Sign up below</strong>
+                  Tell us your name, email, how many seats you'd like, and
+                  which genres interest you most.
+                </div>
+              </li>
+              <li class="signup-step">
+                <div class="signup-step__num" aria-hidden="true">2</div>
+                <div class="signup-step__text">
+                  <strong>We announce a concert</strong>
+                  You'll get an email with the artist, date, and a
+                  first-come reservation link.
+                </div>
+              </li>
+              <li class="signup-step">
+                <div class="signup-step__num" aria-hidden="true">3</div>
+                <div class="signup-step__text">
+                  <strong>Confirm your seats</strong>
+                  Click the link to reserve. Once the concert sells out,
+                  a waitlist opens automatically.
+                </div>
+              </li>
+            </ol>
+
+            <div class="capacity-badge" aria-label="Seats available">
+              <span class="capacity-badge__dot" aria-hidden="true"></span>
+              Accepting signups — next concert TBA
+            </div>
+          </aside>
+
+          <!-- Right — form -->
+          <div class="signup-card reveal reveal--delay-1">
+            <h3 class="signup-card__title">Save My Seat</h3>
+            <p class="signup-card__subtitle">
+              You'll only hear from us when a new concert is announced.
+            </p>
+
+            <!--
+            ═══════════════════════════════════════════════════════════════
+            MAILCHIMP SETUP — read before going live:
+
+            1. In Mailchimp, create a new Audience (or use existing).
+            2. Go to Audience → Signup forms → Embedded forms.
+            3. Copy your form action URL. It looks like:
+               https://YOURORG.us1.list-manage.com/subscribe/post?u=XXXXXXXX&amp;id=YYYYYYYY
+            4. Replace the MC_ACTION_URL placeholder below with that URL.
+            5. In Audience → Settings → Audience fields and *|MERGE|* tags, add:
+               - PHONE  (text)   — Phone Number
+               - SEATS  (number) — Seats Requested
+               - GENRE  (text)   — Genre Preferences
+               Your Mailchimp audience already has FNAME, LNAME, EMAIL built in.
+            6. Done. Submissions go straight into your Mailchimp audience
+               and you can email the list from Mailchimp whenever you like.
+            ═══════════════════════════════════════════════════════════════
+            -->
+
+            <form id="signup-form" novalidate aria-label="Chamber Concert mailing list signup">
+
+              <!-- Name row -->
+              <div class="form__row" style="margin-block-end:1.25rem;">
+                <div class="form__field">
+                  <label class="form__label" for="cc-fname">
+                    First Name <span aria-hidden="true">*</span>
+                  </label>
+                  <input class="form__input" type="text" id="cc-fname" name="FNAME"
+                         autocomplete="given-name" required aria-required="true"
+                         aria-describedby="cc-fname-err" placeholder="Priya" />
+                  <span id="cc-fname-err" class="form__error" role="alert" aria-live="polite"></span>
+                </div>
+                <div class="form__field">
+                  <label class="form__label" for="cc-lname">
+                    Last Name <span aria-hidden="true">*</span>
+                  </label>
+                  <input class="form__input" type="text" id="cc-lname" name="LNAME"
+                         autocomplete="family-name" required aria-required="true"
+                         aria-describedby="cc-lname-err" placeholder="Sharma" />
+                  <span id="cc-lname-err" class="form__error" role="alert" aria-live="polite"></span>
+                </div>
+              </div>
+
+              <!-- Email -->
+              <div class="form__field" style="margin-block-end:1.25rem;">
+                <label class="form__label" for="cc-email">
+                  Email Address <span aria-hidden="true">*</span>
+                </label>
+                <input class="form__input" type="email" id="cc-email" name="EMAIL"
+                       autocomplete="email" required aria-required="true"
+                       aria-describedby="cc-email-err" placeholder="priya@example.com" />
+                <span id="cc-email-err" class="form__error" role="alert" aria-live="polite"></span>
+              </div>
+
+              <!-- Phone -->
+              <div class="form__field" style="margin-block-end:1.25rem;">
+                <label class="form__label" for="cc-phone">Phone Number
+                  <span style="font-size:0.6rem;color:var(--text-muted);font-weight:400;letter-spacing:0;text-transform:none;"> — optional, for urgent updates</span>
+                </label>
+                <input class="form__input" type="tel" id="cc-phone" name="PHONE"
+                       autocomplete="tel" placeholder="(555) 123-4567" />
+              </div>
+
+              <!-- Seats -->
+              <div class="form__field" style="margin-block-end:1.25rem;">
+                <label class="form__label" id="seats-label">
+                  How many seats would you like? <span aria-hidden="true">*</span>
+                </label>
+                <div class="seat-picker" role="group" aria-labelledby="seats-label">
+                  <button type="button" class="seat-btn" data-seats="1" aria-pressed="false">1</button>
+                  <button type="button" class="seat-btn" data-seats="2" aria-pressed="false">2</button>
+                  <button type="button" class="seat-btn" data-seats="3" aria-pressed="false">3</button>
+                  <button type="button" class="seat-btn" data-seats="4" aria-pressed="false">4</button>
+                </div>
+                <!-- hidden input carries the value to Mailchimp -->
+                <input type="hidden" id="cc-seats" name="SEATS" value="" />
+                <span id="cc-seats-err" class="form__error" role="alert" aria-live="polite"></span>
+              </div>
+
+              <!-- Genre preferences -->
+              <div class="form__field" style="margin-block-end:1.75rem;">
+                <label class="form__label" id="genre-label">
+                  Genre interests <span style="font-size:0.6rem;color:var(--text-muted);font-weight:400;letter-spacing:0;text-transform:none;"> — select all that apply</span>
+                </label>
+                <div class="genre-grid" role="group" aria-labelledby="genre-label">
+                  <label class="genre-check">
+                    <input type="checkbox" name="GENRE_CRV" value="Carnatic Vocal" />
+                    Carnatic Vocal
+                  </label>
+                  <label class="genre-check">
+                    <input type="checkbox" name="GENRE_CRI" value="Carnatic Instrumental" />
+                    Carnatic Instrumental
+                  </label>
+                  <label class="genre-check">
+                    <input type="checkbox" name="GENRE_HIN" value="Hindustani" />
+                    Hindustani
+                  </label>
+                  <label class="genre-check">
+                    <input type="checkbox" name="GENRE_DNC" value="Dance" />
+                    Bharatanatyam / Dance
+                  </label>
+                  <label class="genre-check">
+                    <input type="checkbox" name="GENRE_PRC" value="Percussion" />
+                    Percussion
+                  </label>
+                  <label class="genre-check">
+                    <input type="checkbox" name="GENRE_ANY" value="Any" checked />
+                    Surprise me!
+                  </label>
+                </div>
+                <!-- hidden input carries comma-joined genres to Mailchimp -->
+                <input type="hidden" id="cc-genre" name="GENRE" value="" />
+              </div>
+
+              <!-- Submit -->
+              <button type="submit" class="btn btn--primary" id="cc-submit"
+                      style="width:100%;justify-content:center;">
+                <span id="cc-btn-text">Notify Me</span>
+                <svg id="cc-btn-spinner" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                     stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                     style="display:none;animation:spin 0.8s linear infinite;" aria-hidden="true">
+                  <path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke-opacity="0.3"/>
+                  <path d="M12 3a9 9 0 019 9"/>
+                </svg>
+                <svg width="14" height="14" id="cc-btn-arrow" viewBox="0 0 24 24" fill="none"
+                     stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                     stroke-linejoin="round" aria-hidden="true">
+                  <line x1="5" y1="12" x2="19" y2="12"/>
+                  <polyline points="12 5 19 12 12 19"/>
+                </svg>
+              </button>
+
+              <div class="mc-status mc-status--success" id="mc-success" role="status" aria-live="polite">
+                <span class="mc-status__icon" aria-hidden="true">✅</span>
+                <div>
+                  <strong>You're on the list!</strong><br/>
+                  We'll email you as soon as the next Chamber Concert is announced.
+                  Check your inbox for a confirmation email from Mailchimp.
+                </div>
+              </div>
+              <div class="mc-status mc-status--error" id="mc-error" role="alert" aria-live="polite">
+                <span class="mc-status__icon" aria-hidden="true">⚠️</span>
+                <div id="mc-error-text">Something went wrong. Please try again or email us directly.</div>
+              </div>
+
+              <p style="font-size:0.75rem;color:var(--text-muted);margin-block-start:1rem;line-height:1.6;">
+                By signing up you agree to receive concert announcements from Atlanta Fine Arts.
+                Unsubscribe any time — every email includes a one-click unsubscribe link.
+              </p>
+
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <div class="kolam-border" aria-hidden="true"></div>
+  <footer class="footer" aria-label="Site footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div class="footer__brand">
+          <p class="footer__brand-name">Atlanta Fine Arts</p>
+          <p class="footer__tagline">A volunteer-driven non-profit dedicated to celebrating Indian classical dance and music in the Atlanta area.</p>
+          <a href="mailto:info@atlfinearts.com" class="footer__email">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                 stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+              <polyline points="22,6 12,13 2,6"/>
+            </svg>
+            info@atlfinearts.com
+          </a>
+        </div>
+        <nav aria-label="Footer site navigation">
+          <p class="footer__col-title">Navigate</p>
+          <ul class="footer__links" role="list">
+            <li><a href="index.html"            class="footer__link">Home</a></li>
+            <li><a href="index.html#events"     class="footer__link">Events</a></li>
+            <li><a href="volunteers.html"       class="footer__link">Volunteers</a></li>
+            <li><a href="teachers.html"         class="footer__link">Find a Teacher</a></li>
+            <li><a href="chamber-concerts.html" class="footer__link">Chamber Concerts</a></li>
+            <li><a href="gallery.html"          class="footer__link">Gallery</a></li>
+            <li><a href="donate.html"           class="footer__link">Donate</a></li>
+            <li><a href="contact.html"          class="footer__link">Contact</a></li>
+          </ul>
+        </nav>
+        <nav aria-label="Social media links">
+          <p class="footer__col-title">Follow Us</p>
+          <ul class="footer__socials" role="list">
+            <li><a href="https://www.instagram.com/atlanta.finearts" class="footer__social" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+            <li><a href="https://www.facebook.com/afacarnatic" class="footer__social" target="_blank" rel="noopener noreferrer">Facebook</a></li>
+            <li><a href="https://www.youtube.com/@atlfinearts" class="footer__social" target="_blank" rel="noopener noreferrer">YouTube</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="footer__bottom">
+        <p class="footer__copy">© 2025 Atlanta Fine Arts (AFA). All rights reserved.</p>
+        <p class="footer__credit">Built with ♡ for the Indian classical arts community</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+  (function () {
+    'use strict';
+
+    /* ── Nav ── */
+    var nav = document.getElementById('nav');
+    function updateNav() { nav.classList.toggle('scrolled', window.scrollY > 40); }
+    window.addEventListener('scroll', updateNav, { passive: true });
+    updateNav();
+
+    var toggle = document.getElementById('nav-toggle');
+    var mobileMenu = document.getElementById('mobile-menu');
+    var isOpen = false;
+    function openMenu() { isOpen = true; toggle.setAttribute('aria-expanded','true'); mobileMenu.classList.add('open'); mobileMenu.setAttribute('aria-hidden','false'); document.body.style.overflow = 'hidden'; }
+    function closeMenu() { isOpen = false; toggle.setAttribute('aria-expanded','false'); mobileMenu.classList.remove('open'); mobileMenu.setAttribute('aria-hidden','true'); document.body.style.overflow = ''; }
+    toggle.addEventListener('click', function () { isOpen ? closeMenu() : openMenu(); });
+    document.querySelectorAll('[data-mobile-link]').forEach(function (l) { l.addEventListener('click', closeMenu); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && isOpen) closeMenu(); });
+
+    /* ── Scroll reveal ── */
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) { entry.target.classList.add('visible'); io.unobserve(entry.target); }
+        });
+      }, { threshold: 0.05 });
+      document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+    } else {
+      document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('visible'); });
+    }
+
+    /* ── Seat picker ── */
+    var seatBtns  = document.querySelectorAll('.seat-btn');
+    var seatsInput = document.getElementById('cc-seats');
+    seatBtns.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        seatBtns.forEach(function (b) { b.classList.remove('active'); b.setAttribute('aria-pressed', 'false'); });
+        btn.classList.add('active');
+        btn.setAttribute('aria-pressed', 'true');
+        seatsInput.value = btn.dataset.seats;
+        clearErr('cc-seats');
+      });
+    });
+
+    /* ── Genre checkboxes → hidden GENRE field ── */
+    var genreInput = document.getElementById('cc-genre');
+    function updateGenre() {
+      var checked = Array.from(document.querySelectorAll('.genre-check input:checked'))
+                         .map(function (cb) { return cb.value; });
+      genreInput.value = checked.join(', ');
+    }
+    document.querySelectorAll('.genre-check input').forEach(function (cb) {
+      cb.addEventListener('change', updateGenre);
+    });
+    updateGenre(); /* init with "Any" pre-checked */
+
+    /* ── Validation helpers ── */
+    function setErr(fieldId, msg) {
+      var field = document.getElementById(fieldId);
+      var err   = document.getElementById(fieldId + '-err');
+      if (field) field.setAttribute('aria-invalid', 'true');
+      if (err)   { err.textContent = msg; err.style.display = 'block'; }
+    }
+    function clearErr(fieldId) {
+      var field = document.getElementById(fieldId);
+      var err   = document.getElementById(fieldId + '-err');
+      if (field) field.removeAttribute('aria-invalid');
+      if (err)   { err.textContent = ''; err.style.display = 'none'; }
+    }
+
+    /* Live-clear errors on input */
+    ['cc-fname','cc-lname','cc-email'].forEach(function (id) {
+      var el = document.getElementById(id);
+      if (el) el.addEventListener('input', function () { clearErr(id); });
+    });
+
+    /* ── Mailchimp JSONP submit ── */
+    /*
+    ══════════════════════════════════════════════════════════════
+    REPLACE THIS URL with your Mailchimp form action URL.
+    Get it from: Audience → Signup forms → Embedded forms → copy the
+    "action" attribute of the <form> tag. Then change "post?" to
+    "post-json?" and add "&c=?" to the end for JSONP.
+
+    Example:
+    https://yourorg.us1.list-manage.com/subscribe/post-json?u=abc123&id=def456&c=?
+    ══════════════════════════════════════════════════════════════
+    */
+    var MC_URL = 'YOUR_MAILCHIMP_JSONP_URL_HERE';
+
+    var form       = document.getElementById('signup-form');
+    var submitBtn  = document.getElementById('cc-submit');
+    var btnText    = document.getElementById('cc-btn-text');
+    var btnSpinner = document.getElementById('cc-btn-spinner');
+    var btnArrow   = document.getElementById('cc-btn-arrow');
+    var successEl  = document.getElementById('mc-success');
+    var errorEl    = document.getElementById('mc-error');
+    var errorText  = document.getElementById('mc-error-text');
+
+    function setLoading(on) {
+      submitBtn.disabled = on;
+      btnText.textContent = on ? 'Submitting…' : 'Notify Me';
+      btnSpinner.style.display = on ? 'inline-block' : 'none';
+      btnArrow.style.display   = on ? 'none' : 'inline-block';
+    }
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      /* — Validate — */
+      var valid = true;
+      var checks = [
+        { id: 'cc-fname', label: 'First name' },
+        { id: 'cc-lname', label: 'Last name'  },
+        { id: 'cc-email', label: 'Email address' },
+      ];
+      checks.forEach(function (c) {
+        clearErr(c.id);
+        var el = document.getElementById(c.id);
+        if (!el.value.trim()) {
+          setErr(c.id, c.label + ' is required.');
+          valid = false;
+        } else if (c.id === 'cc-email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(el.value)) {
+          setErr(c.id, 'Please enter a valid email address.');
+          valid = false;
+        }
+      });
+      clearErr('cc-seats');
+      if (!seatsInput.value) {
+        setErr('cc-seats', 'Please select how many seats you'd like.');
+        valid = false;
+      }
+      if (!valid) {
+        var firstBad = form.querySelector('[aria-invalid="true"]');
+        if (firstBad) firstBad.focus();
+        return;
+      }
+
+      successEl.classList.remove('visible');
+      errorEl.classList.remove('visible');
+
+      /* — Check Mailchimp URL is configured — */
+      if (!MC_URL || MC_URL === 'YOUR_MAILCHIMP_JSONP_URL_HERE') {
+        errorText.textContent = 'The signup form is not yet connected. Please email us directly to join the list.';
+        errorEl.classList.add('visible');
+        return;
+      }
+
+      /* — Build query string — */
+      var params = new URLSearchParams({
+        EMAIL: document.getElementById('cc-email').value.trim(),
+        FNAME: document.getElementById('cc-fname').value.trim(),
+        LNAME: document.getElementById('cc-lname').value.trim(),
+        PHONE: document.getElementById('cc-phone').value.trim(),
+        SEATS: seatsInput.value,
+        GENRE: genreInput.value,
+      });
+
+      setLoading(true);
+
+      /* — JSONP request (Mailchimp doesn't support CORS) — */
+      var cbName = 'mc_cb_' + Date.now();
+      var script = document.createElement('script');
+      var timeout = setTimeout(function () {
+        setLoading(false);
+        errorText.textContent = 'The request timed out. Please try again.';
+        errorEl.classList.add('visible');
+        delete window[cbName];
+        document.body.removeChild(script);
+      }, 8000);
+
+      window[cbName] = function (data) {
+        clearTimeout(timeout);
+        setLoading(false);
+        delete window[cbName];
+        try { document.body.removeChild(script); } catch (ex) {}
+
+        if (data.result === 'success') {
+          successEl.classList.add('visible');
+          form.reset();
+          seatsInput.value = '';
+          seatBtns.forEach(function (b) { b.classList.remove('active'); b.setAttribute('aria-pressed','false'); });
+          updateGenre();
+        } else {
+          /* Mailchimp returns HTML in data.msg — strip tags */
+          var rawMsg = (data.msg || '').replace(/<[^>]+>/g, '').replace(/^\d+ - /, '').trim();
+          errorText.textContent = rawMsg || 'Something went wrong. Please try again.';
+          errorEl.classList.add('visible');
+        }
+      };
+
+      script.src = MC_URL + '&' + params.toString() + '&c=' + cbName;
+      document.body.appendChild(script);
+    });
+
+  }());
+  </script>
+
+</body>
+</html>
