@@ -176,31 +176,25 @@
             </div>
 
             <div class="donate-methods">
-              <!--
-                ═══════════════════════════════════════════
-                PAYMENT INTEGRATION:
-                Replace these buttons with your actual payment links.
-
-                Options:
-                1. Venmo: link to your Venmo profile
-                2. Zelle: show your Zelle email/phone
-                3. PayPal: link to PayPal.me
-                4. Stripe: integrate Stripe Checkout
-                ═══════════════════════════════════════════
-              -->
-              <a href="#" class="btn btn--primary" id="donate-btn" onclick="alert('To complete setup, replace this link with your Venmo, PayPal, or Zelle info. See the HTML comments for instructions.'); return false;">
-                Donate Now
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                     stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <line x1="5" y1="12" x2="19" y2="12"/>
-                  <polyline points="12 5 19 12 12 19"/>
-                </svg>
-              </a>
+              <div style="background:var(--ivory-warm);border:1px solid var(--border);border-radius:4px;padding:1.5rem;text-align:center;">
+                <p style="font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--purple);font-weight:500;margin-block-end:0.75rem;">Donate via Zelle</p>
+                <p style="font-family:var(--font-display);font-size:1.75rem;font-weight:500;color:var(--charcoal);margin-block-end:0.25rem;">586-604-6388</p>
+                <p style="font-size:0.875rem;color:var(--text-muted);line-height:1.6;margin-block-end:1.25rem;">
+                  Send your donation directly via Zelle using the phone number above.
+                  Open your banking app, select Zelle, and send to this number.
+                </p>
+                <a href="#" class="btn btn--primary" style="width:100%;justify-content:center;" onclick="navigator.clipboard.writeText('5866046388').then(function(){this.textContent='Copied!'}.bind(this));return false;">
+                  Copy Number
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                       stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                    <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/>
+                  </svg>
+                </a>
+              </div>
               <p style="font-size:0.8rem;color:var(--text-muted);text-align:center;margin-block-start:0.75rem;">
-                You can also donate via <strong>Venmo</strong>, <strong>Zelle</strong>, or
-                <strong>PayPal</strong>. Contact us at
+                Questions about donating? Contact us at
                 <a href="mailto:afacarnatic@gmail.com" style="color:var(--purple);">afacarnatic@gmail.com</a>
-                for details.
               </p>
             </div>
           </div>
