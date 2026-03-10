@@ -463,7 +463,9 @@
               area:       cells[4] ? String(cells[4].v || '') : '',
               email:      cells[5] ? String(cells[5].v || '') : '',
               phone:      cells[6] ? String(cells[6].v || '') : '',
-              website:    cells[7] ? String(cells[7].v || '') : ''
+              website:    cells[7] ? String(cells[7].v || '') : '',
+              years:      cells[9] ? String(cells[9].v || '') : '',
+              style:      cells[10] ? String(cells[10].v || '') : ''
             };
           }).filter(function(t) { return t.name.trim() !== ''; });
 
@@ -522,6 +524,8 @@
               '<span class="teacher-card__detail-icon">📍</span>' +
               '<span class="teacher-card__detail-value">' + t.area + '</span>' +
             '</div>' +
+            (t.years ? '<div class="teacher-card__detail"><span class="teacher-card__detail-icon">🎓</span><span class="teacher-card__detail-value">' + t.years + ' teaching</span></div>' : '') +
+            (t.style ? '<div class="teacher-card__detail"><span class="teacher-card__detail-icon">🎶</span><span class="teacher-card__detail-value">' + t.style + '</span></div>' : '') +
             (linksHTML ? '<div class="teacher-card__links">' + linksHTML + '</div>' : '') +
           '</div>' +
         '</div>';
