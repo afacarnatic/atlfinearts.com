@@ -9,23 +9,6 @@
   <link rel="canonical" href="https://atlfinearts.com/gallery.html" />
   <meta name="theme-color" content="#13101E" />
 
-  <!-- Open Graph -->
-  <meta property="og:type"        content="website" />
-  <meta property="og:url"         content="https://atlfinearts.com/gallery.html" />
-  <meta property="og:title"       content="Gallery | Atlanta Fine Arts — Event Photos" />
-  <meta property="og:description" content="Browse photos from Atlanta Fine Arts events — Thyagaraja Aradhana, Chamber Concerts, Chithirai Kalotsavam, Bharatanatyam performances, and more." />
-  <meta property="og:image"       content="https://atlfinearts.com/assets/images/og-image.jpg" />
-  <meta property="og:image:width"  content="1200" />
-  <meta property="og:image:height" content="630" />
-  <meta property="og:locale"      content="en_US" />
-  <meta property="og:site_name"   content="Atlanta Fine Arts" />
-
-  <!-- Twitter / X card -->
-  <meta name="twitter:card"        content="summary_large_image" />
-  <meta name="twitter:title"       content="Gallery | Atlanta Fine Arts" />
-  <meta name="twitter:description" content="Photos from Thyagaraja Aradhana, Chamber Concerts, Bharatanatyam performances, and more in Atlanta, GA." />
-  <meta name="twitter:image"       content="https://atlfinearts.com/assets/images/og-image.jpg" />
-
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet"
@@ -268,9 +251,9 @@
         <div class="footer__brand">
           <p class="footer__brand-name">Atlanta Fine Arts</p>
           <p class="footer__tagline">A volunteer-driven non-profit dedicated to celebrating Indian classical dance and music in the Atlanta area.</p>
-          <a href="/cdn-cgi/l/email-protection#d9b8bfb8bab8abb7b8adb0ba99beb4b8b0b5f7bab6b4" class="footer__email">
+          <a href="/cdn-cgi/l/email-protection#c8a9aea9aba9baa6a9bca1ab88afa5a9a1a4e6aba7a5" class="footer__email">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-            <span class="__cf_email__" data-cfemail="b9d8dfd8dad8cbd7d8cdd0daf9ded4d8d0d597dad6d4">[email&#160;protected]</span>
+            <span class="__cf_email__" data-cfemail="026364636163706c63766b6142656f636b6e2c616d6f">[email&#160;protected]</span>
           </a>
         </div>
         <nav aria-label="Footer site navigation">
@@ -304,6 +287,8 @@
   <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   (function () {
     'use strict';
+
+    /* ── Nav ── */
     var nav = document.getElementById('nav');
     function updateNav() { nav.classList.toggle('scrolled', window.scrollY > 40); }
     window.addEventListener('scroll', updateNav, { passive: true });
@@ -316,42 +301,58 @@
     function closeMenu() { isOpen = false; toggle.setAttribute('aria-expanded','false'); mobileMenu.classList.remove('open'); mobileMenu.setAttribute('aria-hidden','true'); document.body.style.overflow = ''; }
     toggle.addEventListener('click', function () { isOpen ? closeMenu() : openMenu(); });
     document.querySelectorAll('[data-mobile-link]').forEach(function (l) { l.addEventListener('click', closeMenu); });
-    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && isOpen) closeMenu(); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && isOpen) { closeMenu(); closeLightbox(); } });
 
-    /* Scroll reveal */
+    /* ── Scroll reveal ── */
     if ('IntersectionObserver' in window) {
       var io = new IntersectionObserver(function (entries) {
-        entries.forEach(function (entry) { if (entry.isIntersecting) { entry.target.classList.add('visible'); io.unobserve(entry.target); } });
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) { entry.target.classList.add('visible'); io.unobserve(entry.target); }
+        });
       }, { threshold: 0.05 });
       document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
     } else {
       document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('visible'); });
     }
 
-    /* Gallery filters */
+    /* ── Gallery filters ── */
     var filters = document.querySelectorAll('.gallery-filter');
-    var items = document.querySelectorAll('.gallery-item');
-    filters.forEach(function(f) {
-      f.addEventListener('click', function() {
-        filters.forEach(function(b){ b.classList.remove('active'); b.setAttribute('aria-selected','false'); });
+    var items   = document.querySelectorAll('.gallery-item');
+    filters.forEach(function (f) {
+      f.addEventListener('click', function () {
+        filters.forEach(function (b) { b.classList.remove('active'); b.setAttribute('aria-selected', 'false'); });
         f.classList.add('active');
-        f.setAttribute('aria-selected','true');
+        f.setAttribute('aria-selected', 'true');
         var cat = f.dataset.filter;
-        items.forEach(function(item) {
+        items.forEach(function (item) {
           item.hidden = !(cat === 'all' || item.dataset.category === cat);
         });
       });
     });
 
-    /* Lightbox */
-    window.openLightbox = function(el) {
-      var img = el.querySelector('img');
+    /* ── Lightbox ── */
+    window.openLightbox = function (el) {
+      var img   = el.querySelector('img');
       var title = el.querySelector('.gallery-item__title');
-      document.getElementById('lightbox-img').src = img.src;
-      document.getElementById('lightbox-img').alt = img.alt;
+      document.getElementById('lightbox-img').src         = img.src;
+      document.getElementById('lightbox-img').alt         = img.alt;
       document.getElementById('lightbox-caption').textContent = title ? title.textContent : '';
       document.getElementById('lightbox').classList.add('open');
       document.body.style.overflow = 'hidden';
     };
-    window.closeLightbox = function() {
-      document.g
+
+    window.closeLightbox = function () {
+      document.getElementById('lightbox').classList.remove('open');
+      document.getElementById('lightbox-img').src = '';
+      document.body.style.overflow = '';
+    };
+
+    /* ── Keyboard nav for lightbox ── */
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') closeLightbox();
+    });
+
+  }());
+  </script>
+</body>
+</html>
