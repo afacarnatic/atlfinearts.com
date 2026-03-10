@@ -274,26 +274,15 @@
             <input type="text" class="search-input" id="filter-search" placeholder="Search by name…" />
           </div>
           <div class="filter-group">
-            <label for="filter-genre">Genre / Style</label>
+            <label for="filter-genre">Genre</label>
             <select class="filter-select" id="filter-genre">
-              <option value="all">All Genres</option>
-              <option value="Carnatic">Carnatic</option>
-              <option value="Hindustani">Hindustani</option>
+              <option value="all">All</option>
+              <option value="Carnatic Vocal">Carnatic Vocal</option>
+              <option value="Carnatic Instrumental">Carnatic Instrumental</option>
+              <option value="Hindustani Vocal">Hindustani Vocal</option>
+              <option value="Hindustani Instrumental">Hindustani Instrumental</option>
               <option value="Bharatanatyam">Bharatanatyam</option>
               <option value="Kuchipudi">Kuchipudi</option>
-            </select>
-          </div>
-          <div class="filter-group">
-            <label for="filter-instrument">Instrument</label>
-            <select class="filter-select" id="filter-instrument">
-              <option value="all">All Instruments</option>
-              <option value="Vocal">Vocal</option>
-              <option value="Violin">Violin</option>
-              <option value="Veena">Veena</option>
-              <option value="Flute">Flute</option>
-              <option value="Mridangam">Mridangam</option>
-              <option value="Tabla">Tabla</option>
-              <option value="Dance">Dance</option>
             </select>
           </div>
           <div class="filter-group">
@@ -541,19 +530,16 @@
     /* ── Filters ── */
     var filterSearch     = document.getElementById('filter-search');
     var filterGenre      = document.getElementById('filter-genre');
-    var filterInstrument = document.getElementById('filter-instrument');
     var filterArea       = document.getElementById('filter-area');
 
     function applyFilters() {
       var search     = filterSearch.value.toLowerCase().trim();
       var genre      = filterGenre.value;
-      var instrument = filterInstrument.value;
       var area       = filterArea.value;
 
       var filtered = allTeachers.filter(function(t) {
         if (search && t.name.toLowerCase().indexOf(search) === -1) return false;
         if (genre !== 'all' && t.genre.indexOf(genre) === -1) return false;
-        if (instrument !== 'all' && t.instrument.indexOf(instrument) === -1) return false;
         if (area !== 'all' && t.area.indexOf(area) === -1) return false;
         return true;
       });
@@ -563,7 +549,6 @@
 
     filterSearch.addEventListener('input', applyFilters);
     filterGenre.addEventListener('change', applyFilters);
-    filterInstrument.addEventListener('change', applyFilters);
     filterArea.addEventListener('change', applyFilters);
 
     /* ── Load data ── */
