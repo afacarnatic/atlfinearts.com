@@ -21,36 +21,6 @@
     .nav__wordmark span { color: rgba(255,255,255,0.7) !important; }
     .nav__link { color: rgba(255,255,255,0.85) !important; }
     .nav:not(.scrolled) { background: linear-gradient(to bottom, rgba(0,0,0,0.55) 0%, transparent 100%) !important; }
-
-    /* Zelle card — fully responsive */
-    .zelle-card {
-      background: var(--ivory-warm);
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      padding: clamp(1.25rem, 4vw, 1.5rem);
-      text-align: center;
-    }
-    .zelle-card__label {
-      font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase;
-      color: var(--purple); font-weight: 500; margin-block-end: 0.75rem;
-    }
-    .zelle-card__number {
-      font-family: var(--font-display);
-      font-size: clamp(1.4rem, 5vw, 1.75rem);
-      font-weight: 500; color: var(--charcoal); margin-block-end: 0.25rem;
-      word-break: break-all;
-    }
-    .zelle-card__desc {
-      font-size: 0.875rem; color: var(--text-muted);
-      line-height: 1.6; margin-block-end: 1.25rem;
-    }
-    .zelle-card__btn {
-      display: flex; width: 100%; justify-content: center;
-    }
-    .donate-footer-note {
-      font-size: 0.8rem; color: var(--text-muted);
-      text-align: center; margin-block-start: 0.75rem;
-    }
   </style>
 </head>
 <body>
@@ -208,27 +178,25 @@
             </div>
 
             <div class="donate-methods">
-              <div class="zelle-card">
-                <p class="zelle-card__label">Donate via Zelle</p>
-                <p class="zelle-card__number">586-604-6388</p>
-                <p class="zelle-card__desc">
+              <div style="background:var(--ivory-warm);border:1px solid var(--border);border-radius:4px;padding:1.5rem;text-align:center;">
+                <p style="font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--purple);font-weight:500;margin-block-end:0.75rem;">Donate via Zelle</p>
+                <p style="font-family:var(--font-display);font-size:1.75rem;font-weight:500;color:var(--charcoal);margin-block-end:0.25rem;">586-604-6388</p>
+                <p style="font-size:0.875rem;color:var(--text-muted);line-height:1.6;margin-block-end:1.25rem;">
                   Send your donation directly via Zelle using the phone number above.
                   Open your banking app, select Zelle, and send to this number.
                 </p>
-                <div class="zelle-card__btn">
-                  <button class="btn btn--primary" id="copy-zelle-btn" style="width:100%;justify-content:center;" aria-label="Copy Zelle number to clipboard">
-                    Copy Number
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                         stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                      <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
-                      <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/>
-                    </svg>
-                  </button>
-                </div>
+                <a href="#" class="btn btn--primary" style="width:100%;justify-content:center;" onclick="navigator.clipboard.writeText('5866046388').then(function(){this.textContent='Copied!'}.bind(this));return false;">
+                  Copy Number
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                       stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                    <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/>
+                  </svg>
+                </a>
               </div>
-              <p class="donate-footer-note">
+              <p style="font-size:0.8rem;color:var(--text-muted);text-align:center;margin-block-start:0.75rem;">
                 Questions about donating? Contact us at
-                <a href="/cdn-cgi/l/email-protection#7b1a1d1a181a09151a0f12183b1c161a121755181416" style="color:var(--purple);"><span class="__cf_email__" data-cfemail="fb9a9d9a989a89959a8f9298bb9c969a9297d5989496">[email&#160;protected]</span></a>
+                <a href="/cdn-cgi/l/email-protection#b7d6d1d6d4d6c5d9d6c3ded4f7d0dad6dedb99d4d8da" style="color:var(--purple);"><span class="__cf_email__" data-cfemail="e28384838183908c83968b81a2858f838b8ecc818d8f">[email&#160;protected]</span></a>
               </p>
             </div>
           </div>
@@ -246,9 +214,9 @@
         <div class="footer__brand">
           <p class="footer__brand-name">Atlanta Fine Arts</p>
           <p class="footer__tagline">A volunteer-driven non-profit dedicated to celebrating Indian classical dance and music in the Atlanta area.</p>
-          <a href="/cdn-cgi/l/email-protection#7e1f181f1d1f0c101f0a171d3e19131f1712501d1113" class="footer__email">
+          <a href="/cdn-cgi/l/email-protection#7a1b1c1b191b08141b0e13193a1d171b131654191517" class="footer__email">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-            <span class="__cf_email__" data-cfemail="86e7e0e7e5e7f4e8e7f2efe5c6e1ebe7efeaa8e5e9eb">[email&#160;protected]</span>
+            <span class="__cf_email__" data-cfemail="412027202220332f2035282201262c20282d6f222e2c">[email&#160;protected]</span>
           </a>
         </div>
         <nav aria-label="Footer site navigation">
@@ -311,7 +279,7 @@
     }
 
     /* ── Donate amount buttons ── */
-    var amountBtns = document.querySelectorAll('.donate-amount-btn');
+    var amountBtns  = document.querySelectorAll('.donate-amount-btn');
     var customInput = document.getElementById('custom-amount');
 
     amountBtns.forEach(function (btn) {
@@ -338,9 +306,7 @@
           navigator.clipboard.writeText('5866046388').then(function () {
             btn.textContent = 'Copied! ✓';
             setTimeout(function () { btn.innerHTML = originalHTML; }, 2500);
-          }).catch(function () {
-            fallbackCopy(btn, originalHTML);
-          });
+          }).catch(function () { fallbackCopy(btn, originalHTML); });
         } else {
           fallbackCopy(btn, originalHTML);
         }
@@ -348,7 +314,6 @@
     }
 
     function fallbackCopy(btn, originalHTML) {
-      /* Fallback: select a hidden input for older browsers */
       var tmp = document.createElement('input');
       tmp.value = '5866046388';
       document.body.appendChild(tmp);
