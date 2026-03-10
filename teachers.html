@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Find a Teacher | Atlanta Fine Arts — Carnatic, Hindustani, Bharatanatyam &amp; More</title>
+  <meta name="description" content="Find Indian classical music and dance teachers in the Atlanta area — Carnatic, Hindustani, Bharatanatyam, Kuchipudi. Vocal, violin, veena, tabla, mridangam, flute teachers in Cumming, Alpharetta, Marietta, and more." />
+  <meta name="keywords" content="Carnatic music teacher Atlanta, Hindustani music teacher Atlanta, Bharatanatyam teacher Atlanta, violin teacher Cumming GA, veena teacher Alpharetta, tabla teacher Marietta, Indian classical music lessons Atlanta" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://atlfinearts.com/teachers.html" />
+  <meta name="theme-color" content="#13101E" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,500;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="pages.css" />
+
+  <style>
+    .nav__wordmark { color: #fff !important; }
+    .nav__wordmark span { color: rgba(255,255,255,0.7) !important; }
+    .nav__link { color: rgba(255,255,255,0.85) !important; }
+    .nav:not(.scrolled) { background: linear-gradient(to bottom, rgba(0,0,0,0.55) 0%, transparent 100%) !important; }
+
+    /* ── TEACHER DIRECTORY STYLES ── */
+    .teachers-section { background: var(--ivory-warm); }
+
+    .filters-bar {
+      display: flex; flex-wrap: wrap; gap: 1rem;
+      margin-block-end: 2.5rem;
+      padding: 1.25rem 1.5rem;
+      background: var(--ivory);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+    }
+    .filter-group { display: flex; flex-direction: column; gap: 0.35rem; flex: 1; min-width: 180px; }
+    .filter-group label {
+      font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase;
+      font-weight: 500; color: var(--text-muted);
+    }
+    .filter-select {
+      font-family: var(--font-body); font-size: 0.875rem;
+      color: var(--charcoal); background: var(--ivory-warm);
+      border: 1px solid var(--border); border-radius: 3px;
+      padding: 0.6rem 0.85rem; min-height: 40px;
+      outline: none; appearance: none; cursor: pointer;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23756A90' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 0.75rem center;
+      padding-right: 2rem;
+      transition: border-color 0.2s;
+    }
+    .filter-select:focus { border-color: var(--purple); box-shadow: 0 0 0 3px rgba(94,23,235,0.12); }
+
+    .search-input {
+      font-family: var(--font-body); font-size: 0.875rem;
+      color: var(--charcoal); background: var(--ivory-warm);
+      border: 1px solid var(--border); border-radius: 3px;
+      padding: 0.6rem 0.85rem; min-height: 40px; width: 100%;
+      outline: none; transition: border-color 0.2s;
+    }
+    .search-input:focus { border-color: var(--purple); box-shadow: 0 0 0 3px rgba(94,23,235,0.12); }
+
+    .teachers-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
+      gap: clamp(1.25rem, 2.5vw, 1.75rem);
+    }
+
+    .teacher-card {
+      background: var(--ivory);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+      transition: transform 0.35s var(--ease-out), box-shadow 0.35s var(--ease-out);
+      display: flex; flex-direction: column;
+    }
+    .teacher-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 60px rgba(94,23,235,0.1);
+    }
+
+    .teacher-card__header {
+      display: flex; align-items: center; gap: 1rem;
+      padding: 1.5rem 1.5rem 0;
+    }
+    .teacher-card__avatar {
+      width: 72px; height: 72px; border-radius: 50%;
+      overflow: hidden; flex-shrink: 0;
+      background: linear-gradient(135deg, var(--purple-pale), var(--saffron-pale));
+      border: 2px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .teacher-card__avatar img {
+      width: 100%; height: 100%; object-fit: cover; object-position: top center;
+    }
+    .teacher-card__avatar-initials {
+      font-family: var(--font-display);
+      font-size: 1.5rem; font-weight: 500;
+      color: var(--purple-deep);
+    }
+    .teacher-card__name {
+      font-family: var(--font-display);
+      font-size: 1.3rem; font-weight: 500;
+      color: var(--charcoal); line-height: 1.2;
+    }
+    .teacher-card__genre {
+      font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase;
+      font-weight: 500; color: var(--purple); margin-top: 0.15rem;
+    }
+
+    .teacher-card__body {
+      padding: 1rem 1.5rem 1.5rem;
+      flex: 1; display: flex; flex-direction: column; gap: 0.6rem;
+    }
+
+    .teacher-card__detail {
+      display: flex; align-items: flex-start; gap: 0.6rem;
+      font-size: 0.875rem; color: var(--text-body);
+    }
+    .teacher-card__detail-icon {
+      flex-shrink: 0; width: 18px; color: var(--purple); margin-top: 2px;
+    }
+    .teacher-card__detail-label {
+      font-size: 0.65rem; letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--text-muted); font-weight: 500;
+    }
+    .teacher-card__detail-value { color: var(--charcoal); }
+
+    .teacher-card__instruments {
+      display: flex; flex-wrap: wrap; gap: 0.35rem;
+      margin-block-start: 0.25rem;
+    }
+
+    .teacher-card__links {
+      display: flex; gap: 0.5rem; flex-wrap: wrap;
+      margin-block-start: auto; padding-top: 0.75rem;
+      border-top: 1px solid var(--border);
+    }
+    .teacher-card__link {
+      font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase;
+      font-weight: 500; color: var(--purple);
+      display: inline-flex; align-items: center; gap: 0.3rem;
+      transition: color 0.2s; padding: 0.25rem 0;
+    }
+    .teacher-card__link:hover { color: var(--saffron-btn); }
+
+    /* Loading state */
+    .teachers-loading {
+      text-align: center; padding: 4rem 2rem;
+      color: var(--text-muted); font-size: 0.9375rem;
+    }
+    .teachers-loading__spinner {
+      width: 36px; height: 36px; border: 3px solid var(--border);
+      border-top-color: var(--purple); border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      margin: 0 auto 1rem;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* Empty state */
+    .teachers-empty {
+      text-align: center; padding: 4rem 2rem;
+      color: var(--text-muted);
+    }
+    .teachers-empty__icon {
+      font-size: 2.5rem; margin-block-end: 1rem; opacity: 0.5;
+    }
+
+    /* Count */
+    .teachers-count {
+      font-size: 0.8rem; color: var(--text-muted);
+      margin-block-end: 1.25rem;
+    }
+
+    /* Submit CTA banner */
+    .submit-banner {
+      background: linear-gradient(135deg, var(--purple-deep) 0%, var(--charcoal) 100%);
+      color: #fff; text-align: center;
+      padding: clamp(3rem, 6vw, 4.5rem) 2rem;
+    }
+    .submit-banner__title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 2.75rem); font-weight: 300;
+      line-height: 1.2; margin-block-end: 1rem;
+    }
+    .submit-banner__title em { font-style: italic; color: var(--gold-light); }
+    .submit-banner__desc {
+      color: rgba(255,255,255,0.7); font-weight: 300;
+      line-height: 1.8; max-width: 50ch; margin: 0 auto 2rem;
+    }
+
+    @media (max-width: 600px) {
+      .filters-bar { flex-direction: column; }
+      .filter-group { min-width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div class="kolam-border" aria-hidden="true"></div>
+
+  <!-- NAVIGATION -->
+  <nav class="nav" id="nav" aria-label="Main navigation">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__brand" aria-label="Atlanta Fine Arts — home">
+        <div class="nav__logo" aria-hidden="true">
+          <img src="assets/images/afa-logo.webp" alt="" width="36" height="36"
+               style="border-radius:50%;object-fit:cover;" />
+        </div>
+        <div class="nav__wordmark">
+          Atlanta Fine Arts
+          <span>Indian Classical Arts</span>
+        </div>
+      </a>
+      <ul class="nav__links" role="list">
+        <li><a href="index.html#about" class="nav__link">About</a></li>
+        <li><a href="index.html#events" class="nav__link">Events</a></li>
+        <li><a href="volunteers.html" class="nav__link">Volunteers</a></li>
+        <li><a href="teachers.html" class="nav__link">Find a Teacher</a></li>
+        <li><a href="gallery.html" class="nav__link">Gallery</a></li>
+        <li><a href="donate.html" class="nav__link">Donate</a></li>
+        <li><a href="contact.html" class="nav__link nav__link--cta">Contact Us</a></li>
+      </ul>
+      <button class="nav__toggle" id="nav-toggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-menu">
+        <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
+      </button>
+    </div>
+    <div class="nav__mobile" id="mobile-menu" aria-hidden="true" role="region" aria-label="Mobile navigation">
+      <ul class="nav__mobile-links" role="list">
+        <li><a href="index.html" class="nav__mobile-link" data-mobile-link>Home <span class="arrow" aria-hidden="true">→</span></a></li>
+        <li><a href="index.html#events" class="nav__mobile-link" data-mobile-link>Events <span class="arrow" aria-hidden="true">→</span></a></li>
+        <li><a href="volunteers.html" class="nav__mobile-link" data-mobile-link>Volunteers <span class="arrow" aria-hidden="true">→</span></a></li>
+        <li><a href="teachers.html" class="nav__mobile-link" data-mobile-link>Find a Teacher <span class="arrow" aria-hidden="true">→</span></a></li>
+        <li><a href="gallery.html" class="nav__mobile-link" data-mobile-link>Gallery <span class="arrow" aria-hidden="true">→</span></a></li>
+        <li><a href="donate.html" class="nav__mobile-link" data-mobile-link>Donate <span class="arrow" aria-hidden="true">→</span></a></li>
+        <li><a href="contact.html" class="nav__mobile-link" data-mobile-link>Contact Us <span class="arrow" aria-hidden="true">→</span></a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main id="main-content">
+
+    <!-- PAGE HERO -->
+    <section class="page-hero" aria-label="Page introduction">
+      <div class="container">
+        <p class="page-hero__eyebrow">Teacher Directory</p>
+        <h1 class="page-hero__title">Find a <em>Teacher</em></h1>
+        <p class="page-hero__desc">
+          Discover Indian classical music and dance teachers across the Atlanta area —
+          Carnatic, Hindustani, Bharatanatyam, Kuchipudi, and more. Filter by instrument,
+          genre, or location to find the right match.
+        </p>
+      </div>
+    </section>
+
+    <!-- TEACHER DIRECTORY -->
+    <section class="teachers-section" aria-labelledby="teachers-heading">
+      <div class="container">
+
+        <div style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:1.5rem;margin-block-end:2rem;">
+          <div>
+            <p class="section-label">Browse Teachers</p>
+            <h2 class="section-title" id="teachers-heading">Atlanta Area <em>Teachers</em></h2>
+          </div>
+        </div>
+
+        <!-- FILTERS -->
+        <div class="filters-bar" role="search" aria-label="Filter teachers">
+          <div class="filter-group">
+            <label for="filter-search">Search</label>
+            <input type="text" class="search-input" id="filter-search" placeholder="Search by name…" />
+          </div>
+          <div class="filter-group">
+            <label for="filter-genre">Genre / Style</label>
+            <select class="filter-select" id="filter-genre">
+              <option value="all">All Genres</option>
+              <option value="Carnatic">Carnatic</option>
+              <option value="Hindustani">Hindustani</option>
+              <option value="Bharatanatyam">Bharatanatyam</option>
+              <option value="Kuchipudi">Kuchipudi</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <label for="filter-instrument">Instrument</label>
+            <select class="filter-select" id="filter-instrument">
+              <option value="all">All Instruments</option>
+              <option value="Vocal">Vocal</option>
+              <option value="Violin">Violin</option>
+              <option value="Veena">Veena</option>
+              <option value="Flute">Flute</option>
+              <option value="Mridangam">Mridangam</option>
+              <option value="Tabla">Tabla</option>
+              <option value="Dance">Dance</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <label for="filter-area">Area</label>
+            <select class="filter-select" id="filter-area">
+              <option value="all">All Areas</option>
+              <option value="Cumming">Cumming</option>
+              <option value="Alpharetta">Alpharetta</option>
+              <option value="Johns Creek">Johns Creek</option>
+              <option value="Suwanee">Suwanee</option>
+              <option value="Duluth">Duluth</option>
+              <option value="Marietta">Marietta</option>
+              <option value="Roswell">Roswell</option>
+              <option value="Decatur">Decatur</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- RESULTS COUNT -->
+        <p class="teachers-count" id="teachers-count" aria-live="polite"></p>
+
+        <!-- LOADING STATE -->
+        <div class="teachers-loading" id="teachers-loading">
+          <div class="teachers-loading__spinner"></div>
+          <p>Loading teacher directory…</p>
+        </div>
+
+        <!-- TEACHER CARDS — dynamically rendered -->
+        <div class="teachers-grid" id="teachers-grid" aria-label="Teacher listings"></div>
+
+        <!-- EMPTY STATE -->
+        <div class="teachers-empty" id="teachers-empty" style="display:none;">
+          <div class="teachers-empty__icon" aria-hidden="true">🎵</div>
+          <p style="font-size:1.125rem;color:var(--charcoal);margin-block-end:0.5rem;">No teachers found</p>
+          <p>Try adjusting your filters or <a href="#submit" style="color:var(--purple);">submit a listing</a>.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SUBMIT CTA -->
+    <section class="submit-banner" id="submit" aria-label="Submit your listing">
+      <div class="container" style="max-width:680px;">
+        <h2 class="submit-banner__title">Are You a <em>Teacher</em>?</h2>
+        <p class="submit-banner__desc">
+          If you teach Indian classical music or dance in the Atlanta area,
+          add yourself to our free directory. Your listing will appear
+          automatically once you submit the form.
+        </p>
+        <!--
+          ═══════════════════════════════════════════════════════
+          IMPORTANT: Replace the # in the href below with your
+          actual Google Form URL after you create it.
+          See the SETUP-GUIDE.md file for step-by-step instructions.
+          ═══════════════════════════════════════════════════════
+        -->
+        <a href="#" id="submit-form-link" class="btn btn--primary" target="_blank" rel="noopener noreferrer">
+          Submit Your Listing
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+               stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="5" y1="12" x2="19" y2="12"/>
+            <polyline points="12 5 19 12 12 19"/>
+          </svg>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <div class="kolam-border" aria-hidden="true"></div>
+  <footer class="footer" aria-label="Site footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div class="footer__brand">
+          <p class="footer__brand-name">Atlanta Fine Arts</p>
+          <p class="footer__tagline">A volunteer-driven non-profit dedicated to celebrating Indian classical dance and music in the Atlanta area.</p>
+          <a href="mailto:afacarnatic@gmail.com" class="footer__email">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            afacarnatic@gmail.com
+          </a>
+        </div>
+        <nav aria-label="Footer site navigation">
+          <p class="footer__col-title">Navigate</p>
+          <ul class="footer__links" role="list">
+            <li><a href="index.html" class="footer__link">Home</a></li>
+            <li><a href="index.html#events" class="footer__link">Events</a></li>
+            <li><a href="volunteers.html" class="footer__link">Volunteers</a></li>
+            <li><a href="teachers.html" class="footer__link">Find a Teacher</a></li>
+            <li><a href="gallery.html" class="footer__link">Gallery</a></li>
+            <li><a href="donate.html" class="footer__link">Donate</a></li>
+            <li><a href="contact.html" class="footer__link">Contact</a></li>
+          </ul>
+        </nav>
+        <nav aria-label="Social media links">
+          <p class="footer__col-title">Follow Us</p>
+          <ul class="footer__socials" role="list">
+            <li><a href="https://www.instagram.com/atlanta.finearts" class="footer__social" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+            <li><a href="https://www.facebook.com/afacarnatic" class="footer__social" target="_blank" rel="noopener noreferrer">Facebook</a></li>
+            <li><a href="https://www.youtube.com/@atlfinearts" class="footer__social" target="_blank" rel="noopener noreferrer">YouTube</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="footer__bottom">
+        <p class="footer__copy">© 2025 Atlanta Fine Arts (AFA). All rights reserved.</p>
+        <p class="footer__credit">Built with ♡ for the Indian classical arts community</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+  (function () {
+    'use strict';
+
+    /* ── Nav ── */
+    var nav = document.getElementById('nav');
+    function updateNav() { nav.classList.toggle('scrolled', window.scrollY > 40); }
+    window.addEventListener('scroll', updateNav, { passive: true });
+    updateNav();
+    var toggle = document.getElementById('nav-toggle');
+    var mobileMenu = document.getElementById('mobile-menu');
+    var isOpen = false;
+    function openMenu() { isOpen = true; toggle.setAttribute('aria-expanded','true'); mobileMenu.classList.add('open'); mobileMenu.setAttribute('aria-hidden','false'); document.body.style.overflow = 'hidden'; }
+    function closeMenu() { isOpen = false; toggle.setAttribute('aria-expanded','false'); mobileMenu.classList.remove('open'); mobileMenu.setAttribute('aria-hidden','true'); document.body.style.overflow = ''; }
+    toggle.addEventListener('click', function () { isOpen ? closeMenu() : openMenu(); });
+    document.querySelectorAll('[data-mobile-link]').forEach(function (l) { l.addEventListener('click', closeMenu); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && isOpen) closeMenu(); });
+
+    /* ══════════════════════════════════════════════════════════
+       GOOGLE SHEET CONFIGURATION
+       ──────────────────────────────────────────────────────────
+       Replace the SHEET_ID below with your actual Google Sheet ID.
+       The sheet ID is the long string in your Google Sheet URL:
+       https://docs.google.com/spreadsheets/d/SHEET_ID_HERE/edit
+
+       Your sheet must be "Published to the web" (File → Share → Publish to web)
+       and the columns must be in this exact order:
+       A: Timestamp
+       B: Name
+       C: Genre (Carnatic, Hindustani, Bharatanatyam, Kuchipudi)
+       D: Instrument(s)
+       E: Area/City
+       F: Email
+       G: Phone
+       H: Website or Social Media Link
+       ══════════════════════════════════════════════════════════ */
+
+    var SHEET_ID = '1BKL7WV9dfGpvmmBEdbsrMtm0Y5CEsE9uyz4gYOM_fMM';
+    var SHEET_NAME = 'Form_Responses';
+    var SHEET_URL = 'https://docs.google.com/spreadsheets/d/' + SHEET_ID + '/gviz/tq?tqx=out:json&sheet=' + encodeURIComponent(SHEET_NAME);
+
+    var allTeachers = [];
+    var gridEl     = document.getElementById('teachers-grid');
+    var loadingEl  = document.getElementById('teachers-loading');
+    var emptyEl    = document.getElementById('teachers-empty');
+    var countEl    = document.getElementById('teachers-count');
+
+    /* ── Fetch from Google Sheet ── */
+    function fetchTeachers() {
+      var script = document.createElement('script');
+
+      // Use JSONP-style fetch via the Google Sheets visualization API
+      fetch(SHEET_URL)
+        .then(function(res) { return res.text(); })
+        .then(function(text) {
+          // Google wraps the JSON in google.visualization.Query.setResponse(...)
+          var json = JSON.parse(text.substring(text.indexOf('{'), text.lastIndexOf('}') + 1));
+          var rows = json.table.rows;
+          var cols = json.table.cols;
+
+          allTeachers = rows.map(function(row) {
+            var cells = row.c;
+            return {
+              name:       cells[1] ? (cells[1].v || '') : '',
+              genre:      cells[2] ? (cells[2].v || '') : '',
+              instrument: cells[3] ? (cells[3].v || '') : '',
+              area:       cells[4] ? (cells[4].v || '') : '',
+              email:      cells[5] ? (cells[5].v || '') : '',
+              phone:      cells[6] ? (cells[6].v || '') : '',
+              website:    cells[7] ? (cells[7].v || '') : ''
+            };
+          }).filter(function(t) { return t.name.trim() !== ''; });
+
+          loadingEl.style.display = 'none';
+          renderTeachers(allTeachers);
+        })
+        .catch(function(err) {
+          console.error('Failed to load teacher data:', err);
+          loadingEl.innerHTML = '<p style="color:var(--text-muted);">Unable to load teacher directory. Please try refreshing the page.</p>';
+        });
+    }
+
+    /* ── Get initials for avatar fallback ── */
+    function getInitials(name) {
+      return name.split(' ').map(function(w) { return w[0]; }).join('').substring(0, 2).toUpperCase();
+    }
+
+    /* ── Render teacher cards ── */
+    function renderTeachers(teachers) {
+      if (teachers.length === 0) {
+        gridEl.innerHTML = '';
+        emptyEl.style.display = 'block';
+        countEl.textContent = '';
+        return;
+      }
+
+      emptyEl.style.display = 'none';
+      countEl.textContent = teachers.length + ' teacher' + (teachers.length !== 1 ? 's' : '') + ' found';
+
+      gridEl.innerHTML = teachers.map(function(t) {
+        var avatarHTML = '<div class="teacher-card__avatar"><span class="teacher-card__avatar-initials">' + getInitials(t.name) + '</span></div>';
+
+        var instruments = t.instrument.split(',').map(function(i) {
+          return '<span class="tag">' + i.trim() + '</span>';
+        }).join('');
+
+        var linksHTML = '';
+        if (t.email) linksHTML += '<a href="mailto:' + t.email + '" class="teacher-card__link">Email</a>';
+        if (t.phone) linksHTML += '<a href="tel:' + t.phone.replace(/[^+\d]/g, '') + '" class="teacher-card__link">Call</a>';
+        if (t.website) linksHTML += '<a href="' + t.website + '" target="_blank" rel="noopener noreferrer" class="teacher-card__link">Website ↗</a>';
+
+        return '<div class="teacher-card">' +
+          '<div class="teacher-card__header">' +
+            avatarHTML +
+            '<div>' +
+              '<h3 class="teacher-card__name">' + t.name + '</h3>' +
+              '<p class="teacher-card__genre">' + t.genre + '</p>' +
+            '</div>' +
+          '</div>' +
+          '<div class="teacher-card__body">' +
+            '<div>' +
+              '<p class="teacher-card__detail-label">Instrument(s)</p>' +
+              '<div class="teacher-card__instruments">' + instruments + '</div>' +
+            '</div>' +
+            '<div class="teacher-card__detail">' +
+              '<span class="teacher-card__detail-icon">📍</span>' +
+              '<span class="teacher-card__detail-value">' + t.area + '</span>' +
+            '</div>' +
+            (linksHTML ? '<div class="teacher-card__links">' + linksHTML + '</div>' : '') +
+          '</div>' +
+        '</div>';
+      }).join('');
+    }
+
+    /* ── Filters ── */
+    var filterSearch     = document.getElementById('filter-search');
+    var filterGenre      = document.getElementById('filter-genre');
+    var filterInstrument = document.getElementById('filter-instrument');
+    var filterArea       = document.getElementById('filter-area');
+
+    function applyFilters() {
+      var search     = filterSearch.value.toLowerCase().trim();
+      var genre      = filterGenre.value;
+      var instrument = filterInstrument.value;
+      var area       = filterArea.value;
+
+      var filtered = allTeachers.filter(function(t) {
+        if (search && t.name.toLowerCase().indexOf(search) === -1) return false;
+        if (genre !== 'all' && t.genre.indexOf(genre) === -1) return false;
+        if (instrument !== 'all' && t.instrument.indexOf(instrument) === -1) return false;
+        if (area !== 'all' && t.area.indexOf(area) === -1) return false;
+        return true;
+      });
+
+      renderTeachers(filtered);
+    }
+
+    filterSearch.addEventListener('input', applyFilters);
+    filterGenre.addEventListener('change', applyFilters);
+    filterInstrument.addEventListener('change', applyFilters);
+    filterArea.addEventListener('change', applyFilters);
+
+    /* ── Load data ── */
+    fetchTeachers();
+
+  })();
+  </script>
+
+</body>
+</html>
