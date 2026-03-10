@@ -10,48 +10,11 @@
   <link rel="canonical" href="https://atlfinearts.com/teachers.html" />
   <meta name="theme-color" content="#13101E" />
 
-  <!-- Open Graph -->
-  <meta property="og:type"        content="website" />
-  <meta property="og:url"         content="https://atlfinearts.com/teachers.html" />
-  <meta property="og:title"       content="Find a Teacher | Atlanta Fine Arts — Indian Classical Music &amp; Dance" />
-  <meta property="og:description" content="Find Indian classical music and dance teachers in Atlanta — Carnatic, Hindustani, Bharatanatyam, Kuchipudi. Filter by instrument, genre, or area." />
-  <meta property="og:image"       content="https://atlfinearts.com/assets/images/og-image.jpg" />
-  <meta property="og:image:width"  content="1200" />
-  <meta property="og:image:height" content="630" />
-  <meta property="og:locale"      content="en_US" />
-  <meta property="og:site_name"   content="Atlanta Fine Arts" />
-
-  <!-- Twitter / X card -->
-  <meta name="twitter:card"        content="summary_large_image" />
-  <meta name="twitter:title"       content="Find an Indian Classical Arts Teacher in Atlanta | AFA" />
-  <meta name="twitter:description" content="Browse Carnatic, Hindustani, Bharatanatyam, and Kuchipudi teachers across metro Atlanta. Free directory by Atlanta Fine Arts." />
-  <meta name="twitter:image"       content="https://atlfinearts.com/assets/images/og-image.jpg" />
-
-  <!-- JSON-LD Structured Data -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "ItemList",
-    "name": "Indian Classical Music & Dance Teachers in Atlanta",
-    "description": "Directory of Carnatic, Hindustani, Bharatanatyam, and Kuchipudi teachers in the Atlanta, Georgia metro area.",
-    "url": "https://atlfinearts.com/teachers.html",
-    "publisher": {
-      "@type": "Organization",
-      "name": "Atlanta Fine Arts",
-      "url": "https://atlfinearts.com",
-      "logo": "https://atlfinearts.com/assets/images/afa-logo.webp",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Cumming",
-        "addressRegion": "GA",
-        "addressCountry": "US"
-      }
-    }
-  }
-  </script>
-
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <!-- Early connection to Google Sheets so data fetch starts sooner -->
+  <link rel="preconnect" href="https://docs.google.com" />
+  <link rel="dns-prefetch" href="https://docs.google.com" />
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,500;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" />
   <link rel="stylesheet" href="styles.css" />
@@ -104,8 +67,8 @@
 
     .teachers-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
-      gap: clamp(1rem, 2.5vw, 1.75rem);
+      grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
+      gap: clamp(1.25rem, 2.5vw, 1.75rem);
     }
 
     .teacher-card {
@@ -115,9 +78,6 @@
       overflow: hidden;
       transition: transform 0.35s var(--ease-out), box-shadow 0.35s var(--ease-out);
       display: flex; flex-direction: column;
-      /* Prevent cards from causing horizontal scroll */
-      min-width: 0;
-      word-break: break-word;
     }
     .teacher-card:hover {
       transform: translateY(-6px);
@@ -217,6 +177,43 @@
       margin-block-end: 1.25rem;
     }
 
+    /* ── Skeleton loading cards ── */
+    .skeleton-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+      gap: clamp(1rem, 2.5vw, 1.75rem);
+    }
+    .skeleton-card {
+      background: var(--ivory);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1.5rem;
+      display: flex; flex-direction: column; gap: 1rem;
+    }
+    .skeleton-card__header { display: flex; align-items: center; gap: 1rem; }
+    .skeleton-pulse {
+      background: linear-gradient(90deg, var(--border) 25%, var(--ivory-warm) 50%, var(--border) 75%);
+      background-size: 200% 100%;
+      animation: skeletonShimmer 1.4s ease-in-out infinite;
+      border-radius: 3px;
+    }
+    .skeleton-avatar {
+      width: 72px; height: 72px; border-radius: 50%; flex-shrink: 0;
+    }
+    .skeleton-name { height: 20px; width: 60%; }
+    .skeleton-genre { height: 12px; width: 40%; margin-top: 6px; }
+    .skeleton-line { height: 13px; width: 100%; }
+    .skeleton-line--short { width: 55%; }
+    .skeleton-tags { display: flex; gap: 0.4rem; }
+    .skeleton-tag { height: 22px; width: 70px; border-radius: 2px; }
+    @keyframes skeletonShimmer {
+      0%   { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .skeleton-pulse { animation: none; background: var(--border); }
+    }
+
     /* Submit CTA banner */
     .submit-banner {
       background: linear-gradient(135deg, var(--purple-deep) 0%, var(--charcoal) 100%);
@@ -235,13 +232,8 @@
     }
 
     @media (max-width: 600px) {
-      .filters-bar { flex-direction: column; gap: 0.65rem; padding: 1rem; }
+      .filters-bar { flex-direction: column; }
       .filter-group { min-width: 100%; }
-      .teacher-card__header { padding: 1.25rem 1.25rem 0; }
-      .teacher-card__body { padding: 0.85rem 1.25rem 1.25rem; }
-      .teacher-card__name { font-size: 1.15rem; }
-      .teacher-card__avatar { width: 60px; height: 60px; }
-      .teacher-card__avatar-initials { font-size: 1.25rem; }
     }
   </style>
 </head>
@@ -308,7 +300,7 @@
     <section class="teachers-section" aria-labelledby="teachers-heading">
       <div class="container">
 
-        <div style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-block-end:2rem;">
+        <div style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:1.5rem;margin-block-end:2rem;">
           <div>
             <p class="section-label">Browse Teachers</p>
             <h2 class="section-title" id="teachers-heading">Atlanta Area <em>Teachers</em></h2>
@@ -354,10 +346,58 @@
         <!-- RESULTS COUNT -->
         <p class="teachers-count" id="teachers-count" aria-live="polite"></p>
 
-        <!-- LOADING STATE -->
-        <div class="teachers-loading" id="teachers-loading">
-          <div class="teachers-loading__spinner"></div>
-          <p>Loading teacher directory…</p>
+        <!-- LOADING STATE — skeleton cards shown immediately -->
+        <div id="teachers-loading">
+          <div class="skeleton-grid" aria-hidden="true">
+            <div class="skeleton-card">
+              <div class="skeleton-card__header">
+                <div class="skeleton-pulse skeleton-avatar"></div>
+                <div style="flex:1"><div class="skeleton-pulse skeleton-name"></div><div class="skeleton-pulse skeleton-genre"></div></div>
+              </div>
+              <div class="skeleton-tags"><div class="skeleton-pulse skeleton-tag"></div><div class="skeleton-pulse skeleton-tag"></div></div>
+              <div class="skeleton-pulse skeleton-line"></div><div class="skeleton-pulse skeleton-line skeleton-line--short"></div>
+            </div>
+            <div class="skeleton-card">
+              <div class="skeleton-card__header">
+                <div class="skeleton-pulse skeleton-avatar"></div>
+                <div style="flex:1"><div class="skeleton-pulse skeleton-name"></div><div class="skeleton-pulse skeleton-genre"></div></div>
+              </div>
+              <div class="skeleton-tags"><div class="skeleton-pulse skeleton-tag"></div><div class="skeleton-pulse skeleton-tag"></div></div>
+              <div class="skeleton-pulse skeleton-line"></div><div class="skeleton-pulse skeleton-line skeleton-line--short"></div>
+            </div>
+            <div class="skeleton-card">
+              <div class="skeleton-card__header">
+                <div class="skeleton-pulse skeleton-avatar"></div>
+                <div style="flex:1"><div class="skeleton-pulse skeleton-name"></div><div class="skeleton-pulse skeleton-genre"></div></div>
+              </div>
+              <div class="skeleton-tags"><div class="skeleton-pulse skeleton-tag"></div></div>
+              <div class="skeleton-pulse skeleton-line"></div><div class="skeleton-pulse skeleton-line skeleton-line--short"></div>
+            </div>
+            <div class="skeleton-card">
+              <div class="skeleton-card__header">
+                <div class="skeleton-pulse skeleton-avatar"></div>
+                <div style="flex:1"><div class="skeleton-pulse skeleton-name"></div><div class="skeleton-pulse skeleton-genre"></div></div>
+              </div>
+              <div class="skeleton-tags"><div class="skeleton-pulse skeleton-tag"></div><div class="skeleton-pulse skeleton-tag"></div></div>
+              <div class="skeleton-pulse skeleton-line"></div><div class="skeleton-pulse skeleton-line"></div>
+            </div>
+            <div class="skeleton-card">
+              <div class="skeleton-card__header">
+                <div class="skeleton-pulse skeleton-avatar"></div>
+                <div style="flex:1"><div class="skeleton-pulse skeleton-name"></div><div class="skeleton-pulse skeleton-genre"></div></div>
+              </div>
+              <div class="skeleton-tags"><div class="skeleton-pulse skeleton-tag"></div></div>
+              <div class="skeleton-pulse skeleton-line"></div><div class="skeleton-pulse skeleton-line skeleton-line--short"></div>
+            </div>
+            <div class="skeleton-card">
+              <div class="skeleton-card__header">
+                <div class="skeleton-pulse skeleton-avatar"></div>
+                <div style="flex:1"><div class="skeleton-pulse skeleton-name"></div><div class="skeleton-pulse skeleton-genre"></div></div>
+              </div>
+              <div class="skeleton-tags"><div class="skeleton-pulse skeleton-tag"></div><div class="skeleton-pulse skeleton-tag"></div></div>
+              <div class="skeleton-pulse skeleton-line"></div><div class="skeleton-pulse skeleton-line"></div>
+            </div>
+          </div>
         </div>
 
         <!-- TEACHER CARDS — dynamically rendered -->
@@ -409,9 +449,9 @@
         <div class="footer__brand">
           <p class="footer__brand-name">Atlanta Fine Arts</p>
           <p class="footer__tagline">A volunteer-driven non-profit dedicated to celebrating Indian classical dance and music in the Atlanta area.</p>
-          <a href="/cdn-cgi/l/email-protection#c9a8afa8aaa8bba7a8bda0aa89aea4a8a0a5e7aaa6a4" class="footer__email">
+          <a href="/cdn-cgi/l/email-protection#82e3e4e3e1e3f0ece3f6ebe1c2e5efe3ebeeace1edef" class="footer__email">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-            <span class="__cf_email__" data-cfemail="4a2b2c2b292b38242b3e23290a2d272b232664292527">[email&#160;protected]</span>
+            <span class="__cf_email__" data-cfemail="462720272527342827322f2506212b272f2a6825292b">[email&#160;protected]</span>
           </a>
         </div>
         <nav aria-label="Footer site navigation">
@@ -462,26 +502,15 @@
 
     /* ══════════════════════════════════════════════════════════
        GOOGLE SHEET CONFIGURATION
-       ──────────────────────────────────────────────────────────
-       Replace the SHEET_ID below with your actual Google Sheet ID.
-       The sheet ID is the long string in your Google Sheet URL:
-       https://docs.google.com/spreadsheets/d/SHEET_ID_HERE/edit
-
-       Your sheet must be "Published to the web" (File → Share → Publish to web)
-       and the columns must be in this exact order:
-       A: Timestamp
-       B: Name
-       C: Genre (Carnatic, Hindustani, Bharatanatyam, Kuchipudi)
-       D: Instrument(s)
-       E: Area/City
-       F: Email
-       G: Phone
-       H: Website or Social Media Link
-       ══════════════════════════════════════════════════════════ */
-
-    var SHEET_ID = '1BKL7WV9dfGpvmmBEdbsrMtm0Y5CEsE9uyz4gYOM_fMM';
+    ══════════════════════════════════════════════════════════ */
+    var SHEET_ID   = '1BKL7WV9dfGpvmmBEdbsrMtm0Y5CEsE9uyz4gYOM_fMM';
     var SHEET_NAME = 'Form_Responses';
-    var SHEET_URL = 'https://docs.google.com/spreadsheets/d/' + SHEET_ID + '/gviz/tq?tqx=out:json&sheet=' + encodeURIComponent(SHEET_NAME);
+    var SHEET_URL  = 'https://docs.google.com/spreadsheets/d/' + SHEET_ID +
+                     '/gviz/tq?tqx=out:json&sheet=' + encodeURIComponent(SHEET_NAME);
+
+    /* Cache config — serve stale data instantly, refresh silently after 10 min */
+    var CACHE_KEY = 'afa_teachers_v1';
+    var CACHE_TTL = 10 * 60 * 1000; /* 10 minutes in ms */
 
     var allTeachers = [];
     var gridEl     = document.getElementById('teachers-grid');
@@ -489,44 +518,92 @@
     var emptyEl    = document.getElementById('teachers-empty');
     var countEl    = document.getElementById('teachers-count');
 
-    /* ── Fetch from Google Sheet ── */
-    function fetchTeachers() {
-      var script = document.createElement('script');
+    /* ── Cache helpers ── */
+    function readCache() {
+      try {
+        var raw = localStorage.getItem(CACHE_KEY);
+        if (!raw) return null;
+        var entry = JSON.parse(raw);
+        if (!entry || !entry.data) return null;
+        return entry; /* { data: [...], ts: timestamp } */
+      } catch (e) { return null; }
+    }
+    function writeCache(data) {
+      try { localStorage.setItem(CACHE_KEY, JSON.stringify({ data: data, ts: Date.now() })); }
+      catch (e) { /* storage full or unavailable — silently skip */ }
+    }
 
-      // Use JSONP-style fetch via the Google Sheets visualization API
+    /* ── Parse raw Google Sheets response into teacher objects ── */
+    function parseSheet(text) {
+      var json = JSON.parse(text.substring(text.indexOf('{'), text.lastIndexOf('}') + 1));
+      var rows = json.table.rows;
+      return rows.map(function(row) {
+        var c = row.c;
+        return {
+          name:       c[1]  ? String(c[1].v  || '') : '',
+          genre:      c[2]  ? String(c[2].v  || '') : '',
+          instrument: c[3]  ? String(c[3].v  || '') : '',
+          area:       c[4]  ? String(c[4].v  || '') : '',
+          email:      c[5]  ? String(c[5].v  || '') : '',
+          phone:      c[6]  ? String(c[6].v  || '') : '',
+          website:    c[7]  ? String(c[7].v  || '') : '',
+          years:      c[9]  ? String(c[9].v  || '') : '',
+          style:      c[10] ? String(c[10].v || '') : ''
+        };
+      }).filter(function(t) { return t.name.trim() !== ''; });
+    }
+
+    /* ── Fetch from network ── */
+    function fetchFromNetwork(onSuccess, onError) {
       fetch(SHEET_URL)
-        .then(function(res) { return res.text(); })
+        .then(function(res) {
+          if (!res.ok) throw new Error('HTTP ' + res.status);
+          return res.text();
+        })
         .then(function(text) {
-          // Google wraps the JSON in google.visualization.Query.setResponse(...)
-          var json = JSON.parse(text.substring(text.indexOf('{'), text.lastIndexOf('}') + 1));
-          var rows = json.table.rows;
-          var cols = json.table.cols;
-
-          allTeachers = rows.map(function(row) {
-            var cells = row.c;
-            return {
-              name:       cells[1] ? String(cells[1].v || '') : '',
-              genre:      cells[2] ? String(cells[2].v || '') : '',
-              instrument: cells[3] ? String(cells[3].v || '') : '',
-              area:       cells[4] ? String(cells[4].v || '') : '',
-              email:      cells[5] ? String(cells[5].v || '') : '',
-              phone:      cells[6] ? String(cells[6].v || '') : '',
-              website:    cells[7] ? String(cells[7].v || '') : '',
-              years:      cells[9] ? String(cells[9].v || '') : '',
-              style:      cells[10] ? String(cells[10].v || '') : ''
-            };
-          }).filter(function(t) { return t.name.trim() !== ''; });
-
-          loadingEl.style.display = 'none';
-          renderTeachers(allTeachers);
+          var data = parseSheet(text);
+          writeCache(data);
+          if (onSuccess) onSuccess(data);
         })
         .catch(function(err) {
-          console.error('Failed to load teacher data:', err);
-          loadingEl.innerHTML = '<p style="color:var(--text-muted);">Unable to load teacher directory. Please try refreshing the page.</p>';
+          console.warn('AFA: sheet fetch failed', err);
+          if (onError) onError(err);
         });
     }
 
-    /* ── Get initials for avatar fallback ── */
+    /* ── Bootstrap: serve cache instantly, refresh in background ── */
+    function init() {
+      var cached = readCache();
+
+      if (cached && cached.data && cached.data.length > 0) {
+        /* ✅ Cache hit — render immediately (feels instant) */
+        allTeachers = cached.data;
+        loadingEl.style.display = 'none';
+        renderTeachers(allTeachers);
+
+        /* If cache is stale, quietly refresh in background */
+        if (Date.now() - cached.ts > CACHE_TTL) {
+          fetchFromNetwork(function(freshData) {
+            allTeachers = freshData;
+            applyFilters(); /* re-render with fresh data, preserving active filters */
+          });
+        }
+      } else {
+        /* ❌ No cache — fetch and show (skeleton cards are already visible) */
+        fetchFromNetwork(
+          function(data) {
+            allTeachers = data;
+            loadingEl.style.display = 'none';
+            renderTeachers(allTeachers);
+          },
+          function() {
+            loadingEl.innerHTML = '<p style="text-align:center;padding:3rem 2rem;color:var(--text-muted);">Unable to load teacher directory. Please try refreshing.</p>';
+          }
+        );
+      }
+    }
+
+    /* ── Get initials for avatar ── */
     function getInitials(name) {
       return name.split(' ').map(function(w) { return w[0]; }).join('').substring(0, 2).toUpperCase();
     }
@@ -539,7 +616,6 @@
         countEl.textContent = '';
         return;
       }
-
       emptyEl.style.display = 'none';
       countEl.textContent = teachers.length + ' teacher' + (teachers.length !== 1 ? 's' : '') + ' found';
 
@@ -551,8 +627,8 @@
         }).join('');
 
         var linksHTML = '';
-        if (t.email) linksHTML += '<a href="mailto:' + t.email + '" class="teacher-card__link">Email</a>';
-        if (t.phone) linksHTML += '<a href="tel:' + t.phone.replace(/[^+\d]/g, '') + '" class="teacher-card__link">Call</a>';
+        if (t.email)   linksHTML += '<a href="mailto:' + t.email + '" class="teacher-card__link">Email</a>';
+        if (t.phone)   linksHTML += '<a href="tel:' + t.phone.replace(/[^+\d]/g, '') + '" class="teacher-card__link">Call</a>';
         if (t.website) linksHTML += '<a href="' + t.website + '" target="_blank" rel="noopener noreferrer" class="teacher-card__link">Website ↗</a>';
 
         return '<div class="teacher-card">' +
@@ -581,23 +657,37 @@
     }
 
     /* ── Filters ── */
-    var filterSearch     = document.getElementById('filter-search');
-    var filterGenre      = document.getElementById('filter-genre');
-    var filterArea       = document.getElementById('filter-area');
+    var filterSearch = document.getElementById('filter-search');
+    var filterGenre  = document.getElementById('filter-genre');
+    var filterArea   = document.getElementById('filter-area');
+    var filterTimer  = null;
 
     function applyFilters() {
-      var search     = filterSearch.value.toLowerCase().trim();
-      var genre      = filterGenre.value;
-      var area       = filterArea.value;
+      var search = filterSearch.value.toLowerCase().trim();
+      var genre  = filterGenre.value;
+      var area   = filterArea.value;
 
       var filtered = allTeachers.filter(function(t) {
         if (search && t.name.toLowerCase().indexOf(search) === -1) return false;
         if (genre !== 'all' && t.genre.indexOf(genre) === -1) return false;
-        if (area !== 'all' && t.area.indexOf(area) === -1) return false;
+        if (area  !== 'all' && t.area.indexOf(area)   === -1) return false;
         return true;
       });
-
       renderTeachers(filtered);
     }
 
-    filterSearch.add
+    /* Debounce search input to avoid re-rendering on every keystroke */
+    filterSearch.addEventListener('input', function() {
+      clearTimeout(filterTimer);
+      filterTimer = setTimeout(applyFilters, 180);
+    });
+    filterGenre.addEventListener('change', applyFilters);
+    filterArea.addEventListener('change', applyFilters);
+
+    /* ── Go ── */
+    init();
+
+  }());
+  </script>
+</body>
+</html>
