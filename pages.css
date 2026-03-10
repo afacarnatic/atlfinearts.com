@@ -329,4 +329,28 @@
   .impact-grid { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
   .donate-amounts { grid-template-columns: repeat(2, 1fr); }
   .volunteers-grid { grid-template-columns: 1fr; }
+  /* Teachers page mobile */
+  .teachers-grid { grid-template-columns: 1fr !important; }
+  .filters-bar { flex-direction: column; gap: 0.75rem; padding: 1rem; }
+  .filter-group { min-width: 100% !important; }
+  .teacher-card__header { gap: 0.75rem; }
+  .teacher-card__avatar { width: 60px; height: 60px; }
+  .teacher-card__name { font-size: 1.1rem; }
+  .submit-banner { padding-inline: 1.25rem; }
+  /* Page hero tweaks */
+  .page-hero { padding-block-start: calc(var(--nav-h) + 1.5rem); padding-block-end: 2rem; }
+  .page-hero__title { font-size: clamp(2rem, 8vw, 3rem); }
+  /* Gallery filters scroll horizontally on mobile */
+  .gallery-filters {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    width: 100%;
+    padding-bottom: 4px;
+  }
+  .gallery-filter { white-space: nowrap; }
+}
+@media (max-width: 420px) {
+  .donate-amounts { grid-template-columns: repeat(3, 1fr); }
+  .donate-amount-btn { font-size: 1rem; padding: 0.7rem 0.25rem; }
 }
