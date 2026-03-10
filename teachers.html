@@ -10,6 +10,46 @@
   <link rel="canonical" href="https://atlfinearts.com/teachers.html" />
   <meta name="theme-color" content="#13101E" />
 
+  <!-- Open Graph -->
+  <meta property="og:type"        content="website" />
+  <meta property="og:url"         content="https://atlfinearts.com/teachers.html" />
+  <meta property="og:title"       content="Find a Teacher | Atlanta Fine Arts — Indian Classical Music &amp; Dance" />
+  <meta property="og:description" content="Find Indian classical music and dance teachers in Atlanta — Carnatic, Hindustani, Bharatanatyam, Kuchipudi. Filter by instrument, genre, or area." />
+  <meta property="og:image"       content="https://atlfinearts.com/assets/images/og-image.jpg" />
+  <meta property="og:image:width"  content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale"      content="en_US" />
+  <meta property="og:site_name"   content="Atlanta Fine Arts" />
+
+  <!-- Twitter / X card -->
+  <meta name="twitter:card"        content="summary_large_image" />
+  <meta name="twitter:title"       content="Find an Indian Classical Arts Teacher in Atlanta | AFA" />
+  <meta name="twitter:description" content="Browse Carnatic, Hindustani, Bharatanatyam, and Kuchipudi teachers across metro Atlanta. Free directory by Atlanta Fine Arts." />
+  <meta name="twitter:image"       content="https://atlfinearts.com/assets/images/og-image.jpg" />
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Indian Classical Music & Dance Teachers in Atlanta",
+    "description": "Directory of Carnatic, Hindustani, Bharatanatyam, and Kuchipudi teachers in the Atlanta, Georgia metro area.",
+    "url": "https://atlfinearts.com/teachers.html",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Atlanta Fine Arts",
+      "url": "https://atlfinearts.com",
+      "logo": "https://atlfinearts.com/assets/images/afa-logo.webp",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Cumming",
+        "addressRegion": "GA",
+        "addressCountry": "US"
+      }
+    }
+  }
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet"
@@ -64,8 +104,8 @@
 
     .teachers-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
-      gap: clamp(1.25rem, 2.5vw, 1.75rem);
+      grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+      gap: clamp(1rem, 2.5vw, 1.75rem);
     }
 
     .teacher-card {
@@ -75,6 +115,9 @@
       overflow: hidden;
       transition: transform 0.35s var(--ease-out), box-shadow 0.35s var(--ease-out);
       display: flex; flex-direction: column;
+      /* Prevent cards from causing horizontal scroll */
+      min-width: 0;
+      word-break: break-word;
     }
     .teacher-card:hover {
       transform: translateY(-6px);
@@ -192,8 +235,13 @@
     }
 
     @media (max-width: 600px) {
-      .filters-bar { flex-direction: column; }
+      .filters-bar { flex-direction: column; gap: 0.65rem; padding: 1rem; }
       .filter-group { min-width: 100%; }
+      .teacher-card__header { padding: 1.25rem 1.25rem 0; }
+      .teacher-card__body { padding: 0.85rem 1.25rem 1.25rem; }
+      .teacher-card__name { font-size: 1.15rem; }
+      .teacher-card__avatar { width: 60px; height: 60px; }
+      .teacher-card__avatar-initials { font-size: 1.25rem; }
     }
   </style>
 </head>
@@ -260,7 +308,7 @@
     <section class="teachers-section" aria-labelledby="teachers-heading">
       <div class="container">
 
-        <div style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:1.5rem;margin-block-end:2rem;">
+        <div style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-block-end:2rem;">
           <div>
             <p class="section-label">Browse Teachers</p>
             <h2 class="section-title" id="teachers-heading">Atlanta Area <em>Teachers</em></h2>
@@ -361,9 +409,9 @@
         <div class="footer__brand">
           <p class="footer__brand-name">Atlanta Fine Arts</p>
           <p class="footer__tagline">A volunteer-driven non-profit dedicated to celebrating Indian classical dance and music in the Atlanta area.</p>
-          <a href="mailto:afacarnatic@gmail.com" class="footer__email">
+          <a href="/cdn-cgi/l/email-protection#c9a8afa8aaa8bba7a8bda0aa89aea4a8a0a5e7aaa6a4" class="footer__email">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-            afacarnatic@gmail.com
+            <span class="__cf_email__" data-cfemail="4a2b2c2b292b38242b3e23290a2d272b232664292527">[email&#160;protected]</span>
           </a>
         </div>
         <nav aria-label="Footer site navigation">
@@ -394,7 +442,7 @@
     </div>
   </footer>
 
-  <script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   (function () {
     'use strict';
 
@@ -552,15 +600,4 @@
       renderTeachers(filtered);
     }
 
-    filterSearch.addEventListener('input', applyFilters);
-    filterGenre.addEventListener('change', applyFilters);
-    filterArea.addEventListener('change', applyFilters);
-
-    /* ── Load data ── */
-    fetchTeachers();
-
-  })();
-  </script>
-
-</body>
-</html>
+    filterSearch.add
