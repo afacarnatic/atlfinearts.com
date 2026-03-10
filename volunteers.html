@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Meet Our Volunteers | Atlanta Fine Arts</title>
-  <meta name="description" content="Meet the young volunteers who make Atlanta Fine Arts possible — dedicated students keeping Carnatic music and Bharatanatyam alive in Atlanta." />
+  <title>Support Us | Atlanta Fine Arts</title>
+  <meta name="description" content="Support Atlanta Fine Arts — your donation helps fund free Carnatic music concerts, Bharatanatyam events, summer camps, and keep Indian classical arts alive in Atlanta." />
   <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://atlfinearts.com/volunteers.html" />
+  <link rel="canonical" href="https://atlfinearts.com/donate.html" />
   <meta name="theme-color" content="#13101E" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -22,42 +22,34 @@
     .nav__link { color: rgba(255,255,255,0.85) !important; }
     .nav:not(.scrolled) { background: linear-gradient(to bottom, rgba(0,0,0,0.55) 0%, transparent 100%) !important; }
 
-    /* Ensure volunteer images never overflow their card */
-    .volunteer-card__photo img {
-      display: block;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: top center;
-    }
-
-    /* Join CTA section — safe padding on all screen sizes */
-    .join-cta {
-      background: var(--charcoal);
-      color: #fff;
+    /* Zelle card — fully responsive */
+    .zelle-card {
+      background: var(--ivory-warm);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: clamp(1.25rem, 4vw, 1.5rem);
       text-align: center;
-      padding-block: clamp(3rem, 8vw, 5rem);
-      padding-inline: clamp(1.25rem, 5vw, 2.5rem);
     }
-    .join-cta__inner {
-      max-width: 680px;
-      margin-inline: auto;
+    .zelle-card__label {
+      font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--purple); font-weight: 500; margin-block-end: 0.75rem;
     }
-    .join-cta__title {
+    .zelle-card__number {
       font-family: var(--font-display);
-      font-size: clamp(1.75rem, 5vw, 2.75rem);
-      font-weight: 300;
-      color: #fff;
-      line-height: 1.2;
-      margin-block-end: 1rem;
+      font-size: clamp(1.4rem, 5vw, 1.75rem);
+      font-weight: 500; color: var(--charcoal); margin-block-end: 0.25rem;
+      word-break: break-all;
     }
-    .join-cta__title em { font-style: italic; color: var(--gold-light); }
-    .join-cta__desc {
-      color: rgba(255,255,255,0.7);
-      font-weight: 300;
-      line-height: 1.8;
-      margin-block-end: 2rem;
-      font-size: clamp(0.9rem, 2vw, 1rem);
+    .zelle-card__desc {
+      font-size: 0.875rem; color: var(--text-muted);
+      line-height: 1.6; margin-block-end: 1.25rem;
+    }
+    .zelle-card__btn {
+      display: flex; width: 100%; justify-content: center;
+    }
+    .donate-footer-note {
+      font-size: 0.8rem; color: var(--text-muted);
+      text-align: center; margin-block-start: 0.75rem;
     }
   </style>
 </head>
@@ -89,9 +81,7 @@
         <li><a href="contact.html" class="nav__link nav__link--cta">Contact Us</a></li>
       </ul>
       <button class="nav__toggle" id="nav-toggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-menu">
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
       </button>
     </div>
     <div class="nav__mobile" id="mobile-menu" aria-hidden="true" role="region" aria-label="Mobile navigation">
@@ -112,189 +102,138 @@
     <!-- PAGE HERO -->
     <section class="page-hero" aria-label="Page introduction">
       <div class="container">
-        <p class="page-hero__eyebrow">The Heart of AFA</p>
-        <h1 class="page-hero__title">Meet Our <em>Volunteers</em></h1>
+        <p class="page-hero__eyebrow">Support Our Mission</p>
+        <h1 class="page-hero__title">Help Us Keep the <em>Music</em> Alive</h1>
         <p class="page-hero__desc">
-          Every event, every concert, every camp — made possible by the dedication
-          of these young artists who give their time, talent, and passion to keep
-          Indian classical arts thriving in Atlanta.
+          Atlanta Fine Arts is entirely volunteer-run. Every donation goes directly
+          toward free concerts, summer camps, venue costs, and creating a stage for
+          every artist in our community.
         </p>
       </div>
     </section>
 
-    <!-- VOLUNTEERS GRID -->
-    <section style="background:var(--ivory-warm);" aria-labelledby="vol-heading">
+    <!-- IMPACT STATS -->
+    <section class="impact-section" aria-label="Our impact">
       <div class="container">
-        <div style="text-align:center;margin-block-end:3rem;">
-          <p class="section-label">Our Team</p>
-          <h2 class="section-title" id="vol-heading">AFA <em>Volunteers</em></h2>
-          <div class="ornament" aria-hidden="true" style="justify-content:center;margin-block-start:1rem;">♩</div>
-        </div>
-
-        <div class="volunteers-grid">
-
-          <!-- VOLUNTEER 1 — Placeholder (replace with real info) -->
-          <div class="volunteer-card reveal">
-            <div class="volunteer-card__photo">
-              <!-- Replace src with actual headshot: assets/images/volunteers/name.webp -->
-              <img src="assets/images/chinmay-prashanth.webp"
-                   alt="Volunteer headshot"
-                   width="400" height="400" loading="lazy" decoding="async" />
-            </div>
-            <div class="volunteer-card__body">
-              <h3 class="volunteer-card__name">Chinmay Prashanth</h3>
-              <p class="volunteer-card__role">Founding Member · Carnatic Vocal</p>
-              <p class="volunteer-card__bio">
-                A Carnatic vocalist training since age 5, Chinmay is one of AFA's
-                founding members and a driving force behind its growth. He also plays
-                piano at the Royal Conservatory Level 10 and percussion in his school band.
-              </p>
-              <ul class="volunteer-card__tags" aria-label="Skills">
-                <li class="tag">Carnatic Vocal</li>
-                <li class="tag">Piano</li>
-              </ul>
-            </div>
+        <div class="impact-grid">
+          <div class="reveal">
+            <div class="impact-item__number">15+</div>
+            <div class="impact-item__label">Events Hosted</div>
           </div>
-
-          <!-- VOLUNTEER 2 -->
-          <div class="volunteer-card reveal reveal--delay-1">
-            <div class="volunteer-card__photo">
-              <img src="assets/images/sahithya-shriram.webp"
-                   alt="Volunteer headshot"
-                   width="400" height="400" loading="lazy" decoding="async" />
-            </div>
-            <div class="volunteer-card__body">
-              <h3 class="volunteer-card__name">Sahithya Shriram</h3>
-              <p class="volunteer-card__role">Founding Member · Vocal & Dance</p>
-              <p class="volunteer-card__bio">
-                Sahithya began Carnatic vocal training at age 3 and Bharatanatyam at age 4,
-                bringing a rare dual grounding in both classical music and dance to everything
-                AFA does.
-              </p>
-              <ul class="volunteer-card__tags" aria-label="Skills">
-                <li class="tag">Carnatic Vocal</li>
-                <li class="tag">Bharatanatyam</li>
-              </ul>
-            </div>
+          <div class="reveal reveal--delay-1">
+            <div class="impact-item__number">360+</div>
+            <div class="impact-item__label">Aradhana Attendees</div>
           </div>
-
-          <!-- VOLUNTEER 3 -->
-          <div class="volunteer-card reveal reveal--delay-2">
-            <div class="volunteer-card__photo">
-              <img src="assets/images/chamber-concert-series-shashank-kaushik.webp"
-                   alt="Volunteer headshot"
-                   width="400" height="400" loading="lazy" decoding="async" />
-            </div>
-            <div class="volunteer-card__body">
-              <h3 class="volunteer-card__name">Shashank Kaushik</h3>
-              <p class="volunteer-card__role">Founding Member · Vocal & Flute</p>
-              <p class="volunteer-card__bio">
-                A Carnatic vocal student since age 7, Shashank has performed at multiple
-                AFA Chamber Concerts. He also sings in his school's Chamber Choir and plays
-                flute in the Symphonic Band.
-              </p>
-              <ul class="volunteer-card__tags" aria-label="Skills">
-                <li class="tag">Carnatic Vocal</li>
-                <li class="tag">Flute</li>
-                <li class="tag">Choir</li>
-              </ul>
-            </div>
+          <div class="reveal reveal--delay-2">
+            <div class="impact-item__number">100%</div>
+            <div class="impact-item__label">Volunteer-Run</div>
           </div>
-
-          <!-- VOLUNTEER 4 — Tejas Varadarajan -->
-          <div class="volunteer-card reveal reveal--delay-3">
-            <div class="volunteer-card__photo">
-              <img src="assets/images/volunteers/Tejas-Varada.jpeg"
-                   alt="Tejas Varadarajan headshot"
-                   width="400" height="400" loading="lazy" decoding="async" />
-            </div>
-            <div class="volunteer-card__body">
-              <h3 class="volunteer-card__name">Tejas Varadarajan</h3>
-              <p class="volunteer-card__role">10th Grade · Volunteer</p>
-              <p class="volunteer-card__bio">
-                Tejas learns from Sri Sherthalai Ranganatha Sharma, Sri Salem Shriram,
-                Sri Raman Poyapakkam, and Sri Lak sir. He enjoys the manodharma aspect
-                of music, figuring out pivot points between ragas and loves to string
-                them together.
-              </p>
-              <ul class="volunteer-card__tags" aria-label="Skills">
-                <li class="tag">Carnatic Vocal</li>
-                <li class="tag">Manodharma</li>
-              </ul>
-            </div>
+          <div class="reveal reveal--delay-3">
+            <div class="impact-item__number">Free</div>
+            <div class="impact-item__label">Entry to All Events</div>
           </div>
-
-          <!-- VOLUNTEER — Placeholder -->
-          <div class="volunteer-card volunteer-card--placeholder reveal reveal--delay-4">
-            <div class="volunteer-card__photo">
-              <div class="volunteer-card__photo-icon" aria-hidden="true">+</div>
-            </div>
-            <div class="volunteer-card__body">
-              <h3 class="volunteer-card__name">Your Name Here</h3>
-              <p class="volunteer-card__role">Volunteer</p>
-              <p class="volunteer-card__bio">
-                Want to be part of Atlanta Fine Arts? We're always looking for
-                passionate young artists to join our volunteer team. Reach out
-                to us to get involved!
-              </p>
-              <ul class="volunteer-card__tags" aria-label="Skills">
-                <li class="tag">Join Us</li>
-              </ul>
-            </div>
-          </div>
-
-          <!--
-            ═══════════════════════════════════════════
-            HOW TO ADD MORE VOLUNTEERS:
-            Copy the block below and fill in the details.
-            Place the headshot in assets/images/volunteers/
-
-            <div class="volunteer-card reveal">
-              <div class="volunteer-card__photo">
-                <img src="assets/images/volunteers/firstname-lastname.webp"
-                     alt="Name headshot"
-                     width="400" height="400" loading="lazy" decoding="async" />
-              </div>
-              <div class="volunteer-card__body">
-                <h3 class="volunteer-card__name">First Last</h3>
-                <p class="volunteer-card__role">Grade · School Name</p>
-                <p class="volunteer-card__bio">
-                  2-3 sentences about this volunteer.
-                </p>
-                <ul class="volunteer-card__tags" aria-label="Skills">
-                  <li class="tag">Skill 1</li>
-                  <li class="tag">Skill 2</li>
-                </ul>
-              </div>
-            </div>
-            ═══════════════════════════════════════════
-          -->
-
         </div>
       </div>
     </section>
 
-    <!-- JOIN CTA -->
-    <section class="join-cta" aria-label="Join us">
-      <div class="join-cta__inner">
-        <p class="about__tag">Get Involved</p>
-        <h2 class="join-cta__title">
-          Want to <em>Volunteer</em> with AFA?
-        </h2>
-        <p class="join-cta__desc">
-          Whether you're a musician, dancer, or just someone who cares about keeping
-          Indian classical arts alive in Atlanta — we'd love to have you. Drop us a
-          message and we'll find the right fit.
-        </p>
-        <a href="contact.html" class="btn btn--primary">
-          Contact Us
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-               stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
-               aria-hidden="true" focusable="false">
-            <line x1="5" y1="12" x2="19" y2="12"/>
-            <polyline points="12 5 19 12 12 19"/>
-          </svg>
-        </a>
+    <!-- DONATE SECTION -->
+    <section class="donate-section" aria-labelledby="donate-heading">
+      <div class="container">
+        <div class="donate-inner">
+
+          <!-- Left — Info -->
+          <div class="reveal">
+            <p class="section-label">Where Your Donation Goes</p>
+            <h2 class="donate-info__title" id="donate-heading">
+              Every <em>Contribution</em> Makes a Difference
+            </h2>
+            <p class="donate-info__body">
+              AFA is an informal, community-driven organization. We don't charge
+              admission to our events because we believe art should be accessible to
+              everyone. Your support helps us cover the real costs of bringing Indian
+              classical arts to Atlanta.
+            </p>
+
+            <div class="donate-info__list">
+              <div class="donate-info__item">
+                <div class="donate-info__item-icon" aria-hidden="true">🎵</div>
+                <div class="donate-info__item-text">
+                  <strong>Concert Venues & Equipment</strong>
+                  <span>Sound systems, venue rentals, and stage setup for our events</span>
+                </div>
+              </div>
+              <div class="donate-info__item">
+                <div class="donate-info__item-icon" aria-hidden="true">🎓</div>
+                <div class="donate-info__item-text">
+                  <strong>Summer Camps</strong>
+                  <span>Materials, space, and resources for week-long music camps for children</span>
+                </div>
+              </div>
+              <div class="donate-info__item">
+                <div class="donate-info__item-icon" aria-hidden="true">🎻</div>
+                <div class="donate-info__item-text">
+                  <strong>Artist Support</strong>
+                  <span>Honorariums for visiting musicians and travel assistance for performers</span>
+                </div>
+              </div>
+              <div class="donate-info__item">
+                <div class="donate-info__item-icon" aria-hidden="true">🌱</div>
+                <div class="donate-info__item-text">
+                  <strong>Community Growth</strong>
+                  <span>Outreach, marketing, and expanding our programs to reach more families</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right — Donate Card -->
+          <div class="donate-card reveal reveal--delay-1">
+            <h3 class="donate-card__title">Make a Donation</h3>
+            <p class="donate-card__subtitle">
+              Choose an amount or enter a custom amount. All donations are greatly appreciated.
+            </p>
+
+            <div class="donate-amounts" role="group" aria-label="Select donation amount">
+              <button class="donate-amount-btn" data-amount="10">$10</button>
+              <button class="donate-amount-btn" data-amount="25">$25</button>
+              <button class="donate-amount-btn active" data-amount="50">$50</button>
+              <button class="donate-amount-btn" data-amount="100">$100</button>
+              <button class="donate-amount-btn" data-amount="250">$250</button>
+              <button class="donate-amount-btn" data-amount="500">$500</button>
+            </div>
+
+            <div class="donate-custom">
+              <input type="text" id="custom-amount" placeholder="Or enter a custom amount ($)"
+                     aria-label="Custom donation amount" />
+            </div>
+
+            <div class="donate-methods">
+              <div class="zelle-card">
+                <p class="zelle-card__label">Donate via Zelle</p>
+                <p class="zelle-card__number">586-604-6388</p>
+                <p class="zelle-card__desc">
+                  Send your donation directly via Zelle using the phone number above.
+                  Open your banking app, select Zelle, and send to this number.
+                </p>
+                <div class="zelle-card__btn">
+                  <button class="btn btn--primary" id="copy-zelle-btn" style="width:100%;justify-content:center;" aria-label="Copy Zelle number to clipboard">
+                    Copy Number
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                         stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                      <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              <p class="donate-footer-note">
+                Questions about donating? Contact us at
+                <a href="/cdn-cgi/l/email-protection#7b1a1d1a181a09151a0f12183b1c161a121755181416" style="color:var(--purple);"><span class="__cf_email__" data-cfemail="fb9a9d9a989a89959a8f9298bb9c969a9297d5989496">[email&#160;protected]</span></a>
+              </p>
+            </div>
+          </div>
+
+        </div>
       </div>
     </section>
 
@@ -307,9 +246,9 @@
         <div class="footer__brand">
           <p class="footer__brand-name">Atlanta Fine Arts</p>
           <p class="footer__tagline">A volunteer-driven non-profit dedicated to celebrating Indian classical dance and music in the Atlanta area.</p>
-          <a href="/cdn-cgi/l/email-protection#95f4f3f4f6f4e7fbf4e1fcf6d5f2f8f4fcf9bbf6faf8" class="footer__email" aria-label="Email Atlanta Fine Arts">
+          <a href="/cdn-cgi/l/email-protection#7e1f181f1d1f0c101f0a171d3e19131f1712501d1113" class="footer__email">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-            <span class="__cf_email__" data-cfemail="b7d6d1d6d4d6c5d9d6c3ded4f7d0dad6dedb99d4d8da">[email&#160;protected]</span>
+            <span class="__cf_email__" data-cfemail="86e7e0e7e5e7f4e8e7f2efe5c6e1ebe7efeaa8e5e9eb">[email&#160;protected]</span>
           </a>
         </div>
         <nav aria-label="Footer site navigation">
@@ -369,6 +308,55 @@
       document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
     } else {
       document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('visible'); });
+    }
+
+    /* ── Donate amount buttons ── */
+    var amountBtns = document.querySelectorAll('.donate-amount-btn');
+    var customInput = document.getElementById('custom-amount');
+
+    amountBtns.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        amountBtns.forEach(function (b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+        if (customInput) customInput.value = '';
+      });
+    });
+
+    if (customInput) {
+      customInput.addEventListener('input', function () {
+        amountBtns.forEach(function (b) { b.classList.remove('active'); });
+      });
+    }
+
+    /* ── Copy Zelle number ── */
+    var copyBtn = document.getElementById('copy-zelle-btn');
+    if (copyBtn) {
+      copyBtn.addEventListener('click', function () {
+        var btn = this;
+        var originalHTML = btn.innerHTML;
+        if (navigator.clipboard && window.isSecureContext) {
+          navigator.clipboard.writeText('5866046388').then(function () {
+            btn.textContent = 'Copied! ✓';
+            setTimeout(function () { btn.innerHTML = originalHTML; }, 2500);
+          }).catch(function () {
+            fallbackCopy(btn, originalHTML);
+          });
+        } else {
+          fallbackCopy(btn, originalHTML);
+        }
+      });
+    }
+
+    function fallbackCopy(btn, originalHTML) {
+      /* Fallback: select a hidden input for older browsers */
+      var tmp = document.createElement('input');
+      tmp.value = '5866046388';
+      document.body.appendChild(tmp);
+      tmp.select();
+      try { document.execCommand('copy'); btn.textContent = 'Copied! ✓'; }
+      catch (e) { btn.textContent = '586-604-6388'; }
+      document.body.removeChild(tmp);
+      setTimeout(function () { btn.innerHTML = originalHTML; }, 2500);
     }
 
   }());
