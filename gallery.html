@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gallery | Atlanta Fine Arts</title>
+  <meta name="description" content="Browse photos from Atlanta Fine Arts events — Thyagaraja Aradhana, Chamber Concerts, Chithirai Kalotsavam, Bharatanatyam performances, and more." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://atlfinearts.com/gallery.html" />
+  <meta name="theme-color" content="#13101E" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,500;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="pages.css" />
+
+  <style>
+    .nav__wordmark { color: #fff !important; }
+    .nav__wordmark span { color: rgba(255,255,255,0.7) !important; }
+    .nav__link { color: rgba(255,255,255,0.85) !important; }
+    .nav:not(.scrolled) { background: linear-gradient(to bottom, rgba(0,0,0,0.55) 0%, transparent 100%) !important; }
+  </style>
+</head>
+<body>
+
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div class="kolam-border" aria-hidden="true"></div>
+
+  <!-- NAVIGATION -->
+  <nav class="nav" id="nav" aria-label="Main navigation">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__brand" aria-label="Atlanta Fine Arts — home">
+        <div class="nav__logo" aria-hidden="true">
+          <img src="assets/images/afa-logo.webp" alt="" width="36" height="36"
+               style="border-radius:50%;object-fit:cover;" />
+        </div>
+        <div class="nav__wordmark">
+          Atlanta Fine Arts
+          <span>Indian Classical Arts</span>
+        </div>
+      </a>
+      <ul class="nav__links" role="list">
+        <li><a href="index.html#about" class="nav__link">About</a></li>
+        <li><a href="index.html#events" class="nav__link">Events</a></li>
+        <li><a href="volunteers.html" class="nav__link">Volunteers</a></li>
+        <li><a href="gallery.html" class="nav__link">Gallery</a></li>
+        <li><a href="donate.html" class="nav__link">Donate</a></li>
+        <li><a href="contact.html" class="nav__link nav__link--cta">Contact Us</a></li>
+      </ul>
+      <button class="nav__toggle" id="nav-toggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-menu">
+        <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
+      </button>
+    </div>
+    <div class="nav__mobile" id="mobile-menu" aria-hidden="true" role="region" aria-label="Mobile navigation">
+      <ul class="nav__mobile-links" role="list">
+        <li><a href="index.html" class="nav__mobile-link" data-mobile-link>Home <span class="arrow" aria-hidden="true">→</span></a></li>
+        <li><a href="index.html#events" class="nav__mobile-link" data-mobile-link>Events <span class="arrow" aria-hidden="true">→</span></a></li>
+        <li><a href="volunteers.html" class="nav__mobile-link" data-mobile-link>Volunteers <span class="arrow" aria-hidden="true">→</span></a></li>
+        <li><a href="gallery.html" class="nav__mobile-link" data-mobile-link>Gallery <span class="arrow" aria-hidden="true">→</span></a></li>
+        <li><a href="donate.html" class="nav__mobile-link" data-mobile-link>Donate <span class="arrow" aria-hidden="true">→</span></a></li>
+        <li><a href="contact.html" class="nav__mobile-link" data-mobile-link>Contact Us <span class="arrow" aria-hidden="true">→</span></a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main id="main-content">
+
+    <!-- PAGE HERO -->
+    <section class="page-hero" aria-label="Page introduction">
+      <div class="container">
+        <p class="page-hero__eyebrow">Moments Captured</p>
+        <h1 class="page-hero__title">Event <em>Gallery</em></h1>
+        <p class="page-hero__desc">
+          A look back at the concerts, celebrations, and community moments
+          that make Atlanta Fine Arts special.
+        </p>
+      </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section class="gallery-section" aria-labelledby="gallery-heading">
+      <div class="container">
+        <div style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:1.5rem;margin-block-end:2.5rem;">
+          <div>
+            <p class="section-label">Browse Photos</p>
+            <h2 class="section-title" id="gallery-heading">Our <em>Events</em> in Pictures</h2>
+          </div>
+          <div class="gallery-filters" role="tablist" aria-label="Filter gallery by category">
+            <button class="gallery-filter active" data-filter="all" role="tab" aria-selected="true">All</button>
+            <button class="gallery-filter" data-filter="aradhana" role="tab" aria-selected="false">Aradhana</button>
+            <button class="gallery-filter" data-filter="chamber" role="tab" aria-selected="false">Chamber</button>
+            <button class="gallery-filter" data-filter="dance" role="tab" aria-selected="false">Dance</button>
+            <button class="gallery-filter" data-filter="community" role="tab" aria-selected="false">Community</button>
+          </div>
+        </div>
+
+        <div class="gallery-grid" id="gallery-grid" aria-live="polite">
+
+          <!--
+            ═══════════════════════════════════════════
+            HOW TO ADD GALLERY IMAGES:
+            Copy a gallery-item block and update:
+            1. data-category: aradhana, chamber, dance, or community
+            2. img src: path to the image
+            3. alt text: describe the image
+            4. title and date in the overlay
+            ═══════════════════════════════════════════
+          -->
+
+          <div class="gallery-item reveal" data-category="aradhana" onclick="openLightbox(this)">
+            <img src="assets/images/2026-Aaradhanai_group_picture.webp"
+                 alt="Thyagaraja Aradhana 2026 group photo"
+                 width="800" height="600" loading="lazy" decoding="async" />
+            <div class="gallery-item__overlay">
+              <p class="gallery-item__title">Thyagaraja Aradhana 2026</p>
+              <p class="gallery-item__date">February 2026</p>
+            </div>
+          </div>
+
+          <div class="gallery-item reveal reveal--delay-1" data-category="aradhana" onclick="openLightbox(this)">
+            <img src="assets/images/2026-thyagaraja-aaradhanai-img1.webp"
+                 alt="Thyagaraja Aradhana 2026 performance"
+                 width="800" height="600" loading="lazy" decoding="async" />
+            <div class="gallery-item__overlay">
+              <p class="gallery-item__title">Aradhana 2026 — Performance</p>
+              <p class="gallery-item__date">February 2026</p>
+            </div>
+          </div>
+
+          <div class="gallery-item reveal reveal--delay-2" data-category="chamber" onclick="openLightbox(this)">
+            <img src="assets/images/chamber-concert-series-pranavi-on-violin.webp"
+                 alt="Pranavi playing violin at AFA Chamber Concert"
+                 width="800" height="600" loading="lazy" decoding="async" />
+            <div class="gallery-item__overlay">
+              <p class="gallery-item__title">Chamber Concert — Violin</p>
+              <p class="gallery-item__date">Chamber Series</p>
+            </div>
+          </div>
+
+          <div class="gallery-item reveal" data-category="dance" onclick="openLightbox(this)">
+            <img src="assets/images/2024-chithirai-kalotsavam-group-performance-dance-2.webp"
+                 alt="Chithirai Kalotsavam dance performance"
+                 width="800" height="600" loading="lazy" decoding="async" />
+            <div class="gallery-item__overlay">
+              <p class="gallery-item__title">Chithirai Kalotsavam 2024</p>
+              <p class="gallery-item__date">April 2024</p>
+            </div>
+          </div>
+
+          <div class="gallery-item reveal reveal--delay-1" data-category="dance" onclick="openLightbox(this)">
+            <img src="assets/images/2024-chithirai-kalotsavam-group-performance-dance-4.webp"
+                 alt="Bharatanatyam group dance at Chithirai Kalotsavam"
+                 width="800" height="600" loading="lazy" decoding="async" />
+            <div class="gallery-item__overlay">
+              <p class="gallery-item__title">Bharatanatyam Group Dance</p>
+              <p class="gallery-item__date">April 2024</p>
+            </div>
+          </div>
+
+          <div class="gallery-item reveal reveal--delay-2" data-category="chamber" onclick="openLightbox(this)">
+            <img src="assets/images/chamber-concert-series-shriram-salem.webp"
+                 alt="AFA Chamber Concert performance"
+                 width="800" height="600" loading="lazy" decoding="async" />
+            <div class="gallery-item__overlay">
+              <p class="gallery-item__title">Chamber Concert Series</p>
+              <p class="gallery-item__date">2024</p>
+            </div>
+          </div>
+
+          <div class="gallery-item reveal" data-category="chamber" onclick="openLightbox(this)">
+            <img src="assets/images/chamber-concert-series-prabhav.webp"
+                 alt="AFA Chamber Concert — mridangam performance"
+                 width="800" height="600" loading="lazy" decoding="async" />
+            <div class="gallery-item__overlay">
+              <p class="gallery-item__title">Mridangam Performance</p>
+              <p class="gallery-item__date">Chamber Series</p>
+            </div>
+          </div>
+
+          <div class="gallery-item reveal reveal--delay-1" data-category="chamber" onclick="openLightbox(this)">
+            <img src="assets/images/chamber-concert-series-anand-krishnan.webp"
+                 alt="AFA Chamber Concert — Anand Krishnan on violin"
+                 width="800" height="600" loading="lazy" decoding="async" />
+            <div class="gallery-item__overlay">
+              <p class="gallery-item__title">Violin — Anand Krishnan</p>
+              <p class="gallery-item__date">Chamber Series</p>
+            </div>
+          </div>
+
+          <div class="gallery-item reveal reveal--delay-2" data-category="community" onclick="openLightbox(this)">
+            <img src="assets/images/AFA-young-volunteers.webp"
+                 alt="AFA young volunteers"
+                 width="800" height="600" loading="lazy" decoding="async" />
+            <div class="gallery-item__overlay">
+              <p class="gallery-item__title">AFA Young Volunteers</p>
+              <p class="gallery-item__date">Community</p>
+            </div>
+          </div>
+
+          <div class="gallery-item reveal" data-category="aradhana" onclick="openLightbox(this)">
+            <img src="assets/images/2024-thyagaraja-aaradhanai-dance-performance.webp"
+                 alt="Thyagaraja Aradhana dance performance"
+                 width="800" height="600" loading="lazy" decoding="async" />
+            <div class="gallery-item__overlay">
+              <p class="gallery-item__title">Aradhana — Dance Performance</p>
+              <p class="gallery-item__date">2024</p>
+            </div>
+          </div>
+
+          <div class="gallery-item reveal reveal--delay-1" data-category="dance" onclick="openLightbox(this)">
+            <img src="assets/images/2024-chithirai-kalotsavam-group-performance-dance-3.webp"
+                 alt="Chithirai Kalotsavam dance group"
+                 width="800" height="600" loading="lazy" decoding="async" />
+            <div class="gallery-item__overlay">
+              <p class="gallery-item__title">Kalotsavam Dance Group</p>
+              <p class="gallery-item__date">2024</p>
+            </div>
+          </div>
+
+          <div class="gallery-item reveal reveal--delay-2" data-category="community" onclick="openLightbox(this)">
+            <img src="assets/images/2023_chamber_concert.webp"
+                 alt="AFA Chamber Concert 2023"
+                 width="800" height="600" loading="lazy" decoding="async" />
+            <div class="gallery-item__overlay">
+              <p class="gallery-item__title">Chamber Concert 2023</p>
+              <p class="gallery-item__date">2023</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox" onclick="if(event.target===this)closeLightbox()">
+    <button class="lightbox__close" onclick="closeLightbox()" aria-label="Close lightbox">✕</button>
+    <img class="lightbox__img" id="lightbox-img" src="" alt="" />
+    <p class="lightbox__caption" id="lightbox-caption"></p>
+  </div>
+
+  <div class="kolam-border" aria-hidden="true"></div>
+  <footer class="footer" aria-label="Site footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div class="footer__brand">
+          <p class="footer__brand-name">Atlanta Fine Arts</p>
+          <p class="footer__tagline">A volunteer-driven non-profit dedicated to celebrating Indian classical dance and music in the Atlanta area.</p>
+          <a href="mailto:afacarnatic@gmail.com" class="footer__email">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            afacarnatic@gmail.com
+          </a>
+        </div>
+        <nav aria-label="Footer site navigation">
+          <p class="footer__col-title">Navigate</p>
+          <ul class="footer__links" role="list">
+            <li><a href="index.html" class="footer__link">Home</a></li>
+            <li><a href="index.html#events" class="footer__link">Events</a></li>
+            <li><a href="volunteers.html" class="footer__link">Volunteers</a></li>
+            <li><a href="gallery.html" class="footer__link">Gallery</a></li>
+            <li><a href="donate.html" class="footer__link">Donate</a></li>
+            <li><a href="contact.html" class="footer__link">Contact</a></li>
+          </ul>
+        </nav>
+        <nav aria-label="Social media links">
+          <p class="footer__col-title">Follow Us</p>
+          <ul class="footer__socials" role="list">
+            <li><a href="https://www.instagram.com/atlanta.finearts" class="footer__social" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+            <li><a href="https://www.facebook.com/afacarnatic" class="footer__social" target="_blank" rel="noopener noreferrer">Facebook</a></li>
+            <li><a href="https://www.youtube.com/@atlfinearts" class="footer__social" target="_blank" rel="noopener noreferrer">YouTube</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="footer__bottom">
+        <p class="footer__copy">© 2025 Atlanta Fine Arts (AFA). All rights reserved.</p>
+        <p class="footer__credit">Built with ♡ for the Indian classical arts community</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+  (function () {
+    'use strict';
+    var nav = document.getElementById('nav');
+    function updateNav() { nav.classList.toggle('scrolled', window.scrollY > 40); }
+    window.addEventListener('scroll', updateNav, { passive: true });
+    updateNav();
+
+    var toggle = document.getElementById('nav-toggle');
+    var mobileMenu = document.getElementById('mobile-menu');
+    var isOpen = false;
+    function openMenu() { isOpen = true; toggle.setAttribute('aria-expanded','true'); mobileMenu.classList.add('open'); mobileMenu.setAttribute('aria-hidden','false'); document.body.style.overflow = 'hidden'; }
+    function closeMenu() { isOpen = false; toggle.setAttribute('aria-expanded','false'); mobileMenu.classList.remove('open'); mobileMenu.setAttribute('aria-hidden','true'); document.body.style.overflow = ''; }
+    toggle.addEventListener('click', function () { isOpen ? closeMenu() : openMenu(); });
+    document.querySelectorAll('[data-mobile-link]').forEach(function (l) { l.addEventListener('click', closeMenu); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && isOpen) closeMenu(); });
+
+    /* Scroll reveal */
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) { if (entry.isIntersecting) { entry.target.classList.add('visible'); io.unobserve(entry.target); } });
+      }, { threshold: 0.05 });
+      document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+    } else {
+      document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('visible'); });
+    }
+
+    /* Gallery filters */
+    var filters = document.querySelectorAll('.gallery-filter');
+    var items = document.querySelectorAll('.gallery-item');
+    filters.forEach(function(f) {
+      f.addEventListener('click', function() {
+        filters.forEach(function(b){ b.classList.remove('active'); b.setAttribute('aria-selected','false'); });
+        f.classList.add('active');
+        f.setAttribute('aria-selected','true');
+        var cat = f.dataset.filter;
+        items.forEach(function(item) {
+          item.hidden = !(cat === 'all' || item.dataset.category === cat);
+        });
+      });
+    });
+
+    /* Lightbox */
+    window.openLightbox = function(el) {
+      var img = el.querySelector('img');
+      var title = el.querySelector('.gallery-item__title');
+      document.getElementById('lightbox-img').src = img.src;
+      document.getElementById('lightbox-img').alt = img.alt;
+      document.getElementById('lightbox-caption').textContent = title ? title.textContent : '';
+      document.getElementById('lightbox').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    };
+    window.closeLightbox = function() {
+      document.getElementById('lightbox').classList.remove('open');
+      document.body.style.overflow = '';
+    };
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeLightbox();
+    });
+  })();
+  </script>
+
+</body>
+</html>

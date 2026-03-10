@@ -1,0 +1,332 @@
+/* =========================================================
+   Atlanta Fine Arts — pages.css
+   Styles for multi-page sections: Volunteers, Donate, Gallery, Contact
+   Shares design tokens & base from styles.css
+   ========================================================= */
+
+/* ── PAGE HERO (used on all inner pages) ── */
+.page-hero {
+  padding-block-start: calc(var(--nav-h) + 3rem);
+  padding-block-end: 3rem;
+  background: var(--charcoal);
+  position: relative;
+  overflow: hidden;
+}
+.page-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 20% 50%, rgba(94,23,235,0.18) 0%, transparent 55%),
+    radial-gradient(ellipse at 80% 40%, rgba(224,88,0,0.12) 0%, transparent 55%);
+  pointer-events: none;
+}
+.page-hero .container { position: relative; z-index: 1; }
+.page-hero__eyebrow {
+  font-size: 0.7rem; font-weight: 500; letter-spacing: 0.22em;
+  text-transform: uppercase; color: var(--gold-light); margin-block-end: 0.85rem;
+}
+.page-hero__title {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 300;
+  line-height: 1.1; color: #fff; letter-spacing: -0.01em;
+  max-width: 20ch;
+}
+.page-hero__title em { font-style: italic; color: var(--gold-light); }
+.page-hero__desc {
+  font-size: clamp(0.9375rem, 1.8vw, 1.0625rem); font-weight: 300;
+  color: rgba(255,255,255,0.7); max-width: 52ch; line-height: 1.75;
+  margin-block-start: 1rem;
+}
+
+/* ================================================================
+   VOLUNTEERS PAGE
+================================================================ */
+.volunteers-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+  gap: clamp(1.5rem, 3vw, 2rem);
+}
+.volunteer-card {
+  background: var(--ivory);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+  transition: transform 0.35s var(--ease-out), box-shadow 0.35s var(--ease-out);
+}
+.volunteer-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 60px rgba(94,23,235,0.1);
+}
+.volunteer-card__photo {
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--purple-pale), var(--saffron-pale));
+}
+.volunteer-card__photo img {
+  width: 100%; height: 100%; object-fit: cover;
+  object-position: top center;
+  transition: transform 0.6s var(--ease-out);
+}
+.volunteer-card:hover .volunteer-card__photo img {
+  transform: scale(1.04);
+}
+.volunteer-card__body {
+  padding: 1.5rem;
+}
+.volunteer-card__name {
+  font-family: var(--font-display);
+  font-size: 1.35rem; font-weight: 500;
+  color: var(--charcoal); margin-block-end: 0.2rem;
+}
+.volunteer-card__role {
+  font-size: 0.7rem; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--purple);
+  font-weight: 500; margin-block-end: 0.75rem;
+}
+.volunteer-card__bio {
+  font-size: 0.875rem; color: var(--text-muted);
+  line-height: 1.7;
+}
+.volunteer-card__tags {
+  display: flex; flex-wrap: wrap; gap: 0.4rem;
+  margin-block-start: 1rem;
+}
+
+/* Placeholder card for "add your photo" */
+.volunteer-card--placeholder .volunteer-card__photo {
+  display: flex; align-items: center; justify-content: center;
+  background: linear-gradient(135deg, var(--purple-pale) 0%, var(--saffron-pale) 100%);
+}
+.volunteer-card--placeholder .volunteer-card__photo-icon {
+  width: 64px; height: 64px; border-radius: 50%;
+  background: rgba(94,23,235,0.1);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--purple); font-size: 1.75rem;
+  font-family: var(--font-display);
+}
+
+/* ================================================================
+   DONATE / SUPPORT PAGE
+================================================================ */
+.donate-section { background: var(--ivory-warm); }
+.donate-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(2.5rem, 6vw, 5rem);
+  align-items: start;
+}
+.donate-info__title {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 300;
+  line-height: 1.2; color: var(--charcoal);
+  margin-block-end: 1.25rem;
+}
+.donate-info__title em { font-style: italic; color: var(--saffron-btn); }
+.donate-info__body {
+  font-size: 0.9375rem; color: var(--text-muted);
+  line-height: 1.8; margin-block-end: 1.75rem;
+}
+.donate-info__list {
+  display: flex; flex-direction: column; gap: 1rem;
+  margin-block-end: 2rem;
+}
+.donate-info__item {
+  display: flex; align-items: flex-start; gap: 1rem;
+  font-size: 0.9375rem; color: var(--text-body);
+}
+.donate-info__item-icon {
+  width: 44px; height: 44px; border-radius: 50%;
+  background: var(--ivory); border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; color: var(--purple); font-size: 1.1rem;
+}
+.donate-info__item-text strong {
+  display: block; font-weight: 500; color: var(--charcoal);
+  margin-block-end: 0.15rem;
+}
+.donate-info__item-text span {
+  font-size: 0.875rem; color: var(--text-muted);
+}
+
+/* Donate card */
+.donate-card {
+  background: var(--ivory);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: clamp(2rem, 4vw, 3rem);
+  position: sticky;
+  top: calc(var(--nav-h) + 2rem);
+}
+.donate-card__title {
+  font-family: var(--font-display);
+  font-size: 1.5rem; font-weight: 500;
+  color: var(--charcoal); margin-block-end: 0.5rem;
+}
+.donate-card__subtitle {
+  font-size: 0.875rem; color: var(--text-muted);
+  margin-block-end: 2rem; line-height: 1.6;
+}
+
+/* Donation amount buttons */
+.donate-amounts {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem; margin-block-end: 1.5rem;
+}
+.donate-amount-btn {
+  font-family: var(--font-display);
+  font-size: 1.25rem; font-weight: 500;
+  padding: 0.85rem 0.5rem; border-radius: 3px;
+  background: var(--ivory-warm); border: 1px solid var(--border);
+  color: var(--charcoal); text-align: center;
+  transition: all 0.2s;
+  cursor: pointer; min-height: 44px;
+}
+.donate-amount-btn:hover,
+.donate-amount-btn.active {
+  background: linear-gradient(135deg, var(--purple), var(--saffron-btn));
+  color: #fff; border-color: transparent;
+  box-shadow: 0 4px 20px rgba(94,23,235,0.25);
+}
+.donate-custom {
+  margin-block-end: 1.5rem;
+}
+.donate-custom input {
+  font-family: var(--font-body); font-size: 1rem;
+  color: var(--charcoal);
+  background: var(--ivory-warm); border: 1px solid var(--border);
+  border-radius: 3px; padding: 0.85rem 1rem; width: 100%;
+  outline: none; min-height: 44px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.donate-custom input:focus {
+  border-color: var(--purple);
+  box-shadow: 0 0 0 3px rgba(94,23,235,0.12);
+}
+.donate-methods {
+  display: flex; flex-direction: column; gap: 0.75rem;
+}
+.donate-methods .btn { width: 100%; justify-content: center; }
+
+/* Impact stats */
+.impact-section { background: var(--charcoal); color: #fff; }
+.impact-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+  text-align: center;
+}
+.impact-item__number {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-weight: 500; color: var(--gold-light); line-height: 1;
+  margin-block-end: 0.5rem;
+}
+.impact-item__label {
+  font-size: 0.8rem; letter-spacing: 0.1em;
+  text-transform: uppercase; color: rgba(255,255,255,0.55);
+}
+
+/* ================================================================
+   GALLERY PAGE
+================================================================ */
+.gallery-section { background: var(--ivory-warm); }
+.gallery-filters {
+  display: flex; gap: 0.5rem; flex-wrap: wrap;
+  margin-block-end: 2.5rem;
+  background: var(--border); padding: 3px; border-radius: 3px;
+  width: fit-content;
+}
+.gallery-filter {
+  font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase;
+  font-weight: 500; padding: 0.45rem 1rem; border-radius: 2px;
+  color: var(--text-muted); transition: background 0.2s, color 0.2s;
+  min-height: 36px; cursor: pointer;
+}
+.gallery-filter.active {
+  background: linear-gradient(135deg, var(--purple), var(--saffron-btn));
+  color: #fff;
+}
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr));
+  gap: clamp(0.75rem, 2vw, 1rem);
+}
+.gallery-item {
+  border-radius: 4px; overflow: hidden;
+  position: relative; cursor: pointer;
+  background: linear-gradient(135deg, var(--purple-pale), var(--saffron-pale));
+}
+.gallery-item img {
+  width: 100%; aspect-ratio: 4/3; object-fit: cover;
+  display: block;
+  transition: transform 0.6s var(--ease-out);
+}
+.gallery-item:hover img { transform: scale(1.05); }
+.gallery-item__overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(19,16,30,0.85) 0%, transparent 50%);
+  display: flex; flex-direction: column;
+  justify-content: flex-end; padding: 1.25rem;
+  opacity: 0; transition: opacity 0.35s;
+}
+.gallery-item:hover .gallery-item__overlay { opacity: 1; }
+.gallery-item__title {
+  font-family: var(--font-display);
+  font-size: 1.1rem; font-weight: 500; color: #fff;
+  margin-block-end: 0.15rem;
+}
+.gallery-item__date {
+  font-size: 0.7rem; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--gold-light);
+}
+
+/* Gallery lightbox */
+.lightbox {
+  display: none; position: fixed; inset: 0;
+  z-index: 9999; background: rgba(0,0,0,0.9);
+  padding: 40px; overflow-y: auto;
+}
+.lightbox.open { display: flex; align-items: center; justify-content: center; }
+.lightbox__img {
+  max-width: 90vw; max-height: 85vh;
+  object-fit: contain; border-radius: 4px;
+}
+.lightbox__close {
+  position: fixed; top: 20px; right: 20px;
+  background: rgba(255,255,255,0.12); border: none;
+  color: #fff; width: 44px; height: 44px; border-radius: 50%;
+  font-size: 20px; cursor: pointer; display: flex;
+  align-items: center; justify-content: center;
+  z-index: 10000;
+}
+.lightbox__caption {
+  position: fixed; bottom: 24px; left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-display); font-size: 1.1rem;
+  color: rgba(255,255,255,0.8); text-align: center;
+}
+
+/* ================================================================
+   CONTACT PAGE (standalone)
+================================================================ */
+.contact-page { background: var(--ivory-warm); }
+.contact-page .contact__inner {
+  display: grid; grid-template-columns: 5fr 7fr;
+  gap: clamp(2.5rem, 6vw, 6rem); align-items: start;
+}
+
+/* ================================================================
+   RESPONSIVE — NEW PAGES
+================================================================ */
+@media (max-width: 900px) {
+  .donate-inner { grid-template-columns: 1fr; }
+  .donate-card { position: static; }
+  .impact-grid { grid-template-columns: repeat(2, 1fr); }
+  .contact-page .contact__inner { grid-template-columns: 1fr; }
+}
+@media (max-width: 600px) {
+  .impact-grid { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+  .donate-amounts { grid-template-columns: repeat(2, 1fr); }
+  .volunteers-grid { grid-template-columns: 1fr; }
+}
