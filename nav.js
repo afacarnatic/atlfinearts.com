@@ -65,7 +65,7 @@
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape' && isOpen) {
       closeMenu();
-      toggle.focus(); // Return focus to hamburger button
+      toggle.focus();
     }
   });
 
