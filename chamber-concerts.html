@@ -635,13 +635,13 @@
         <div class="footer__brand">
           <p class="footer__brand-name">Atlanta Fine Arts</p>
           <p class="footer__tagline">A volunteer-driven non-profit dedicated to celebrating Indian classical dance and music in the Atlanta area.</p>
-          <a href="mailto:info@atlfinearts.com" class="footer__email">
+          <a href="/cdn-cgi/l/email-protection#3950575f5679584d555f50575c584b4d4a175a5654" class="footer__email">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                  stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
               <polyline points="22,6 12,13 2,6"/>
             </svg>
-            info@atlfinearts.com
+            <span class="__cf_email__" data-cfemail="751c1b131a35140119131c1b10140701065b161a18">[email&#160;protected]</span>
           </a>
         </div>
         <nav aria-label="Footer site navigation">
@@ -673,24 +673,12 @@
     </div>
   </footer>
 
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+  <!-- Nav: scroll state + mobile menu (touch-optimised) -->
+  <script src="nav.js" defer></script>
   <script>
   (function () {
     'use strict';
-
-    /* ── Nav ── */
-    var nav = document.getElementById('nav');
-    function updateNav() { nav.classList.toggle('scrolled', window.scrollY > 40); }
-    window.addEventListener('scroll', updateNav, { passive: true });
-    updateNav();
-
-    var toggle = document.getElementById('nav-toggle');
-    var mobileMenu = document.getElementById('mobile-menu');
-    var isOpen = false;
-    function openMenu() { isOpen = true; toggle.setAttribute('aria-expanded','true'); mobileMenu.classList.add('open'); mobileMenu.setAttribute('aria-hidden','false'); document.body.style.overflow = 'hidden'; }
-    function closeMenu() { isOpen = false; toggle.setAttribute('aria-expanded','false'); mobileMenu.classList.remove('open'); mobileMenu.setAttribute('aria-hidden','true'); document.body.style.overflow = ''; }
-    toggle.addEventListener('click', function () { isOpen ? closeMenu() : openMenu(); });
-    document.querySelectorAll('[data-mobile-link]').forEach(function (l) { l.addEventListener('click', closeMenu); });
-    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && isOpen) closeMenu(); });
 
     /* ── Scroll reveal ── */
     if ('IntersectionObserver' in window) {
@@ -860,16 +848,4 @@
           /* Mailchimp returns HTML in data.msg — strip tags */
           var rawMsg = (data.msg || '').replace(/<[^>]+>/g, '').replace(/^\d+ - /, '').trim();
           errorText.textContent = rawMsg || 'Something went wrong. Please try again.';
-          errorEl.classList.add('visible');
-        }
-      };
-
-      script.src = MC_URL + '&' + params.toString() + '&c=' + cbName;
-      document.body.appendChild(script);
-    });
-
-  }());
-  </script>
-<script src="nav.js" defer></script> 
-</body>
-</html>
+          err
