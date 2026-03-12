@@ -9,251 +9,127 @@
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://atlfinearts.com/teachers.html" />
   <meta name="theme-color" content="#13101E" />
-
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://atlfinearts.com/teachers.html" />
+  <meta property="og:title" content="Find a Teacher | Atlanta Fine Arts" />
+  <meta property="og:description" content="Discover Indian classical music and dance teachers across the Atlanta area." />
+  <meta property="og:image" content="https://atlfinearts.com/assets/images/og-image.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:site_name" content="Atlanta Fine Arts" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Find a Teacher | Atlanta Fine Arts" />
+  <meta name="twitter:description" content="Indian classical music and dance teachers across Atlanta." />
+  <meta name="twitter:image" content="https://atlfinearts.com/assets/images/og-image.jpg" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"ItemList","name":"Indian Classical Music & Dance Teachers in Atlanta","publisher":{"@type":"Organization","name":"Atlanta Fine Arts","url":"https://atlfinearts.com"}}</script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <!-- Early connection to Google Sheets so data fetch starts sooner -->
-  <link rel="preconnect" href="https://docs.google.com" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,500;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" />
   <link rel="dns-prefetch" href="https://docs.google.com" />
-  <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,500;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" />
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="pages.css" />
-
   <style>
-    .nav__wordmark { color: #fff !important; }
-    .nav__wordmark span { color: rgba(255,255,255,0.7) !important; }
-    .nav__link { color: rgba(255,255,255,0.85) !important; }
-    .nav:not(.scrolled) { background: linear-gradient(to bottom, rgba(0,0,0,0.55) 0%, transparent 100%) !important; }
-
-    /* ── TEACHER DIRECTORY STYLES ── */
-    .teachers-section { background: var(--ivory-warm); }
-
-    .filters-bar {
-      display: flex; flex-wrap: wrap; gap: 1rem;
-      margin-block-end: 2.5rem;
-      padding: 1.25rem 1.5rem;
-      background: var(--ivory);
-      border: 1px solid var(--border);
-      border-radius: 4px;
-    }
-    .filter-group { display: flex; flex-direction: column; gap: 0.35rem; flex: 1; min-width: 180px; }
-    .filter-group label {
-      font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase;
-      font-weight: 500; color: var(--text-muted);
-    }
-    .filter-select {
-      font-family: var(--font-body); font-size: 0.875rem;
-      color: var(--charcoal); background: var(--ivory-warm);
-      border: 1px solid var(--border); border-radius: 3px;
-      padding: 0.6rem 0.85rem; min-height: 40px;
-      outline: none; appearance: none; cursor: pointer;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23756A90' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-position: right 0.75rem center;
-      padding-right: 2rem;
-      transition: border-color 0.2s;
-    }
-    .filter-select:focus { border-color: var(--purple); box-shadow: 0 0 0 3px rgba(94,23,235,0.12); }
-
-    .search-input {
-      font-family: var(--font-body); font-size: 0.875rem;
-      color: var(--charcoal); background: var(--ivory-warm);
-      border: 1px solid var(--border); border-radius: 3px;
-      padding: 0.6rem 0.85rem; min-height: 40px; width: 100%;
-      outline: none; transition: border-color 0.2s;
-    }
-    .search-input:focus { border-color: var(--purple); box-shadow: 0 0 0 3px rgba(94,23,235,0.12); }
-
-    .teachers-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
-      gap: clamp(1.25rem, 2.5vw, 1.75rem);
-    }
-
-    .teacher-card {
-      background: var(--ivory);
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      overflow: hidden;
-      transition: transform 0.35s var(--ease-out), box-shadow 0.35s var(--ease-out);
-      display: flex; flex-direction: column;
-    }
-    .teacher-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 20px 60px rgba(94,23,235,0.1);
-    }
-
-    .teacher-card__header {
-      display: flex; align-items: center; gap: 1rem;
-      padding: 1.5rem 1.5rem 0;
-    }
-    .teacher-card__avatar {
-      width: 72px; height: 72px; border-radius: 50%;
-      overflow: hidden; flex-shrink: 0;
-      background: linear-gradient(135deg, var(--purple-pale), var(--saffron-pale));
-      border: 2px solid var(--border);
-      display: flex; align-items: center; justify-content: center;
-    }
-    .teacher-card__avatar img {
-      width: 100%; height: 100%; object-fit: cover; object-position: top center;
-    }
-    .teacher-card__avatar-initials {
-      font-family: var(--font-display);
-      font-size: 1.5rem; font-weight: 500;
-      color: var(--purple-deep);
-    }
-    .teacher-card__name {
-      font-family: var(--font-display);
-      font-size: 1.3rem; font-weight: 500;
-      color: var(--charcoal); line-height: 1.2;
-    }
-    .teacher-card__genre {
-      font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase;
-      font-weight: 500; color: var(--purple); margin-top: 0.15rem;
-    }
-
-    .teacher-card__body {
-      padding: 1rem 1.5rem 1.5rem;
-      flex: 1; display: flex; flex-direction: column; gap: 0.6rem;
-    }
-
-    .teacher-card__detail {
-      display: flex; align-items: flex-start; gap: 0.6rem;
-      font-size: 0.875rem; color: var(--text-body);
-    }
-    .teacher-card__detail-icon {
-      flex-shrink: 0; width: 18px; color: var(--purple); margin-top: 2px;
-    }
-    .teacher-card__detail-label {
-      font-size: 0.65rem; letter-spacing: 0.08em; text-transform: uppercase;
-      color: var(--text-muted); font-weight: 500;
-    }
-    .teacher-card__detail-value { color: var(--charcoal); }
-
-    .teacher-card__instruments {
-      display: flex; flex-wrap: wrap; gap: 0.35rem;
-      margin-block-start: 0.25rem;
-    }
-
-    .teacher-card__links {
-      display: flex; gap: 0.5rem; flex-wrap: wrap;
-      margin-block-start: auto; padding-top: 0.75rem;
-      border-top: 1px solid var(--border);
-    }
-    .teacher-card__link {
-      font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase;
-      font-weight: 500; color: var(--purple);
-      display: inline-flex; align-items: center; gap: 0.3rem;
-      transition: color 0.2s; padding: 0.25rem 0;
-    }
-    .teacher-card__link:hover { color: var(--saffron-btn); }
-
-    /* Loading state */
-    .teachers-loading {
-      text-align: center; padding: 4rem 2rem;
-      color: var(--text-muted); font-size: 0.9375rem;
-    }
-    .teachers-loading__spinner {
-      width: 36px; height: 36px; border: 3px solid var(--border);
-      border-top-color: var(--purple); border-radius: 50%;
-      animation: spin 0.8s linear infinite;
-      margin: 0 auto 1rem;
-    }
-    @keyframes spin { to { transform: rotate(360deg); } }
-
-    /* Empty state */
-    .teachers-empty {
-      text-align: center; padding: 4rem 2rem;
-      color: var(--text-muted);
-    }
-    .teachers-empty__icon {
-      font-size: 2.5rem; margin-block-end: 1rem; opacity: 0.5;
-    }
-
-    /* Count */
-    .teachers-count {
-      font-size: 0.8rem; color: var(--text-muted);
-      margin-block-end: 1.25rem;
-    }
-
-    /* ── Skeleton loading cards ── */
-    .skeleton-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
-      gap: clamp(1rem, 2.5vw, 1.75rem);
-    }
-    .skeleton-card {
-      background: var(--ivory);
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      padding: 1.5rem;
-      display: flex; flex-direction: column; gap: 1rem;
-    }
-    .skeleton-card__header { display: flex; align-items: center; gap: 1rem; }
-    .skeleton-pulse {
-      background: linear-gradient(90deg, var(--border) 25%, var(--ivory-warm) 50%, var(--border) 75%);
-      background-size: 200% 100%;
-      animation: skeletonShimmer 1.4s ease-in-out infinite;
-      border-radius: 3px;
-    }
-    .skeleton-avatar {
-      width: 72px; height: 72px; border-radius: 50%; flex-shrink: 0;
-    }
-    .skeleton-name { height: 20px; width: 60%; }
-    .skeleton-genre { height: 12px; width: 40%; margin-top: 6px; }
-    .skeleton-line { height: 13px; width: 100%; }
-    .skeleton-line--short { width: 55%; }
-    .skeleton-tags { display: flex; gap: 0.4rem; }
-    .skeleton-tag { height: 22px; width: 70px; border-radius: 2px; }
-    @keyframes skeletonShimmer {
-      0%   { background-position: 200% 0; }
-      100% { background-position: -200% 0; }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      .skeleton-pulse { animation: none; background: var(--border); }
-    }
-
-    /* Submit CTA banner */
-    .submit-banner {
-      background: linear-gradient(135deg, var(--purple-deep) 0%, var(--charcoal) 100%);
-      color: #fff; text-align: center;
-      padding: clamp(3rem, 6vw, 4.5rem) 2rem;
-    }
-    .submit-banner__title {
-      font-family: var(--font-display);
-      font-size: clamp(2rem, 4vw, 2.75rem); font-weight: 300;
-      line-height: 1.2; margin-block-end: 1rem;
-    }
-    .submit-banner__title em { font-style: italic; color: var(--gold-light); }
-    .submit-banner__desc {
-      color: rgba(255,255,255,0.7); font-weight: 300;
-      line-height: 1.8; max-width: 50ch; margin: 0 auto 2rem;
-    }
-
-    @media (max-width: 600px) {
-      .filters-bar { flex-direction: column; }
-      .filter-group { min-width: 100%; }
-    }
+    .nav__wordmark{color:#fff!important}.nav__wordmark span{color:rgba(255,255,255,.7)!important}.nav__link{color:rgba(255,255,255,.85)!important}.nav:not(.scrolled){background:linear-gradient(to bottom,rgba(0,0,0,.55) 0%,transparent 100%)!important}
+    .teachers-section{background:var(--ivory-warm)}
+    /* toolbar */
+    .dir-toolbar{display:grid;grid-template-columns:1fr auto auto;gap:.75rem;align-items:end;margin-block-end:1rem}
+    .dir-search-wrap{position:relative}
+    .dir-search-wrap svg{position:absolute;left:.75rem;top:50%;transform:translateY(-50%);color:var(--text-muted);pointer-events:none}
+    .dir-search{font-family:var(--font-body);font-size:.9375rem;color:var(--charcoal);background:var(--ivory);border:1px solid var(--border);border-radius:3px;padding:.65rem .85rem .65rem 2.4rem;width:100%;outline:none;transition:border-color .2s,box-shadow .2s;-webkit-appearance:none}
+    .dir-search:focus{border-color:var(--purple);box-shadow:0 0 0 3px rgba(94,23,235,.1)}
+    .dir-search::placeholder{color:var(--text-muted)}
+    /* view toggle */
+    .view-toggle{display:flex;border:1px solid var(--border);border-radius:3px;overflow:hidden;height:40px}
+    .view-btn{width:40px;background:var(--ivory);border:none;cursor:pointer;color:var(--text-muted);display:flex;align-items:center;justify-content:center;transition:background .15s,color .15s}
+    .view-btn.active{background:var(--purple);color:#fff}
+    .view-btn:not(.active):hover{background:var(--ivory-warm);color:var(--charcoal)}
+    /* filter button */
+    .filter-toggle-btn{display:flex;align-items:center;gap:.5rem;height:40px;padding:0 1rem;background:var(--ivory);border:1px solid var(--border);border-radius:3px;font-family:var(--font-body);font-size:.875rem;font-weight:500;color:var(--charcoal);cursor:pointer;transition:border-color .2s;white-space:nowrap}
+    .filter-toggle-btn:hover{border-color:var(--purple)}
+    .filter-toggle-btn.has-filters{border-color:var(--purple);color:var(--purple)}
+    .filter-badge{background:var(--purple);color:#fff;border-radius:10px;font-size:.65rem;font-weight:600;padding:1px 6px;display:none}
+    .filter-badge.visible{display:inline-block}
+    /* filter drawer */
+    .filter-drawer{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,200px),1fr));gap:.75rem;background:var(--ivory);border:1px solid var(--border);border-radius:3px;padding:1rem 1.25rem;margin-block-end:1rem}
+    .filter-drawer.hidden{display:none}
+    .filter-group{display:flex;flex-direction:column;gap:.3rem}
+    .filter-label{font-size:.625rem;letter-spacing:.15em;text-transform:uppercase;font-weight:500;color:var(--text-muted)}
+    .filter-select{font-family:var(--font-body);font-size:.875rem;color:var(--charcoal);background:var(--ivory-warm);border:1px solid var(--border);border-radius:3px;padding:.55rem 2rem .55rem .75rem;outline:none;-webkit-appearance:none;appearance:none;cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23756A90' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right .6rem center;transition:border-color .2s}
+    .filter-select:focus{border-color:var(--purple);box-shadow:0 0 0 3px rgba(94,23,235,.1)}
+    /* chips */
+    .active-chips{display:flex;flex-wrap:wrap;gap:.4rem;margin-block-end:1rem}
+    .active-chips:empty{display:none}
+    .chip{display:inline-flex;align-items:center;gap:.35rem;background:var(--purple-pale);color:var(--purple-deep);border:1px solid rgba(94,23,235,.2);border-radius:20px;font-size:.75rem;font-weight:500;padding:.25rem .6rem}
+    .chip__remove{background:none;border:none;cursor:pointer;padding:0;line-height:1;color:var(--purple);font-size:.9rem;display:flex;align-items:center}
+    .chip__remove:hover{color:var(--saffron-btn)}
+    .chip--clear{background:transparent;color:var(--text-muted);border-color:var(--border);cursor:pointer}
+    .chip--clear:hover{color:var(--charcoal);border-color:var(--charcoal)}
+    /* meta */
+    .dir-meta{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.5rem;margin-block-end:1.25rem}
+    .dir-count{font-size:.8rem;color:var(--text-muted)}
+    /* card grid */
+    .teachers-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:clamp(1rem,2vw,1.5rem)}
+    .teacher-card{background:var(--ivory);border:1px solid var(--border);border-radius:4px;overflow:hidden;transition:transform .3s var(--ease-out),box-shadow .3s var(--ease-out);display:flex;flex-direction:column}
+    .teacher-card:hover{transform:translateY(-4px);box-shadow:0 16px 48px rgba(94,23,235,.1)}
+    .teacher-card__header{display:flex;align-items:center;gap:.85rem;padding:1.25rem 1.25rem 0}
+    .teacher-card__avatar{width:52px;height:52px;border-radius:50%;overflow:hidden;flex-shrink:0;background:linear-gradient(135deg,var(--purple-pale),var(--saffron-pale));border:2px solid var(--border);display:flex;align-items:center;justify-content:center}
+    .teacher-card__initials{font-family:var(--font-display);font-size:1.15rem;font-weight:500;color:var(--purple-deep)}
+    .teacher-card__name{font-family:var(--font-display);font-size:1.15rem;font-weight:500;color:var(--charcoal);line-height:1.2}
+    .teacher-card__genre{font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;font-weight:500;color:var(--purple);margin-top:.1rem}
+    .teacher-card__body{padding:.85rem 1.25rem 1.25rem;flex:1;display:flex;flex-direction:column;gap:.45rem}
+    .teacher-card__instruments{display:flex;flex-wrap:wrap;gap:.3rem}
+    .teacher-card__meta{display:flex;flex-wrap:wrap;gap:.3rem 1rem;font-size:.8rem;color:var(--text-body)}
+    .teacher-card__meta-item{display:flex;align-items:center;gap:.3rem}
+    .teacher-card__links{display:flex;gap:.5rem;flex-wrap:wrap;margin-block-start:auto;padding-top:.65rem;border-top:1px solid var(--border)}
+    .teacher-card__link{font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;font-weight:500;color:var(--purple);display:inline-flex;align-items:center;gap:.25rem;transition:color .2s;padding:.2rem 0}
+    .teacher-card__link:hover{color:var(--saffron-btn)}
+    /* list view */
+    .teachers-list{display:flex;flex-direction:column;gap:4px}
+    .teacher-row{display:grid;grid-template-columns:40px 1fr auto;gap:.85rem;align-items:center;padding:.85rem 1rem;background:var(--ivory);border:1px solid var(--border);border-radius:3px;transition:box-shadow .2s,transform .2s}
+    .teacher-row:hover{box-shadow:0 4px 20px rgba(94,23,235,.08);transform:translateX(2px)}
+    .teacher-row__avatar{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--purple-pale),var(--saffron-pale));border:1px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    .teacher-row__initials{font-family:var(--font-display);font-size:.9rem;font-weight:500;color:var(--purple-deep)}
+    .teacher-row__main{min-width:0}
+    .teacher-row__name{font-family:var(--font-display);font-size:1.05rem;font-weight:500;color:var(--charcoal);line-height:1.2}
+    .teacher-row__sub{font-size:.78rem;color:var(--text-muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:2px}
+    .teacher-row__actions{display:flex;gap:.4rem;flex-shrink:0}
+    .teacher-row__link{font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;font-weight:500;color:var(--purple);padding:.3rem .6rem;border:1px solid rgba(94,23,235,.25);border-radius:3px;transition:background .15s,color .15s;white-space:nowrap}
+    .teacher-row__link:hover{background:var(--purple);color:#fff}
+    /* tag */
+    .tag{display:inline-block;font-size:.65rem;letter-spacing:.06em;text-transform:uppercase;font-weight:500;color:var(--text-muted);background:var(--ivory-warm);border:1px solid var(--border);border-radius:2px;padding:.15rem .5rem}
+    /* skeleton */
+    @keyframes shimmer{0%{background-position:-400px 0}100%{background-position:400px 0}}
+    .skeleton{background:linear-gradient(90deg,var(--ivory-warm) 25%,var(--ivory) 50%,var(--ivory-warm) 75%);background-size:800px 100%;animation:shimmer 1.4s infinite linear;border-radius:3px}
+    .skeleton-card{background:var(--ivory);border:1px solid var(--border);border-radius:4px;padding:1.25rem;display:flex;flex-direction:column;gap:.85rem}
+    .skeleton-card__header{display:flex;gap:.85rem;align-items:center}
+    .skeleton-circle{width:52px;height:52px;border-radius:50%;flex-shrink:0}
+    .skeleton-line{height:14px}
+    /* empty */
+    .teachers-empty{text-align:center;padding:4rem 2rem;color:var(--text-muted);grid-column:1/-1}
+    .teachers-empty__icon{font-size:2.5rem;margin-block-end:1rem;opacity:.4}
+    /* load more */
+    .load-more-wrap{text-align:center;padding-block-start:2rem}
+    .btn--load-more{background:transparent;border:1px solid var(--border);color:var(--text-body);font-family:var(--font-body);font-size:.875rem;padding:.75rem 2rem;border-radius:3px;cursor:pointer;transition:border-color .2s,color .2s}
+    .btn--load-more:hover{border-color:var(--purple);color:var(--purple)}
+    /* submit banner */
+    .submit-banner{background:linear-gradient(135deg,var(--purple-deep) 0%,var(--charcoal) 100%);color:#fff;text-align:center;padding:clamp(3rem,6vw,4.5rem) 2rem}
+    .submit-banner__title{font-family:var(--font-display);font-size:clamp(2rem,4vw,2.75rem);font-weight:300;line-height:1.2;margin-block-end:1rem}
+    .submit-banner__title em{font-style:italic;color:var(--gold-light)}
+    .submit-banner__desc{color:rgba(255,255,255,.7);font-weight:300;line-height:1.8;max-width:50ch;margin:0 auto 2rem}
+    /* responsive */
+    @media(max-width:700px){.teacher-row{grid-template-columns:36px 1fr}.teacher-row__actions{display:none}}
+    @media(max-width:500px){.dir-toolbar{grid-template-columns:1fr auto}.view-toggle{display:none}}
   </style>
 </head>
 <body>
-
   <a class="skip-link" href="#main-content">Skip to main content</a>
   <div class="kolam-border" aria-hidden="true"></div>
-
-  <!-- NAVIGATION -->
   <nav class="nav" id="nav" aria-label="Main navigation">
     <div class="nav__inner">
       <a href="index.html" class="nav__brand" aria-label="Atlanta Fine Arts — home">
-        <div class="nav__logo" aria-hidden="true">
-          <img src="assets/images/afa-logo.webp" alt="" width="36" height="36"
-               style="border-radius:50%;object-fit:cover;" />
-        </div>
-        <div class="nav__wordmark">
-          Atlanta Fine Arts
-          <span>Indian Classical Arts</span>
-        </div>
+        <div class="nav__logo" aria-hidden="true"><img src="assets/images/afa-logo.webp" alt="" width="36" height="36" style="border-radius:50%;object-fit:cover;" /></div>
+        <div class="nav__wordmark">Atlanta Fine Arts<span>Indian Classical Arts</span></div>
       </a>
       <ul class="nav__links" role="list">
         <li><a href="index.html#about" class="nav__link">About</a></li>
@@ -284,164 +160,74 @@
   </nav>
 
   <main id="main-content">
-
-    <!-- PAGE HERO -->
     <section class="page-hero" aria-label="Page introduction">
       <div class="container">
         <p class="page-hero__eyebrow">Teacher Directory</p>
         <h1 class="page-hero__title">Find a <em>Teacher</em></h1>
-        <p class="page-hero__desc">
-          Discover Indian classical music and dance teachers across the Atlanta area —
-          Carnatic, Hindustani, Bharatanatyam, Kuchipudi, and more. Filter by instrument,
-          genre, or location to find the right match.
-        </p>
+        <p class="page-hero__desc">Discover Indian classical music and dance teachers across the Atlanta area — Carnatic, Hindustani, Bharatanatyam, Kuchipudi, and more. Search by name, instrument, genre, or area.</p>
       </div>
     </section>
 
-    <!-- TEACHER DIRECTORY -->
     <section class="teachers-section" aria-labelledby="teachers-heading">
       <div class="container">
+        <div style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-block-end:1.5rem;">
+          <div><p class="section-label">Browse Teachers</p><h2 class="section-title" id="teachers-heading">Atlanta Area <em>Teachers</em></h2></div>
+        </div>
 
-        <div style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:1.5rem;margin-block-end:2rem;">
-          <div>
-            <p class="section-label">Browse Teachers</p>
-            <h2 class="section-title" id="teachers-heading">Atlanta Area <em>Teachers</em></h2>
+        <!-- TOOLBAR -->
+        <div class="dir-toolbar">
+          <div class="dir-search-wrap">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input type="search" class="dir-search" id="dir-search" placeholder="Search name, instrument, area…" aria-label="Search teachers" autocomplete="off" />
+          </div>
+          <button class="filter-toggle-btn" id="filter-toggle" aria-expanded="false" aria-controls="filter-drawer">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="6" x2="20" y2="6"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="11" y1="18" x2="13" y2="18"/></svg>
+            Filters
+            <span class="filter-badge" id="filter-badge"></span>
+          </button>
+          <div class="view-toggle" role="group" aria-label="View style">
+            <button class="view-btn active" id="btn-card" aria-label="Card view" title="Card view">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+            </button>
+            <button class="view-btn" id="btn-list" aria-label="List view" title="List view">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+            </button>
           </div>
         </div>
 
-        <!-- FILTERS -->
-        <div class="filters-bar" role="search" aria-label="Filter teachers">
-          <div class="filter-group">
-            <label for="filter-search">Search</label>
-            <input type="text" class="search-input" id="filter-search" placeholder="Search by name…" />
-          </div>
-          <div class="filter-group">
-            <label for="filter-genre">Genre</label>
-            <select class="filter-select" id="filter-genre">
-              <option value="all">All</option>
-              <option value="Carnatic Vocal">Carnatic Vocal</option>
-              <option value="Carnatic Instrumental">Carnatic Instrumental</option>
-              <option value="Hindustani Vocal">Hindustani Vocal</option>
-              <option value="Hindustani Instrumental">Hindustani Instrumental</option>
-              <option value="Bharatanatyam">Bharatanatyam</option>
-              <option value="Kuchipudi">Kuchipudi</option>
-              <option value="Other">Other</option>
-            </select>
-          </div>
-          <div class="filter-group">
-            <label for="filter-area">Area</label>
-            <select class="filter-select" id="filter-area">
-              <option value="all">All Areas</option>
-              <option value="Cumming">Cumming</option>
-              <option value="Alpharetta">Alpharetta</option>
-              <option value="Johns Creek">Johns Creek</option>
-              <option value="Suwanee">Suwanee</option>
-              <option value="Duluth">Duluth</option>
-              <option value="Marietta">Marietta</option>
-              <option value="Roswell">Roswell</option>
-              <option value="Decatur">Decatur</option>
-              <option value="Other">Other</option>
-            </select>
-          </div>
+        <!-- FILTER DRAWER -->
+        <div class="filter-drawer hidden" id="filter-drawer">
+          <div class="filter-group"><label class="filter-label" for="filter-genre">Genre</label><select class="filter-select" id="filter-genre"><option value="all">All genres</option></select></div>
+          <div class="filter-group"><label class="filter-label" for="filter-area">Area</label><select class="filter-select" id="filter-area"><option value="all">All areas</option></select></div>
+          <div class="filter-group"><label class="filter-label" for="filter-instrument">Instrument</label><select class="filter-select" id="filter-instrument"><option value="all">All instruments</option></select></div>
         </div>
 
-        <!-- RESULTS COUNT -->
-        <p class="teachers-count" id="teachers-count" aria-live="polite"></p>
+        <!-- ACTIVE CHIPS -->
+        <div class="active-chips" id="active-chips" aria-label="Active filters" role="list"></div>
 
-        <!-- LOADING STATE — skeleton cards shown immediately -->
-        <div id="teachers-loading">
-          <div class="skeleton-grid" aria-hidden="true">
-            <div class="skeleton-card">
-              <div class="skeleton-card__header">
-                <div class="skeleton-pulse skeleton-avatar"></div>
-                <div style="flex:1"><div class="skeleton-pulse skeleton-name"></div><div class="skeleton-pulse skeleton-genre"></div></div>
-              </div>
-              <div class="skeleton-tags"><div class="skeleton-pulse skeleton-tag"></div><div class="skeleton-pulse skeleton-tag"></div></div>
-              <div class="skeleton-pulse skeleton-line"></div><div class="skeleton-pulse skeleton-line skeleton-line--short"></div>
-            </div>
-            <div class="skeleton-card">
-              <div class="skeleton-card__header">
-                <div class="skeleton-pulse skeleton-avatar"></div>
-                <div style="flex:1"><div class="skeleton-pulse skeleton-name"></div><div class="skeleton-pulse skeleton-genre"></div></div>
-              </div>
-              <div class="skeleton-tags"><div class="skeleton-pulse skeleton-tag"></div><div class="skeleton-pulse skeleton-tag"></div></div>
-              <div class="skeleton-pulse skeleton-line"></div><div class="skeleton-pulse skeleton-line skeleton-line--short"></div>
-            </div>
-            <div class="skeleton-card">
-              <div class="skeleton-card__header">
-                <div class="skeleton-pulse skeleton-avatar"></div>
-                <div style="flex:1"><div class="skeleton-pulse skeleton-name"></div><div class="skeleton-pulse skeleton-genre"></div></div>
-              </div>
-              <div class="skeleton-tags"><div class="skeleton-pulse skeleton-tag"></div></div>
-              <div class="skeleton-pulse skeleton-line"></div><div class="skeleton-pulse skeleton-line skeleton-line--short"></div>
-            </div>
-            <div class="skeleton-card">
-              <div class="skeleton-card__header">
-                <div class="skeleton-pulse skeleton-avatar"></div>
-                <div style="flex:1"><div class="skeleton-pulse skeleton-name"></div><div class="skeleton-pulse skeleton-genre"></div></div>
-              </div>
-              <div class="skeleton-tags"><div class="skeleton-pulse skeleton-tag"></div><div class="skeleton-pulse skeleton-tag"></div></div>
-              <div class="skeleton-pulse skeleton-line"></div><div class="skeleton-pulse skeleton-line"></div>
-            </div>
-            <div class="skeleton-card">
-              <div class="skeleton-card__header">
-                <div class="skeleton-pulse skeleton-avatar"></div>
-                <div style="flex:1"><div class="skeleton-pulse skeleton-name"></div><div class="skeleton-pulse skeleton-genre"></div></div>
-              </div>
-              <div class="skeleton-tags"><div class="skeleton-pulse skeleton-tag"></div></div>
-              <div class="skeleton-pulse skeleton-line"></div><div class="skeleton-pulse skeleton-line skeleton-line--short"></div>
-            </div>
-            <div class="skeleton-card">
-              <div class="skeleton-card__header">
-                <div class="skeleton-pulse skeleton-avatar"></div>
-                <div style="flex:1"><div class="skeleton-pulse skeleton-name"></div><div class="skeleton-pulse skeleton-genre"></div></div>
-              </div>
-              <div class="skeleton-tags"><div class="skeleton-pulse skeleton-tag"></div><div class="skeleton-pulse skeleton-tag"></div></div>
-              <div class="skeleton-pulse skeleton-line"></div><div class="skeleton-pulse skeleton-line"></div>
-            </div>
-          </div>
+        <!-- META -->
+        <div class="dir-meta"><p class="dir-count" id="teachers-count" aria-live="polite" aria-atomic="true"></p></div>
+
+        <!-- RESULTS -->
+        <div id="teachers-grid" class="teachers-grid" aria-label="Teacher listings" aria-live="polite"></div>
+
+        <!-- LOAD MORE -->
+        <div class="load-more-wrap" id="load-more-wrap" style="display:none;">
+          <button class="btn--load-more" id="load-more-btn">Show more teachers</button>
         </div>
-
-        <!-- TEACHER CARDS — dynamically rendered -->
-        <div class="teachers-grid" id="teachers-grid" aria-label="Teacher listings"></div>
-
-        <!-- EMPTY STATE -->
-        <div class="teachers-empty" id="teachers-empty" style="display:none;">
-          <div class="teachers-empty__icon" aria-hidden="true">🎵</div>
-          <p style="font-size:1.125rem;color:var(--charcoal);margin-block-end:0.5rem;">No teachers found</p>
-          <p>Try adjusting your filters or <a href="#submit" style="color:var(--purple);">submit a listing</a>.</p>
-        </div>
-
       </div>
     </section>
 
-    <!-- SUBMIT CTA -->
     <section class="submit-banner" id="submit" aria-label="Submit your listing">
       <div class="container" style="max-width:680px;">
         <h2 class="submit-banner__title">Are You a <em>Teacher</em>?</h2>
-        <p class="submit-banner__desc">
-          If you teach Indian classical music or dance in the Atlanta area,
-          add yourself to our free directory. Your listing will appear
-          automatically once you submit the form.
-        </p>
-        <!--
-          ═══════════════════════════════════════════════════════
-          IMPORTANT: Replace the # in the href below with your
-          actual Google Form URL after you create it.
-          See the SETUP-GUIDE.md file for step-by-step instructions.
-          ═══════════════════════════════════════════════════════
-        -->
-        <a href="https://forms.gle/nviC2UhUxCGfwrCg8" id="submit-form-link" class="btn btn--primary" target="_blank" rel="noopener noreferrer">
+        <p class="submit-banner__desc">If you teach Indian classical music or dance in the Atlanta area, add yourself to our free directory. Your listing appears automatically once you submit.</p>
+        <a href="https://forms.gle/nviC2UhUxCGfwrCg8" class="btn btn--primary" target="_blank" rel="noopener noreferrer">
           Submit Your Listing
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-               stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <line x1="5" y1="12" x2="19" y2="12"/>
-            <polyline points="12 5 19 12 12 19"/>
-          </svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
         </a>
       </div>
     </section>
-
   </main>
 
   <div class="kolam-border" aria-hidden="true"></div>
@@ -451,9 +237,9 @@
         <div class="footer__brand">
           <p class="footer__brand-name">Atlanta Fine Arts</p>
           <p class="footer__tagline">A volunteer-driven non-profit dedicated to celebrating Indian classical dance and music in the Atlanta area.</p>
-          <a href="/cdn-cgi/l/email-protection#82e3e4e3e1e3f0ece3f6ebe1c2e5efe3ebeeace1edef" class="footer__email">
+          <a href="/cdn-cgi/l/email-protection#0a6b6c6b696b78646b7e63694a6d676b636624696567" class="footer__email">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-            <span class="__cf_email__" data-cfemail="462720272527342827322f2506212b272f2a6825292b">[email&#160;protected]</span>
+            <span class="__cf_email__" data-cfemail="dfbeb9bebcbeadb1beabb6bc9fb8b2beb6b3f1bcb0b2">[email&#160;protected]</span>
           </a>
         </div>
         <nav aria-label="Footer site navigation">
@@ -485,211 +271,263 @@
     </div>
   </footer>
 
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-  (function () {
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+  <script>
+  (function(){
     'use strict';
+    // Nav
+    var nav=document.getElementById('nav');
+    function updateNav(){nav.classList.toggle('scrolled',window.scrollY>40);}
+    window.addEventListener('scroll',updateNav,{passive:true});updateNav();
+    var toggle=document.getElementById('nav-toggle'),mobileMenu=document.getElementById('mobile-menu'),isOpen=false;
+    function openMenu(){isOpen=true;toggle.setAttribute('aria-expanded','true');mobileMenu.classList.add('open');mobileMenu.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';}
+    function closeMenu(){isOpen=false;toggle.setAttribute('aria-expanded','false');mobileMenu.classList.remove('open');mobileMenu.setAttribute('aria-hidden','true');document.body.style.overflow='';}
+    toggle.addEventListener('click',function(){isOpen?closeMenu():openMenu();});
+    document.querySelectorAll('[data-mobile-link]').forEach(function(l){l.addEventListener('click',closeMenu);});
+    document.addEventListener('keydown',function(e){if(e.key==='Escape'&&isOpen)closeMenu();});
 
-    /* ── Nav ── */
-    var nav = document.getElementById('nav');
-    function updateNav() { nav.classList.toggle('scrolled', window.scrollY > 40); }
-    window.addEventListener('scroll', updateNav, { passive: true });
-    updateNav();
-    var toggle = document.getElementById('nav-toggle');
-    var mobileMenu = document.getElementById('mobile-menu');
-    var isOpen = false;
-    function openMenu() { isOpen = true; toggle.setAttribute('aria-expanded','true'); mobileMenu.classList.add('open'); mobileMenu.setAttribute('aria-hidden','false'); document.body.style.overflow = 'hidden'; }
-    function closeMenu() { isOpen = false; toggle.setAttribute('aria-expanded','false'); mobileMenu.classList.remove('open'); mobileMenu.setAttribute('aria-hidden','true'); document.body.style.overflow = ''; }
-    toggle.addEventListener('click', function () { isOpen ? closeMenu() : openMenu(); });
-    document.querySelectorAll('[data-mobile-link]').forEach(function (l) { l.addEventListener('click', closeMenu); });
-    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && isOpen) closeMenu(); });
+    // Config
+    var SHEET_ID='1BKL7WV9dfGpvmmBEdbsrMtm0Y5CEsE9uyz4gYOM_fMM';
+    var SHEET_NAME='Form_Responses';
+    var CACHE_KEY='afa_teachers_v2';
+    var CACHE_TTL=10*60*1000;
+    var PAGE_SIZE=18;
 
-    /* ══════════════════════════════════════════════════════════
-       GOOGLE SHEET CONFIGURATION
-    ══════════════════════════════════════════════════════════ */
-    var SHEET_ID   = '1BKL7WV9dfGpvmmBEdbsrMtm0Y5CEsE9uyz4gYOM_fMM';
-    var SHEET_NAME = 'Form_Responses';
-    var SHEET_URL  = 'https://docs.google.com/spreadsheets/d/' + SHEET_ID +
-                     '/gviz/tq?tqx=out:json&sheet=' + encodeURIComponent(SHEET_NAME);
+    // State
+    var allTeachers=[],filteredList=[],visibleCount=PAGE_SIZE,currentView='card';
+    var state={search:'',genre:'all',area:'all',instrument:'all'};
 
-    /* Cache config — serve stale data instantly, refresh silently after 10 min */
-    var CACHE_KEY = 'afa_teachers_v1';
-    var CACHE_TTL = 10 * 60 * 1000; /* 10 minutes in ms */
+    // DOM
+    var gridEl=document.getElementById('teachers-grid');
+    var countEl=document.getElementById('teachers-count');
+    var chipsEl=document.getElementById('active-chips');
+    var loadWrap=document.getElementById('load-more-wrap');
+    var loadBtn=document.getElementById('load-more-btn');
+    var searchEl=document.getElementById('dir-search');
+    var genreEl=document.getElementById('filter-genre');
+    var areaEl=document.getElementById('filter-area');
+    var instrEl=document.getElementById('filter-instrument');
+    var filterDrawer=document.getElementById('filter-drawer');
+    var filterToggle=document.getElementById('filter-toggle');
+    var filterBadge=document.getElementById('filter-badge');
+    var btnCard=document.getElementById('btn-card');
+    var btnList=document.getElementById('btn-list');
 
-    var allTeachers = [];
-    var gridEl     = document.getElementById('teachers-grid');
-    var loadingEl  = document.getElementById('teachers-loading');
-    var emptyEl    = document.getElementById('teachers-empty');
-    var countEl    = document.getElementById('teachers-count');
-
-    /* ── Cache helpers ── */
-    function readCache() {
-      try {
-        var raw = localStorage.getItem(CACHE_KEY);
-        if (!raw) return null;
-        var entry = JSON.parse(raw);
-        if (!entry || !entry.data) return null;
-        return entry; /* { data: [...], ts: timestamp } */
-      } catch (e) { return null; }
+    // Skeletons
+    function showSkeletons(){
+      var h='';
+      for(var i=0;i<6;i++){
+        h+='<div class="skeleton-card" aria-hidden="true"><div class="skeleton-card__header"><div class="skeleton skeleton-circle"></div><div style="flex:1;display:flex;flex-direction:column;gap:8px;"><div class="skeleton skeleton-line" style="width:60%"></div><div class="skeleton skeleton-line" style="width:40%;height:10px"></div></div></div><div style="display:flex;flex-direction:column;gap:8px;"><div class="skeleton skeleton-line" style="width:80%"></div><div class="skeleton skeleton-line" style="width:50%"></div></div></div>';
+      }
+      gridEl.className='teachers-grid';gridEl.innerHTML=h;countEl.textContent='';loadWrap.style.display='none';
     }
-    function writeCache(data) {
-      try { localStorage.setItem(CACHE_KEY, JSON.stringify({ data: data, ts: Date.now() })); }
-      catch (e) { /* storage full or unavailable — silently skip */ }
-    }
 
-    /* ── Parse raw Google Sheets response into teacher objects ── */
-    function parseSheet(text) {
-      var json = JSON.parse(text.substring(text.indexOf('{'), text.lastIndexOf('}') + 1));
-      var rows = json.table.rows;
-      return rows.map(function(row) {
-        var c = row.c;
-        return {
-          name:       c[1]  ? String(c[1].v  || '') : '',
-          genre:      c[2]  ? String(c[2].v  || '') : '',
-          instrument: c[3]  ? String(c[3].v  || '') : '',
-          area:       c[4]  ? String(c[4].v  || '') : '',
-          email:      c[5]  ? String(c[5].v  || '') : '',
-          phone:      c[6]  ? String(c[6].v  || '') : '',
-          website:    c[7]  ? String(c[7].v  || '') : '',
-          years:      c[9]  ? String(c[9].v  || '') : '',
-          style:      c[10] ? String(c[10].v || '') : ''
+    // Parse
+    function parseSheet(text){
+      var json=JSON.parse(text.substring(text.indexOf('{'),text.lastIndexOf('}')+1));
+      var rows=json.table?json.table.rows:[];
+      return rows.map(function(row){
+        var c=row.c;
+        return{
+          name:      c[1]?String(c[1].v||'').trim():'',
+          genre:     c[2]?String(c[2].v||'').trim():'',
+          instrument:c[3]?String(c[3].v||'').trim():'',
+          area:      c[4]?String(c[4].v||'').trim():'',
+          email:     c[5]?String(c[5].v||'').trim():'',
+          phone:     c[6]?String(c[6].v||'').trim():'',
+          website:   c[7]?String(c[7].v||'').trim():'',
+          years:     c[9]?String(c[9].v||'').trim():'',
+          style:     c[10]?String(c[10].v||'').trim():''
         };
-      }).filter(function(t) { return t.name.trim() !== ''; });
+      }).filter(function(t){return t.name!=='';});
     }
 
-    /* ── Fetch from network ── */
-    function fetchFromNetwork(onSuccess, onError) {
-      fetch(SHEET_URL)
-        .then(function(res) {
-          if (!res.ok) throw new Error('HTTP ' + res.status);
-          return res.text();
-        })
-        .then(function(text) {
-          var data = parseSheet(text);
-          writeCache(data);
-          if (onSuccess) onSuccess(data);
-        })
-        .catch(function(err) {
-          console.warn('AFA: sheet fetch failed', err);
-          if (onError) onError(err);
-        });
+    function fetchSheet(cb){
+      var url='https://docs.google.com/spreadsheets/d/'+SHEET_ID+'/gviz/tq?tqx=out:json&sheet='+encodeURIComponent(SHEET_NAME);
+      fetch(url).then(function(r){return r.text();}).then(function(text){
+        var teachers=parseSheet(text);
+        try{localStorage.setItem(CACHE_KEY,JSON.stringify({ts:Date.now(),data:teachers}));}catch(e){}
+        cb(teachers);
+      }).catch(function(err){
+        console.error(err);
+        gridEl.innerHTML='<div class="teachers-empty" style="grid-column:1/-1"><div class="teachers-empty__icon">⚠️</div><p>Unable to load directory. Please try refreshing.</p></div>';
+        countEl.textContent='';
+      });
     }
 
-    /* ── Bootstrap: serve cache instantly, refresh in background ── */
-    function init() {
-      var cached = readCache();
-
-      if (cached && cached.data && cached.data.length > 0) {
-        /* ✅ Cache hit — render immediately (feels instant) */
-        allTeachers = cached.data;
-        loadingEl.style.display = 'none';
-        renderTeachers(allTeachers);
-
-        /* If cache is stale, quietly refresh in background */
-        if (Date.now() - cached.ts > CACHE_TTL) {
-          fetchFromNetwork(function(freshData) {
-            allTeachers = freshData;
-            applyFilters(); /* re-render with fresh data, preserving active filters */
-          });
+    function loadData(){
+      showSkeletons();
+      try{
+        var cached=JSON.parse(localStorage.getItem(CACHE_KEY)||'null');
+        if(cached&&(Date.now()-cached.ts<CACHE_TTL)){
+          init(cached.data);
+          fetchSheet(function(f){allTeachers=f;buildDropdowns();applyFilters();});
+          return;
         }
-      } else {
-        /* ❌ No cache — fetch and show (skeleton cards are already visible) */
-        fetchFromNetwork(
-          function(data) {
-            allTeachers = data;
-            loadingEl.style.display = 'none';
-            renderTeachers(allTeachers);
-          },
-          function() {
-            loadingEl.innerHTML = '<p style="text-align:center;padding:3rem 2rem;color:var(--text-muted);">Unable to load teacher directory. Please try refreshing.</p>';
-          }
-        );
+      }catch(e){}
+      fetchSheet(function(d){init(d);});
+    }
+
+    function init(teachers){allTeachers=teachers;buildDropdowns();readURLState();applyFilters();}
+
+    // Dynamic dropdowns
+    function unique(arr){return arr.filter(function(v,i,a){return v&&a.indexOf(v)===i;}).sort();}
+    function buildDropdowns(){
+      var genres=unique(allTeachers.map(function(t){return t.genre;}));
+      var areas=unique(allTeachers.map(function(t){return t.area.split(',')[0].trim();}));
+      var instrs=unique(allTeachers.reduce(function(acc,t){return acc.concat(t.instrument.split(',').map(function(i){return i.trim();}));},[]));
+      function populate(el,items,cur){
+        var first=el.options[0];el.innerHTML='';el.appendChild(first);
+        items.forEach(function(v){var o=document.createElement('option');o.value=v;o.textContent=v;if(v===cur)o.selected=true;el.appendChild(o);});
       }
+      populate(genreEl,genres,state.genre);
+      populate(areaEl,areas,state.area);
+      populate(instrEl,instrs,state.instrument);
     }
 
-    /* ── Get initials for avatar ── */
-    function getInitials(name) {
-      return name.split(' ').map(function(w) { return w[0]; }).join('').substring(0, 2).toUpperCase();
+    // URL state
+    function readURLState(){
+      var p=new URLSearchParams(window.location.search);
+      if(p.get('q')){state.search=p.get('q');searchEl.value=state.search;}
+      if(p.get('genre')){state.genre=p.get('genre');genreEl.value=state.genre;}
+      if(p.get('area')){state.area=p.get('area');areaEl.value=state.area;}
+      if(p.get('instrument')){state.instrument=p.get('instrument');instrEl.value=state.instrument;}
+    }
+    function pushURLState(){
+      var p=new URLSearchParams();
+      if(state.search)p.set('q',state.search);
+      if(state.genre!=='all')p.set('genre',state.genre);
+      if(state.area!=='all')p.set('area',state.area);
+      if(state.instrument!=='all')p.set('instrument',state.instrument);
+      var q=p.toString();
+      history.replaceState(null,'',q?'?'+q:location.pathname);
     }
 
-    /* ── Render teacher cards ── */
-    function renderTeachers(teachers) {
-      if (teachers.length === 0) {
-        gridEl.innerHTML = '';
-        emptyEl.style.display = 'block';
-        countEl.textContent = '';
-        return;
-      }
-      emptyEl.style.display = 'none';
-      countEl.textContent = teachers.length + ' teacher' + (teachers.length !== 1 ? 's' : '') + ' found';
-
-      gridEl.innerHTML = teachers.map(function(t) {
-        var avatarHTML = '<div class="teacher-card__avatar"><span class="teacher-card__avatar-initials">' + getInitials(t.name) + '</span></div>';
-
-        var instruments = t.instrument.split(',').map(function(i) {
-          return '<span class="tag">' + i.trim() + '</span>';
-        }).join('');
-
-        var linksHTML = '';
-        if (t.email)   linksHTML += '<a href="mailto:' + t.email + '" class="teacher-card__link">Email</a>';
-        if (t.phone)   linksHTML += '<a href="tel:' + t.phone.replace(/[^+\d]/g, '') + '" class="teacher-card__link">Call</a>';
-        if (t.website) linksHTML += '<a href="' + t.website + '" target="_blank" rel="noopener noreferrer" class="teacher-card__link">Website ↗</a>';
-
-        return '<div class="teacher-card">' +
-          '<div class="teacher-card__header">' +
-            avatarHTML +
-            '<div>' +
-              '<h3 class="teacher-card__name">' + t.name + '</h3>' +
-              '<p class="teacher-card__genre">' + t.genre + '</p>' +
-            '</div>' +
-          '</div>' +
-          '<div class="teacher-card__body">' +
-            '<div>' +
-              '<p class="teacher-card__detail-label">Instrument(s)</p>' +
-              '<div class="teacher-card__instruments">' + instruments + '</div>' +
-            '</div>' +
-            '<div class="teacher-card__detail">' +
-              '<span class="teacher-card__detail-icon">📍</span>' +
-              '<span class="teacher-card__detail-value">' + t.area + '</span>' +
-            '</div>' +
-            (t.years ? '<div class="teacher-card__detail"><span class="teacher-card__detail-icon">🎓</span><span class="teacher-card__detail-value">' + t.years + ' teaching</span></div>' : '') +
-            (t.style ? '<div class="teacher-card__detail"><span class="teacher-card__detail-icon">🎶</span><span class="teacher-card__detail-value">' + t.style + '</span></div>' : '') +
-            (linksHTML ? '<div class="teacher-card__links">' + linksHTML + '</div>' : '') +
-          '</div>' +
-        '</div>';
-      }).join('');
+    // Full-text search — all words must match across all fields
+    function matchesSearch(t,q){
+      if(!q)return true;
+      var hay=[t.name,t.genre,t.instrument,t.area,t.style,t.years].join(' ').toLowerCase();
+      return q.toLowerCase().split(/\s+/).every(function(w){return hay.indexOf(w)!==-1;});
     }
 
-    /* ── Filters ── */
-    var filterSearch = document.getElementById('filter-search');
-    var filterGenre  = document.getElementById('filter-genre');
-    var filterArea   = document.getElementById('filter-area');
-    var filterTimer  = null;
-
-    function applyFilters() {
-      var search = filterSearch.value.toLowerCase().trim();
-      var genre  = filterGenre.value;
-      var area   = filterArea.value;
-
-      var filtered = allTeachers.filter(function(t) {
-        if (search && t.name.toLowerCase().indexOf(search) === -1) return false;
-        if (genre !== 'all' && t.genre.indexOf(genre) === -1) return false;
-        if (area  !== 'all' && t.area.indexOf(area)   === -1) return false;
+    function applyFilters(){
+      visibleCount=PAGE_SIZE;
+      filteredList=allTeachers.filter(function(t){
+        if(!matchesSearch(t,state.search))return false;
+        if(state.genre!=='all'&&t.genre.indexOf(state.genre)===-1)return false;
+        if(state.area!=='all'&&t.area.indexOf(state.area)===-1)return false;
+        if(state.instrument!=='all'&&t.instrument.indexOf(state.instrument)===-1)return false;
         return true;
       });
-      renderTeachers(filtered);
+      pushURLState();renderChips();renderList();
     }
 
-    /* Debounce search input to avoid re-rendering on every keystroke */
-    filterSearch.addEventListener('input', function() {
-      clearTimeout(filterTimer);
-      filterTimer = setTimeout(applyFilters, 180);
+    function renderList(){
+      var slice=filteredList.slice(0,visibleCount);
+      if(filteredList.length===0){
+        gridEl.innerHTML='<div class="teachers-empty"><div class="teachers-empty__icon" aria-hidden="true">🎵</div><p style="font-size:1.1rem;color:var(--charcoal);margin-block-end:.5rem;">No teachers found</p><p>Try different keywords or <a href="#submit" style="color:var(--purple);">add your listing</a>.</p></div>';
+        countEl.textContent='No results';loadWrap.style.display='none';return;
+      }
+      countEl.textContent=filteredList.length+' teacher'+(filteredList.length!==1?'s':'')+' found';
+      if(currentView==='list'){gridEl.className='teachers-list';gridEl.innerHTML=slice.map(renderRow).join('');}
+      else{gridEl.className='teachers-grid';gridEl.innerHTML=slice.map(renderCard).join('');}
+      if(filteredList.length>visibleCount){
+        loadWrap.style.display='block';
+        loadBtn.textContent='Show '+Math.min(PAGE_SIZE,filteredList.length-visibleCount)+' more teachers';
+      }else{loadWrap.style.display='none';}
+    }
+
+    function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+    function ini(n){return n.split(' ').filter(Boolean).map(function(w){return w[0];}).join('').substring(0,2).toUpperCase();}
+
+    function renderCard(t){
+      var tags=t.instrument.split(',').filter(Boolean).map(function(i){return '<span class="tag">'+esc(i.trim())+'</span>';}).join('');
+      var meta='';
+      if(t.area)meta+='<span class="teacher-card__meta-item"><span aria-hidden="true">📍</span>'+esc(t.area)+'</span>';
+      if(t.years)meta+='<span class="teacher-card__meta-item"><span aria-hidden="true">🎓</span>'+esc(t.years)+'</span>';
+      if(t.style)meta+='<span class="teacher-card__meta-item"><span aria-hidden="true">🎶</span>'+esc(t.style)+'</span>';
+      var links='';
+      if(t.email)links+='<a href="mailto:'+esc(t.email)+'" class="teacher-card__link">Email</a>';
+      if(t.phone)links+='<a href="tel:'+esc(t.phone.replace(/[^\d+]/g,''))+'" class="teacher-card__link">Call</a>';
+      if(t.website)links+='<a href="'+esc(t.website)+'" target="_blank" rel="noopener noreferrer" class="teacher-card__link">Website ↗</a>';
+      return '<article class="teacher-card" itemscope itemtype="https://schema.org/Person">'+
+        '<div class="teacher-card__header">'+
+          '<div class="teacher-card__avatar"><span class="teacher-card__initials" aria-hidden="true">'+ini(t.name)+'</span></div>'+
+          '<div><h3 class="teacher-card__name" itemprop="name">'+esc(t.name)+'</h3><p class="teacher-card__genre">'+esc(t.genre)+'</p></div>'+
+        '</div>'+
+        '<div class="teacher-card__body">'+
+          (tags?'<div class="teacher-card__instruments">'+tags+'</div>':'')+
+          (meta?'<div class="teacher-card__meta">'+meta+'</div>':'')+
+          (links?'<div class="teacher-card__links">'+links+'</div>':'')+
+        '</div>'+
+      '</article>';
+    }
+
+    function renderRow(t){
+      var sub=[t.instrument,t.area].filter(Boolean).join(' · ');
+      var links='';
+      if(t.email)links+='<a href="mailto:'+esc(t.email)+'" class="teacher-row__link">Email</a>';
+      if(t.phone)links+='<a href="tel:'+esc(t.phone.replace(/[^\d+]/g,''))+'" class="teacher-row__link">Call</a>';
+      if(t.website)links+='<a href="'+esc(t.website)+'" target="_blank" rel="noopener noreferrer" class="teacher-row__link">Website ↗</a>';
+      return '<article class="teacher-row" itemscope itemtype="https://schema.org/Person">'+
+        '<div class="teacher-row__avatar" aria-hidden="true"><span class="teacher-row__initials">'+ini(t.name)+'</span></div>'+
+        '<div class="teacher-row__main"><div class="teacher-row__name" itemprop="name">'+esc(t.name)+'</div><div class="teacher-row__sub">'+esc(t.genre)+(sub?' · '+esc(sub):'')+'</div></div>'+
+        (links?'<div class="teacher-row__actions">'+links+'</div>':'<div></div>')+
+      '</article>';
+    }
+
+    // Chips
+    function renderChips(){
+      var chips=[];
+      if(state.search)chips.push({key:'search',label:'\u201c'+state.search+'\u201d'});
+      if(state.genre!=='all')chips.push({key:'genre',label:state.genre});
+      if(state.area!=='all')chips.push({key:'area',label:state.area});
+      if(state.instrument!=='all')chips.push({key:'instrument',label:state.instrument});
+      if(chips.length>0){filterBadge.textContent=chips.length;filterBadge.classList.add('visible');filterToggle.classList.add('has-filters');}
+      else{filterBadge.classList.remove('visible');filterToggle.classList.remove('has-filters');}
+      if(chips.length===0){chipsEl.innerHTML='';return;}
+      chipsEl.innerHTML=chips.map(function(c){
+        return '<span class="chip" role="listitem">'+esc(c.label)+'<button class="chip__remove" data-clear="'+c.key+'" aria-label="Remove filter: '+esc(c.label)+'">×</button></span>';
+      }).join('')+'<button class="chip chip--clear" id="clear-all-btn">Clear all</button>';
+      chipsEl.querySelectorAll('[data-clear]').forEach(function(btn){btn.addEventListener('click',function(){clearFilter(btn.dataset.clear);});});
+      document.getElementById('clear-all-btn').addEventListener('click',clearAll);
+    }
+
+    function clearFilter(key){
+      if(key==='search'){state.search='';searchEl.value='';}
+      if(key==='genre'){state.genre='all';genreEl.value='all';}
+      if(key==='area'){state.area='all';areaEl.value='all';}
+      if(key==='instrument'){state.instrument='all';instrEl.value='all';}
+      applyFilters();
+    }
+    function clearAll(){state={search:'',genre:'all',area:'all',instrument:'all'};searchEl.value='';genreEl.value='all';areaEl.value='all';instrEl.value='all';applyFilters();}
+
+    // Events
+    var searchTimer;
+    searchEl.addEventListener('input',function(){
+      clearTimeout(searchTimer);
+      searchTimer=setTimeout(function(){state.search=searchEl.value.trim();applyFilters();},180);
     });
-    filterGenre.addEventListener('change', applyFilters);
-    filterArea.addEventListener('change', applyFilters);
+    genreEl.addEventListener('change',function(){state.genre=genreEl.value;applyFilters();});
+    areaEl.addEventListener('change',function(){state.area=areaEl.value;applyFilters();});
+    instrEl.addEventListener('change',function(){state.instrument=instrEl.value;applyFilters();});
 
-    /* ── Go ── */
-    init();
+    filterToggle.addEventListener('click',function(){
+      var hidden=filterDrawer.classList.toggle('hidden');
+      filterToggle.setAttribute('aria-expanded',String(!hidden));
+    });
 
+    btnCard.addEventListener('click',function(){currentView='card';btnCard.classList.add('active');btnList.classList.remove('active');renderList();});
+    btnList.addEventListener('click',function(){currentView='list';btnList.classList.add('active');btnCard.classList.remove('active');renderList();});
+    loadBtn.addEventListener('click',function(){visibleCount+=PAGE_SIZE;renderList();});
+
+    // Scroll reveal
+    if('IntersectionObserver' in window){
+      var io=new IntersectionObserver(function(entries){entries.forEach(function(entry){if(entry.isIntersecting){entry.target.classList.add('visible');io.unobserve(entry.target);}});},{threshold:.05});
+      document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
+    }else{document.querySelectorAll('.reveal').forEach(function(el){el.classList.add('visible');});}
+
+    loadData();
   }());
   </script>
 </body>
