@@ -98,49 +98,96 @@
       display: block !important;
     }
 
-    /* ── MOBILE NAV FIX ── */
+    /* ── MOBILE NAV — tap-optimized ── */
+
+    /* Eliminate 300 ms click delay on all interactive nav elements */
+    .nav__toggle,
+    .nav__mobile-link,
+    .nav__brand {
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
+    }
+
     @media (max-width: 768px) {
+      /* Use visibility + opacity + translateY instead of display:none
+         so CSS transitions actually play and iOS doesn't eat the tap */
       .nav__mobile {
-        display: none;
         position: fixed;
         top: 0; left: 0; right: 0; bottom: 0;
-        background: rgba(18,14,24,0.98);
+        background: rgba(18,14,24,0.97);
         z-index: 9998;
+        display: flex;                    /* always flex — never display:none */
         flex-direction: column;
         justify-content: center;
         align-items: center;
         padding: 80px 32px 40px;
+
+        /* Hidden state */
+        visibility: hidden;
+        opacity: 0;
+        transform: translateY(-6px);
+        pointer-events: none;
+        transition: opacity 0.25s ease, transform 0.25s ease, visibility 0s linear 0.25s;
+        -webkit-overflow-scrolling: touch;
+        overflow-y: auto;
       }
       .nav__mobile.open {
-        display: flex !important;
+        visibility: visible;
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+        transition: opacity 0.25s ease, transform 0.25s ease, visibility 0s linear 0s;
       }
       .nav__mobile-links {
         list-style: none;
         padding: 0; margin: 0;
         display: flex;
         flex-direction: column;
-        gap: 8px;
+        gap: 0;
         width: 100%;
         text-align: center;
       }
+      /* Large tap targets — 44 px minimum per WCAG / Apple HIG */
       .nav__mobile-link {
-        display: block;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 56px;               /* generously above 44 px minimum */
         color: #fff !important;
-        font-size: 1.8rem;
+        font-size: 1.75rem;
         font-family: 'Cormorant Garamond', serif;
         font-weight: 300;
         text-decoration: none;
-        padding: 16px 0;
+        padding: 10px 24px;
         border-bottom: 1px solid rgba(255,255,255,0.08);
-        transition: color 0.2s;
+        transition: color 0.15s, background 0.15s;
+        cursor: pointer;
+        /* Stretch click/tap area edge-to-edge */
+        width: 100%;
+        box-sizing: border-box;
       }
-      .nav__mobile-link:hover { color: #c9a84c !important; }
-      .nav__mobile-link .arrow { opacity: 0.4; margin-left: 8px; font-size: 1.2rem; }
-      /* Hamburger button always visible on mobile */
+      /* Active state — immediate visual feedback on touch */
+      .nav__mobile-link:active,
+      .nav__mobile-link:focus-visible {
+        color: #c9a84c !important;
+        background: rgba(201,168,76,0.06);
+        outline: none;
+      }
+      .nav__mobile-link .arrow { opacity: 0.4; margin-left: 10px; font-size: 1.1rem; }
+
+      /* Hamburger — large tap target, always on top */
       #nav-toggle {
         display: flex !important;
         position: relative;
         z-index: 9999;
+        min-width: 44px;
+        min-height: 44px;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        padding: 10px;
+        /* Expand tap zone without changing visual size */
+        margin: -10px;
       }
     }
 
@@ -1506,12 +1553,20 @@
       document.body.style.overflow = '';
     }
 
-    toggle.addEventListener('click', function () {
+    /* Use touchend for instant response on iOS (no 300 ms wait).
+       preventDefault stops the subsequent synthetic click from double-firing. */
+    function handleToggle(e) {
+      e.preventDefault();
       isOpen ? closeMenu() : openMenu();
-    });
+    }
+    toggle.addEventListener('touchend', handleToggle, { passive: false });
+    toggle.addEventListener('click',    function () { isOpen ? closeMenu() : openMenu(); });
 
-    /* Close on mobile link click */
+    /* Close on mobile link tap — touchend fires before click, feels instant */
     document.querySelectorAll('[data-mobile-link]').forEach(function (link) {
+      link.addEventListener('touchend', function () {
+        closeMenu();
+      }, { passive: true });
       link.addEventListener('click', closeMenu);
     });
 
