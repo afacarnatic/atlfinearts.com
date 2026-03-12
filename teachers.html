@@ -272,19 +272,11 @@
   </footer>
 
   <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+  <!-- Nav: scroll state + mobile menu (touch-optimised) -->
+  <script src="nav.js" defer></script>
   <script>
   (function(){
     'use strict';
-    // Nav
-    var nav=document.getElementById('nav');
-    function updateNav(){nav.classList.toggle('scrolled',window.scrollY>40);}
-    window.addEventListener('scroll',updateNav,{passive:true});updateNav();
-    var toggle=document.getElementById('nav-toggle'),mobileMenu=document.getElementById('mobile-menu'),isOpen=false;
-    function openMenu(){isOpen=true;toggle.setAttribute('aria-expanded','true');mobileMenu.classList.add('open');mobileMenu.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';}
-    function closeMenu(){isOpen=false;toggle.setAttribute('aria-expanded','false');mobileMenu.classList.remove('open');mobileMenu.setAttribute('aria-hidden','true');document.body.style.overflow='';}
-    toggle.addEventListener('click',function(){isOpen?closeMenu():openMenu();});
-    document.querySelectorAll('[data-mobile-link]').forEach(function(l){l.addEventListener('click',closeMenu);});
-    document.addEventListener('keydown',function(e){if(e.key==='Escape'&&isOpen)closeMenu();});
 
     // Config
     var SHEET_ID='1BKL7WV9dfGpvmmBEdbsrMtm0Y5CEsE9uyz4gYOM_fMM';
@@ -530,6 +522,5 @@
     loadData();
   }());
   </script>
-  <script src="nav.js" defer></script> 
 </body>
 </html>
