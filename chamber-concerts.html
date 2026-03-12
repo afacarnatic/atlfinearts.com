@@ -97,6 +97,115 @@
        PAST CONCERTS STRIP
     ════════════════════════════════════════ */
     .past-section { background: var(--ivory); }
+    /* ════════════════════════════════════════
+       UPCOMING CONCERT CARD
+    ════════════════════════════════════════ */
+    .upcoming-section {
+      background: var(--ivory-warm);
+      border-block-end: 1px solid var(--border);
+    }
+    .upcoming-card {
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      background: var(--ivory);
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      margin-block-start: 2.5rem;
+    }
+    @media (max-width: 700px) {
+      .upcoming-card { grid-template-columns: 1fr; }
+    }
+    .upcoming-card__left {
+      background: linear-gradient(160deg, var(--charcoal) 0%, var(--charcoal-mid) 100%);
+      padding: 2.5rem 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+    .upcoming-card__badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: rgba(94,23,235,0.25);
+      border: 1px solid rgba(94,23,235,0.4);
+      color: #c4a8fd;
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.75rem;
+      border-radius: 2px;
+      width: fit-content;
+    }
+    .upcoming-card__date-block { display: flex; flex-direction: column; gap: 0.25rem; }
+    .upcoming-card__month {
+      font-size: 0.7rem; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--gold-light); font-weight: 500;
+    }
+    .upcoming-card__day {
+      font-family: var(--font-display);
+      font-size: clamp(3.5rem, 8vw, 5rem);
+      font-weight: 300;
+      color: #fff;
+      line-height: 1;
+    }
+    .upcoming-card__time {
+      font-family: var(--font-body);
+      font-size: 0.875rem;
+      color: rgba(255,255,255,0.55);
+      letter-spacing: 0.05em;
+    }
+    .upcoming-card__free {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+    }
+    .upcoming-card__right {
+      padding: 2.5rem 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    .upcoming-card__label {
+      font-size: 0.65rem; font-weight: 500;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--purple);
+    }
+    .upcoming-card__title {
+      font-family: var(--font-display);
+      font-size: 1.6rem; font-weight: 500;
+      color: var(--charcoal); line-height: 1.25;
+    }
+    .upcoming-card__performers { display: flex; flex-direction: column; gap: 0.6rem; }
+    .performer-row {
+      display: flex; align-items: center; gap: 0.75rem;
+      padding: 0.6rem 0.75rem;
+      background: var(--ivory-warm);
+      border: 1px solid var(--border);
+      border-radius: 3px;
+    }
+    .performer-row__instrument {
+      font-size: 0.65rem; font-weight: 500; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--purple);
+      min-width: 72px;
+    }
+    .performer-row__name {
+      font-family: var(--font-display);
+      font-size: 1.05rem; font-weight: 500; color: var(--charcoal);
+    }
+    .upcoming-card__seats {
+      display: flex; align-items: center; gap: 0.5rem;
+      font-size: 0.8rem; color: var(--text-muted);
+    }
+    .upcoming-card__seats strong { color: var(--saffron-btn); font-weight: 500; }
     .past-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(min(100%, 220px), 1fr));
@@ -323,9 +432,61 @@
         <h1 class="page-hero__title">Chamber <em>Concert</em> Series</h1>
         <p class="page-hero__desc">
           Small-venue Indian classical music — up close with the artist.
-          Max 50–70 seats per concert. Join our list and we'll notify you
-          the moment tickets open for the next event.
+          Next concert: <strong>April 19th</strong> featuring Prashanth Kallur (flute),
+          Pranavi Srinivasa (violin) &amp; Santosh Chandru (mridangam). 40 seats. Free entry.
         </p>
+      </div>
+    </section>
+
+    <!-- ── UPCOMING CONCERT ── -->
+    <section class="upcoming-section" aria-labelledby="upcoming-heading">
+      <div class="container" style="padding-block: clamp(3rem, 6vw, 5rem);">
+        <p class="section-label">Next Concert</p>
+        <h2 class="section-title" id="upcoming-heading">Upcoming <em>Performance</em></h2>
+
+        <div class="upcoming-card reveal">
+          <!-- Left — date & time -->
+          <div class="upcoming-card__left">
+            <div class="upcoming-card__badge">● Live Event</div>
+            <div class="upcoming-card__date-block">
+              <p class="upcoming-card__month">April 2026</p>
+              <p class="upcoming-card__day">19</p>
+              <p class="upcoming-card__time">Saturday · 3:00 PM – 4:30 PM</p>
+            </div>
+            <div>
+              <p class="upcoming-card__free">✦ Free Entry</p>
+              <p style="font-size:0.75rem;color:rgba(255,255,255,0.4);margin-top:0.35rem;">Private residence · Cumming, GA<br>Address shared upon reservation</p>
+            </div>
+          </div>
+
+          <!-- Right — artists -->
+          <div class="upcoming-card__right">
+            <div>
+              <p class="upcoming-card__label">Chamber Concert Series</p>
+              <h3 class="upcoming-card__title">An Evening of<br>Carnatic Chamber Music</h3>
+            </div>
+
+            <div class="upcoming-card__performers">
+              <div class="performer-row">
+                <span class="performer-row__instrument">Flute</span>
+                <span class="performer-row__name">Prashanth Kallur</span>
+              </div>
+              <div class="performer-row">
+                <span class="performer-row__instrument">Violin</span>
+                <span class="performer-row__name">Pranavi Srinivasa</span>
+              </div>
+              <div class="performer-row">
+                <span class="performer-row__instrument">Mridangam</span>
+                <span class="performer-row__name">Santosh Chandru</span>
+              </div>
+            </div>
+
+            <div class="upcoming-card__seats">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+              <span><strong>40 seats only</strong> — reserve yours below</span>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -372,35 +533,6 @@
       </div>
     </section>
 
-    <!-- ── PAST CONCERTS ── -->
-    <section class="past-section" aria-labelledby="past-heading">
-      <div class="container">
-        <p class="section-label">Previous Events</p>
-        <h2 class="section-title" id="past-heading">Past <em>Concerts</em></h2>
-        <div class="past-grid">
-          <div class="past-card reveal">
-            <p class="past-card__date">2024</p>
-            <p class="past-card__name">Shriram Salem</p>
-            <p class="past-card__genre">Carnatic Vocal</p>
-          </div>
-          <div class="past-card reveal reveal--delay-1">
-            <p class="past-card__date">2024</p>
-            <p class="past-card__name">Pranavi</p>
-            <p class="past-card__genre">Carnatic Violin</p>
-          </div>
-          <div class="past-card reveal reveal--delay-2">
-            <p class="past-card__date">2024</p>
-            <p class="past-card__name">Anand Krishnan</p>
-            <p class="past-card__genre">Carnatic Violin</p>
-          </div>
-          <div class="past-card reveal reveal--delay-3">
-            <p class="past-card__date">2023</p>
-            <p class="past-card__name">Chamber Series Vol. 1</p>
-            <p class="past-card__genre">Carnatic Vocal & Percussion</p>
-          </div>
-        </div>
-      </div>
-    </section>
 
     <!-- ══════════════════════════════════════════
          SIGNUP SECTION
@@ -411,14 +543,12 @@
 
           <!-- Left — context -->
           <aside class="signup-aside reveal">
-            <p class="section-label">Reserve Your Seat</p>
+            <p class="section-label">Reserve Your Seat — April 19th</p>
             <h2 class="section-title" id="signup-heading">
-              Join the <em>List</em>
+              Secure Your <em>Spot</em>
             </h2>
             <p class="signup-aside__body">
-              We notify this list first — before any public announcement —
-              when a new Chamber Concert is scheduled. You'll receive one
-              email with the date, artist, and a reservation link. No spam, ever.
+              Only 40 seats available for the April 19th concert. Fill in your details and we'll confirm your reservation and share the address 48 hours before the event.
             </p>
 
             <ol class="signup-steps" aria-label="How it works">
@@ -513,8 +643,8 @@
                 <div class="ml-form-embedWrapper embedForm">
                   <div class="ml-form-embedBody ml-form-embedBodyDefault row-form">
                     <div class="ml-form-embedContent">
-                      <h4>Get Involved with Atlanta Fine Arts</h4>
-                      <p>Whether you want to attend concerts, perform, or volunteer — tell us how you'd like to be part of AFA.</p>
+                      <h4>Reserve Your Seat — April 19th</h4>
+                      <p>Only 40 seats available. Submit your details and we'll confirm your reservation. The address will be shared 48 hours before the event.</p>
                     </div>
                     <form class="ml-block-form" action="https://assets.mailerlite.com/jsonp/2181939/forms/181668306286019591/subscribe" data-code="" method="post" target="_blank">
                       <div class="ml-form-formContent">
