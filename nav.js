@@ -10,7 +10,7 @@
   var toggle = document.getElementById('nav-toggle');
   var menu   = document.getElementById('mobile-menu');
 
-  if (!nav || !toggle || !menu) return; // Guard: bail if nav isn't on this page
+  if (!nav || !toggle || !menu) return;
 
   /* ── Scroll state ── */
   function updateNav() {
@@ -41,8 +41,8 @@
   }
 
   /* ── Hamburger toggle ──
-     touchend fires ~300 ms before the synthesised click on iOS/Android,
-     giving instant response. preventDefault stops the click from double-firing. */
+     touchend fires ~300ms before the synthesised click on iOS/Android.
+     preventDefault stops the click from double-firing. */
   toggle.addEventListener('touchend', function (e) {
     e.preventDefault();
     isOpen ? closeMenu() : openMenu();
@@ -52,13 +52,14 @@
     isOpen ? closeMenu() : openMenu();
   });
 
-  /* ── Mobile link taps ──
-     touchend closes the menu immediately; the navigation still proceeds. */
+  /* ── Mobile link clicks ──
+     Only use click here — NOT touchend. Using touchend on links can
+     cancel the navigation before the browser has a chance to follow
+     the href on some mobile browsers. */
   document.querySelectorAll('[data-mobile-link]').forEach(function (link) {
-    link.addEventListener('touchend', function () {
+    link.addEventListener('click', function () {
       closeMenu();
-    }, { passive: true });
-    link.addEventListener('click', closeMenu);
+    });
   });
 
   /* ── Escape key ── */
