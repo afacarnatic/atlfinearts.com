@@ -175,103 +175,138 @@
             </div>
           </aside>
 
-          <!-- Contact form -->
+          <!-- Contact form — MailerLite embedded form (shared with Chamber Concerts) -->
           <div>
-            <form class="form" id="contact-form" novalidate
-                  aria-label="Send a message to Atlanta Fine Arts"
-                  action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-              <!--
-                ═══════════════════════════════════════════
-                FORM SETUP:
-                Replace YOUR_FORM_ID above with your actual
-                Formspree ID (free at formspree.io) or use
-                another form service like Netlify Forms.
-                ═══════════════════════════════════════════
-              -->
 
-              <div class="form__row">
-                <div class="form__field">
-                  <label class="form__label" for="first-name">
-                    First Name <span aria-hidden="true">*</span>
-                    <span class="sr-only">(required)</span>
-                  </label>
-                  <input class="form__input" type="text" id="first-name" name="firstName"
-                         autocomplete="given-name" required
-                         aria-required="true" aria-describedby="first-name-err"
-                         placeholder="Priya" />
-                  <span id="first-name-err" class="form__error" aria-live="polite" role="alert"></span>
+            <!-- MailerLite form styles -->
+            <style>
+              .ml-form-embedSubmitLoad{display:inline-block;width:20px;height:20px}
+              .ml-form-embedSubmitLoad:after{content:" ";display:block;width:11px;height:11px;margin:1px;border-radius:50%;border:4px solid #fff;border-color:#fff #fff #fff transparent;animation:ml-form-embedSubmitLoad 1.2s linear infinite}
+              @keyframes ml-form-embedSubmitLoad{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+              #mlb2-38329091.ml-form-embedContainer h4,#mlb2-38329091.ml-form-embedContainer p,#mlb2-38329091.ml-form-embedContainer span,#mlb2-38329091.ml-form-embedContainer button{text-transform:none!important;letter-spacing:normal!important}
+              #mlb2-38329091.ml-form-embedContainer .ml-form-embedWrapper{background-color:transparent;border-width:0;border-color:transparent;border-radius:4px;border-style:solid;box-sizing:border-box;display:inline-block!important;margin:0;padding:0;position:relative;width:100%}
+              #mlb2-38329091.ml-form-embedContainer .ml-form-embedWrapper.embedForm{max-width:100%;width:100%}
+              #mlb2-38329091.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody,#mlb2-38329091.ml-form-embedContainer .ml-form-embedWrapper .ml-form-successBody{padding:0}
+              #mlb2-38329091.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedContent,#mlb2-38329091.ml-form-embedContainer .ml-form-embedWrapper .ml-form-successBody .ml-form-successContent{text-align:left;margin:0 0 20px 0}
+              #mlb2-38329091.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedContent h4,#mlb2-38329091.ml-form-embedContainer .ml-form-embedWrapper .ml-form-successBody .ml-form-successContent h4{color:#13101E;font-family:'Cormorant Garamond',Georgia,serif;font-size:1.75rem;font-weight:500;margin:0 0 8px 0;text-align:left;word-break:break-word}
+              #mlb2-38329091.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedContent p,#mlb2-38329091.ml-form-embedContainer .ml-form-embedWrapper .ml-form-successBody .ml-form-successContent p{color:#756A90;font-family:'DM Sans',system-ui,sans-serif;font-size:0.875rem;font-weight:400;line-height:1.6;margin:0 0 10px 0;text-align:left}
+              #mlb2-38329091.ml-form-embedContainer .ml-form-embedWrapper .ml-block-form .ml-field-group{text-align:left!important}
+              #mlb2-38329091.ml-form-embedContainer .ml-form-embedWrapper .ml-block-form .ml-field-group label{margin-bottom:5px;color:#3A3250;font-size:0.6875rem;font-family:'DM Sans',system-ui,sans-serif;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;display:inline-block;line-height:20px}
+              #mlb2-38329091.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody form{margin:0;width:100%}
+              #mlb2-38329091.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-formContent,#mlb2-38329091.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow{margin:0 0 16px 0;width:100%}
+              #mlb2-38329091.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow{margin:0 0 12px 0;width:100%}
+              #mlb2-38329091.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow.ml-last-item{margin:0}
+              #mlb2-38329091.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow input{background-color:#fff!important;color:#3A3250!important;border-color:#D8D0EC;border-radius:4px!important;border-style:solid!important;border-width:1px!important;font-family:'DM Sans',system-ui,sans-serif;font-size:0.9375rem!important;height:auto;line-height:1.5!important;margin:0;padding:10px 12px!important;width:100%!important;box-sizing:border-box!important;transition:border-color 0.15s}
+              #mlb2-38329091.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow input:focus{outline:none;border-color:#5E17EB!important}
+              #mlb2-38329091.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow input::placeholder{color:#B0A8C8}
+              #mlb2-38329091.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-interestGroupsRow{margin-bottom:20px;text-align:left;float:left;width:100%}
+              #mlb2-38329091.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-interestGroupsRow .ml-form-interestGroupsRowCheckbox{margin:0 0 10px 0;width:100%}
+              #mlb2-38329091.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-interestGroupsRow .ml-form-interestGroupsRowCheckbox.last-group{margin:0}
+              #mlb2-38329091.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-interestGroupsRow .ml-form-interestGroupsRowCheckbox label{font-weight:normal;margin:0;padding:0;position:relative;display:block;min-height:24px;padding-left:24px}
+              #mlb2-38329091.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-interestGroupsRow .ml-form-interestGroupsRowCheckbox input[type=checkbox]{box-sizing:border-box;padding:0;position:absolute;z-index:-1;opacity:0;margin-top:5px;margin-left:-1.5rem;overflow:visible}
+              #mlb2-38329091.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedSubmit{margin:4px 0 16px 0;float:left;width:100%}
+              #mlb2-38329091.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedSubmit button{background-color:#5E17EB!important;border:none!important;border-radius:4px!important;box-shadow:none!important;color:#fff!important;cursor:pointer;font-family:'DM Sans',system-ui,sans-serif!important;font-size:0.9375rem!important;font-weight:500!important;line-height:1.5!important;height:auto;padding:12px 20px!important;width:100%!important;box-sizing:border-box!important;transition:background-color 0.2s}
+              #mlb2-38329091.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedSubmit button:hover{background-color:#3D0DB5!important}
+              #mlb2-38329091.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedSubmit button.loading{display:none}
+              #mlb2-38329091.ml-form-embedContainer .ml-form-embedWrapper .ml-form-successBody .ml-form-successContent h4{color:#13101E}
+              #mlb2-38329091.ml-form-embedContainer .ml-form-embedWrapper .ml-form-successBody{padding:20px}
+              .ml-error input,.ml-error textarea,.ml-error select{border-color:#E05800!important}
+              .ml-form-interestGroupsRowCheckbox label::before{content:'';position:absolute;left:0;top:2px;width:16px;height:16px;border:1.5px solid #D8D0EC;border-radius:3px;background:#fff;transition:border-color 0.15s,background 0.15s}
+              .ml-form-interestGroupsRowCheckbox input[type=checkbox]:checked~label::before{background:#5E17EB;border-color:#5E17EB}
+              .ml-form-interestGroupsRowCheckbox label .label-description{font-family:'DM Sans',system-ui,sans-serif;font-size:0.875rem;color:#3A3250;line-height:1.5}
+              @media only screen and (max-width:400px){.ml-form-embedWrapper.embedDefault,.ml-form-embedWrapper.embedPopup{width:100%!important}}
+            </style>
+
+            <div id="mlb2-38329091" class="ml-form-embedContainer ml-subscribe-form ml-subscribe-form-38329091">
+              <div class="ml-form-align-left">
+                <div class="ml-form-embedWrapper embedForm">
+                  <div class="ml-form-embedBody ml-form-embedBodyDefault row-form">
+                    <div class="ml-form-embedContent">
+                      <h4>Get Involved</h4>
+                      <p>Whether you want to attend events, perform, or volunteer — tell us how you'd like to be part of AFA.</p>
+                    </div>
+
+                    <form class="ml-block-form" action="https://assets.mailerlite.com/jsonp/2181939/forms/181668306286019591/subscribe" data-code="" method="post" target="_blank">
+                      <div class="ml-form-formContent">
+                        <div class="ml-form-fieldRow">
+                          <div class="ml-field-group ml-field-name ml-validate-required">
+                            <label>Name</label>
+                            <input aria-label="name" aria-required="true" type="text" class="form-control" name="fields[name]" placeholder="Priya Sharma" autocomplete="given-name">
+                          </div>
+                        </div>
+                        <div class="ml-form-fieldRow">
+                          <div class="ml-field-group ml-field-email ml-validate-email ml-validate-required">
+                            <label>Email</label>
+                            <input aria-label="email" aria-required="true" type="email" class="form-control" name="fields[email]" placeholder="priya@example.com" autocomplete="email">
+                          </div>
+                        </div>
+                        <div class="ml-form-fieldRow">
+                          <div class="ml-field-group ml-field-phone">
+                            <label>Phone <span style="font-weight:400;text-transform:none;letter-spacing:0;font-size:0.75rem;color:#B0A8C8;">— optional</span></label>
+                            <input aria-label="phone" type="text" class="form-control" name="fields[phone]" placeholder="(555) 123-4567" autocomplete="tel">
+                          </div>
+                        </div>
+                        <div class="ml-form-fieldRow">
+                          <div class="ml-field-group ml-field-art_form_instrument">
+                            <label>Art form or instrument <span style="font-weight:400;text-transform:none;letter-spacing:0;font-size:0.75rem;color:#B0A8C8;">— if performing</span></label>
+                            <input aria-label="art_form_instrument" type="text" class="form-control" name="fields[art_form_instrument]" placeholder="e.g. Carnatic vocal, violin">
+                          </div>
+                        </div>
+                        <div class="ml-form-fieldRow ml-last-item">
+                          <div class="ml-field-group ml-field-experience_level">
+                            <label>Years of experience <span style="font-weight:400;text-transform:none;letter-spacing:0;font-size:0.75rem;color:#B0A8C8;">— if performing</span></label>
+                            <input aria-label="experience_level" type="text" class="form-control" name="fields[experience_level]" placeholder="e.g. 5">
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="ml-form-interestGroupsRow ml-block-groups ml-validate-required">
+                        <div class="ml-form-interestGroupsRowCheckbox group">
+                          <label>
+                            <input type="checkbox" name="groups[]" value="181668240193226220">
+                            <div class="label-description">Yes, notify me about upcoming AFA events</div>
+                          </label>
+                        </div>
+                        <div class="ml-form-interestGroupsRowCheckbox group">
+                          <label>
+                            <input type="checkbox" name="groups[]" value="181668965655775169">
+                            <div class="label-description">I'm interested in performing at AFA events</div>
+                          </label>
+                        </div>
+                        <div class="ml-form-interestGroupsRowCheckbox last-group">
+                          <label>
+                            <input type="checkbox" name="groups[]" value="181668958819059567">
+                            <div class="label-description">I'd like to volunteer with AFA</div>
+                          </label>
+                        </div>
+                      </div>
+
+                      <input type="hidden" name="ml-submit" value="1">
+                      <div class="ml-form-embedSubmit">
+                        <button type="submit" class="primary">Send Message →</button>
+                        <button disabled="disabled" style="display:none;" type="button" class="loading">
+                          <div class="ml-form-embedSubmitLoad"></div>
+                          <span class="sr-only">Loading...</span>
+                        </button>
+                      </div>
+                      <input type="hidden" name="anticsrf" value="true">
+                    </form>
+                  </div>
+
+                  <div class="ml-form-successBody row-success" style="display:none;">
+                    <div class="ml-form-successContent">
+                      <h4>Thank you for reaching out!</h4>
+                      <p>We'll be in touch soon. In the meantime, follow us on Instagram <a href="https://www.instagram.com/atlanta.finearts" style="color:#5E17EB;">@atlanta.finearts</a> for updates.</p>
+                    </div>
+                  </div>
                 </div>
-                <div class="form__field">
-                  <label class="form__label" for="last-name">
-                    Last Name <span aria-hidden="true">*</span>
-                    <span class="sr-only">(required)</span>
-                  </label>
-                  <input class="form__input" type="text" id="last-name" name="lastName"
-                         autocomplete="family-name" required
-                         aria-required="true" aria-describedby="last-name-err"
-                         placeholder="Sharma" />
-                  <span id="last-name-err" class="form__error" aria-live="polite" role="alert"></span>
-                </div>
               </div>
+            </div>
+            <script>
+              (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[]).push(arguments);},l=d.createElement(e),l.async=1,l.src=u,n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})(window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
+              ml('account', '2181939');
+            </script>
 
-              <div class="form__field">
-                <label class="form__label" for="email">
-                  Email Address <span aria-hidden="true">*</span>
-                  <span class="sr-only">(required)</span>
-                </label>
-                <input class="form__input" type="email" id="email" name="email"
-                       autocomplete="email" required
-                       aria-required="true" aria-describedby="email-err"
-                       placeholder="priya@example.com" />
-                <span id="email-err" class="form__error" aria-live="polite" role="alert"></span>
-              </div>
-
-              <div class="form__field">
-                <label class="form__label" for="subject">Subject</label>
-                <select class="form__select form__input" id="subject" name="subject">
-                  <option value="" disabled selected>Select a topic…</option>
-                  <option value="events">Event Information</option>
-                  <option value="perform">I'd Like to Perform</option>
-                  <option value="volunteer">Volunteering</option>
-                  <option value="donate">Donations</option>
-                  <option value="general">General Inquiry</option>
-                </select>
-              </div>
-
-              <div class="form__field">
-                <label class="form__label" for="message">
-                  Message <span aria-hidden="true">*</span>
-                  <span class="sr-only">(required)</span>
-                </label>
-                <textarea class="form__textarea" id="message" name="message"
-                          required aria-required="true" aria-describedby="message-err"
-                          placeholder="Tell us how we can help…"></textarea>
-                <span id="message-err" class="form__error" aria-live="polite" role="alert"></span>
-              </div>
-
-              <div class="form__submit">
-                <button type="submit" class="btn btn--dark">
-                  Send Message
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                       stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
-                       aria-hidden="true" focusable="false">
-                    <line x1="22" y1="2" x2="11" y2="13"/>
-                    <polygon points="22 2 15 22 11 13 2 9 22 2"/>
-                  </svg>
-                </button>
-              </div>
-
-              <div class="form__success" id="form-success"
-                   role="status" aria-live="polite" aria-atomic="true">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                     aria-hidden="true" focusable="false">
-                  <polyline points="20 6 9 17 4 12"/>
-                </svg>
-                Thank you! We'll be in touch soon.
-              </div>
-
-            </form>
           </div>
 
         </div>
@@ -321,12 +356,22 @@
     </div>
   </footer>
 
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
-  <!-- Nav: scroll state + mobile menu (touch-optimised) -->
-  <script src="nav.js" defer></script>
-  <script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   (function () {
     'use strict';
+    var nav = document.getElementById('nav');
+    function updateNav() { nav.classList.toggle('scrolled', window.scrollY > 40); }
+    window.addEventListener('scroll', updateNav, { passive: true });
+    updateNav();
+
+    var toggle = document.getElementById('nav-toggle');
+    var mobileMenu = document.getElementById('mobile-menu');
+    var isOpen = false;
+    function openMenu() { isOpen = true; toggle.setAttribute('aria-expanded','true'); mobileMenu.classList.add('open'); mobileMenu.setAttribute('aria-hidden','false'); document.body.style.overflow = 'hidden'; }
+    function closeMenu() { isOpen = false; toggle.setAttribute('aria-expanded','false'); mobileMenu.classList.remove('open'); mobileMenu.setAttribute('aria-hidden','true'); document.body.style.overflow = ''; }
+    toggle.addEventListener('click', function () { isOpen ? closeMenu() : openMenu(); });
+    document.querySelectorAll('[data-mobile-link]').forEach(function (l) { l.addEventListener('click', closeMenu); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && isOpen) closeMenu(); });
 
     /* Scroll reveal */
     if ('IntersectionObserver' in window) {
@@ -338,48 +383,5 @@
       document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('visible'); });
     }
 
-    /* Form validation */
-    var form = document.getElementById('contact-form');
-    var successMsg = document.getElementById('form-success');
-
-    function setFieldError(field, errId, msg) {
-      field.setAttribute('aria-invalid', 'true');
-      var errEl = document.getElementById(errId);
-      if (errEl) { errEl.textContent = msg; errEl.style.display = 'block'; }
-    }
-    function clearFieldError(field, errId) {
-      field.removeAttribute('aria-invalid');
-      var errEl = document.getElementById(errId);
-      if (errEl) { errEl.textContent = ''; errEl.style.display = 'none'; }
-    }
-
-    form.querySelectorAll('input, textarea').forEach(function (field) {
-      field.addEventListener('input', function () { clearFieldError(field, field.id + '-err'); });
-    });
-
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      var valid = true;
-      var fields = [
-        { id: 'first-name', label: 'First name' },
-        { id: 'last-name',  label: 'Last name' },
-        { id: 'email',      label: 'Email address' },
-        { id: 'message',    label: 'Message' },
-      ];
-      fields.forEach(function (f) {
-        var el = document.getElementById(f.id);
-        if (!el) return;
-        clearFieldError(el, f.id + '-err');
-        if (!el.value.trim()) {
-          setFieldError(el, f.id + '-err', f.label + ' is required.');
-          valid = false;
-        } else if (f.id === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(el.value)) {
-          setFieldError(el, f.id + '-err', 'Please enter a valid email address.');
-          valid = false;
-        }
-      });
-      if (!valid) {
-        var firstErr = form.querySelector('[aria-invalid="true"]');
-        if (firstErr) firstErr.focus();
-        return;
-      }
+  })();
+  </script>
