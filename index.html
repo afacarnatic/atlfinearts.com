@@ -555,6 +555,25 @@
         </style>
         <script>
           var eventsData = {
+            'workshop-sunil-2026': {
+              imgs: ['assets/images/chamber-concert-series-shriram-salem.webp'],
+              date: 'Tuesday April 21 & Wednesday April 22, 2026',
+              title: 'Carnatic Workshop with Sunil Gargyan',
+              location: 'Atlanta, GA — details shared upon registration',
+              blog: 'AFA presents a rare two-day Carnatic workshop with Sunil Gargyan — an opportunity to study compositions seldom covered in regular classroom instruction.\n\nDay 1 (Tuesday, April 21) explores the devotional heritage of Dasar Padam, the lyrical compositions of Swati Tirunal, and the vast body of work by the saint-poet Annamayya.\n\nDay 2 (Wednesday, April 22) ventures into rare territory: either the seldom-taught compositions of the Trinity — Thyagaraja, Muthuswami Dikshitar, and Syama Sastri — or rare Tamil Carnatic compositions.\n\nThis workshop is designed for intermediate to advanced students and serious enthusiasts. Space is limited — register early to secure your spot.',
+              stats: ['2 Days', 'April 21–22, 2026', 'Registration Required'],
+              sets: [
+                { time: 'Day 1 · Tuesday, April 21', performers: [
+                  { name: 'Dasar Padam', instrument: 'Topic' },
+                  { name: 'Swati Tirunal', instrument: 'Topic' },
+                  { name: 'Annamayya', instrument: 'Topic' }
+                ]},
+                { time: 'Day 2 · Wednesday, April 22', performers: [
+                  { name: 'Rare Trinity compositions — or — Rare Tamil compositions', instrument: 'Topic' }
+                ]}
+              ],
+              registerLink: 'workshop-sunil-gargyan.html'
+            },
             'aradhana-2026': {
               imgs: ['assets/images/2026-thyagaraja-aaradhanai-img1.webp','assets/images/2026-thyagaraja-aaradhanai-img2.webp','assets/images/2026-thyagaraja-aaradhanai-img3.webp','assets/images/2026-Aaradhanai_group_picture.webp','assets/images/afa-2026-aaradhanai.webp'],
               date: 'Saturday, February 28, 2026 · 4 pm – 6 pm',
@@ -839,6 +858,14 @@
             }
             document.getElementById('modal-performers').innerHTML = statsHtml + (setsHtml ? '<div style="height:16px;"></div>' + setsHtml : '');
 
+            if (d.registerLink) {
+              document.getElementById('modal-performers').innerHTML +=
+                '<div style="margin-top:20px;">'
+                + '<a href="' + d.registerLink + '" '
+                + 'style="display:inline-flex;align-items:center;gap:8px;background:#c9a84c;color:#1a1625;font-size:0.85rem;font-weight:600;padding:10px 20px;border-radius:4px;text-decoration:none;letter-spacing:0.04em;">'
+                + 'Register for this Workshop →</a></div>';
+            }
+
             var modal = document.getElementById('event-modal');
             modal.style.display = 'block';
             document.body.style.overflow = 'hidden';
@@ -857,6 +884,37 @@
 
         <!-- role=list + role=listitem gives semantics even though <article> is used -->
         <div class="events__grid" id="events-grid" aria-live="polite" aria-label="Events list">
+
+          <!-- UPCOMING ──────────────────────────── -->
+          <article class="event-card" data-year="2026"
+            onclick="openModal('workshop-sunil-2026')"
+            tabindex="0"
+            onkeydown="if(event.key==='Enter')openModal('workshop-sunil-2026')"
+            style="cursor:pointer;">
+            <div class="event-card__img">
+              <picture>
+                <img src="assets/images/chamber-concert-series-shriram-salem.webp"
+                     alt="Carnatic Workshop with Sunil Gargyan"
+                     width="800" height="600" loading="lazy" decoding="async" />
+              </picture>
+              <span class="event-card__year-badge"
+                style="background:#c9a84c;color:#1a1625;font-weight:700;letter-spacing:0.08em;"
+                aria-label="Upcoming event">Upcoming</span>
+            </div>
+            <div class="event-card__body">
+              <p class="event-card__date"><time datetime="2026-04-21">April 21–22, 2026</time></p>
+              <h3 class="event-card__title">Carnatic Workshop with Sunil Gargyan</h3>
+              <p class="event-card__desc">
+                A two-day Carnatic workshop exploring Dasar Padam, Swati Tirunal,
+                Annamayya, and rare compositions of the Trinity &amp; Tamil tradition.
+              </p>
+              <a href="workshop-sunil-gargyan.html"
+                onclick="event.stopPropagation()"
+                style="display:inline-flex;align-items:center;gap:6px;margin-top:12px;background:#c9a84c;color:#1a1625;font-size:0.78rem;font-weight:700;padding:7px 14px;border-radius:3px;text-decoration:none;letter-spacing:0.05em;">
+                Register Now →
+              </a>
+            </div>
+          </article>
 
           <!-- 2026 ─────────────────────────────── -->
           <article class="event-card" data-year="2026" onclick="openModal('aradhana-2026')" tabindex="0" onkeydown="if(event.key==='Enter')openModal('aradhana-2026')" style="cursor:pointer;">

@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Carnatic Workshop with Sunil Gargyan | Atlanta Fine Arts — April 21–22, 2026</title>
+  <meta name="description" content="AFA presents a 2-day Carnatic workshop with Sunil Gargyan — April 21 & 22, 2026. Day 1: Dasar Padam, Swati Tirunal, Annamayya. Day 2: Rare compositions. Register now." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://atlfinearts.com/workshop-sunil-gargyan.html" />
+  <meta name="theme-color" content="#13101E" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://atlfinearts.com/workshop-sunil-gargyan.html" />
+  <meta property="og:title" content="Carnatic Workshop with Sunil Gargyan | Atlanta Fine Arts" />
+  <meta property="og:description" content="Two-day Carnatic workshop with Sunil Gargyan — April 21 & 22, 2026. Register to secure your spot." />
+  <meta property="og:image" content="https://atlfinearts.com/assets/images/og-image.jpg" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:site_name" content="Atlanta Fine Arts" />
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"EducationEvent","name":"Carnatic Workshop with Sunil Gargyan","startDate":"2026-04-21","endDate":"2026-04-22","organizer":{"@type":"Organization","name":"Atlanta Fine Arts","url":"https://atlfinearts.com"},"performer":{"@type":"Person","name":"Sunil Gargyan"},"location":{"@type":"Place","name":"Atlanta, GA","address":{"@type":"PostalAddress","addressLocality":"Atlanta","addressRegion":"GA","addressCountry":"US"}},"eventStatus":"https://schema.org/EventScheduled","url":"https://atlfinearts.com/workshop-sunil-gargyan.html"}
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,500;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="pages.css" />
+
+  <style>
+    /* Nav overrides */
+    .nav__wordmark { color: #fff !important; }
+    .nav__wordmark span { color: rgba(255,255,255,0.7) !important; }
+    .nav__link { color: rgba(255,255,255,0.85) !important; }
+    .nav:not(.scrolled) { background: linear-gradient(to bottom, rgba(0,0,0,0.55) 0%, transparent 100%) !important; }
+
+    /* ── HERO ── AFA dark charcoal + warm gold glow */
+    .ws-hero {
+      background: linear-gradient(160deg, #13101E 0%, #1E1A2E 55%, #231A14 100%);
+      padding: clamp(7rem, 14vw, 10rem) 0 clamp(4rem, 7vw, 5.5rem);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .ws-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 70% 50% at 50% 0%, rgba(201,168,76,0.1) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .ws-hero__presents {
+      font-size: 0.65rem; font-weight: 500; letter-spacing: 0.25em; text-transform: uppercase;
+      color: #c9a84c; margin-bottom: 1.2rem;
+      display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+    }
+    .ws-hero__presents::before, .ws-hero__presents::after {
+      content: ''; display: block; width: 36px; height: 1px; background: rgba(201,168,76,0.35);
+    }
+    .ws-hero__kicker {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(1rem, 2.2vw, 1.25rem); font-weight: 300;
+      color: rgba(255,255,255,0.55); margin-bottom: 0.2rem; letter-spacing: 0.06em;
+    }
+    .ws-hero__name {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(3rem, 8vw, 5.5rem); font-weight: 500;
+      color: #fff; line-height: 1; margin-bottom: 0.5rem;
+    }
+    .ws-hero__name em { font-style: italic; color: #c9a84c; }
+    .ws-hero__tagline {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(1rem, 2.2vw, 1.35rem); font-weight: 300; font-style: italic;
+      color: rgba(255,255,255,0.45); margin-bottom: 2.5rem;
+    }
+    .ws-hero__dates {
+      display: inline-flex; flex-direction: column; gap: 0.5rem;
+      background: rgba(201,168,76,0.06); border: 1px solid rgba(201,168,76,0.22);
+      border-radius: 8px; padding: 1.1rem 2.2rem; margin-bottom: 2.5rem;
+    }
+    .ws-hero__date-row {
+      display: flex; align-items: center; gap: 0.7rem;
+      font-size: 0.9rem; color: rgba(255,255,255,0.8);
+    }
+    .ws-hero__date-row svg { color: #c9a84c; flex-shrink: 0; }
+    .ws-hero__ctas { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+    /* ── COUNTDOWN ── */
+    .ws-cd {
+      background: #1a1625;
+      border-top: 1px solid rgba(201,168,76,0.12);
+      border-bottom: 1px solid rgba(201,168,76,0.12);
+      padding: 1.1rem 0;
+    }
+    .ws-cd__inner {
+      display: flex; align-items: center; justify-content: center;
+      gap: 1.75rem; flex-wrap: wrap;
+    }
+    .ws-cd__lbl {
+      font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+    }
+    .ws-cd__units { display: flex; align-items: center; gap: 0.75rem; }
+    .ws-cd-u { display: flex; flex-direction: column; align-items: center; gap: 0.1rem; }
+    .ws-cd-u__n {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.9rem; font-weight: 300; color: #c9a84c;
+      line-height: 1; min-width: 2.2ch; text-align: center;
+    }
+    .ws-cd-u__l {
+      font-size: 0.52rem; font-weight: 500; letter-spacing: 0.18em;
+      text-transform: uppercase; color: rgba(255,255,255,0.28);
+    }
+    .ws-cd__sep { color: rgba(201,168,76,0.28); font-size: 1.3rem; }
+
+    /* ── CURRICULUM ── */
+    .ws-curriculum {
+      background: var(--ivory, #F7F3EC);
+      padding: clamp(3rem, 6vw, 5rem) 0;
+    }
+    .ws-day-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 1.5rem; margin-top: 2.5rem;
+    }
+    @media (max-width: 640px) { .ws-day-grid { grid-template-columns: 1fr; } }
+
+    .ws-day-card {
+      background: #fff;
+      border: 1px solid var(--border, #E8E0D0);
+      border-radius: 8px; overflow: hidden;
+      box-shadow: 0 2px 16px rgba(19,16,30,0.07);
+    }
+    .ws-day-card__hd {
+      background: linear-gradient(135deg, #13101E 0%, #231e32 100%);
+      padding: 1.25rem 1.75rem;
+      display: flex; align-items: center; gap: 1rem;
+    }
+    .ws-day-card__num {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 3rem; font-weight: 300; color: #c9a84c; line-height: 1;
+    }
+    .ws-day-card__hd-txt { display: flex; flex-direction: column; gap: 0.2rem; }
+    .ws-day-card__sublbl {
+      font-size: 0.6rem; font-weight: 500; letter-spacing: 0.22em;
+      text-transform: uppercase; color: rgba(255,255,255,0.38);
+    }
+    .ws-day-card__datestr { font-size: 0.875rem; color: rgba(255,255,255,0.85); }
+    .ws-day-card__bd { padding: 1.5rem 1.75rem; }
+    .ws-day-card__topic-lbl {
+      font-size: 0.6rem; font-weight: 500; letter-spacing: 0.2em;
+      text-transform: uppercase; color: #c9a84c; margin-bottom: 0.8rem;
+    }
+    .ws-day-card__list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.65rem; }
+    .ws-day-card__item {
+      display: flex; align-items: flex-start; gap: 0.6rem;
+      font-size: 0.9375rem; color: #2a2535; line-height: 1.4;
+    }
+    .ws-day-card__item::before {
+      content: '✦'; color: #c9a84c; font-size: 0.5rem;
+      margin-top: 0.42em; flex-shrink: 0;
+    }
+    .ws-day-card__note {
+      margin-top: 1rem; padding-top: 1rem;
+      border-top: 1px solid #f0ebe3;
+      font-size: 0.8125rem; color: #9e93ae;
+      font-style: italic; line-height: 1.7;
+    }
+    .ws-or {
+      font-size: 0.75rem; color: #c9a84c; font-weight: 600;
+      letter-spacing: 0.12em; text-align: center;
+      margin: 0.5rem 0; text-transform: uppercase;
+    }
+
+    /* ── REGISTER ── */
+    .ws-register {
+      background: var(--ivory-warm, #F2EDE4);
+      padding: clamp(3.5rem, 7vw, 6rem) 0;
+    }
+    .ws-register__inner {
+      display: grid; grid-template-columns: 5fr 7fr;
+      gap: clamp(2.5rem, 6vw, 5rem); align-items: start;
+    }
+    @media (max-width: 860px) {
+      .ws-register__inner { grid-template-columns: 1fr; }
+      .ws-reg-aside { position: static !important; }
+    }
+    .ws-reg-aside { position: sticky; top: 5rem; }
+    .ws-reg-aside__body {
+      font-size: 0.9375rem; color: #756A90;
+      line-height: 1.8; margin: 0.75rem 0 1.75rem;
+    }
+    .ws-reg-details { display: flex; flex-direction: column; gap: 0.85rem; margin-bottom: 1.75rem; }
+    .ws-reg-detail {
+      display: flex; align-items: flex-start; gap: 0.8rem;
+      font-size: 0.875rem; color: #2a2535; line-height: 1.5;
+    }
+    .ws-reg-detail__icon {
+      width: 34px; height: 34px;
+      background: rgba(201,168,76,0.12); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; font-size: 0.85rem;
+    }
+    .ws-reg-detail strong {
+      display: block; font-size: 0.66rem; font-weight: 500;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: #9e93ae; margin-bottom: 0.15rem;
+    }
+
+    /* Form card */
+    .ws-form-card {
+      background: #fff;
+      border: 1px solid var(--border, #E8E0D0);
+      border-radius: 8px; overflow: hidden;
+      box-shadow: 0 4px 24px rgba(19,16,30,0.08);
+    }
+    .ws-form-card__hd {
+      background: linear-gradient(135deg, #13101E 0%, #1E1A2E 100%);
+      padding: 1.35rem 1.75rem;
+      display: flex; align-items: center; gap: 0.9rem;
+    }
+    .ws-form-card__icon {
+      width: 40px; height: 40px;
+      background: rgba(201,168,76,0.15); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; font-size: 1.1rem;
+    }
+    .ws-form-card__title {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.3rem; font-weight: 400; color: #fff; margin-bottom: 0.12rem;
+    }
+    .ws-form-card__sub { font-size: 0.72rem; color: rgba(255,255,255,0.42); }
+
+    .ws-gform { width: 100%; min-height: 880px; }
+    .ws-gform iframe { width: 100%; min-height: 880px; border: none; display: block; }
+  </style>
+</head>
+<body>
+
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<div class="kolam-border" aria-hidden="true"></div>
+
+<!-- NAVIGATION -->
+<nav class="nav" id="nav" aria-label="Main navigation">
+  <div class="nav__inner">
+    <a href="index.html" class="nav__brand" aria-label="Atlanta Fine Arts — home">
+      <div class="nav__logo" aria-hidden="true">
+        <img src="assets/images/afa-logo.webp" alt="" width="36" height="36" style="border-radius:50%;object-fit:cover;" />
+      </div>
+      <div class="nav__wordmark">Atlanta Fine Arts<span>Indian Classical Arts</span></div>
+    </a>
+    <ul class="nav__links" role="list">
+      <li><a href="index.html#about" class="nav__link">About</a></li>
+      <li><a href="index.html#events" class="nav__link">Events</a></li>
+      <li><a href="volunteers.html" class="nav__link">Volunteers</a></li>
+      <li><a href="teachers.html" class="nav__link">Find a Teacher</a></li>
+      <li><a href="chamber-concerts.html" class="nav__link">Chamber Concerts</a></li>
+      <li><a href="gallery.html" class="nav__link">Gallery</a></li>
+      <li><a href="donate.html" class="nav__link">Donate</a></li>
+      <li><a href="contact.html" class="nav__link nav__link--cta">Contact Us</a></li>
+    </ul>
+    <button class="nav__toggle" id="nav-toggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-menu">
+      <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
+    </button>
+  </div>
+  <div class="nav__mobile" id="mobile-menu" aria-hidden="true" role="region" aria-label="Mobile navigation">
+    <ul class="nav__mobile-links" role="list">
+      <li><a href="index.html" class="nav__mobile-link" data-mobile-link>Home <span class="arrow" aria-hidden="true">→</span></a></li>
+      <li><a href="index.html#events" class="nav__mobile-link" data-mobile-link>Events <span class="arrow" aria-hidden="true">→</span></a></li>
+      <li><a href="volunteers.html" class="nav__mobile-link" data-mobile-link>Volunteers <span class="arrow" aria-hidden="true">→</span></a></li>
+      <li><a href="teachers.html" class="nav__mobile-link" data-mobile-link>Find a Teacher <span class="arrow" aria-hidden="true">→</span></a></li>
+      <li><a href="chamber-concerts.html" class="nav__mobile-link" data-mobile-link>Chamber Concerts <span class="arrow" aria-hidden="true">→</span></a></li>
+      <li><a href="gallery.html" class="nav__mobile-link" data-mobile-link>Gallery <span class="arrow" aria-hidden="true">→</span></a></li>
+      <li><a href="donate.html" class="nav__mobile-link" data-mobile-link>Donate <span class="arrow" aria-hidden="true">→</span></a></li>
+      <li><a href="contact.html" class="nav__mobile-link" data-mobile-link>Contact Us <span class="arrow" aria-hidden="true">→</span></a></li>
+    </ul>
+  </div>
+</nav>
+
+<main id="main-content">
+
+  <!-- HERO -->
+  <section class="ws-hero" aria-label="Workshop overview">
+    <div class="container">
+      <p class="ws-hero__presents">AFA Presents</p>
+      <p class="ws-hero__kicker">Carnatic Workshop with</p>
+      <h1 class="ws-hero__name"><em>Sunil Gargyan</em></h1>
+      <p class="ws-hero__tagline">A two-day deep dive into rare Carnatic compositions</p>
+
+      <div class="ws-hero__dates" role="list" aria-label="Workshop dates">
+        <div class="ws-hero__date-row" role="listitem">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          Day 1 — Tuesday, April 21, 2026
+        </div>
+        <div class="ws-hero__date-row" role="listitem">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          Day 2 — Wednesday, April 22, 2026
+        </div>
+      </div>
+
+      <div class="ws-hero__ctas">
+        <a href="#register" class="btn btn--primary">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" y1="8" x2="19" y2="14"/><line x1="22" y1="11" x2="16" y2="11"/></svg>
+          Register Now
+        </a>
+        <a href="#curriculum" class="btn btn--outline">View Curriculum</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- COUNTDOWN -->
+  <div class="ws-cd" aria-label="Time until workshop">
+    <div class="container">
+      <div class="ws-cd__inner">
+        <p class="ws-cd__lbl">Workshop begins in</p>
+        <div class="ws-cd__units">
+          <div class="ws-cd-u"><span class="ws-cd-u__n" id="cd-days">--</span><span class="ws-cd-u__l">Days</span></div>
+          <span class="ws-cd__sep" aria-hidden="true">:</span>
+          <div class="ws-cd-u"><span class="ws-cd-u__n" id="cd-hrs">--</span><span class="ws-cd-u__l">Hrs</span></div>
+          <span class="ws-cd__sep" aria-hidden="true">:</span>
+          <div class="ws-cd-u"><span class="ws-cd-u__n" id="cd-min">--</span><span class="ws-cd-u__l">Min</span></div>
+          <span class="ws-cd__sep" aria-hidden="true">:</span>
+          <div class="ws-cd-u"><span class="ws-cd-u__n" id="cd-sec">--</span><span class="ws-cd-u__l">Sec</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CURRICULUM -->
+  <section class="ws-curriculum" id="curriculum" aria-labelledby="curriculum-heading">
+    <div class="container">
+      <p class="section-label">Two-Day Program</p>
+      <h2 class="section-title" id="curriculum-heading">Workshop <em>Curriculum</em></h2>
+      <p style="color:#756A90;max-width:56ch;line-height:1.8;margin-top:0.6rem;font-size:0.9375rem;">
+        Each day explores a distinct tradition within the Carnatic canon — from the devotional
+        heritage of Vaishnava padams to the rarest compositions in the repertoire.
+      </p>
+
+      <div class="ws-day-grid">
+        <!-- Day 1 -->
+        <div class="ws-day-card reveal">
+          <div class="ws-day-card__hd">
+            <div class="ws-day-card__num">1</div>
+            <div class="ws-day-card__hd-txt">
+              <p class="ws-day-card__sublbl">Day One</p>
+              <p class="ws-day-card__datestr">Tuesday, April 21, 2026</p>
+            </div>
+          </div>
+          <div class="ws-day-card__bd">
+            <p class="ws-day-card__topic-lbl">Compositions Covered</p>
+            <ul class="ws-day-card__list">
+              <li class="ws-day-card__item">Dasar Padam</li>
+              <li class="ws-day-card__item">Swati Tirunal</li>
+              <li class="ws-day-card__item">Annamayya</li>
+            </ul>
+            <p class="ws-day-card__note">
+              Exploring the devotional and lyrical traditions of the Vaishnava
+              saint-composers — padams, keertanas, and the poetic depth they carry.
+            </p>
+          </div>
+        </div>
+
+        <!-- Day 2 -->
+        <div class="ws-day-card reveal reveal--delay-1">
+          <div class="ws-day-card__hd">
+            <div class="ws-day-card__num">2</div>
+            <div class="ws-day-card__hd-txt">
+              <p class="ws-day-card__sublbl">Day Two</p>
+              <p class="ws-day-card__datestr">Wednesday, April 22, 2026</p>
+            </div>
+          </div>
+          <div class="ws-day-card__bd">
+            <p class="ws-day-card__topic-lbl">Compositions Covered</p>
+            <ul class="ws-day-card__list">
+              <li class="ws-day-card__item">Rare compositions of the Trinity</li>
+            </ul>
+            <p class="ws-or">— or —</p>
+            <ul class="ws-day-card__list">
+              <li class="ws-day-card__item">Rare Tamil compositions</li>
+            </ul>
+            <p class="ws-day-card__note">
+              A rare opportunity to learn compositions seldom taught in the classroom —
+              drawn from the vast, underexplored body of work by Thyagaraja,
+              Dikshitar &amp; Syama Sastri, or from the Tamil Carnatic tradition.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REGISTRATION -->
+  <section class="ws-register" id="register" aria-labelledby="reg-heading">
+    <div class="container">
+      <div class="ws-register__inner">
+
+        <aside class="ws-reg-aside">
+          <p class="section-label">Secure Your Spot</p>
+          <h2 class="section-title" id="reg-heading">Register for the <em>Workshop</em></h2>
+          <p class="ws-reg-aside__body">
+            Space is limited. Fill out the form to register for one or both days.
+            We'll confirm your spot and share all details by email before the event.
+          </p>
+          <div class="ws-reg-details">
+            <div class="ws-reg-detail">
+              <div class="ws-reg-detail__icon" aria-hidden="true">📅</div>
+              <div><strong>Dates</strong>April 21–22, 2026 (Tuesday &amp; Wednesday)</div>
+            </div>
+            <div class="ws-reg-detail">
+              <div class="ws-reg-detail__icon" aria-hidden="true">📍</div>
+              <div><strong>Location</strong>Atlanta, GA — address shared upon registration</div>
+            </div>
+            <div class="ws-reg-detail">
+              <div class="ws-reg-detail__icon" aria-hidden="true">🎓</div>
+              <div><strong>Who should attend</strong>Intermediate to advanced students &amp; enthusiasts</div>
+            </div>
+            <div class="ws-reg-detail">
+              <div class="ws-reg-detail__icon" aria-hidden="true">✉️</div>
+              <div><strong>Questions?</strong><a href="mailto:afacarnatic@gmail.com" style="color:#5E17EB;text-decoration:underline;">afacarnatic@gmail.com</a></div>
+            </div>
+          </div>
+          <a href="index.html#events" style="font-size:0.8rem;color:#9e93ae;text-decoration:none;display:inline-flex;align-items:center;gap:0.4rem;">← Back to all events</a>
+        </aside>
+
+        <div>
+          <div class="ws-form-card">
+            <div class="ws-form-card__hd">
+              <div class="ws-form-card__icon" aria-hidden="true">📋</div>
+              <div>
+                <p class="ws-form-card__title">Workshop Registration</p>
+                <p class="ws-form-card__sub">Carnatic Workshop with Sunil Gargyan · April 21–22, 2026</p>
+              </div>
+            </div>
+            <div class="ws-gform">
+              <iframe
+                src="https://docs.google.com/forms/d/e/1FAIpQLSe0X_hI_z4wQ8zqU5CdnUnnL8_zwZZLDUNRqQN7xKbJFmY8Iw/viewform?embedded=true"
+                title="Carnatic Workshop with Sunil Gargyan — Registration Form"
+                allowfullscreen
+                loading="lazy">
+                Loading registration form…
+              </iframe>
+            </div>
+          </div>
+          <p style="font-size:0.75rem;color:#9e93ae;margin-top:0.75rem;line-height:1.6;text-align:center;">
+            Having trouble with the form?
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSe0X_hI_z4wQ8zqU5CdnUnnL8_zwZZLDUNRqQN7xKbJFmY8Iw/viewform"
+              target="_blank" rel="noopener noreferrer" style="color:#5E17EB;text-decoration:underline;">Open in a new tab →</a>
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<div class="kolam-border" aria-hidden="true"></div>
+
+<footer class="footer" aria-label="Site footer">
+  <div class="container">
+    <div class="footer__inner">
+      <div class="footer__brand">
+        <p class="footer__brand-name">Atlanta Fine Arts</p>
+        <p class="footer__tagline">A volunteer-driven non-profit dedicated to celebrating Indian classical dance and music in the Atlanta area.</p>
+        <a href="mailto:afacarnatic@gmail.com" class="footer__email">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          afacarnatic@gmail.com
+        </a>
+      </div>
+      <nav aria-label="Footer navigation">
+        <p class="footer__col-title">Navigate</p>
+        <ul class="footer__links" role="list">
+          <li><a href="index.html" class="footer__link">Home</a></li>
+          <li><a href="index.html#events" class="footer__link">Events</a></li>
+          <li><a href="volunteers.html" class="footer__link">Volunteers</a></li>
+          <li><a href="teachers.html" class="footer__link">Find a Teacher</a></li>
+          <li><a href="chamber-concerts.html" class="footer__link">Chamber Concerts</a></li>
+          <li><a href="gallery.html" class="footer__link">Gallery</a></li>
+          <li><a href="donate.html" class="footer__link">Donate</a></li>
+          <li><a href="contact.html" class="footer__link">Contact</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Social media links">
+        <p class="footer__col-title">Follow Us</p>
+        <ul class="footer__socials" role="list">
+          <li><a href="https://www.instagram.com/atlanta.finearts" class="footer__social" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+          <li><a href="https://www.facebook.com/afacarnatic" class="footer__social" target="_blank" rel="noopener noreferrer">Facebook</a></li>
+          <li><a href="https://www.youtube.com/@atlfinearts" class="footer__social" target="_blank" rel="noopener noreferrer">YouTube</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="footer__bottom">
+      <p class="footer__copy">© 2026 Atlanta Fine Arts (AFA). All rights reserved.</p>
+      <p class="footer__credit">Built with ♡ for the Indian classical arts community</p>
+    </div>
+  </div>
+</footer>
+
+<script src="nav.js" defer></script>
+<script>
+(function () {
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+    }, { threshold: 0.05 });
+    document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('visible'); });
+  }
+
+  var target = new Date('2026-04-21T00:00:00-04:00').getTime();
+  function pad(n) { return String(n).padStart(2,'0'); }
+  function tick() {
+    var diff = target - Date.now();
+    if (diff <= 0) { ['cd-days','cd-hrs','cd-min','cd-sec'].forEach(function(id){ document.getElementById(id).textContent='00'; }); return; }
+    document.getElementById('cd-days').textContent = pad(Math.floor(diff/86400000));
+    document.getElementById('cd-hrs').textContent  = pad(Math.floor((diff%86400000)/3600000));
+    document.getElementById('cd-min').textContent  = pad(Math.floor((diff%3600000)/60000));
+    document.getElementById('cd-sec').textContent  = pad(Math.floor((diff%60000)/1000));
+  }
+  tick(); setInterval(tick, 1000);
+})();
+</script>
+
+</body>
+</html>
