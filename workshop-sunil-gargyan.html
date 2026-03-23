@@ -267,8 +267,57 @@
     }
     .ws-form-card__sub { font-size: 0.72rem; color: rgba(255,255,255,0.42); }
 
-    .ws-gform { width: 100%; min-height: 880px; }
-    .ws-gform iframe { width: 100%; min-height: 880px; border: none; display: block; }
+    /* Registration CTA body — replaces iframe */
+    .ws-reg-body {
+      padding: 2rem 1.75rem 2.25rem;
+      display: flex; flex-direction: column; gap: 1.5rem;
+    }
+    .ws-reg-steps {
+      display: flex; flex-direction: column; gap: 0.85rem;
+    }
+    .ws-reg-step {
+      display: flex; align-items: flex-start; gap: 0.85rem;
+    }
+    .ws-reg-step__num {
+      width: 28px; height: 28px; border-radius: 50%; flex-shrink: 0;
+      background: linear-gradient(135deg, #13101E, #1E1A2E);
+      color: #c9a84c; font-size: 0.72rem; font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .ws-reg-step__text {
+      font-size: 0.875rem; color: #2a2535; line-height: 1.55;
+      padding-top: 0.35rem;
+    }
+    .ws-reg-step__text strong { color: #13101E; }
+    .ws-reg-cta-wrap {
+      display: flex; flex-direction: column; gap: 0.75rem;
+    }
+    .ws-reg-btn {
+      display: flex; align-items: center; justify-content: center; gap: 0.6rem;
+      padding: 1rem 1.5rem;
+      background: #c9a84c; color: #13101E;
+      font-family: var(--font-body, 'DM Sans', sans-serif);
+      font-size: 0.9375rem; font-weight: 700;
+      letter-spacing: 0.04em;
+      border-radius: 6px; text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+      box-shadow: 0 4px 18px rgba(201,168,76,0.3);
+    }
+    .ws-reg-btn:hover { background: #b8933d; transform: translateY(-1px); }
+    .ws-reg-btn:active { transform: translateY(0); }
+    .ws-reg-note {
+      font-size: 0.75rem; color: #9e93ae;
+      text-align: center; line-height: 1.6;
+    }
+    .ws-price-badge {
+      display: flex; align-items: center; justify-content: space-between;
+      background: var(--ivory-warm, #F2EDE4);
+      border: 1px solid var(--border, #E8E0D0);
+      border-radius: 6px; padding: 0.9rem 1.1rem;
+    }
+    .ws-price-badge__label { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: #9e93ae; }
+    .ws-price-badge__amount { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.75rem; font-weight: 500; color: #13101E; line-height: 1; }
+    .ws-price-badge__note { font-size: 0.72rem; color: #9e93ae; margin-top: 0.15rem; font-style: italic; }
 
     /* Ensure reveal elements show even if IntersectionObserver hasn't fired */
     .reveal { opacity: 1 !important; transform: none !important; }
@@ -497,21 +546,48 @@
                 <p class="ws-form-card__sub">Carnatic Workshop with Sunil Gargyan · April 21–22, 2026</p>
               </div>
             </div>
-            <div class="ws-gform">
-              <iframe
-                src="https://docs.google.com/forms/d/e/1FAIpQLSe0X_hI_z4wQ8zqU5CdnUnnL8_zwZZLDUNRqQN7xKbJFmY8Iw/viewform?embedded=true"
-                title="Carnatic Workshop with Sunil Gargyan — Registration Form"
-                allowfullscreen
-                loading="lazy">
-                Loading registration form…
-              </iframe>
+            <div class="ws-reg-body">
+
+              <!-- Price badge -->
+              <div class="ws-price-badge">
+                <div>
+                  <p class="ws-price-badge__label">Registration Fee</p>
+                  <p class="ws-price-badge__note">All proceeds go directly to the artist</p>
+                </div>
+                <p class="ws-price-badge__amount">$120</p>
+              </div>
+
+              <!-- How it works -->
+              <div class="ws-reg-steps">
+                <div class="ws-reg-step">
+                  <div class="ws-reg-step__num">1</div>
+                  <p class="ws-reg-step__text"><strong>Click Register below</strong> — the form opens in Google Forms in your browser.</p>
+                </div>
+                <div class="ws-reg-step">
+                  <div class="ws-reg-step__num">2</div>
+                  <p class="ws-reg-step__text"><strong>Fill in your details</strong> — name, email, which days you're attending, and experience level.</p>
+                </div>
+                <div class="ws-reg-step">
+                  <div class="ws-reg-step__num">3</div>
+                  <p class="ws-reg-step__text"><strong>We'll confirm by email</strong> — you'll receive the venue address 48 hours before the workshop.</p>
+                </div>
+              </div>
+
+              <!-- CTA -->
+              <div class="ws-reg-cta-wrap">
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSe0X_hI_z4wQ8zqU5CdnUnnL8_zwZZLDUNRqQN7xKbJFmY8Iw/viewform"
+                  target="_blank" rel="noopener noreferrer"
+                  class="ws-reg-btn">
+                  <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" y1="8" x2="19" y2="14"/><line x1="22" y1="11" x2="16" y2="11"/></svg>
+                  Register Now — Open Form
+                </a>
+                <p class="ws-reg-note">
+                  Opens in Google Forms. Works on all devices — mobile &amp; desktop.
+                </p>
+              </div>
+
             </div>
           </div>
-          <p style="font-size:0.75rem;color:#9e93ae;margin-top:0.75rem;line-height:1.6;text-align:center;">
-            Having trouble with the form?
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSe0X_hI_z4wQ8zqU5CdnUnnL8_zwZZLDUNRqQN7xKbJFmY8Iw/viewform"
-              target="_blank" rel="noopener noreferrer" style="color:#5E17EB;text-decoration:underline;">Open in a new tab →</a>
-          </p>
         </div>
 
       </div>
