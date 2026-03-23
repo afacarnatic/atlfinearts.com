@@ -269,6 +269,9 @@
 
     .ws-gform { width: 100%; min-height: 880px; }
     .ws-gform iframe { width: 100%; min-height: 880px; border: none; display: block; }
+
+    /* Ensure reveal elements show even if IntersectionObserver hasn't fired */
+    .reveal { opacity: 1 !important; transform: none !important; }
   </style>
 </head>
 <body>
@@ -389,7 +392,10 @@
       <p style="color:#756A90;max-width:56ch;line-height:1.8;margin-top:0.6rem;font-size:0.9375rem;">
         Each day explores a distinct tradition within the Carnatic canon — from the devotional
         heritage of padams to the rarest compositions in the repertoire.
-        $40 per person.
+        <strong style="color:#2a2535;">$120 per person.</strong>
+      </p>
+      <p style="color:#c9a84c;font-size:0.8rem;margin-top:0.5rem;font-style:italic;max-width:56ch;line-height:1.6;">
+        ✦ All proceeds go directly to the artist. Atlanta Fine Arts is only facilitating this workshop.
       </p>
 
       <div class="ws-day-grid">
@@ -410,8 +416,8 @@
               <li class="ws-day-card__item">Annamayya</li>
             </ul>
             <p class="ws-day-card__note">
-              Exploring the devotional and lyrical traditions of the Vaishnava
-              saint-composers — padams, keertanas, and the poetic depth they carry.
+              Exploring the devotional and lyrical traditions of the saint-composers —
+              padams, keertanas, and the poetic depth they carry.
             </p>
           </div>
         </div>
@@ -461,6 +467,10 @@
             <div class="ws-reg-detail">
               <div class="ws-reg-detail__icon" aria-hidden="true">📅</div>
               <div><strong>Dates</strong>April 21–22, 2026 (Tuesday &amp; Wednesday)</div>
+            </div>
+            <div class="ws-reg-detail">
+              <div class="ws-reg-detail__icon" aria-hidden="true">💰</div>
+              <div><strong>Price</strong>$120 per person — all proceeds go directly to the artist. AFA is only facilitating this workshop.</div>
             </div>
             <div class="ws-reg-detail">
               <div class="ws-reg-detail__icon" aria-hidden="true">📍</div>
@@ -569,4 +579,14 @@
   function tick() {
     var diff = target - Date.now();
     if (diff <= 0) { ['cd-days','cd-hrs','cd-min','cd-sec'].forEach(function(id){ document.getElementById(id).textContent='00'; }); return; }
-    document.getElementById('cd-days').textCont
+    document.getElementById('cd-days').textContent = pad(Math.floor(diff/86400000));
+    document.getElementById('cd-hrs').textContent  = pad(Math.floor((diff%86400000)/3600000));
+    document.getElementById('cd-min').textContent  = pad(Math.floor((diff%3600000)/60000));
+    document.getElementById('cd-sec').textContent  = pad(Math.floor((diff%60000)/1000));
+  }
+  tick(); setInterval(tick, 1000);
+})();
+</script>
+
+</body>
+</html>
