@@ -718,7 +718,7 @@
 
     var SHEET_ID   = '1BKL7WV9dfGpvmmBEdbsrMtm0Y5CEsE9uyz4gYOM_fMM';
     var SHEET_NAME = 'Form_Responses';
-    var CACHE_KEY  = 'afa_teachers_v3';
+    var CACHE_KEY  = 'afa_teachers_v4';
     var CACHE_TTL  = 10 * 60 * 1000;
     var PAGE_SIZE  = 18;
 
@@ -866,7 +866,7 @@
 
     function buildDropdowns(){
       var areas = unique(allTeachers.reduce(function(acc,t){
-        return acc.concat(t.area.split(',').map(function(a){ return a.trim(); }));
+        return acc.concat(splitAreas(t.area));
       },[]));
       var instrs = unique(allTeachers.reduce(function(acc,t){
         return acc.concat(t.instrument.split(',').map(function(i){ return i.trim(); }));
@@ -939,7 +939,7 @@
           if(parts.indexOf(state.genre) === -1) return false;
         }
         if(state.area!=='all'){
-          var areaList = t.area.split(',').map(function(a){ return a.trim(); });
+          var areaList = splitAreas(t.area);
           if(areaList.indexOf(state.area) === -1) return false;
         }
         if(state.instrument!=='all' && t.instrument.toLowerCase().indexOf(state.instrument.toLowerCase())===-1) return false;
@@ -1044,6 +1044,28 @@
       if (g.indexOf('violin') !== -1) return 'Violin';
       if (g.indexOf('flute') !== -1) return 'Flute';
       return '';
+    }
+
+    // Split area string on comma, slash, or semicolon; normalize known variants
+    function splitAreas(areaStr) {
+      return areaStr.split(/[,\/;]/).map(function(a) {
+        a = a.trim();
+        // Normalize known alternate city names
+        if (a === 'Johns creek') a = 'Johns Creek';
+        if (a === 'Johns Creek ') a = 'Johns Creek';
+        return a;
+      }).filter(Boolean);
+    }
+
+    // Split area string on comma, slash, or semicolon; normalize known variants
+    function splitAreas(areaStr) {
+      return areaStr.split(/[,\/;]/).map(function(a) {
+        a = a.trim();
+        // Normalize known alternate city names
+        if (a === 'Johns creek') a = 'Johns Creek';
+        if (a === 'Johns Creek ') a = 'Johns Creek';
+        return a;
+      }).filter(Boolean);
     }
 
     // Dedup by name+email: merge instruments, keep best data
