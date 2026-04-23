@@ -753,7 +753,7 @@
       var g = genre.toLowerCase();
       if(g.indexOf('carnatic')!==-1)  return 'bar--carnatic';
       if(g.indexOf('hindustani')!==-1)return 'bar--hindustani';
-      if(g.indexOf('dance')!==-1||g.indexOf('bharata')!==-1||g.indexOf('kuchipudi')!==-1) return 'bar--dance';
+      if(g.indexOf('bharata')!==-1||g.indexOf('kuchipudi')!==-1||g.indexOf('kathak')!==-1||g.indexOf('mohiniyattam')!==-1) return 'bar--dance';
       return 'bar--other';
     }
 
@@ -829,8 +829,11 @@
     function buildGenreTabs(teachers){
       var genres = {};
       teachers.forEach(function(t){
-        var g = t.genre || 'Other';
-        genres[g] = (genres[g]||0) + 1;
+        var parts = t.genre ? t.genre.split(' · ') : ['Other'];
+        parts.forEach(function(g) {
+          g = g.trim() || 'Other';
+          genres[g] = (genres[g]||0) + 1;
+        });
       });
       document.getElementById('count-all').textContent = teachers.length;
       // Remove existing dynamic tabs (keep "All")
@@ -929,9 +932,12 @@
       visibleCount = PAGE_SIZE;
       filteredList = allTeachers.filter(function(t){
         if(!matchesSearch(t, state.search))                          return false;
-        if(state.genre!=='all' && t.genre.indexOf(state.genre)===-1) return false;
+        if(state.genre!=='all'){
+          var parts = t.genre ? t.genre.split(' · ').map(function(g){ return g.trim(); }) : [];
+          if(parts.indexOf(state.genre) === -1) return false;
+        }
         if(state.area!=='all'  && t.area.indexOf(state.area)===-1)   return false;
-        if(state.instrument!=='all' && t.instrument.indexOf(state.instrument)===-1) return false;
+        if(state.instrument!=='all' && t.instrument.toLowerCase().indexOf(state.instrument.toLowerCase())===-1) return false;
         return true;
       });
       pushURLState();
@@ -986,23 +992,108 @@
     }
 
     // ── Data fetching ────────────────────────
+
+    // Normalize free-text genre → canonical category
+    function normalizeGenre(raw) {
+      var r = raw.toLowerCase();
+      var isCarnatic   = r.indexOf('carnatic') !== -1;
+      var isHindustani = r.indexOf('hindustani') !== -1;
+      var isBharata    = r.indexOf('bharata') !== -1 || r.indexOf('bharatanatyam') !== -1 || r.indexOf('bharatantyam') !== -1;
+      var isKuchipudi  = r.indexOf('kuchipudi') !== -1;
+      var isKathak     = r.indexOf('kathak') !== -1;
+      var isMohiniyat  = r.indexOf('mohiniyattam') !== -1;
+      // Multi-genre: pick most specific readable label
+      var labels = [];
+      if (isCarnatic)   labels.push('Carnatic');
+      if (isHindustani) labels.push('Hindustani');
+      if (isBharata)    labels.push('Bharatanatyam');
+      if (isKuchipudi)  labels.push('Kuchipudi');
+      if (isKathak)     labels.push('Kathak');
+      if (isMohiniyat)  labels.push('Mohiniyattam');
+      // Fallback to cleaned raw
+      return labels.length ? labels.join(' · ') : (raw.length < 40 ? raw : raw.substring(0, 40));
+    }
+
+    // Normalize instrument field — sometimes people put genre text in here
+    function normalizeInstrument(instrument, genre) {
+      var i = instrument.trim();
+      var g = genre.toLowerCase();
+      // If instrument field is clearly a genre description (long sentence / no real instrument word)
+      if (!i || i.length > 50) return inferInstrumentFromGenre(g);
+      // Detect if it's actually a genre description (e.g. "I teach Carnatic vocals and bharatantyam")
+      if (/\bi teach\b/i.test(i) || /\band\b/i.test(i) && i.length > 30) {
+        return inferInstrumentFromGenre(g);
+      }
+      return i;
+    }
+
+    function inferInstrumentFromGenre(g) {
+      if (g.indexOf('carnatic vocal') !== -1 || g.indexOf('carnatic') !== -1 && g.indexOf('vocal') !== -1) return 'Vocal';
+      if (g.indexOf('hindustani') !== -1) return 'Vocal';
+      if (g.indexOf('bharata') !== -1 || g.indexOf('bharatanatyam') !== -1) return 'Bharatanatyam';
+      if (g.indexOf('kuchipudi') !== -1) return 'Kuchipudi';
+      if (g.indexOf('kathak') !== -1) return 'Kathak';
+      if (g.indexOf('mohiniyattam') !== -1) return 'Mohiniyattam';
+      if (g.indexOf('mridangam') !== -1) return 'Mridangam';
+      if (g.indexOf('veena') !== -1) return 'Veena';
+      if (g.indexOf('violin') !== -1) return 'Violin';
+      if (g.indexOf('flute') !== -1) return 'Flute';
+      return '';
+    }
+
+    // Dedup by name+email: merge instruments, keep best data
+    function deduplicateTeachers(teachers) {
+      var seen = {};
+      teachers.forEach(function(t) {
+        var key = t.name.toLowerCase() + '|' + t.email.toLowerCase();
+        if (!seen[key]) {
+          seen[key] = Object.assign({}, t, { _instruments: [t.instrument] });
+        } else {
+          // Merge instruments and genres
+          if (t.instrument && seen[key]._instruments.indexOf(t.instrument) === -1) {
+            seen[key]._instruments.push(t.instrument);
+          }
+          var existGenres = seen[key].genre.split(' · ');
+          var newGenres   = t.genre.split(' · ');
+          newGenres.forEach(function(g) {
+            if (g && existGenres.indexOf(g) === -1) existGenres.push(g);
+          });
+          seen[key].genre = existGenres.join(' · ');
+          // Prefer non-empty style and years
+          if (!seen[key].style && t.style) seen[key].style = t.style;
+          if (!seen[key].years && t.years) seen[key].years = t.years;
+          if (!seen[key].website && t.website) seen[key].website = t.website;
+        }
+      });
+      return Object.values(seen).map(function(t) {
+        t.instrument = t._instruments.filter(Boolean).join(', ');
+        delete t._instruments;
+        return t;
+      });
+    }
+
     function parseSheet(text){
       var json = JSON.parse(text.substring(text.indexOf('{'), text.lastIndexOf('}')+1));
       var rows = json.table ? json.table.rows : [];
-      return rows.map(function(row){
+      var raw = rows.map(function(row){
         var c = row.c;
+        var rawGenre = c[2] ? String(c[2].v||'').trim() : '';
+        var rawInstr = c[3] ? String(c[3].v||'').trim() : '';
+        var genre    = normalizeGenre(rawGenre || rawInstr);
+        var instr    = normalizeInstrument(rawInstr, rawGenre);
         return {
-          name:       c[1] ? String(c[1].v||'').trim() : '',
-          genre:      c[2] ? String(c[2].v||'').trim() : '',
-          instrument: c[3] ? String(c[3].v||'').trim() : '',
-          area:       c[4] ? String(c[4].v||'').trim() : '',
-          email:      c[5] ? String(c[5].v||'').trim() : '',
-          phone:      c[6] ? String(c[6].v||'').trim() : '',
-          website:    c[7] ? String(c[7].v||'').trim() : '',
-          years:      c[9] ? String(c[9].v||'').trim() : '',
-          style:      c[10]? String(c[10].v||'').trim(): ''
+          name:       c[1]  ? String(c[1].v||'').trim()  : '',
+          genre:      genre,
+          instrument: instr,
+          area:       c[4]  ? String(c[4].v||'').trim()  : '',
+          email:      c[5]  ? String(c[5].v||'').trim()  : '',
+          phone:      c[6]  ? String(c[6].v||'').trim()  : '',
+          website:    c[7]  ? String(c[7].v||'').trim()  : '',
+          years:      c[9]  ? String(c[9].v||'').trim()  : '',
+          style:      c[10] ? String(c[10].v||'').trim() : ''
         };
-      }).filter(function(t){ return t.name!==''; });
+      }).filter(function(t){ return t.name !== ''; });
+      return deduplicateTeachers(raw);
     }
 
     function fetchSheet(cb){
