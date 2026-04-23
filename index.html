@@ -75,6 +75,9 @@
     .nav__wordmark span { color: rgba(255,255,255,0.7) !important; }
     .nav__link { color: rgba(255,255,255,0.85) !important; }
     .nav:not(.scrolled) { background: linear-gradient(to bottom, rgba(0,0,0,0.55) 0%, transparent 100%) !important; }
+    .nav.scrolled { background: #1E1A16 !important; }
+    /* Hide kolam-border top strip on index — it shows as white band over dark hero */
+    body > .kolam-border:first-of-type { display: none; }
     /* Member photo avatars */
     .member-card__avatar--photo {
       width: 90px !important;
