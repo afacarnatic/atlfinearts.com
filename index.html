@@ -78,6 +78,11 @@
     .nav.scrolled { background: #1E1A16 !important; }
     /* Hide kolam-border top strip on index — it shows as white band over dark hero */
     body > .kolam-border:first-of-type { display: none; }
+    /* Events year tabs — ensure legible text on light background */
+    .events__tab { color: #3A3250 !important; font-weight: 500 !important; }
+    .events__tab.active { color: #fff !important; background: linear-gradient(135deg, #5E17EB, #c9a84c) !important; border-color: transparent !important; }
+    /* Events section background */
+    .events { background: #F7F3EC !important; }
     /* Member photo avatars */
     .member-card__avatar--photo {
       width: 90px !important;
@@ -1636,4 +1641,20 @@
       }
 
       /* Simulate submission — wire to Formspree / Netlify Forms in production */
-      var submitBtn = form.querySelector('[ty
+      /* Contact form submission handled server-side */
+      var submitBtn = form.querySelector('[type="submit"]');
+      if (submitBtn) submitBtn.disabled = true;
+      setTimeout(function () {
+        if (successMsg) {
+          successMsg.style.display = 'block';
+          successMsg.setAttribute('aria-live', 'polite');
+        }
+        form.reset();
+        if (submitBtn) submitBtn.disabled = false;
+      }, 800);
+    });
+
+  }());
+  </script>
+</body>
+</html>
