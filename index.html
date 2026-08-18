@@ -557,6 +557,22 @@
         </style>
         <script>
           var eventsData = {
+            'chamber-pisupati-2026': {
+              imgs: ['assets/images/chamber-concert-aug-2026-poster.webp'],
+              date: 'Sunday, August 30, 2026 · 3:30 PM – 5:00 PM',
+              title: 'Chamber Concert — An Afternoon of Hindustani & Carnatic Classical Music',
+              location: 'Private Residence, Cumming GA (address shared upon RSVP)',
+              blog: 'AFA\'s next Chamber Concert brings together Hindustani and Carnatic classical music for an intimate afternoon performance.\n\nSri Lakshminarayana Pisupati and Prajna Srinivasa join on violin, with Dr Nitin Mayur on tabla, for a program that moves between both traditions in AFA\'s signature close-quarters setting.\n\nSeating is limited — RSVP early to reserve your spot. The address will be shared with confirmed guests ahead of the event.',
+              stats: ['Free Entry', 'Limited Seating', 'August 30, 2026'],
+              sets: [
+                { time: '3:30 PM – 5:00 PM', performers: [
+                  { name: 'Sri Lakshminarayana Pisupati', instrument: 'Violin' },
+                  { name: 'Dr Nitin Mayur', instrument: 'Tabla' },
+                  { name: 'Prajna Srinivasa', instrument: 'Violin' }
+                ]}
+              ],
+              registerLink: 'chamber-concerts.html#signup'
+            },
             'chamber-kallur-2026': {
               imgs: ['assets/images/prashanth-kallur-group.webp'],
               date: 'Sunday, April 19, 2026 · 3:00 PM – 4:30 PM',
@@ -881,7 +897,7 @@
                 '<div style="margin-top:20px;">'
                 + '<a href="' + d.registerLink + '" '
                 + 'style="display:inline-flex;align-items:center;gap:8px;background:#c9a84c;color:#1a1625;font-size:0.85rem;font-weight:600;padding:10px 20px;border-radius:4px;text-decoration:none;letter-spacing:0.04em;">'
-                + 'Register for this Workshop →</a></div>';
+                + 'Reserve Your Seat →</a></div>';
             }
 
             var modal = document.getElementById('event-modal');
@@ -904,6 +920,31 @@
         <div class="events__grid" id="events-grid" aria-live="polite" aria-label="Events list">
 
           <!-- UPCOMING ──────────────────────────── -->
+          <article class="event-card" data-year="2026"
+            onclick="openModal('chamber-pisupati-2026')"
+            tabindex="0"
+            onkeydown="if(event.key==='Enter')openModal('chamber-pisupati-2026')"
+            style="cursor:pointer;">
+            <div class="event-card__img">
+              <picture>
+                <source type="image/webp" srcset="assets/images/chamber-concert-aug-2026-poster.webp" />
+                <img src="assets/images/chamber-concert-aug-2026-poster.webp"
+                     alt="Chamber Concert — An Afternoon of Hindustani &amp; Carnatic Classical Music, August 30 2026"
+                     width="800" height="600" loading="lazy" decoding="async" />
+              </picture>
+              <span class="event-card__year-badge" aria-hidden="true">2026</span>
+            </div>
+            <div class="event-card__body">
+              <p class="event-card__date"><time datetime="2026-08-30">August 30, 2026</time></p>
+              <h3 class="event-card__title">Chamber Concert — Hindustani &amp; Carnatic Classical Music</h3>
+              <p class="event-card__desc">
+                An afternoon of Hindustani &amp; Carnatic classical music with
+                Sri Lakshminarayana Pisupati and Prajna Srinivasa on violin,
+                and Dr Nitin Mayur on tabla. Limited seating — RSVP early.
+              </p>
+            </div>
+          </article>
+
           <article class="event-card" data-year="2026"
             onclick="openModal('workshop-sunil-2026')"
             tabindex="0"
@@ -1584,6 +1625,7 @@
     var form       = document.getElementById('contact-form');
     var successMsg = document.getElementById('form-success');
 
+    if (form) {
     function setFieldError(field, errId, msg) {
       field.setAttribute('aria-invalid', 'true');
       var errEl = document.getElementById(errId);
@@ -1653,6 +1695,8 @@
         if (submitBtn) submitBtn.disabled = false;
       }, 800);
     });
+
+    } // end if (form)
 
   }());
   </script>
