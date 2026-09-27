@@ -448,7 +448,25 @@
       display: flex; align-items: center;
     }
     .teacher-row__link:hover { background: #3730a3; color: #fff; border-color: #3730a3; }
-    @media (max-width: 480px) { .teacher-row__actions { display: none; } }
+    @media (max-width: 480px) {
+  .teacher-row {
+    grid-template-columns: 40px 1fr;
+    grid-template-areas: "avatar main" "actions actions";
+    row-gap: 0.5rem;
+  }
+  .teacher-row__avatar { grid-area: avatar; }
+  .teacher-row__main { grid-area: main; }
+  .teacher-row__actions {
+    grid-area: actions;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .teacher-row__link {
+    flex: 1;
+    justify-content: center;
+    min-width: 0;
+  }
+} }
 
     /* ══════════════════════════════════════
        SKELETON LOADING
